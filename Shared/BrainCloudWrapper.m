@@ -873,6 +873,11 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
     return [_bcClient tournamentService];
 }
 
+- (BrainCloudPresence *)presenceService
+{
+    return [_bcClient presenceService];
+}
+
 - (BrainCloudS3Handling *)s3HandlingService
 {
     return [_bcClient s3HandlingService];

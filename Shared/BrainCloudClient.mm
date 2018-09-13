@@ -143,6 +143,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
     BrainCloudPlayerStatisticsEvent *_playerStatisticsEventService;
     BrainCloudTime *_timeService;
     BrainCloudTournament *_tournamentService;
+    BrainCloudPresence *_presenceService;
     BrainCloudS3Handling *_s3HandlingService;
     BrainCloudIdentity *_identityService;
     BrainCloudRedemptionCode *_redemptionCodeService;
@@ -574,6 +575,12 @@ static BrainCloudClient *s_instance = nil;
 {
     if (!_tournamentService) _tournamentService = [[BrainCloudTournament alloc] init: self];
     return _tournamentService;
+}
+
+- (BrainCloudPresence *)presenceService
+{
+    if(!_presenceService) _presenceService = [[BrainCloudPresence alloc] init: self];
+    return _presenceService;
 }
 
 - (BrainCloudS3Handling *)s3HandlingService
