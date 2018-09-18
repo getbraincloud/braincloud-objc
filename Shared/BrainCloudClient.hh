@@ -29,6 +29,7 @@
 #import "BrainCloudPlayerState.hh"
 #import "BrainCloudPlayerStatistics.hh"
 #import "BrainCloudPlayerStatisticsEvent.hh"
+#import "BrainCloudPresence.hh"
 #import "BrainCloudProduct.hh"
 #import "BrainCloudProfanity.hh"
 #import "BrainCloudPushNotification.hh"

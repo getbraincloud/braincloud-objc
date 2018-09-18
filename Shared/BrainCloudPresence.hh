@@ -189,3 +189,5 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject;
 
 #endif /* BrainCloudPresence_h */
+
+@end

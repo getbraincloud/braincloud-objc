@@ -67,7 +67,7 @@
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject
 {
-    _client->GetTournamentService()->getMyDivisions(
+    _client->getTournamentService()->getMyDivisions(
         new BrainCloudCallback(cb, ecb, cbObject));
 }
 
@@ -78,7 +78,7 @@
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject
 {
-    _client->GetTournamentService()->joinDivision(
+    _client->getTournamentService()->joinDivision(
         [divSetId UTF8String], [tournamentCode UTF8String], initialScore,
         new BrainCloudCallback(cb, ecb, cbObject));
 }
@@ -88,7 +88,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject
 {
-    _client->GetTournamentService()->leaveDivisionInstance(
+    _client->getTournamentService()->leaveDivisionInstance(
         [leaderBoardId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
