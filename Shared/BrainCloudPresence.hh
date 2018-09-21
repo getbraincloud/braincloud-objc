@@ -47,7 +47,8 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)getPresenceOfFriends:(bool)includeOffline
+- (void)getPresenceOfFriends:(NSString *) platform
+              includeOffline:(bool)includeOffline
              completionBlock:(BCCompletionBlock)cb
         errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     cbObject:(BCCallbackObject)cbObject;

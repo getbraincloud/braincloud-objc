@@ -39,13 +39,14 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
     _client->getPresenceService()->forcePush(new BrainCloudCallback(cb, ecb, cbObject));
 }
 //TypeHelpers::NSStringArrayToVector(playerStats)
-- (void)getPresenceOfFriends:(bool)includeOffline
+- (void)getPresenceOfFriends:(NSString *)platform
+              includeOffline:(bool)includeOffline
              completionBlock:(BCCompletionBlock)cb
         errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     cbObject:(BCCallbackObject)cbObject
 {
     _client->getPresenceService()->getPresenceOfFriends(
-        includeOffline, new BrainCloudCallback(cb, ecb, cbObject));
+        [platform UTF8String], includeOffline, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)getPresenceOfGroup:(NSString *)groupId
@@ -74,7 +75,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                errorCompletionBlock:(BCErrorCompletionBlock)ecb
                            cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPresenceService()->getPresenceOfUsers(
+    _client->getPresenceService()->registerListenersForFriends(
         [platform UTF8String], bidirectional, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
@@ -84,7 +85,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
              errorCompletionBlock:(BCErrorCompletionBlock)ecb
                          cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPresenceService()->getPresenceOfUsers(
+    _client->getPresenceService()->registerListenersForGroup(
         [groupId UTF8String], bidirectional, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
@@ -94,7 +95,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
                             cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPresenceService()->getPresenceOfUsers(
+    _client->getPresenceService()->registerListenersForProfiles(
         TypeHelpers::NSStringArrayToVector(profileIds), bidirectional, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
@@ -103,7 +104,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPresenceService()->getPresenceOfUsers(
+    _client->getPresenceService()->setVisibility(
         visible, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
@@ -111,7 +112,8 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPresenceService()->getPresenceOfUsers(new BrainCloudCallback(cb, ecb, cbObject));
+    _client->getPresenceService()->stopListening(
+        new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)updateActivity:(NSString *)jsonActivity
@@ -119,7 +121,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject;
 {
-    _client->getPresenceService()->getPresenceOfUsers(
+    _client->getPresenceService()->updateActivity(
         [jsonActivity UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
