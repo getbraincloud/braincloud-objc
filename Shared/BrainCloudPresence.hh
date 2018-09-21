@@ -11,7 +11,6 @@
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
-#import "BrainCloudLeaderboard.hh"
 
 @class BrainCloudClient;
 
