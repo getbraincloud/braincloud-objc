@@ -46,9 +46,9 @@
  * @param cbObject User object sent to the completion blocks
  */
 -(void)getCurrency:(NSString *)vcId
-completionBlock:(BCCompletionBlock)cb
+     completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject
+            cbObject:(BCCallbackObject)cbObject
 {
     _client->getVirtualCurrencyService()->getCurrency(
          [vcId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
@@ -67,10 +67,10 @@ cbObject:(BCCallbackObject)cbObject
  * @param cbObject User object sent to the completion blocks
  */
 - (void)getParentCurrency:(NSString *)vcId
-levelName:(NSString *)levelName
-completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject
+                levelName:(NSString *)levelName
+          completionBlock:(BCCompletionBlock)cb
+     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                 cbObject:(BCCallbackObject)cbObject
 {
     _client->getVirtualCurrencyService()->getParentCurrency(
          [vcId UTF8String], [levelName UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
@@ -89,10 +89,10 @@ cbObject:(BCCallbackObject)cbObject
  * @param cbObject User object sent to the completion blocks
  */
 - (void)getPeerCurrency:(NSString *)vcId
-peerCode:(NSString *)peerCode
-completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject
+               peerCode:(NSString *)peerCode
+        completionBlock:(BCCompletionBlock)cb
+   errorCompletionBlock:(BCErrorCompletionBlock)ecb
+               cbObject:(BCCallbackObject)cbObject
 {
     _client->getVirtualCurrencyService()->getParentCurrency(
          [vcId UTF8String], [peerCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
@@ -110,7 +110,7 @@ cbObject:(BCCallbackObject)cbObject
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)awardCurrency:(NSString *)currencyType
+- (void)awardCurrency:(NSString *) currencyType
                amount:(int)amount
       completionBlock:(BCCompletionBlock)cb
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
