@@ -6,8 +6,7 @@
 //  Copyright © 2018 BitHeads Inc. All rights reserved.
 //
 
-#ifndef BrainCloudVirtualCurrency_h
-#define BrainCloudVirtualCurrency_h
+#pragma once
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
@@ -85,8 +84,8 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)awardCurrency:(NSArray *)currencyType
-            amount:(int)amount
+- (void)awardCurrency:(NSString *)currencyType
+               amount:(int)amount
       completionBlock:(BCCompletionBlock)cb
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject;
@@ -104,7 +103,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)consumeCurrency:(NSString *)currencyType
-                 amount:(bool)amount
+                 amount:(int)amount
         completionBlock:(BCCompletionBlock)cb
    errorCompletionBlock:(BCErrorCompletionBlock)ecb
                cbObject:(BCCallbackObject)cbObject;

@@ -48,7 +48,11 @@
 -(void)getCurrency:(NSString *)vcId
 completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject;
+cbObject:(BCCallbackObject)cbObject
+{
+    _client->getVirtualCurrencyService()->getCurrency(
+         [vcId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
 
 /**
  * Retrieve the parent user's currency account.
@@ -66,7 +70,11 @@ cbObject:(BCCallbackObject)cbObject;
 levelName:(NSString *)levelName
 completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject;
+cbObject:(BCCallbackObject)cbObject
+{
+    _client->getVirtualCurrencyService()->getParentCurrency(
+         [vcId UTF8String], [levelName UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
 
 /**
  * Retrieve the peer user's currency account. vcId is optional if retrieving all currencies
@@ -84,7 +92,11 @@ cbObject:(BCCallbackObject)cbObject;
 peerCode:(NSString *)peerCode
 completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject;
+cbObject:(BCCallbackObject)cbObject
+{
+    _client->getVirtualCurrencyService()->getParentCurrency(
+         [vcId UTF8String], [peerCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
 
 /**
  * For security reasons, calling this API from the client is not recommended, and is rejected at the server by default
@@ -98,11 +110,15 @@ cbObject:(BCCallbackObject)cbObject;
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)awardCurrency:(NSArray *)currencyType
-amount:(int)amount
-completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject;
+- (void)awardCurrency:(NSString *)currencyType
+               amount:(int)amount
+      completionBlock:(BCCompletionBlock)cb
+ errorCompletionBlock:(BCErrorCompletionBlock)ecb
+             cbObject:(BCCallbackObject)cbObject
+{
+    _client->getVirtualCurrencyService()->awardCurrency(
+         [currencyType UTF8String], amount, new BrainCloudCallback(cb, ecb, cbObject));
+}
 
 /**
  * For security reasons, calling this API from the client is not recommended, and is rejected at the server by default
@@ -117,9 +133,13 @@ cbObject:(BCCallbackObject)cbObject;
  * @param cbObject User object sent to the completion blocks
  */
 - (void)consumeCurrency:(NSString *)currencyType
-amount:(bool)amount
-completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject;
+                 amount:(int)amount
+        completionBlock:(BCCompletionBlock)cb
+   errorCompletionBlock:(BCErrorCompletionBlock)ecb
+               cbObject:(BCCallbackObject)cbObject
+{
+    _client->getVirtualCurrencyService()->consumeCurrency(
+         [currencyType UTF8String], amount, new BrainCloudCallback(cb, ecb, cbObject));
+}
 
 @end

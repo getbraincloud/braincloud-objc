@@ -44,12 +44,14 @@
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)getCurrency:(NSString *)storeId
-     jsonReceiptData:(NSString *)receiptData
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject
+-(void)verifyPurchase:(NSString *)storeId
+      jsonReceiptData:(NSString *)receiptData
+      completionBlock:(BCCompletionBlock)cb
+ errorCompletionBlock:(BCErrorCompletionBlock)ecb
+             cbObject:(BCCallbackObject)cbObject
 {
-    
+    _client->getAppStoreService()->verifyPurchase(
+         [storeId UTF8String], [receiptData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 /**
@@ -66,7 +68,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
          errorCompletionBlock:(BCErrorCompletionBlock)ecb
                      cbObject:(BCCallbackObject)cbObject
 {
-    
+    _client->getAppStoreService()->getEligiblePromotions(new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 /**
@@ -88,7 +90,8 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject
 {
-    
+    _client->getAppStoreService()->getSalesInventoryByCategory(
+         [storeId UTF8String], [userCurrency UTF8String], "", new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 /**
@@ -111,7 +114,8 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                errorCompletionBlock:(BCErrorCompletionBlock)ecb
                            cbObject:(BCCallbackObject)cbObject
 {
-    
+    _client->getAppStoreService()->getSalesInventoryByCategory(
+         [storeId UTF8String], [userCurrency UTF8String], [category UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 /**
@@ -132,7 +136,8 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject
 {
-    
+    _client->getAppStoreService()->startPurchase(
+         [storeId UTF8String], [purchaseData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 /**
@@ -155,7 +160,8 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject
 {
-    
+    _client->getAppStoreService()->finalizePurchase(
+         [storeId UTF8String], [purchaseData UTF8String], [transactionData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 @end

@@ -39,6 +39,8 @@
 #import "BrainCloudTime.hh"
 #import "BrainCloudTournament.hh"
 #import "BrainCloudPresence.hh"
+#import "BrainCloudVirtualCurrency.hh"
+#import "BrainCloudAppStore.hh"
 #import <Foundation/Foundation.h>
 
 /**

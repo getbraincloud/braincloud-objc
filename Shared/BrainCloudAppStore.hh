@@ -6,8 +6,7 @@
 //  Copyright © 2018 BitHeads Inc. All rights reserved.
 //
 
-#ifndef BrainCloudAppStore_h
-#define BrainCloudAppStore_h
+#pragma once
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
@@ -33,7 +32,7 @@
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)getCurrency:(NSString *)storeId
+-(void)verifyPurchase:(NSString *)storeId
      jsonReceiptData:(NSString *)receiptData
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
