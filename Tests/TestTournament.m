@@ -55,7 +55,7 @@ BOOL _didJoin = false;
 
 - (void)testGetDivisionInfo
 {
-    [[m_client tournamentService] GetDivisionInfo:_invalidId
+    [[m_client tournamentService] getDivisionInfo:_invalidId
                                         completionBlock:successBlock
                                    errorCompletionBlock:failureBlock
                                                cbObject:nil];
@@ -64,7 +64,7 @@ BOOL _didJoin = false;
 
 - (void)testGetMyDivisions
 {
-    [[m_client tournamentService] GetMyDivisions:successBlock
+    [[m_client tournamentService] getMyDivisions:successBlock
                              errorCompletionBlock:failureBlock
                                          cbObject:nil];
     [self waitForResult];
@@ -72,7 +72,7 @@ BOOL _didJoin = false;
 
 - (void)testJoinDivision
 {
-    [[m_client tournamentService] GetDivisionInfo:_invalidId
+    [[m_client tournamentService] joinDivision:_invalidId
                                         tournamentCode:_tournamentCode
                                      initialScore:0
                                   completionBlock:successBlock
@@ -83,7 +83,7 @@ BOOL _didJoin = false;
 
 - (void)testLeaveDivisionInstance
 {
-    [[m_client tournamentService] GetDivisionInfo:_invalidId
+    [[m_client tournamentService] getDivisionInfo:_invalidId
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
                                          cbObject:nil];
