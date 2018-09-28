@@ -45,7 +45,7 @@
  * @param cbObject User object sent to the completion blocks
  */
 -(void)verifyPurchase:(NSString *)storeId
-      jsonReceiptData:(NSString *)receiptData
+          receiptData:(NSString *)receiptData
       completionBlock:(BCCompletionBlock)cb
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject
@@ -133,8 +133,8 @@
 - (void)startPurchase:(NSString *)storeId
          purchaseData:(NSString *)purchaseData
       completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject
+ errorCompletionBlock:(BCErrorCompletionBlock)ecb
+             cbObject:(BCCallbackObject)cbObject
 {
     _client->getAppStoreService()->startPurchase(
          [storeId UTF8String], [purchaseData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
@@ -154,14 +154,14 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)finalizePurchase:(NSString *)storeId
-         purchaseData:(NSString *)purchaseData
-      transactionData:(NSString *)transactionData
-      completionBlock:(BCCompletionBlock)cb
- errorCompletionBlock:(BCErrorCompletionBlock)ecb
-             cbObject:(BCCallbackObject)cbObject
+           transactionId:(NSString *)transactionId
+         transactionData:(NSString *)transactionData
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getAppStoreService()->finalizePurchase(
-         [storeId UTF8String], [purchaseData UTF8String], [transactionData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+         [storeId UTF8String], [transactionId UTF8String], [transactionData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 @end

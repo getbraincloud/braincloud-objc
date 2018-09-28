@@ -33,9 +33,10 @@
  * @param cbObject User object sent to the completion blocks
  */
 -(void)verifyPurchase:(NSString *)storeId
-     jsonReceiptData:(NSString *)receiptData
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject;
+          receiptData:(NSString *)receiptData
+      completionBlock:(BCCompletionBlock)cb
+ errorCompletionBlock:(BCErrorCompletionBlock)ecb
+             cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Returns the eligible promotions for the player
@@ -122,7 +123,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)finalizePurchase:(NSString *)storeId
-            purchaseData:(NSString *)purchaseData
+           transactionId:(NSString *)transactionId
          transactionData:(NSString *)transactionData
          completionBlock:(BCCompletionBlock)cb
     errorCompletionBlock:(BCErrorCompletionBlock)ecb

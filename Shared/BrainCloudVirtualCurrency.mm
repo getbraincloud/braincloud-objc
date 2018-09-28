@@ -6,8 +6,6 @@
 //  Copyright © 2018 BitHeads Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #include "braincloud/BrainCloudClient.h"
 #include "BrainCloudCallback.hh"
 
@@ -94,7 +92,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
    errorCompletionBlock:(BCErrorCompletionBlock)ecb
                cbObject:(BCCallbackObject)cbObject
 {
-    _client->getVirtualCurrencyService()->getParentCurrency(
+    _client->getVirtualCurrencyService()->getPeerCurrency(
          [vcId UTF8String], [peerCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
