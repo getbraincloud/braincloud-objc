@@ -80,18 +80,18 @@
 		858DDCE3216284E90068B016 /* BrainCloudAppStore.hh in Headers */ = {isa = PBXBuildFile; fileRef = 850BC8C3215589940012B6EE /* BrainCloudAppStore.hh */; };
 		858DDCE4216284E90068B016 /* BrainCloudPresence.hh in Headers */ = {isa = PBXBuildFile; fileRef = 854E10F4214AB470004197E0 /* BrainCloudPresence.hh */; };
 		858DDCE5216284E90068B016 /* BrainCloudVirtualCurrency.hh in Headers */ = {isa = PBXBuildFile; fileRef = 850BC8C22155896D0012B6EE /* BrainCloudVirtualCurrency.hh */; };
-		85C05C7A2162AA510003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
 		85C05C7B2162AA510003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
-		85C05C7C2162AA510003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
-		85C05C7D2162AA6D0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
 		85C05C7E2162AA6D0003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
-		85C05C7F2162AA6D0003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
-		85C05C802162AA770003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
 		85C05C812162AA770003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
-		85C05C822162AA770003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
-		85C05C832162AA810003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
 		85C05C842162AA810003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
-		85C05C852162AA810003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
+		85C05CB52162BD220003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CB32162BD220003E92B /* TestVirtualCurrency.m */; };
+		85C05CB62162BD220003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CB32162BD220003E92B /* TestVirtualCurrency.m */; };
+		85C05CB72162BD220003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CB32162BD220003E92B /* TestVirtualCurrency.m */; };
+		85C05CBE2162BDC00003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CB32162BD220003E92B /* TestVirtualCurrency.m */; };
+		85C05CC02162BEAB0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CBF2162BEAA0003E92B /* TestAppStore.m */; };
+		85C05CC12162BEAB0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CBF2162BEAA0003E92B /* TestAppStore.m */; };
+		85C05CC22162BEAB0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CBF2162BEAA0003E92B /* TestAppStore.m */; };
+		85C05CC32162BEAB0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05CBF2162BEAA0003E92B /* TestAppStore.m */; };
 		9CC848B9B724A99539E20346 /* libPods-BrainCloud-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 382372F5F7CA886F73A234A1 /* libPods-BrainCloud-OSX.a */; };
 		D809D9A21C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
 		D809D9A31C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
@@ -597,8 +597,8 @@
 		854E10F4214AB470004197E0 /* BrainCloudPresence.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BrainCloudPresence.hh; sourceTree = "<group>"; };
 		854E10F5214AB498004197E0 /* BrainCloudPresence.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BrainCloudPresence.mm; sourceTree = "<group>"; };
 		854E10FA214B0BF7004197E0 /* TestPresence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TestPresence.m; path = Tests/TestPresence.m; sourceTree = "<group>"; };
-		85C05C762162AA1F0003E92B /* TestAppStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAppStore.m; path = Tests/TestAppStore.m; sourceTree = "<group>"; };
-		85C05C782162AA280003E92B /* TestVirtualCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestVirtualCurrency.m; path = Tests/TestVirtualCurrency.m; sourceTree = "<group>"; };
+		85C05CB32162BD220003E92B /* TestVirtualCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestVirtualCurrency.m; path = Tests/TestVirtualCurrency.m; sourceTree = "<group>"; };
+		85C05CBF2162BEAA0003E92B /* TestAppStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAppStore.m; path = Tests/TestAppStore.m; sourceTree = "<group>"; };
 		872CA57BBDF3A2A91E96AE3C /* Pods-BrainCloud-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-iOSTests/Pods-BrainCloud-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		90F2A09592A2EF69F55F3E8F /* libPods-BrainCloud-watchOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainCloud-watchOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7B9A12864EEF4C12E26860 /* Pods-BrainCloud-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-iOSTests/Pods-BrainCloud-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1192,7 +1192,7 @@
 			children = (
 				DFF5CC551C9356A1002E62F8 /* TestFixtureBase.h */,
 				DFF5CC6B1C9356A1002E62F8 /* TestUser.h */,
-				85C05C762162AA1F0003E92B /* TestAppStore.m */,
+				85C05CBF2162BEAA0003E92B /* TestAppStore.m */,
 				DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */,
 				DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */,
 				DFF5CC501C9356A1002E62F8 /* TestClient.m */,
@@ -1225,7 +1225,7 @@
 				DFF5CC691C9356A1002E62F8 /* TestScript.m */,
 				DFF5CC6A1C9356A1002E62F8 /* TestTime.m */,
 				24AC16D81E203012007D00EE /* TestTournament.m */,
-				85C05C782162AA280003E92B /* TestVirtualCurrency.m */,
+				85C05CB32162BD220003E92B /* TestVirtualCurrency.m */,
 				DFF5CC6C1C9356A1002E62F8 /* TestUser.m */,
 				DF99CBF01C936749000B2418 /* TestWrapper.m */,
 				DFF5CCE31C935A00002E62F8 /* ids.txt */,
@@ -1998,9 +1998,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85C05C802162AA770003E92B /* TestAppStore.m in Sources */,
 				85C05C812162AA770003E92B /* TestPresence.m in Sources */,
-				85C05C822162AA770003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CC9A1C9356BD002E62F8 /* TestEntity.m in Sources */,
 				DFF5CCDF1C935729002E62F8 /* TestTime.m in Sources */,
 				DFF5CCC11C9356FF002E62F8 /* TestPlaybackStream.m in Sources */,
@@ -2018,6 +2016,7 @@
 				DFF5CC941C9356B4002E62F8 /* TestClient.m in Sources */,
 				DFF5CCBB1C9356F6002E62F8 /* TestMatchMaking.m in Sources */,
 				DFF5CCA01C9356C7002E62F8 /* TestFile.m in Sources */,
+				85C05CB62162BD220003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CCA61C9356D7002E62F8 /* TestFriend.m in Sources */,
 				DFF5CCDC1C935726002E62F8 /* TestScript.m in Sources */,
 				DFF5CCAC1C9356E0002E62F8 /* TestGlobalApp.m in Sources */,
@@ -2032,6 +2031,7 @@
 				DFF5CCCA1C93570B002E62F8 /* TestPlayerStatisticsEvent.m in Sources */,
 				DFF5CCB21C9356E8002E62F8 /* TestGlobalStatistics.m in Sources */,
 				DFF5CC9D1C9356C2002E62F8 /* TestEvent.m in Sources */,
+				85C05CC22162BEAB0003E92B /* TestAppStore.m in Sources */,
 				DFF5CCD01C935713002E62F8 /* TestProfanity.m in Sources */,
 				DFF5CCA91C9356DB002E62F8 /* TestGamification.m in Sources */,
 				DFF5CCD61C93571C002E62F8 /* TestRedemptionCode.m in Sources */,
@@ -2093,9 +2093,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85C05C7A2162AA510003E92B /* TestAppStore.m in Sources */,
 				85C05C7B2162AA510003E92B /* TestPresence.m in Sources */,
-				85C05C7C2162AA510003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CC981C9356BC002E62F8 /* TestEntity.m in Sources */,
 				DFF5CCDD1C935728002E62F8 /* TestTime.m in Sources */,
 				DFF5CCBF1C9356FE002E62F8 /* TestPlaybackStream.m in Sources */,
@@ -2128,7 +2126,9 @@
 				DFF5CCB01C9356E7002E62F8 /* TestGlobalStatistics.m in Sources */,
 				DFF5CC9B1C9356C1002E62F8 /* TestEvent.m in Sources */,
 				DFF5CCCE1C935712002E62F8 /* TestProfanity.m in Sources */,
+				85C05CC02162BEAB0003E92B /* TestAppStore.m in Sources */,
 				DFF5CCA71C9356DA002E62F8 /* TestGamification.m in Sources */,
+				85C05CBE2162BDC00003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CCD41C93571B002E62F8 /* TestRedemptionCode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2188,9 +2188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85C05C7D2162AA6D0003E92B /* TestAppStore.m in Sources */,
 				85C05C7E2162AA6D0003E92B /* TestPresence.m in Sources */,
-				85C05C7F2162AA6D0003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CC991C9356BC002E62F8 /* TestEntity.m in Sources */,
 				DFF5CCDE1C935729002E62F8 /* TestTime.m in Sources */,
 				DFF5CCC01C9356FE002E62F8 /* TestPlaybackStream.m in Sources */,
@@ -2208,6 +2206,7 @@
 				DFF5CC931C9356B3002E62F8 /* TestClient.m in Sources */,
 				DFF5CCBA1C9356F6002E62F8 /* TestMatchMaking.m in Sources */,
 				DFF5CC9F1C9356C7002E62F8 /* TestFile.m in Sources */,
+				85C05CB52162BD220003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CCA51C9356D6002E62F8 /* TestFriend.m in Sources */,
 				DFF5CCDB1C935725002E62F8 /* TestScript.m in Sources */,
 				DFF5CCAB1C9356DF002E62F8 /* TestGlobalApp.m in Sources */,
@@ -2222,6 +2221,7 @@
 				DFF5CCC91C93570B002E62F8 /* TestPlayerStatisticsEvent.m in Sources */,
 				DFF5CCB11C9356E7002E62F8 /* TestGlobalStatistics.m in Sources */,
 				DFF5CC9C1C9356C1002E62F8 /* TestEvent.m in Sources */,
+				85C05CC12162BEAB0003E92B /* TestAppStore.m in Sources */,
 				DFF5CCCF1C935712002E62F8 /* TestProfanity.m in Sources */,
 				DFF5CCA81C9356DB002E62F8 /* TestGamification.m in Sources */,
 				DFF5CCD51C93571B002E62F8 /* TestRedemptionCode.m in Sources */,
@@ -2283,9 +2283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85C05C832162AA810003E92B /* TestAppStore.m in Sources */,
 				85C05C842162AA810003E92B /* TestPresence.m in Sources */,
-				85C05C852162AA810003E92B /* TestVirtualCurrency.m in Sources */,
 				DF2231321CE39E15003A7D8D /* TestEntity.m in Sources */,
 				DF2231331CE39E15003A7D8D /* TestTime.m in Sources */,
 				DF2231341CE39E15003A7D8D /* TestPlaybackStream.m in Sources */,
@@ -2303,6 +2301,7 @@
 				DF22313F1CE39E15003A7D8D /* TestClient.m in Sources */,
 				DF2231401CE39E15003A7D8D /* TestMatchMaking.m in Sources */,
 				DF2231411CE39E15003A7D8D /* TestFile.m in Sources */,
+				85C05CB72162BD220003E92B /* TestVirtualCurrency.m in Sources */,
 				DF2231421CE39E15003A7D8D /* TestFriend.m in Sources */,
 				DF2231431CE39E15003A7D8D /* TestScript.m in Sources */,
 				DF2231441CE39E15003A7D8D /* TestGlobalApp.m in Sources */,
@@ -2317,6 +2316,7 @@
 				DF22314B1CE39E15003A7D8D /* TestPlayerStatisticsEvent.m in Sources */,
 				DF22314C1CE39E15003A7D8D /* TestGlobalStatistics.m in Sources */,
 				DF22314D1CE39E15003A7D8D /* TestEvent.m in Sources */,
+				85C05CC32162BEAB0003E92B /* TestAppStore.m in Sources */,
 				DF22314E1CE39E15003A7D8D /* TestProfanity.m in Sources */,
 				DF22314F1CE39E15003A7D8D /* TestGamification.m in Sources */,
 				DF2231501CE39E15003A7D8D /* TestRedemptionCode.m in Sources */,

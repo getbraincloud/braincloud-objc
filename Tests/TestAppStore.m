@@ -8,11 +8,11 @@
 
 #import "TestFixtureBase.h"
 
-@interface TestVirtualCurrency : TestFixtureBase
+@interface TestAppStore : TestFixtureBase
 
 @end
 
-@implementation TestVirtualCurrency
+@implementation TestAppStore
 
 - (void)setUp
 {

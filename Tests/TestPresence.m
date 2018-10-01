@@ -14,8 +14,6 @@
 
 @implementation TestPresence
 
-NSString *_invalidId = @"Invalid_Id";
-
 - (void)setUp { [super setUp]; }
 
 - (void)tearDown { [super tearDown]; }
@@ -112,7 +110,7 @@ NSString *_invalidId = @"Invalid_Id";
 
 - (void)testUpdateActivity
 {
-    [[m_client presenceService] updateActivity:_invalidId
+    [[m_client presenceService] updateActivity:@"_invalidId"
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
                                          cbObject:nil];
