@@ -22,28 +22,28 @@
 - (void)testForcePush
 {
     [[m_client presenceService] forcePush:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                     errorCompletionBlock:failureBlock
+                                 cbObject:nil];
     [self waitForResult];
 }
 
 - (void)testGetPresenceOfFriends
 {
     [[m_client presenceService] getPresenceOfFriends:@"brainCloud"
-                                   includeOffline:true
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                                      includeOffline:true
+                                     completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
     [self waitForResult];
 }
 
 - (void)testGetPresenceOfGroup
 {
     [[m_client presenceService] getPresenceOfGroup:@"_invalidId"
-                                   includeOffline:true
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                                    includeOffline:true
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
     [self waitForFailedResult];
 }
 
@@ -52,30 +52,31 @@
     NSArray * array = @[@"user1", @"user2"];
     
     [[m_client presenceService] getPresenceOfUsers:array
-                                   includeOffline:true
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
-    [self waitForFailedResult];
+                                    includeOffline:true
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
+    [self waitForResult];
 }
 
 - (void)testRegisterListenersForFriends
 {
-    [[m_client presenceService] registerListenersForFriends:@"_invalidId"
-                                    bidirectional:true
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
-    [self waitForFailedResult];
+    [[m_client presenceService] registerListenersForFriends:@"brainCloud"
+                                              bidirectional:true
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForResult];
 }
 
 - (void)testRegsiterListenersForGroup
 {
-    [[m_client presenceService] registerListenersForGroup:@"_invalidId"
-                                    bidirectional:true
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+    [[m_client presenceService] registerListenersForGroup:@"brainCloud"
+                                            bidirectional:true
+                                          completionBlock:successBlock
+                                     errorCompletionBlock:failureBlock
+                                                 cbObject:nil];
+    //no group exists
     [self waitForFailedResult];
 }
 
@@ -84,36 +85,36 @@
     NSArray * array = @[@"user1", @"user2"];
     
     [[m_client presenceService] registerListenersForProfiles:array
-                                    bidirectional:true
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
-    [self waitForFailedResult];
+                                               bidirectional:true
+                                             completionBlock:successBlock
+                                        errorCompletionBlock:failureBlock
+                                                    cbObject:nil];
+    [self waitForResult];
 }
 
 - (void)testSetVisibility
 {
     [[m_client presenceService] setVisibility:true
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                              completionBlock:successBlock
+                         errorCompletionBlock:failureBlock
+                                     cbObject:nil];
     [self waitForFailedResult];
 }
 
 - (void)testStopListening
 {
     [[m_client presenceService] stopListening:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                         errorCompletionBlock:failureBlock
+                                     cbObject:nil];
     [self waitForFailedResult];
 }
 
 - (void)testUpdateActivity
 {
     [[m_client presenceService] updateActivity:@"_invalidId"
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
     [self waitForFailedResult];
 }
 

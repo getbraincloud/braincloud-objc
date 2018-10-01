@@ -34,7 +34,7 @@
 
 - (void)forcePush:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-         cbObject:(BCCallbackObject)cbObject
+            cbObject:(BCCallbackObject)cbObject
 {
     _client->getPresenceService()->forcePush(new BrainCloudCallback(cb, ecb, cbObject));
 }
@@ -70,7 +70,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 }
 
 - (void)registerListenersForFriends:(NSString *)platform
-                     includeOffline:(bool)bidirectional
+                      bidirectional:(bool)bidirectional
                     completionBlock:(BCCompletionBlock)cb
                errorCompletionBlock:(BCErrorCompletionBlock)ecb
                            cbObject:(BCCallbackObject)cbObject
@@ -80,7 +80,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 }
 
 - (void)registerListenersForGroup:(NSString *)groupId
-                   includeOffline:(bool)bidirectional
+                    bidirectional:(bool)bidirectional
                   completionBlock:(BCCompletionBlock)cb
              errorCompletionBlock:(BCErrorCompletionBlock)ecb
                          cbObject:(BCCallbackObject)cbObject
@@ -90,7 +90,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 }
 
 - (void)registerListenersForProfiles:(NSArray *)profileIds
-                      includeOffline:(bool)bidirectional
+                       bidirectional:(bool)bidirectional
                      completionBlock:(BCCompletionBlock)cb
                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
                             cbObject:(BCCallbackObject)cbObject

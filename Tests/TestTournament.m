@@ -56,28 +56,28 @@ BOOL _didJoin = false;
 - (void)testGetDivisionInfo
 {
     [[m_client tournamentService] getDivisionInfo:_invalidId
-                                        completionBlock:successBlock
-                                   errorCompletionBlock:failureBlock
-                                               cbObject:nil];
+                                  completionBlock:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
     [self waitForFailedResult];
 }
 
 - (void)testGetMyDivisions
 {
     [[m_client tournamentService] getMyDivisions:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                            errorCompletionBlock:failureBlock
+                                        cbObject:nil];
     [self waitForResult];
 }
 
 - (void)testJoinDivision
 {
     [[m_client tournamentService] joinDivision:_invalidId
-                                        tournamentCode:_tournamentCode
-                                     initialScore:0
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
+                                tournamentCode:_tournamentCode
+                                  initialScore:0
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
     [self waitForFailedResult];
 }
 

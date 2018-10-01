@@ -26,51 +26,51 @@
 
 - (void)testGetCurrency
 {
-    [[m_client virtualCurrencyService] getCurrency:@"invalid_id"
-                                      completionBlock:successBlock
-                                 errorCompletionBlock:failureBlock
-                                             cbObject:nil];
-    [self waitForFailedResult];
+    [[m_client virtualCurrencyService] getCurrency:@"brainCloud"
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
+    [self waitForResult];
 }
 
 - (void)testGetParentCurrency
 {
     [[m_client virtualCurrencyService] getParentCurrency:@"invalid_id"
-                                            levelName:@"invalid_level"
-                                      completionBlock:successBlock
-                                 errorCompletionBlock:failureBlock
-                                             cbObject:nil];
+                                               levelName:@"invalid_levelName"
+                                         completionBlock:successBlock
+                                    errorCompletionBlock:failureBlock
+                                                cbObject:nil];
     [self waitForFailedResult];
 }
 
 - (void)testGetPeerCurrency
 {
     [[m_client virtualCurrencyService] getPeerCurrency:@"invalid_id"
-                                            peerCode:@"invalid_peer_code"
-                                      completionBlock:successBlock
-                                 errorCompletionBlock:failureBlock
-                                             cbObject:nil];
+                                              peerCode:@"invalid_peerCode"
+                                       completionBlock:successBlock
+                                  errorCompletionBlock:failureBlock
+                                              cbObject:nil];
     [self waitForFailedResult];
 }
 
 - (void)testAwardCurrency
 {
     [[m_client virtualCurrencyService] awardCurrency:@"credits"
-                                            amount:100
-                                      completionBlock:successBlock
-                                 errorCompletionBlock:failureBlock
-                                             cbObject:nil];
-    [self waitForFailedResult];
+                                              amount:100
+                                     completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
+    [self waitForResult];
 }
 
 - (void)testConsumeCurrency
 {
     [[m_client virtualCurrencyService] consumeCurrency:@"credits"
-                                            amount:100
-                                      completionBlock:successBlock
-                                 errorCompletionBlock:failureBlock
-                                             cbObject:nil];
-    [self waitForFailedResult];
+                                                amount:100
+                                       completionBlock:successBlock
+                                  errorCompletionBlock:failureBlock
+                                              cbObject:nil];
+    [self waitForResult];
 }
 
 @end

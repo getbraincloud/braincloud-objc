@@ -37,15 +37,15 @@
 - (void)testGetEligiblePromotions
 {
     [[m_client appStoreService] getEligiblePromotions:successBlock
-                                    errorCompletionBlock:failureBlock
-                                                cbObject:nil];
+                                 errorCompletionBlock:failureBlock
+                                             cbObject:nil];
     [self waitForResult];
 }
 
 - (void)testGetSalesInventory
 {
     [[m_client appStoreService] getSalesInventory:@"invalid_storeid"
-                                         userCurrency:@"invalid_user_currency"
+                                     userCurrency:@"invalid_user_currency"
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
                                          cbObject:nil];
