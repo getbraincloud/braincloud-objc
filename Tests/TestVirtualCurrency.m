@@ -63,7 +63,7 @@
     [self waitForFailedResult];
 }
 
-- (void)testFindMatches
+- (void)testConsumeCurrency
 {
     [[m_client virtualCurrencyService] consumeCurrency:@"credits"
                                             amount:100

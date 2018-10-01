@@ -80,6 +80,20 @@
 		858DDCE3216284E90068B016 /* BrainCloudAppStore.hh in Headers */ = {isa = PBXBuildFile; fileRef = 850BC8C3215589940012B6EE /* BrainCloudAppStore.hh */; };
 		858DDCE4216284E90068B016 /* BrainCloudPresence.hh in Headers */ = {isa = PBXBuildFile; fileRef = 854E10F4214AB470004197E0 /* BrainCloudPresence.hh */; };
 		858DDCE5216284E90068B016 /* BrainCloudVirtualCurrency.hh in Headers */ = {isa = PBXBuildFile; fileRef = 850BC8C22155896D0012B6EE /* BrainCloudVirtualCurrency.hh */; };
+		85C05C772162AA1F0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
+		85C05C792162AA280003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
+		85C05C7A2162AA510003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
+		85C05C7B2162AA510003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
+		85C05C7C2162AA510003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
+		85C05C7D2162AA6D0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
+		85C05C7E2162AA6D0003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
+		85C05C7F2162AA6D0003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
+		85C05C802162AA770003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
+		85C05C812162AA770003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
+		85C05C822162AA770003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
+		85C05C832162AA810003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
+		85C05C842162AA810003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
+		85C05C852162AA810003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
 		9CC848B9B724A99539E20346 /* libPods-BrainCloud-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 382372F5F7CA886F73A234A1 /* libPods-BrainCloud-OSX.a */; };
 		D809D9A21C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
 		D809D9A31C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
@@ -585,8 +599,8 @@
 		854E10F4214AB470004197E0 /* BrainCloudPresence.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BrainCloudPresence.hh; sourceTree = "<group>"; };
 		854E10F5214AB498004197E0 /* BrainCloudPresence.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BrainCloudPresence.mm; sourceTree = "<group>"; };
 		854E10FA214B0BF7004197E0 /* TestPresence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TestPresence.m; path = Tests/TestPresence.m; sourceTree = "<group>"; };
-		858DDCD0215EA7F80068B016 /* TestVirtualCurrency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVirtualCurrency.m; sourceTree = "<group>"; };
-		858DDCD2215EABDD0068B016 /* TestAppStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAppStore.m; sourceTree = "<group>"; };
+		85C05C762162AA1F0003E92B /* TestAppStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAppStore.m; path = Tests/TestAppStore.m; sourceTree = "<group>"; };
+		85C05C782162AA280003E92B /* TestVirtualCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestVirtualCurrency.m; path = Tests/TestVirtualCurrency.m; sourceTree = "<group>"; };
 		872CA57BBDF3A2A91E96AE3C /* Pods-BrainCloud-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-iOSTests/Pods-BrainCloud-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		90F2A09592A2EF69F55F3E8F /* libPods-BrainCloud-watchOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainCloud-watchOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7B9A12864EEF4C12E26860 /* Pods-BrainCloud-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-iOSTests/Pods-BrainCloud-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1180,7 +1194,7 @@
 			children = (
 				DFF5CC551C9356A1002E62F8 /* TestFixtureBase.h */,
 				DFF5CC6B1C9356A1002E62F8 /* TestUser.h */,
-				858DDCD2215EABDD0068B016 /* TestAppStore.m */,
+				85C05C762162AA1F0003E92B /* TestAppStore.m */,
 				DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */,
 				DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */,
 				DFF5CC501C9356A1002E62F8 /* TestClient.m */,
@@ -1213,8 +1227,8 @@
 				DFF5CC691C9356A1002E62F8 /* TestScript.m */,
 				DFF5CC6A1C9356A1002E62F8 /* TestTime.m */,
 				24AC16D81E203012007D00EE /* TestTournament.m */,
+				85C05C782162AA280003E92B /* TestVirtualCurrency.m */,
 				DFF5CC6C1C9356A1002E62F8 /* TestUser.m */,
-				858DDCD0215EA7F80068B016 /* TestVirtualCurrency.m */,
 				DF99CBF01C936749000B2418 /* TestWrapper.m */,
 				DFF5CCE31C935A00002E62F8 /* ids.txt */,
 			);
@@ -1986,6 +2000,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C05C802162AA770003E92B /* TestAppStore.m in Sources */,
+				85C05C812162AA770003E92B /* TestPresence.m in Sources */,
+				85C05C822162AA770003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CC9A1C9356BD002E62F8 /* TestEntity.m in Sources */,
 				DFF5CCDF1C935729002E62F8 /* TestTime.m in Sources */,
 				DFF5CCC11C9356FF002E62F8 /* TestPlaybackStream.m in Sources */,
@@ -2033,6 +2050,7 @@
 				D845979C1C6D23B3003DA016 /* BrainCloudDataStream.mm in Sources */,
 				240895FF1CE3FCB70099720D /* BrainCloudGroup.mm in Sources */,
 				24F29CEA1CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm in Sources */,
+				85C05C772162AA1F0003E92B /* TestAppStore.m in Sources */,
 				D84598261C6D23B4003DA016 /* BrainCloudTime.mm in Sources */,
 				D84597A81C6D23B3003DA016 /* BrainCloudEvent.mm in Sources */,
 				245F9D501DAECD6800478BC2 /* BrainCloudMail.mm in Sources */,
@@ -2050,6 +2068,7 @@
 				D84597F01C6D23B4003DA016 /* BrainCloudPlayerState.mm in Sources */,
 				D84597811C6D23B3003DA016 /* BrainCloudAsyncMatch.mm in Sources */,
 				D84597871C6D23B3003DA016 /* BrainCloudAuthentication.mm in Sources */,
+				85C05C792162AA280003E92B /* TestVirtualCurrency.m in Sources */,
 				D84597FC1C6D23B4003DA016 /* BrainCloudPlayerStatisticsEvent.mm in Sources */,
 				850BC8C5215589B50012B6EE /* BrainCloudAppStore.mm in Sources */,
 				D84598201C6D23B4003DA016 /* BrainCloudScript.mm in Sources */,
@@ -2078,6 +2097,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C05C7A2162AA510003E92B /* TestAppStore.m in Sources */,
+				85C05C7B2162AA510003E92B /* TestPresence.m in Sources */,
+				85C05C7C2162AA510003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CC981C9356BC002E62F8 /* TestEntity.m in Sources */,
 				DFF5CCDD1C935728002E62F8 /* TestTime.m in Sources */,
 				DFF5CCBF1C9356FE002E62F8 /* TestPlaybackStream.m in Sources */,
@@ -2170,6 +2192,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C05C7D2162AA6D0003E92B /* TestAppStore.m in Sources */,
+				85C05C7E2162AA6D0003E92B /* TestPresence.m in Sources */,
+				85C05C7F2162AA6D0003E92B /* TestVirtualCurrency.m in Sources */,
 				DFF5CC991C9356BC002E62F8 /* TestEntity.m in Sources */,
 				DFF5CCDE1C935729002E62F8 /* TestTime.m in Sources */,
 				DFF5CCC01C9356FE002E62F8 /* TestPlaybackStream.m in Sources */,
@@ -2262,6 +2287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C05C832162AA810003E92B /* TestAppStore.m in Sources */,
+				85C05C842162AA810003E92B /* TestPresence.m in Sources */,
+				85C05C852162AA810003E92B /* TestVirtualCurrency.m in Sources */,
 				DF2231321CE39E15003A7D8D /* TestEntity.m in Sources */,
 				DF2231331CE39E15003A7D8D /* TestTime.m in Sources */,
 				DF2231341CE39E15003A7D8D /* TestPlaybackStream.m in Sources */,
