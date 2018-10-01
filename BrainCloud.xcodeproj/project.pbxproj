@@ -80,8 +80,6 @@
 		858DDCE3216284E90068B016 /* BrainCloudAppStore.hh in Headers */ = {isa = PBXBuildFile; fileRef = 850BC8C3215589940012B6EE /* BrainCloudAppStore.hh */; };
 		858DDCE4216284E90068B016 /* BrainCloudPresence.hh in Headers */ = {isa = PBXBuildFile; fileRef = 854E10F4214AB470004197E0 /* BrainCloudPresence.hh */; };
 		858DDCE5216284E90068B016 /* BrainCloudVirtualCurrency.hh in Headers */ = {isa = PBXBuildFile; fileRef = 850BC8C22155896D0012B6EE /* BrainCloudVirtualCurrency.hh */; };
-		85C05C772162AA1F0003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
-		85C05C792162AA280003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
 		85C05C7A2162AA510003E92B /* TestAppStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C762162AA1F0003E92B /* TestAppStore.m */; };
 		85C05C7B2162AA510003E92B /* TestPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 854E10FA214B0BF7004197E0 /* TestPresence.m */; };
 		85C05C7C2162AA510003E92B /* TestVirtualCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C05C782162AA280003E92B /* TestVirtualCurrency.m */; };
@@ -2050,7 +2048,6 @@
 				D845979C1C6D23B3003DA016 /* BrainCloudDataStream.mm in Sources */,
 				240895FF1CE3FCB70099720D /* BrainCloudGroup.mm in Sources */,
 				24F29CEA1CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm in Sources */,
-				85C05C772162AA1F0003E92B /* TestAppStore.m in Sources */,
 				D84598261C6D23B4003DA016 /* BrainCloudTime.mm in Sources */,
 				D84597A81C6D23B3003DA016 /* BrainCloudEvent.mm in Sources */,
 				245F9D501DAECD6800478BC2 /* BrainCloudMail.mm in Sources */,
@@ -2068,7 +2065,6 @@
 				D84597F01C6D23B4003DA016 /* BrainCloudPlayerState.mm in Sources */,
 				D84597811C6D23B3003DA016 /* BrainCloudAsyncMatch.mm in Sources */,
 				D84597871C6D23B3003DA016 /* BrainCloudAuthentication.mm in Sources */,
-				85C05C792162AA280003E92B /* TestVirtualCurrency.m in Sources */,
 				D84597FC1C6D23B4003DA016 /* BrainCloudPlayerStatisticsEvent.mm in Sources */,
 				850BC8C5215589B50012B6EE /* BrainCloudAppStore.mm in Sources */,
 				D84598201C6D23B4003DA016 /* BrainCloudScript.mm in Sources */,

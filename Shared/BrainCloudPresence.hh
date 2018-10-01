@@ -101,7 +101,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)registerListenersForFriends:(NSString *)platform
-                     includeOffline:(bool)bidirectional
+                     bidirectional:(bool)bidirectional
                     completionBlock:(BCCompletionBlock)cb
                errorCompletionBlock:(BCErrorCompletionBlock)ecb
                            cbObject:(BCCallbackObject)cbObject;
@@ -119,7 +119,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)registerListenersForGroup:(NSString *)groupId
-                    includeOffline:(bool)bidirectional
+                    bidirectional:(bool)bidirectional
                    completionBlock:(BCCompletionBlock)cb
               errorCompletionBlock:(BCErrorCompletionBlock)ecb
                           cbObject:(BCCallbackObject)cbObject;
@@ -137,7 +137,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)registerListenersForProfiles:(NSArray *)profileIds
-                      includeOffline:(bool)bidirectional
+                      bidirectional:(bool)bidirectional
                      completionBlock:(BCCompletionBlock)cb
                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
                             cbObject:(BCCallbackObject)cbObject;

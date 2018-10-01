@@ -31,7 +31,7 @@ NSString *_invalidId = @"Invalid_Id";
 
 - (void)testGetPresenceOfFriends
 {
-    [[m_client presenceService] getPresenceOfFriends:"brainCloud"
+    [[m_client presenceService] getPresenceOfFriends:@"brainCloud"
                                    includeOffline:true
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
@@ -41,7 +41,7 @@ NSString *_invalidId = @"Invalid_Id";
 
 - (void)testGetPresenceOfGroup
 {
-    [[m_client presenceService] getPresenceOfGroup:_invalidId
+    [[m_client presenceService] getPresenceOfGroup:@"_invalidId"
                                    includeOffline:true
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
@@ -51,7 +51,9 @@ NSString *_invalidId = @"Invalid_Id";
 
 - (void)testGetPresenceOfUsers
 {
-    [[m_client presenceService] getPresenceOfUsers:_invalidId
+    NSArray * array = @[@"user1", @"user2"];
+    
+    [[m_client presenceService] getPresenceOfUsers:array
                                    includeOffline:true
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
@@ -61,7 +63,7 @@ NSString *_invalidId = @"Invalid_Id";
 
 - (void)testRegisterListenersForFriends
 {
-    [[m_client presenceService] registerListenersForFriends:_invalidId
+    [[m_client presenceService] registerListenersForFriends:@"_invalidId"
                                     bidirectional:true
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
@@ -71,7 +73,7 @@ NSString *_invalidId = @"Invalid_Id";
 
 - (void)testRegsiterListenersForGroup
 {
-    [[m_client presenceService] registerListenersForGroup:_invalidId
+    [[m_client presenceService] registerListenersForGroup:@"_invalidId"
                                     bidirectional:true
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
@@ -81,7 +83,9 @@ NSString *_invalidId = @"Invalid_Id";
 
 - (void)testRegisterListenersForProfiles
 {
-    [[m_client presenceService] registerListenersForProfiles:_invalidId
+    NSArray * array = @[@"user1", @"user2"];
+    
+    [[m_client presenceService] registerListenersForProfiles:array
                                     bidirectional:true
                                   completionBlock:successBlock
                              errorCompletionBlock:failureBlock
