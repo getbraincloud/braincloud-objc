@@ -81,7 +81,6 @@
 		858DDCE4216284E90068B016 /* BrainCloudPresence.hh in Headers */ = {isa = PBXBuildFile; fileRef = 854E10F4214AB470004197E0 /* BrainCloudPresence.hh */; };
 		858DDCE5216284E90068B016 /* BrainCloudVirtualCurrency.hh in Headers */ = {isa = PBXBuildFile; fileRef = 850BC8C22155896D0012B6EE /* BrainCloudVirtualCurrency.hh */; };
 		9CC848B9B724A99539E20346 /* libPods-BrainCloud-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 382372F5F7CA886F73A234A1 /* libPods-BrainCloud-OSX.a */; };
-		BF290620342DF55812D4E410 /* libPods-BrainCloud-watchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A173A0F84848CCC2BC5C163D /* libPods-BrainCloud-watchOS.a */; };
 		D809D9A21C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
 		D809D9A31C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
 		D809D9A41C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
@@ -520,7 +519,6 @@
 		DFF5CCE61C935A06002E62F8 /* ids.txt in Resources */ = {isa = PBXBuildFile; fileRef = DFF5CCE31C935A00002E62F8 /* ids.txt */; };
 		DFF5CCE71C935A07002E62F8 /* ids.txt in Resources */ = {isa = PBXBuildFile; fileRef = DFF5CCE31C935A00002E62F8 /* ids.txt */; };
 		E36B92074686E6B2E559FF57 /* libPods-BrainCloud-iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF60F7974B2728DC637582D3 /* libPods-BrainCloud-iOSTests.a */; };
-		EB252A4BFD2B9C607CB1E8D5 /* libPods-BrainCloud-watchOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F2A09592A2EF69F55F3E8F /* libPods-BrainCloud-watchOSTests.a */; };
 		F0816CB184AE0FCB47F2688E /* libPods-BrainCloud-OSXTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D89022B7C59D08BFE078272 /* libPods-BrainCloud-OSXTests.a */; };
 /* End PBXBuildFile section */
 
@@ -572,13 +570,9 @@
 		24F29CE51CB2D2EE0075CB26 /* AuthenticationTypeObjc.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AuthenticationTypeObjc.hh; sourceTree = "<group>"; };
 		24F29CE61CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AuthenticationTypeObjc.mm; sourceTree = "<group>"; };
 		2CAB6D278BEE8976220F2B32 /* Pods-BrainCloud-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-iOS/Pods-BrainCloud-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		323FFC6AB95436B5955DAEF5 /* Pods-BrainCloud-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-watchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-watchOS/Pods-BrainCloud-watchOS.release.xcconfig"; sourceTree = "<group>"; };
 		37A717CEBC6B2D5E819F46E3 /* Pods-BrainCloud-OSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-OSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-OSX/Pods-BrainCloud-OSX.debug.xcconfig"; sourceTree = "<group>"; };
 		382372F5F7CA886F73A234A1 /* libPods-BrainCloud-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainCloud-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CE966ADE05D7BCE288D04FB /* Pods-BrainCloud-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-watchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-watchOS/Pods-BrainCloud-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
-		42AC7C923E2E2E43E4C3EFB0 /* Pods-BrainCloud-watchOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-watchOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-watchOSTests/Pods-BrainCloud-watchOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		447166ADAB0175137FDA999D /* Pods-BrainCloud-OSXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-OSXTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-OSXTests/Pods-BrainCloud-OSXTests.release.xcconfig"; sourceTree = "<group>"; };
-		45E0EFFFDE2593C509F087C9 /* Pods-BrainCloud-watchOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-watchOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-watchOSTests/Pods-BrainCloud-watchOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6A651BE7BECF3AC7FE90CB64 /* Pods-BrainCloud-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-tvOSTests/Pods-BrainCloud-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		6D216013748B3DC77A7537D8 /* Pods-BrainCloud-OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainCloud-OSX/Pods-BrainCloud-OSX.release.xcconfig"; sourceTree = "<group>"; };
 		6D89022B7C59D08BFE078272 /* libPods-BrainCloud-OSXTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainCloud-OSXTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -798,7 +792,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF290620342DF55812D4E410 /* libPods-BrainCloud-watchOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,7 +800,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF6B4D851CE3BE9D0059CA09 /* BrainCloud.framework in Frameworks */,
-				EB252A4BFD2B9C607CB1E8D5 /* libPods-BrainCloud-watchOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,10 +836,6 @@
 				7CAD77581151DB9DF19A76F7 /* Pods-BrainCloud-tvOS.release.xcconfig */,
 				7EA0462644D4BD93C69DD51B /* Pods-BrainCloud-tvOSTests.debug.xcconfig */,
 				6A651BE7BECF3AC7FE90CB64 /* Pods-BrainCloud-tvOSTests.release.xcconfig */,
-				3CE966ADE05D7BCE288D04FB /* Pods-BrainCloud-watchOS.debug.xcconfig */,
-				323FFC6AB95436B5955DAEF5 /* Pods-BrainCloud-watchOS.release.xcconfig */,
-				45E0EFFFDE2593C509F087C9 /* Pods-BrainCloud-watchOSTests.debug.xcconfig */,
-				42AC7C923E2E2E43E4C3EFB0 /* Pods-BrainCloud-watchOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1575,12 +1563,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF2231291CE39E09003A7D8D /* Build configuration list for PBXNativeTarget "BrainCloud-watchOS" */;
 			buildPhases = (
-				B9BD31BF31545B377B4C6668 /* [CP] Check Pods Manifest.lock */,
 				DF2230D21CE39E09003A7D8D /* Sources */,
 				DF2230F91CE39E09003A7D8D /* Frameworks */,
 				DF2230FC1CE39E09003A7D8D /* Headers */,
 				DF2231271CE39E09003A7D8D /* Resources */,
-				9D2EFB6DAD98EC6C98D19881 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1595,11 +1581,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF2231551CE39E15003A7D8D /* Build configuration list for PBXNativeTarget "BrainCloud-watchOSTests" */;
 			buildPhases = (
-				2CD23FDC644E703A3B7F90B7 /* [CP] Check Pods Manifest.lock */,
 				DF2231311CE39E15003A7D8D /* Sources */,
 				DF2231511CE39E15003A7D8D /* Frameworks */,
 				DF2231531CE39E15003A7D8D /* Resources */,
-				57CD3D05205A9E637F4C7232 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1728,24 +1712,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2CD23FDC644E703A3B7F90B7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BrainCloud-watchOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5396AB76AB246E111C0828F1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1780,24 +1746,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		57CD3D05205A9E637F4C7232 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BrainCloud-watchOSTests/Pods-BrainCloud-watchOSTests-resources.sh",
-				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SSKeychain.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrainCloud-watchOSTests/Pods-BrainCloud-watchOSTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6B6607E34B88F4D7F1DCD4BF /* [CP] Check Pods Manifest.lock */ = {
@@ -1836,24 +1784,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrainCloud-tvOS/Pods-BrainCloud-tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D2EFB6DAD98EC6C98D19881 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BrainCloud-watchOS/Pods-BrainCloud-watchOS-resources.sh",
-				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SSKeychain.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrainCloud-watchOS/Pods-BrainCloud-watchOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B0FE565F72AAFF80B6E5F6B5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1888,24 +1818,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrainCloud-OSXTests/Pods-BrainCloud-OSXTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B9BD31BF31545B377B4C6668 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BrainCloud-watchOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D77CA0186FA4E90168E5C5D6 /* [CP] Copy Pods Resources */ = {
@@ -2721,7 +2633,6 @@
 		};
 		DF22312A1CE39E09003A7D8D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CE966ADE05D7BCE288D04FB /* Pods-BrainCloud-watchOS.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
@@ -2743,7 +2654,6 @@
 		};
 		DF22312B1CE39E09003A7D8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 323FFC6AB95436B5955DAEF5 /* Pods-BrainCloud-watchOS.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
@@ -2765,7 +2675,6 @@
 		};
 		DF2231561CE39E15003A7D8D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45E0EFFFDE2593C509F087C9 /* Pods-BrainCloud-watchOSTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "BrainCloud-watchOSTests/Info.plist";
@@ -2779,7 +2688,6 @@
 		};
 		DF2231571CE39E15003A7D8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42AC7C923E2E2E43E4C3EFB0 /* Pods-BrainCloud-watchOSTests.release.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
