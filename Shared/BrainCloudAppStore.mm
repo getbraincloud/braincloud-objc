@@ -90,8 +90,7 @@
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject
 {
-    _client->getAppStoreService()->getSalesInventoryByCategory(
-         [storeId UTF8String], [userCurrency UTF8String], "", new BrainCloudCallback(cb, ecb, cbObject));
+    _client->getAppStoreService()->getSalesInventory([storeId UTF8String], [userCurrency UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 /**
