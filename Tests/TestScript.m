@@ -52,6 +52,19 @@ NSString *_parentLevelName = @"Master";
     [self waitForResult];
 }
 
+- (void)testScheduleScriptUTCv2
+{
+        NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = [now timeIntervalSince1970] * 1000;
+    
+    [[m_client scriptService] scheduleRunScriptUTCv2:scriptName
+                                    jsonScriptData:@""
+                                    startDateUTC:nowEpochSeconds
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
+    [self waitForResult];
+}
 - (void)testScheduleScriptMinutes
 {
     time_t currentTime = time(0);

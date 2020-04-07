@@ -48,6 +48,17 @@
         [scriptName UTF8String], [jsonScriptData UTF8String], timeStruct, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)scheduleRunScriptUTCv2:(NSString *)scriptName
+              jsonScriptData:(NSString *)jsonScriptData
+              startDateUTC:(int64_t)startDateUTC
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject
+{
+    _client->getScriptService()->scheduleRunScriptUTCv2(
+    [scriptName UTF8String], [jsonScriptData UTF8String], startDateUTC, new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)scheduleRunScriptMinutes:(NSString *)scriptName
                   jsonScriptData:(NSString *)jsonScriptData
                   minutesFromNow:(int)minutesFromNow

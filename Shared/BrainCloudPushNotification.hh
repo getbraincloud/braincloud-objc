@@ -182,7 +182,7 @@
                             fcmContent:(NSString *)fcmContent
                             iosContent:(NSString *)iosContent
                        facebookContent:(NSString *)facebookContent
-                             startTimeUTC:(double)startTimeUTC
+                             startTimeUTC:(int64_t)startTimeUTC
                        completionBlock:(BCCompletionBlock)cb
                   errorCompletionBlock:(BCErrorCompletionBlock)ecb
                               cbObject:(BCCallbackObject)cbObject;
@@ -271,7 +271,7 @@
 - (void)scheduleNormalizedPushNotificationUTC:(NSString *)toProfileId
                              alertContentJson:(NSString *)alertContentJson
                                customDataJson:(NSString *)customDataJson
-                                    startTimeUTC:(double)startTimeUTC
+                                    startTimeUTC:(int64_t)startTimeUTC
                               completionBlock:(BCCompletionBlock)cb
                          errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                      cbObject:(BCCallbackObject)cbObject;
@@ -309,7 +309,7 @@
 - (void)scheduleRichPushNotificationUTC:(NSString *)toProfileId
                  notificationTemplateId:(int)notificationTemplateId
                        substitutionJson:(NSString *)substitutionJson
-                              startTimeUTC:(double)startTimeUTC
+                              startTimeUTC:(int64_t)startTimeUTC
                         completionBlock:(BCCompletionBlock)cb
                    errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                cbObject:(BCCallbackObject)cbObject;

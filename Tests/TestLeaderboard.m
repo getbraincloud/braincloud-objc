@@ -170,6 +170,22 @@ NSString *eventId = @"tournamentRewardTest";
     [self waitForResult];
 }
 
+- (void)testPostScoreToDynamicLeaderboardUTC
+{
+    NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = [now timeIntervalSince1970] * 1000;
+    [[m_client leaderboardService] postScoreToDynamicLeaderboardUTC:dynamicLeaderboardId
+                                                           score:100
+                                                        jsonData:@""
+                                                 leaderboardType:LOW_VALUE
+                                                    rotationType:WEEKLY
+                                                  roatationResetUTC:nowEpochSeconds
+                                                   retainedCount:2
+                                                 completionBlock:successBlock
+                                            errorCompletionBlock:failureBlock
+                                                        cbObject:nil];
+    [self waitForResult];
+}
 - (void)testPostScoreToDynamicLeaderboardDays
 {
     NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
@@ -192,6 +208,24 @@ NSString *eventId = @"tournamentRewardTest";
     [self waitForResult];
 }
 
+- (void)testPostScoreToDynamicLeaderboardDaysUTC
+{
+    NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = ([now timeIntervalSince1970] * 1000) + 5000;
+    NSString *name = [NSString stringWithFormat:@"%@Days_%d", dynamicLeaderboardId, arc4random_uniform(1000000)];
+
+    [[m_client leaderboardService] postScoreToDynamicLeaderboardDaysUTC:name
+                                                               score:100
+                                                            jsonData:@""
+                                                     leaderboardType:LOW_VALUE
+                                                      roatationResetUTC:nowEpochSeconds
+                                                       retainedCount:2
+                                                     numDaysToRotate:3
+                                                     completionBlock:successBlock
+                                                errorCompletionBlock:failureBlock
+                                                            cbObject:nil];
+    [self waitForResult];
+}
 - (void)testGetGroupSocialLeaderboard
 {
     [[m_client groupService] createGroup:@"testGroup"
@@ -384,6 +418,42 @@ NSString *eventId = @"tournamentRewardTest";
                                                       leaderboardType:@"HIGH_VALUE"
                                                          rotationType:@"WEEKLY"
                                                     rotationResetTime:15708182
+                                                        retainedCount:2
+                                               completionBlock:successBlock
+                                          errorCompletionBlock:failureBlock
+                                                      cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testPostScoreToDynamicGroupLeaderboardUTC
+{
+    [[m_client groupService] createGroup:@"testGroup"
+                               groupType:@"test"
+                             isOpenGroup:NO
+                                     acl:@""
+                                jsonData:@""
+                     jsonOwnerAttributes:@""
+             jsonDefaultMemberAttributes:@""
+                         completionBlock:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+    
+    NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonObj =
+    [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    
+    NSString *groupId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"groupId"];
+    
+        NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = [now timeIntervalSince1970] * 1000;
+    [[m_client leaderboardService] postScoreToDynamicGroupLeaderboardUTC:groupLeaderboardId
+                                                              groupId:groupId
+                                                                score:100
+                                                             jsonData:@""
+                                                      leaderboardType:@"HIGH_VALUE"
+                                                         rotationType:@"WEEKLY"
+                                                    rotationResetTimeUTC:nowEpochSeconds
                                                         retainedCount:2
                                                completionBlock:successBlock
                                           errorCompletionBlock:failureBlock

@@ -61,6 +61,26 @@
                     cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Allows cloud script executions to be scheduled - DOES NOT convert to local time, keeps UTC time
+ *
+ * Service Name - Script
+ * Service Operation - ScheduleCloudScript
+ *
+ * @param scriptName The name of the script to be run
+ * @param jsonScriptData Data to be sent to the script in json format
+ * @param startDateInUTC The start date in UTC, DOES NOT get converted to local
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ * @see The API documentation site for more details on cloud code
+ */
+- (void)scheduleRunScriptUTCv2:(NSString *)scriptName
+      jsonScriptData:(NSString *)jsonScriptData
+      startDateUTC:(int64_t)startDateUTC
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Allows cloud script executions to be scheduled
 *
 * Service Name - Script

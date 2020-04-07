@@ -105,13 +105,29 @@ BOOL _didJoin = false;
     [[m_client tournamentService] postTournamentScore:_leaderboardId
                                                 score:200
                                              jsonData:nil
-                                     roundStartedTime:[NSDate date]
+                                     roundStartedTimeLocal:[NSDate date]
                                       completionBlock:successBlock
                                  errorCompletionBlock:failureBlock
                                              cbObject:nil];
     [self waitForResult];
 }
 
+- (void)testPostTournamentScoreUTC
+{
+    [self joinTournament];
+    
+    NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = [now timeIntervalSince1970] * 1000;
+    
+    [[m_client tournamentService] postTournamentScoreUTC:_leaderboardId
+                                                score:200
+                                             jsonData:nil
+                                     roundStartedTimeUTC:nowEpochSeconds
+                                      completionBlock:successBlock
+                                 errorCompletionBlock:failureBlock
+                                             cbObject:nil];
+    [self waitForResult];
+}
 - (void)testPostTournamentScoreWithResults
 {
     [self joinTournament];
@@ -119,7 +135,7 @@ BOOL _didJoin = false;
     [[m_client tournamentService] postTournamentScoreWithResults:_leaderboardId
                                                            score:200
                                                         jsonData:nil
-                                                roundStartedTime:[NSDate date]
+                                                roundStartedTimeLocal:[NSDate date]
                                                        sortOrder:HIGH_TO_LOW
                                                      beforeCount:10
                                                       afterCount:10
@@ -130,6 +146,26 @@ BOOL _didJoin = false;
     [self waitForResult];
 }
 
+- (void)testPostTournamentScoreWithResultsUTC
+{
+    [self joinTournament];
+    
+        NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = [now timeIntervalSince1970] * 1000;
+    
+    [[m_client tournamentService] postTournamentScoreWithResultsUTC:_leaderboardId
+                                                           score:200
+                                                        jsonData:nil
+                                                roundStartedTimeUTC:nowEpochSeconds
+                                                       sortOrder:HIGH_TO_LOW
+                                                     beforeCount:10
+                                                      afterCount:10
+                                                    initialScore:0
+                                                 completionBlock:successBlock
+                                            errorCompletionBlock:failureBlock
+                                                        cbObject:nil];
+    [self waitForResult];
+}
 - (void)testViewCurrentReward
 {
     [self joinTournament];
