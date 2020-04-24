@@ -14,6 +14,7 @@
 #import "BrainCloudEntity.hh"
 #import "BrainCloudEvent.hh"
 #import "BrainCloudFile.hh"
+#import "BrainCloudGlobalFile.hh"
 #import "BrainCloudFriend.hh"
 #import "BrainCloudGamification.hh"
 #import "BrainCloudGlobalApp.hh"
@@ -526,6 +527,7 @@
 @property(readonly) BrainCloudDataStream *dataStreamService;
 @property(readonly) BrainCloudProfanity *profanityService;
 @property(readonly) BrainCloudFile *fileService;
+@property(readonly) BrainCloudGlobalFile *globalFileService;
 @property(readonly) BrainCloudGroup *groupService;
 @property NSInteger frameInterval;
 

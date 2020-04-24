@@ -857,6 +857,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
 @property(readonly) BrainCloudDataStream *dataStreamService;
 @property(readonly) BrainCloudProfanity *profanityService;
 @property(readonly) BrainCloudFile *fileService;
+@property(readonly) BrainCloudGlobalFile *globalFileService;
 @property(readonly) BrainCloudGroup *groupService;
 
 typedef void (^BCSmartSwitchCompletionBlock)();
