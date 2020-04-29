@@ -73,7 +73,7 @@
  * @param cbObject User object sent to the completion blocks
  * @see The API documentation site for more details on cloud code
  */
-- (void)scheduleRunScriptUTCv2:(NSString *)scriptName
+- (void)scheduleRunScriptMillisUTC:(NSString *)scriptName
       jsonScriptData:(NSString *)jsonScriptData
       startDateUTC:(int64_t)startDateUTC
      completionBlock:(BCCompletionBlock)cb
