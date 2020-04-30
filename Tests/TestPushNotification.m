@@ -286,8 +286,8 @@
 - (void)testScheduleNormalizedPushNotificationUTC
 {
     [[m_client pushNotificationService]
-            scheduleNormalizedPushNotificationUTC:[TestFixtureBase getUser:@"UserB"].m_profileId
-                                 alertContentJson:@"{ \"body\": \"content of message\", \"title\": \"message title\" }"
+            scheduleNormalizedPushNotificationUTC:[TestFixtureBase getUser:@"UserA"].m_profileId
+                                 alertContentJson:@"{\"body\":\"asdf\",\"title\":\"asdf\"}"
                                    customDataJson:nil
                                         startTimeUTC:0
                                   completionBlock:successBlock
