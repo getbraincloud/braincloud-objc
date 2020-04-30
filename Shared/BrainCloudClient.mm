@@ -157,6 +157,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
     BrainCloudDataStream *_dataStreamService;
     BrainCloudProfanity *_profanityService;
     BrainCloudFile *_fileService;
+    BrainCloudGlobalFile *_globalFileService;
     BrainCloudGroup *_groupService;
     BrainCloudAppStore *_appStoreService;
     BrainCloudVirtualCurrency * _virtualCurrencyService;
@@ -695,6 +696,12 @@ const NSString* BC_SERVER_URL = @"https://sharedprod.braincloudservers.com/dispa
 {
     if (!_fileService) _fileService = [[BrainCloudFile alloc] init: self];
     return _fileService;
+}
+
+- (BrainCloudGlobalFile *)globalFileService
+{
+    if (!_globalFileService) _globalFileService = [[BrainCloudGlobalFile alloc] init: self];
+    return _globalFileService;
 }
 
 - (BrainCloudGroup *)groupService

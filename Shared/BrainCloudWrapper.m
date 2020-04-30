@@ -1170,6 +1170,11 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
     return [_bcClient fileService];
 }
 
+- (BrainCloudGlobalFile *)globalFileService
+{
+    return [_bcClient globalFileService];
+}
+
 - (BrainCloudGroup *)groupService
 {
     return [_bcClient groupService];

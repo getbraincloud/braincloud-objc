@@ -2,14 +2,15 @@
 #  Podfile
 #  BrainCloud
 #
-#  Copyright (c) 2016 BitHeads Inc. All rights reserved.
+#  Copyright (c) 2020 BitHeads Inc. All rights reserved.
 #
 
 inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 def shared_pods
-  pod 'BrainCloudCpp', '4.4.1'
+  pod 'BrainCloudCpp', '4.5.0'
+  # pod 'BrainCloudCpp', :path => '~/git/braincloud-cpp/'
 end
 
 target 'BrainCloud-iOS' do

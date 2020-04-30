@@ -116,7 +116,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 - (void)postTournamentScore:(NSString *)leaderboardId
                       score:(int)score
                    jsonData:(NSString *)jsonData
-           roundStartedTime:(NSDate *)roundStartedTime
+           roundStartedTimeLocal:(NSDate *)roundStartedTime
             completionBlock:(BCCompletionBlock)cb
        errorCompletionBlock:(BCErrorCompletionBlock)ecb
                    cbObject:(BCCallbackObject)cbObject
@@ -129,10 +129,24 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
         new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)postTournamentScoreUTC:(NSString *)leaderboardId
+                      score:(int)score
+                   jsonData:(NSString *)jsonData
+           roundStartedTimeUTC:(int64_t)roundStartedTime
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->postTournamentScoreUTC(
+    [leaderboardId UTF8String], score, jsonData == nil ? "" : [jsonData UTF8String], roundStartedTime,
+    new BrainCloudCallback(cb, ecb, cbObject));
+    
+}
+
 - (void)postTournamentScoreWithResults:(NSString *)leaderboardId
                                  score:(int)score
                               jsonData:(NSString *)jsonData
-                      roundStartedTime:(NSDate *)roundStartedTime
+                      roundStartedTimeLocal:(NSDate *)roundStartedTime
                              sortOrder:(SortOrder)sortOrder
                            beforeCount:(int)beforeCount
                             afterCount:(int)afterCount
@@ -146,6 +160,24 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 
     _client->getTournamentService()->postTournamentScoreWithResults(
         [leaderboardId UTF8String], score, jsonData == nil ? "" : [jsonData UTF8String], timeStruct,
+        (BrainCloud::SortOrder)sortOrder, beforeCount, afterCount, initialScore,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)postTournamentScoreWithResultsUTC:(NSString *)leaderboardId
+                                 score:(int)score
+                              jsonData:(NSString *)jsonData
+                      roundStartedTimeUTC:(int64_t)roundStartedTime
+                             sortOrder:(SortOrder)sortOrder
+                           beforeCount:(int)beforeCount
+                            afterCount:(int)afterCount
+                          initialScore:(int)initialScore
+                       completionBlock:(BCCompletionBlock)cb
+                  errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                              cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->postTournamentScoreWithResultsUTC(
+        [leaderboardId UTF8String], score, jsonData == nil ? "" : [jsonData UTF8String], roundStartedTime,
         (BrainCloud::SortOrder)sortOrder, beforeCount, afterCount, initialScore,
         new BrainCloudCallback(cb, ecb, cbObject));
 }
