@@ -58,6 +58,18 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Deletes Entities based on the criteria passed in
+ *
+ * @param entityType The entity type as defined by the user
+ * @param deleteCriteria
+ * @param callback Callback.
+ */
+- (void)deleteEntities:(NSString *)entityType
+      deleteCriteria:(NSString *)deleteCriteria
+     completionBlock:(BCCompletionBlock)completionBlock
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
+/**
  * Counts the number of custom entities meeting the specified where clause, enforcing ownership/ACL permissions.
  *
  * @param entityType The entity type as defined by the user

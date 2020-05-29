@@ -66,6 +66,15 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                     new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
+- (void)deleteEntities:(NSString *)entityType
+      deleteCriteria:(NSString *)deleteCriteria
+     completionBlock:(BCCompletionBlock)completionBlock
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject
+{
+    _client->getCustomEntityService()->deleteEntities([entityType UTF8String], [deleteCriteria UTF8String],new BrainCloudCallback(completionBlock, ecb, cbObject));
+}
+
 - (void)getCount:(NSString *)entityType
        whereJson:(NSString *)whereJson
  completionBlock:(BCCompletionBlock)completionBlock
