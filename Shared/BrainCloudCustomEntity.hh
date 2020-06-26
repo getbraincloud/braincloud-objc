@@ -153,11 +153,79 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param entityType The entity type as defined by the user
  * @param entityId
  * @param version
- * @param fieldsJson * @param callback Callback.
+ * @param fieldsJson
+ * @param callback Callback.
  */
 - (void)updateEntityFields:(NSString *)entityType
                   entityId:(NSString *)entityId
                    version:(int)version
+                fieldsJson:(NSString *)fieldsJson
+           completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Deletes the specified custom entity singleton, owned by the session's user, for the specified entity type, on the server
+ * @param entityType The entity type as defined by the user
+ * @param version
+ * @param callback Callback.
+ * */
+- (void)deleteSingleton:(NSString *)entityType
+                   version:(int)version
+           completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Reads the custom entity singleton owned by the session's user
+ * @param entityType The entity type as defined by the user
+ * @param callback Callback.
+ * */
+- (void)readSingleton:(NSString *)entityType
+           completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Partially updates the data, of the singleton owned by the user for the specified custom entity type, with the specified fields, on the server
+ * @param entityType The entity type as defined by the user
+ * @param version
+ * @param fieldsJson
+ * @param callback Callback. */
+- (void)updateSingletonFields:(NSString *)entityType
+                      version:(int)version
+                   fieldsJson:(NSString *)fieldsJson
+              completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Updates the singleton owned by the user for the specified custom entity type on the server, creating the singleton if it does not exist. This operation results in the owned singleton's data being completely replaced by the passed in JSON object
+ * @param entityType The entity type as defined by the user
+ * @param version
+ * @param fieldsJson
+ * @param acl
+ * @param timeToLive
+ * @param callback Callback. */
+- (void)updateSingleton:(NSString *)entityType
+                    version:(int)version
+                   dataJson:(NSString *)dataJson
+                        acl:(NSString *)acl
+                        timeToLive:(NSString *)timeToLive
+            completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Increments the specified fields by the specified amount within custom entity data on the server, enforcing ownership/ACL permissions
+ *
+ * @param entityType The entity type as defined by the user
+ * @param entityId
+ * @param fieldsJson
+ * @param callback Callback.
+ */
+- (void)incrementData:(NSString *)entityType
+                  entityId:(NSString *)entityId
                 fieldsJson:(NSString *)fieldsJson
            completionBlock:(BCCompletionBlock)completionBlock
       errorCompletionBlock:(BCErrorCompletionBlock)ecb
