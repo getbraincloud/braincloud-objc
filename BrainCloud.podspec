@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.name     = "BrainCloud"
 
-  s.version  = "4.5.0"
+  s.version  = "4.5.5"
 
   s.summary  = "The Objective-C/Swift client library for brainCloud"
   s.homepage = "http://getbraincloud.com/"
