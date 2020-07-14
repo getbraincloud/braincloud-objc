@@ -66,6 +66,15 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                     new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
+- (void)deleteEntities:(NSString *)entityType
+      deleteCriteria:(NSString *)deleteCriteria
+     completionBlock:(BCCompletionBlock)completionBlock
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject
+{
+    _client->getCustomEntityService()->deleteEntities([entityType UTF8String], [deleteCriteria UTF8String],new BrainCloudCallback(completionBlock, ecb, cbObject));
+}
+
 - (void)getCount:(NSString *)entityType
        whereJson:(NSString *)whereJson
  completionBlock:(BCCompletionBlock)completionBlock
@@ -152,5 +161,67 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                     new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
+- (void)deleteSingleton:(NSString *)entityType
+                   version:(int)version
+           completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+        _client->getCustomEntityService()->deleteSingleton(
+                                                    [entityType UTF8String],
+                                                    version,
+                                                    new BrainCloudCallback(completionBlock, ecb, cbObject));}
+
+- (void)readSingleton:(NSString *)entityType
+           completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+        _client->getCustomEntityService()->readSingleton(
+                                                    [entityType UTF8String],
+                                                    new BrainCloudCallback(completionBlock, ecb, cbObject));}
+
+- (void)updateSingletonFields:(NSString *)entityType
+                      version:(int)version
+                   fieldsJson:(NSString *)fieldsJson
+              completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+        _client->getCustomEntityService()->updateSingletonFields(
+                                                    [entityType UTF8String],
+                                                    version,
+                                                    [fieldsJson UTF8String],
+                                                    new BrainCloudCallback(completionBlock, ecb, cbObject));}
+
+- (void)updateSingleton:(NSString *)entityType
+                    version:(int)version
+                   dataJson:(NSString *)dataJson
+                        acl:(NSString *)acl
+                 timeToLive:(int64_t)timeToLive
+            completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+        _client->getCustomEntityService()->updateSingleton(
+                                                    [entityType UTF8String],
+                                                    version,
+                                                    [dataJson UTF8String],
+                                                    [acl UTF8String],
+                                                    timeToLive,
+                                                    new BrainCloudCallback(completionBlock, ecb, cbObject));}
+
+- (void)incrementData:(NSString *)entityType
+                  entityId:(NSString *)entityId
+                fieldsJson:(NSString *)fieldsJson
+           completionBlock:(BCCompletionBlock)completionBlock
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+        _client->getCustomEntityService()->incrementData(
+                                                    [entityType UTF8String],
+                                                    [entityId UTF8String],
+                                                    [fieldsJson UTF8String],
+                                                    new BrainCloudCallback(completionBlock, ecb, cbObject));}
 
 @end
