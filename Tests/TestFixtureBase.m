@@ -346,7 +346,7 @@ NSMutableDictionary *m_users;
     _expectFail = 0;
     
     // [m_client resetCommunication];
-    [[m_client authenticationService] clearSavedProfile];
+    // [[m_client authenticationService] clearSavedProfile]; // [dsl] Ok this causes issues. Why is this even there. We dont reset briancluod here, but only the test results
 }
 
 - (void)createUsers
