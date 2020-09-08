@@ -34,10 +34,7 @@
 
 - (NSString *)profileID
 {
-    const char* str = _client
-    ->getAuthenticationService()
-    ->getProfileId()
-    .c_str();
+    const char* str = _client->getAuthenticationService()->getProfileId().c_str();
     
     return [NSString stringWithUTF8String:str];
 }

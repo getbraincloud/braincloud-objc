@@ -273,6 +273,7 @@ NSString *groupId = @"";
                        completionBlock:successBlock
                   errorCompletionBlock:failureBlock
                               cbObject:nil];
+    [[m_client authenticationService] clearSavedProfile]; // [dsl] This was called inside waitForResult. Moved it here. I think it's because we auth with userB here, but previously one was user B. This is hacky... But won't change the whole structure
     [self waitForResult];
 
     [self deleteGroupAsUserA];

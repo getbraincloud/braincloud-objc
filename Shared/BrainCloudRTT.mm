@@ -3,7 +3,7 @@
 //  BrainCloud
 //
 //  Created by David St-Louis on 2020-01-07.
-//  Copyright © 20120 BitHeads Inc. All rights reserved.
+//  Copyright © 2020 BitHeads Inc. All rights reserved.
 //
 
 #include "braincloud/BrainCloudClient.h"

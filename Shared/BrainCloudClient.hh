@@ -37,6 +37,7 @@
 #import "BrainCloudProfanity.hh"
 #import "BrainCloudPushNotification.hh"
 #import "BrainCloudRedemptionCode.hh"
+#import "BrainCloudRelay.hh"
 #import "BrainCloudRTT.hh"
 #import "BrainCloudS3Handling.hh"
 #import "BrainCloudScript.hh"
@@ -49,6 +50,15 @@
 #import "BrainCloudVirtualCurrency.hh"
 #import "BrainCloudAppStore.hh"
 #import <Foundation/Foundation.h>
+
+typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
+{
+     BC_UPDATE_TYPE_ALL,
+     BC_UPDATE_TYPE_REST,   // REST Api calls
+     BC_UPDATE_TYPE_RTT,    // Real-time tech
+     BC_UPDATE_TYPE_RS,     // Relay server
+     BC_UPDATE_TYPE_PING    // Lobby Pings
+};
 
 /**
 * This class is responsible for accumulating client requests, bundling
@@ -376,6 +386,7 @@
 * Run callbacks, to be called once per frame from your main thread
 */
 - (void)runCallBacks;
+- (void)runCallBacks:(BCBrainCloudUpdateType)updateType;
 
 /**
  * Returns the low transfer rate timeout in secs
@@ -504,6 +515,7 @@
 @property(readonly) BrainCloudMail *mailService;
 @property(readonly) BrainCloudMessaging *messagingService;
 @property(readonly) BrainCloudLobby *lobbyService;
+@property(readonly) BrainCloudRelay *relayService;
 @property(readonly) BrainCloudRTT *rttService;
 @property(readonly) BrainCloudChat *chatService;
 @property(readonly) BrainCloudMatchMaking *matchMakingService;
