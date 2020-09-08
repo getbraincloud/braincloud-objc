@@ -146,4 +146,41 @@ typedef void (^BCRTTConnectFailureCompletionBlock)(NSString* errorMessage, BCCal
  */
 typedef void (^BCRTTEventBlock)(NSString *jsonData, BCCallbackObject cbObject);
 
+/**
+ * Completion block called when Relay connected successfully.
+ *
+ * @param jsonData The returned JSON data from the Relay connect result.
+ * @param cbObject The passed in callback object. If nil is passed in to the api, nil will
+ * be returned in the completion block.
+ */
+typedef void (^BCRelayConnectSuccessCompletionBlock)(NSString* jsonData, BCCallbackObject cbObject);
+
+/**
+ * Completion block called when Relay disconnected or failed to connect.
+ *
+ * @param errorMessage The error message.
+ * @param cbObject The passed in callback object. If nil is passed in to the api, nil will
+ * be returned in the completion block.
+ */
+typedef void (^BCRelayConnectFailureCompletionBlock)(NSString* errorMessage, BCCallbackObject cbObject);
+
+/**
+ * Event block called when receiving a Relay message.
+ *
+ * @param netId Net Id of the member thism essage is from..
+ * @param data Data received
+ * @param cbObject The passed in callback object. If nil is passed in to the api, nil will
+ * be returned in the completion block.
+ */
+typedef void (^BCRelayEventBlock)(int netId, NSData* data, BCCallbackObject cbObject);
+
+/**
+ * Event block called when receiving a Relay message.
+ *
+ * @param jsonResponse System message in json string.
+ * @param cbObject The passed in callback object. If nil is passed in to the api, nil will
+ * be returned in the completion block.
+ */
+typedef void (^BCRelaySystemEventBlock)(NSString* jsonResponse, BCCallbackObject cbObject);
+
 #endif

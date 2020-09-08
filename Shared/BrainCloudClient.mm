@@ -137,6 +137,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
     BrainCloudMessaging *_messagingService;
     BrainCloudChat *_chatService;
     BrainCloudLobby *_lobbyService;
+    BrainCloudRelay *_relayService;
     BrainCloudRTT *_rttService;
     BrainCloudMatchMaking *_matchMakingService;
     BrainCloudAsyncMatch *_asyncMatchService;
@@ -339,6 +340,8 @@ const NSString* BC_SERVER_URL = @"https://sharedprod.braincloudservers.com/dispa
 }
 
 - (void)runCallBacks { _client->runCallbacks(); }
+
+- (void)runCallBacks:(BCBrainCloudUpdateType)updateType { _client->runCallbacks((BrainCloud::eBrainCloudUpdateType)updateType); }
 
 - (void)resetCommunication { _client->resetCommunication(); }
 
@@ -558,6 +561,12 @@ const NSString* BC_SERVER_URL = @"https://sharedprod.braincloudservers.com/dispa
 {
     if (!_lobbyService) _lobbyService = [[BrainCloudLobby alloc] init: self];
     return _lobbyService;
+}
+
+- (BrainCloudRelay *)relayService
+{
+    if (!_relayService) _relayService = [[BrainCloudRelay alloc] init: self];
+    return _relayService;
 }
 
 - (BrainCloudRTT *)rttService
