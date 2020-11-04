@@ -83,6 +83,20 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
 
 /**
+ *Gets a lits of up to maxReturn of randomly selected Entities based on the type and where condition.
+ *
+ * @param entityType The entity type as defined by the user
+ * @param whereJson Mongo style query string
+ * @param maxReturn quantity of returned entities
+ * @param callback Callback.
+ */
+- (void)getRandomEntitiesMatching:(NSString *)entityType
+           whereJson:(NSString *)whereJson
+        maxReturn:(int)maxReturn
+     completionBlock:(BCCompletionBlock)completionBlock
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
+/**
  * Retrieves first page of custom entities from the server based on the custom entity type and specified query context, enforcing ownership/ACL permissions.
  *
  * @param entityType The entity type as defined by the user

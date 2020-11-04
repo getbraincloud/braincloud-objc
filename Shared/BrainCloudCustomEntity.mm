@@ -87,6 +87,20 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                     new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
+- (void)getRandomEntitiesMatching:(NSString *)entityType
+       whereJson:(NSString *)whereJson
+        maxReturn:(int)maxReturn
+ completionBlock:(BCCompletionBlock)completionBlock
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+        cbObject:(BCCallbackObject)cbObject
+{
+    _client->getCustomEntityService()->getRandomEntitiesMatching(
+                                                    [entityType UTF8String],
+                                                    [whereJson UTF8String],
+                                                            maxReturn,
+                                                    new BrainCloudCallback(completionBlock, ecb, cbObject));
+}
+
 - (void)getPage:(NSString *)entityType
              context:(NSString *)context
      completionBlock:(BCCompletionBlock)completionBlock
