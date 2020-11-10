@@ -7,6 +7,7 @@
 //
 
 #include "braincloud/BrainCloudClient.h"
+#include "braincloud/BrainCloudRTT.h"
 #include "BrainCloudCallback.hh"
 #include "BrainCloudRTTCallback.hh"
 #include "BrainCloudRTTConnectCallback.hh"
@@ -67,6 +68,16 @@
 {
     _connectCallback.setCompletionBlocks(nil, nil, nil);
     _client->getRTTService()->disableRTT();
+}
+
+-(void) getRTTEnabled
+{
+    _client->getRTTService()->getRTTEnabled();
+}
+
+-(BrainCloud::BrainCloudRTT::RTTConnectionStatus) getConnectionStatus
+{
+    return _client->getRTTService()->getConnectionStatus();
 }
 
 -(void) registerRTTEventCallback:(BCRTTEventBlock)eventBlock
