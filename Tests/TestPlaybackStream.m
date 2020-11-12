@@ -53,26 +53,6 @@
     [self endStream:streamId];
 }
 
-- (void)testGetStreamSummariesForInitiatingPlayer
-{
-    [[m_client playbackStreamService]
-            getStreamSummariesForInitiatingPlayer:[TestFixtureBase getUser:@"UserA"].m_profileId
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
-    [self waitForResult];
-}
-
-- (void)testGetStreamSummariesForTargetPlayer
-{
-    [[m_client playbackStreamService]
-            getStreamSummariesForTargetPlayer:[TestFixtureBase getUser:@"UserB"].m_profileId
-                              completionBlock:successBlock
-                         errorCompletionBlock:failureBlock
-                                     cbObject:nil];
-    [self waitForResult];
-}
-
 - (void)testGetRecentStreamsForInitiatingPlayer
 {
     [[m_client playbackStreamService]

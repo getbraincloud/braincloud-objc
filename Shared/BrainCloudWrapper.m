@@ -1000,11 +1000,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
     return [_bcClient pushNotificationService];
 }
 
-- (BrainCloudProduct *)productService
-{
-    return [_bcClient productService];
-}
-
 - (BrainCloudPlayerState *)playerStateService
 {
     return [_bcClient playerStateService];

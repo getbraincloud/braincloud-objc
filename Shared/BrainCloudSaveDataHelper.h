@@ -10,10 +10,6 @@
 
 @interface BrainCloudSaveDataHelper : NSObject
 
-/**
-* @deprecated Use new initWithCompanyName method instead - removal after September 1 2017
-*/
-- (instancetype)initWithCompanyName:(NSString *)companyName gameName:(NSString *)appName;
 - (instancetype)initWithCompanyName:(NSString *)companyName appName:(NSString *)appName;
 
 - (void)saveString:(NSString *)string forKey:(NSString *)key;

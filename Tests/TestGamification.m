@@ -94,16 +94,6 @@ NSString *questsCategory = @"Experience";
     [self waitForResult];
 }
 
-- (void)testResetMilestones
-{
-    NSArray* array = @[milestoneId];
-    [[m_client gamificationService] resetMilestones:array
-                                    completionBlock:successBlock
-                               errorCompletionBlock:failureBlock
-                                           cbObject:nil];
-    [self waitForResult];
-}
-
 - (void)testReadQuests
 {
     [[m_client gamificationService] readQuests:true

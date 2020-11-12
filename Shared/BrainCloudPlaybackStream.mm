@@ -79,26 +79,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
         new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)getStreamSummariesForInitiatingPlayer:(NSString *)playerId
-                              completionBlock:(BCCompletionBlock)cb
-                         errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                                     cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlaybackStreamService()
-        ->getStreamSummariesForInitiatingPlayer([playerId UTF8String],
-                                                new BrainCloudCallback(cb, ecb, cbObject));
-}
-
-- (void)getStreamSummariesForTargetPlayer:(NSString *)playerId
-                          completionBlock:(BCCompletionBlock)cb
-                     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                                 cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlaybackStreamService()
-        ->getStreamSummariesForTargetPlayer([playerId UTF8String],
-                                            new BrainCloudCallback(cb, ecb, cbObject));
-}
-
 - (void)getRecentStreamsForInitiatingPlayer:(NSString *)initiatingPlayerId
                               maxNumStreams:(int)maxStreams
                             completionBlock:(BCCompletionBlock)cb

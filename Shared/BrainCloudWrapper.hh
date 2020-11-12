@@ -66,29 +66,6 @@
  */
 - (BrainCloudClient *) getBCClient;
 
-
-/**
-* @deprecated Use new initialize method instead - removal after September 1 2017
-*/
-
-- (void)initialize:(NSString *)serverUrl
-         secretKey:(NSString *)secretKey
-            gameId:(NSString *)appId
-       gameVersion:(NSString *)appVersion
-       companyName:(NSString *)companyName
-          gameName:(NSString *)appName;
-
-
-/**
-* @deprecated Use new initialize method instead - removal after September 1 2017
-*/
-- (void)initialize:(NSString *)serverUrl
-         secretKey:(NSString *)secretKey
-             appId:(NSString *)appId
-           version:(NSString *)appVersion
-       companyName:(NSString *)companyName
-           appName:(NSString *)appName;
-
 /**
  * Method initializes the BrainCloudClient.
  *
@@ -823,7 +800,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
 
 @property(readonly) BrainCloudScript *scriptService;
 @property(readonly) BrainCloudPushNotification *pushNotificationService;
-@property(readonly) BrainCloudProduct *productService;
 @property(readonly) BrainCloudPlayerState *playerStateService;
 @property(readonly) BrainCloudPlayerStatistics *playerStatisticsService;
 @property(readonly) BrainCloudGlobalStatistics *globalStatisticsService;

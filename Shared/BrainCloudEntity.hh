@@ -197,15 +197,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use getSharedEntityForProfileId instead - removal after September 1 2017
-*/
-- (void)getSharedEntityForPlayerId:(NSString *)profileId
-                          entityId:(NSString *)entityId
-                   completionBlock:(BCCompletionBlock)completionBlock
-              errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                          cbObject:(BCCallbackObject)cbObject;
-
-/**
  * Method returns a shared entity for the given profile and entity ID.
  * An entity is shared if its ACL allows for the currently logged
  * in user to read the data.
@@ -227,14 +218,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                            cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use getSharedEntitiesForProfileId instead - removal after September 1 2017
-*/
-- (void)getSharedEntitiesForPlayerId:(NSString *)profileId
-                     completionBlock:(BCCompletionBlock)completionBlock
-                errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                            cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Method returns all shared entities for the given profile id.
 * An entity is shared if its ACL allows for the currently logged
 * in user to read the data.
@@ -252,18 +235,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                       completionBlock:(BCCompletionBlock)completionBlock
                  errorCompletionBlock:(BCErrorCompletionBlock)ecb
                              cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use new updateSharedEntity method instead - removal after September 1 2017
-*/
-- (void)updateSharedEntity:(NSString *)entityId
-            targetPlayerId:(NSString *)targetProfileId
-                entityType:(NSString *)entityType
-            jsonEntityData:(NSString *)jsonEntityData
-                   version:(int64_t)version
-           completionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                  cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Method updates a shared entity owned by another user. This operation results
@@ -311,18 +282,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
          completionBlock:(BCCompletionBlock)completionBlock
     errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject;
-
-
-/**
-* @deprecated Use getSharedEntitiesListForProfileId instead - removal after September 1 2017
-*/
-- (void)getSharedEntitiesListForPlayerId:(NSString *)profileId
-                               whereJson:(NSString *)whereJson
-                             orderByJson:(NSString *)orderByJson
-                               maxReturn:(int32_t)maxReturn
-                         completionBlock:(BCCompletionBlock)completionBlock
-                    errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Method gets list of shared entities for the specified user based on type and/or where clause
@@ -423,16 +382,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 completionBlock:(BCCompletionBlock)completionBlock
            errorCompletionBlock:(BCErrorCompletionBlock)ecb
                        cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use new incrementSharedUserEntityData method instead - removal after September 1 2017
-*/
-- (void)incrementSharedUserEntityData:(NSString *)entityId
-                       targetPlayerId:(NSString *)targetProfileId
-                             jsonData:(NSString *)jsonData
-                      completionBlock:(BCCompletionBlock)completionBlock
-                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                             cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Partial increment of entity data field items. Partial set of items incremented as specified.

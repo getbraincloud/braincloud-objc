@@ -113,15 +113,6 @@
         TypeHelpers::NSStringArrayToVector(achievementIds), new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)resetMilestones:(NSArray *)milestoneIds
-        completionBlock:(BCCompletionBlock)cb
-   errorCompletionBlock:(BCErrorCompletionBlock)ecb
-               cbObject:(BCCallbackObject)cbObject
-{
-    _client->getGamificationService()->resetMilestones(
-        TypeHelpers::NSStringArrayToVector(milestoneIds), new BrainCloudCallback(cb, ecb, cbObject));
-}
-
 - (void)readQuests:(bool)includeMetaData
          completionBlock:(BCCompletionBlock)cb
     errorCompletionBlock:(BCErrorCompletionBlock)ecb
