@@ -1,6 +1,5 @@
 /**
- * This class handles RTT connection success/failure callbacks and passes 
- * the data to Objective-C via blocks.
+ * This class handles relay message callbacks
  */
 
 #pragma once

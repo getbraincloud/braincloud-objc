@@ -161,23 +161,6 @@
                  cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated As of November 1, 2019
-* Resets the specified milestones' statuses to LOCKED.
-*
-* Service Name - Gamification
-* Service Operation - ResetMilestones
-*
-* @param milestoneIds A NSString array of milestones to reset
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
-- (void)resetMilestones:(NSArray *)milestoneIds
-        completionBlock:(BCCompletionBlock)cb
-   errorCompletionBlock:(BCErrorCompletionBlock)ecb
-               cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Method retrieves all of the quests defined for the game.
 *
 * Service Name - Gamification

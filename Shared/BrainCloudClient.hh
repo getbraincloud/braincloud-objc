@@ -33,7 +33,6 @@
 #import "BrainCloudPlayerState.hh"
 #import "BrainCloudPlayerStatistics.hh"
 #import "BrainCloudPlayerStatisticsEvent.hh"
-#import "BrainCloudProduct.hh"
 #import "BrainCloudProfanity.hh"
 #import "BrainCloudPushNotification.hh"
 #import "BrainCloudRedemptionCode.hh"
@@ -122,24 +121,6 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
  * be invoked manually to read/write from/to the network.
  */
 - (void)disableInternalTimer;
-
-
-/**
-* @deprecated Use new initialize method instead - removal after September 1 2017
-*/
-- (void)initialize:(NSString *)serverURL
-         secretKey:(NSString *)secretKey
-            gameId:(NSString *)appId
-       gameVersion:(NSString *)version;
-
-
-/**
-* @deprecated Use new initialize method instead - removal after September 1 2017
-*/
-- (void)initialize:(NSString *)serverURL
-         secretKey:(NSString *)secretKey
-             appId:(NSString *)appId
-           version:(NSString *)appVersion;
 
 /**
 * Method initializes the BrainCloudClient.
@@ -503,7 +484,6 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 @property(readonly) BrainCloudAuthentication *authenticationService;
 @property(readonly) BrainCloudScript *scriptService;
 @property(readonly) BrainCloudPushNotification *pushNotificationService;
-@property(readonly) BrainCloudProduct *productService;
 @property(readonly) BrainCloudPlayerState *playerStateService;
 @property(readonly) BrainCloudPlayerStatistics *playerStatisticsService;
 @property(readonly) BrainCloudGlobalStatistics *globalStatisticsService;

@@ -21,13 +21,6 @@
 - (instancetype) init: (BrainCloudClient*) client;
 
 /**
-* @deprecated Use readUserState instead - removal after September 1 2017
-*/
-- (void)readPlayerState:(BCCompletionBlock)completionBlock
-   errorCompletionBlock:(BCErrorCompletionBlock)ecb
-               cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Read the state of the currently logged in user.
 * This method returns a JSON object describing most of the
 * player's data: entities, statistics, level, currency.
@@ -46,13 +39,6 @@
              cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use deleteUser instead - removal after September 1 2017
-*/
-- (void)  deletePlayer:(BCCompletionBlock)completionBlock
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Completely deletes the user record and all data fully owned
 * by the player. After calling this method, the player will need
 * to re-authenticate and create a new profile.
@@ -68,13 +54,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 - (void)  deleteUser:(BCCompletionBlock)completionBlock
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use resetUserState instead - removal after September 1 2017
-*/
-- (void)resetPlayerState:(BCCompletionBlock)completionBlock
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject;
 
 /**
 * This method will delete *most* data for the currently logged in user.
@@ -109,22 +88,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use updateName instead - removal after September 1 2017
-*/
-- (void)updatePlayerName:(NSString *)name
-         completionBlock:(BCCompletionBlock)completionBlock
-    errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                cbObject:(BCCallbackObject)cbObject;
-
-/**
- * @deprecated Use updateName instead
- */
-- (void)updateUserName:(NSString *)name
-       completionBlock:(BCCompletionBlock)completionBlock
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Sets the user name.
 *
 * Service Name - playerState
@@ -134,6 +97,14 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 * @param completionBlock Block to call on return of successful server response
 * @param errorCompletionBlock Block to call on return of unsuccessful server response
 * @param cbObject User object sent to the completion blocks
+*/
+- (void)updateUserName:(NSString *)name
+       completionBlock:(BCCompletionBlock)completionBlock
+  errorCompletionBlock:(BCErrorCompletionBlock)ecb
+              cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * @deprecated user updateUserName instead - Removal September 1, 2021
 */
 - (void)updateName:(NSString *)name
        completionBlock:(BCCompletionBlock)completionBlock
@@ -187,14 +158,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
          completionBlock:(BCCompletionBlock)completionBlock
     errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use updateUserPictureUrl instead - removal after September 1 2017
-*/
-- (void)updatePlayerPictureUrl:(NSString *)pictureUrl
-               completionBlock:(BCCompletionBlock)completionBlock
-          errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                      cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Remove user attributes.

@@ -11,6 +11,14 @@
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
 
+typedef NS_ENUM(NSUInteger, BCRTTConnectionStatus)
+{
+    BC_RTT_CONNECTION_STATUS_CONNETED = 0,
+    BC_RTT_CONNECTION_STATUS_DISCONNETED = 1,
+    BC_RTT_CONNECTION_STATUS_CONNETING  = 2,
+    BC_RTT_CONNECTION_STATUS_DISCONNETING = 3
+};
+
 @class BrainCloudClient;
 
 @interface BrainCloudRTT : NSObject
@@ -60,6 +68,16 @@
  * Disables Real Time event for this session.
  */
 -(void) disableRTT;
+
+/**
+ *Checks if RTT is enabled
+ */
+-(void) getRTTEnabled;
+
+/**
+ * Get the rtt connection status
+ */
+-(BCRTTConnectionStatus) getConnectionStatus;
 
 /**
  * Listen to real time events.

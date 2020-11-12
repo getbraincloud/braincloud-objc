@@ -121,14 +121,6 @@
                    cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use readFriendUserState instead - removal after September 1 2017
-*/
-- (void)readFriendPlayerState:(NSString *)friendId
-              completionBlock:(BCCompletionBlock)cb
-         errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                     cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Read a friend's user state.
 *
 * Service Name - PlayerState
@@ -176,25 +168,6 @@
  * @param cbObject User object sent to the completion blocks
  */
 - (void)findUsersBySubstrName:(NSString *)searchText
-                   maxResults:(int)maxResults
-              completionBlock:(BCCompletionBlock)cb
-         errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                     cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use findUserByUniversalId instead - removal after September 1 2017
-*/
-
-- (void)findPlayerByUniversalId:(NSString *)searchText
-                     maxResults:(int)maxResults
-                completionBlock:(BCCompletionBlock)cb
-           errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                       cbObject:(BCCallbackObject)cbObject;
-
-/**
- * @deprecated : use findUserByExactUniversalId
- */
-- (void)findUserByUniversalId:(NSString *)searchText
                    maxResults:(int)maxResults
               completionBlock:(BCCompletionBlock)cb
          errorCompletionBlock:(BCErrorCompletionBlock)ecb
