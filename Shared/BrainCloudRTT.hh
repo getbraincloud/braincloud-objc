@@ -10,6 +10,8 @@
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
+#include "braincloud/BrainCloudClient.h"
+#include "braincloud/BrainCloudRTT.h"
 
 @class BrainCloudClient;
 
@@ -60,6 +62,16 @@
  * Disables Real Time event for this session.
  */
 -(void) disableRTT;
+
+/**
+ *Checks if RTT is enabled
+ */
+-(void) getRTTEnabled;
+
+/**
+ * Get the rtt connection status
+ */
+-(BrainCloud::BrainCloudRTT::RTTConnectionStatus) getConnectionStatus;
 
 /**
  * Listen to real time events.
