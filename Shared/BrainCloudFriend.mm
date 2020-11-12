@@ -141,16 +141,6 @@
         [searchText UTF8String], maxResults, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)findPlayerByUniversalId:(NSString *)searchText
-                     maxResults:(int)maxResults
-                completionBlock:(BCCompletionBlock)cb
-           errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                       cbObject:(BCCallbackObject)cbObject
-{
-    _client->getFriendService()->findUserByUniversalId(
-            [searchText UTF8String], maxResults, new BrainCloudCallback(cb, ecb, cbObject));
-}
-
 - (void)findUserByExactUniversalId:(NSString *)searchText
                    completionBlock:(BCCompletionBlock)cb
               errorCompletionBlock:(BCErrorCompletionBlock)ecb
@@ -178,16 +168,6 @@
 {
     _client->getFriendService()->findUsersByNameStartingWith(
             [searchText UTF8String], maxResults, new BrainCloudCallback(cb, ecb, cbObject));
-}
-
-- (void)findUserByUniversalId:(NSString *)searchText
-                   maxResults:(int)maxResults
-              completionBlock:(BCCompletionBlock)cb
-         errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                     cbObject:(BCCallbackObject)cbObject
-{
-    _client->getFriendService()->findUserByUniversalId(
-        [searchText UTF8String], maxResults, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)listFriends:(FriendPlatformObjc *)friendPlatform

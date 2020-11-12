@@ -79,16 +79,6 @@
     [self waitForResult];
 }
 
-- (void)testFindPlayerByUniversalId
-{
-    [[m_client friendService] findUserByUniversalId:@"name"
-                                         maxResults:10
-                                    completionBlock:successBlock
-                               errorCompletionBlock:failureBlock
-                                           cbObject:nil];
-    [self waitForResult];
-}
-
 - (void)testFindUserByExactUniversalId
 {
     [[m_client friendService] findUserByExactUniversalId:@"test"

@@ -31,29 +31,12 @@
     return self;
 }
 
-- (void)readAllPlayerStats:(BCCompletionBlock)completionBlock
-    errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlayerStatisticsService()->readAllUserStats(
-            new BrainCloudCallback(completionBlock, ecb, cbObject));
-}
-
 - (void)readAllUserStats:(BCCompletionBlock)completionBlock
     errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject
 {
     _client->getPlayerStatisticsService()->readAllUserStats(
         new BrainCloudCallback(completionBlock, ecb, cbObject));
-}
-
-- (void)readPlayerStatsSubset:(NSArray *)playerStats
-            completionBlock:(BCCompletionBlock)completionBlock
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlayerStatisticsService()->readUserStatsSubset(
-            TypeHelpers::NSStringArrayToVector(playerStats), new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
 - (void)readUserStatsSubset:(NSArray *)playerStats
@@ -65,15 +48,6 @@
         TypeHelpers::NSStringArrayToVector(playerStats), new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
-- (void)readPlayerStatsForCategory:(NSString *)category
-                 completionBlock:(BCCompletionBlock)cb
-            errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                        cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlayerStatisticsService()->readUserStatsForCategory(
-            [category UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
-}
-
 - (void)readUserStatsForCategory:(NSString *)category
                  completionBlock:(BCCompletionBlock)cb
             errorCompletionBlock:(BCErrorCompletionBlock)ecb
@@ -83,29 +57,12 @@
         [category UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)resetAllPlayerStats:(BCCompletionBlock)completionBlock
-     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                 cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlayerStatisticsService()->resetAllUserStats(
-            new BrainCloudCallback(completionBlock, ecb, cbObject));
-}
-
 - (void)resetAllUserStats:(BCCompletionBlock)completionBlock
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPlayerStatisticsService()->resetAllPlayerStats(
+    _client->getPlayerStatisticsService()->resetAllUserStats(
         new BrainCloudCallback(completionBlock, ecb, cbObject));
-}
-
-- (void)incrementPlayerStats:(NSString *)jsonData
-           completionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                  cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlayerStatisticsService()->incrementUserStats(
-            [jsonData UTF8String], new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
 - (void)incrementUserStats:(NSString *)jsonData

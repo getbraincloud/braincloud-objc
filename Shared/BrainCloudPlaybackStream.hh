@@ -108,22 +108,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use getRecentStreamsForInitiatingPlayer instead - removal after September 1 2017
-*/
-- (void)getStreamSummariesForInitiatingPlayer:(NSString *)playerId
-                              completionBlock:(BCCompletionBlock)cb
-                         errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                                     cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use getRecentStreamsForTargetPlayer instead - removal after September 1 2017
-*/
-- (void)getStreamSummariesForTargetPlayer:(NSString *)playerId
-                          completionBlock:(BCCompletionBlock)cb
-                     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                                 cbObject:(BCCallbackObject)cbObject;
-
-/**
  * Gets stream summaries for target player
  *
  * Service Name - PlaybackStream

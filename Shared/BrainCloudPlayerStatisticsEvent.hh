@@ -21,15 +21,6 @@
 - (instancetype) init: (BrainCloudClient*) client;
 
 /**
-* @deprecated Use triggerStatsEvent instead - removal after September 1 2017
-*/
-- (void)triggerPlayerStatisticsEvent:(NSString *)eventName
-                     eventMultiplier:(int)multiplier
-                     completionBlock:(BCCompletionBlock)cb
-                errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                            cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Trigger an event server side that will increase the user's statistics.
 * This may cause one or more awards to be sent back to the user -
 * could be achievements, experience, etc. Achievements will be sent by this
@@ -53,15 +44,6 @@
           completionBlock:(BCCompletionBlock)cb
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject;
-
-
-/**
-* @deprecated Use triggerStatsEvents instead - removal after September 1 2017
-*/
-- (void)triggerPlayerStatisticsEvents:(NSString *)jsonData
-                      completionBlock:(BCCompletionBlock)cb
-                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                             cbObject:(BCCallbackObject)cbObject;
 
 /**
 * See documentation for TriggerPlayerStatisticsEvent for more

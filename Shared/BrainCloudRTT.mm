@@ -75,9 +75,9 @@
     _client->getRTTService()->getRTTEnabled();
 }
 
--(BrainCloud::BrainCloudRTT::RTTConnectionStatus) getConnectionStatus
+-(BCRTTConnectionStatus) getConnectionStatus
 {
-    return _client->getRTTService()->getConnectionStatus();
+    return (BCRTTConnectionStatus)_client->getRTTService()->getConnectionStatus();
 }
 
 -(void) registerRTTEventCallback:(BCRTTEventBlock)eventBlock

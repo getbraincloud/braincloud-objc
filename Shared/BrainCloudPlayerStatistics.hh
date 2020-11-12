@@ -21,13 +21,6 @@
 - (instancetype) init: (BrainCloudClient*) client;
 
 /**
-* @deprecated Use readAllUserStats instead - removal after September 1 2017
-*/
-- (void)readAllPlayerStats:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                  cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Read all available user statistics.
 *
 * Service Name - PlayerStatistics
@@ -40,14 +33,6 @@
 - (void)readAllUserStats:(BCCompletionBlock)completionBlock
     errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use readUserState instead - removal after September 1 2017
-*/
-- (void)readPlayerStatsSubset:(NSArray *)userStats
-              completionBlock:(BCCompletionBlock)completionBlock
-         errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                     cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Reads a subset of user statistics.
@@ -66,14 +51,6 @@
                    cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use readUserStatsForCategory instead - removal after September 1 2017
-*/
-- (void)readPlayerStatsForCategory:(NSString *)category
-                   completionBlock:(BCCompletionBlock)cb
-              errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                          cbObject:(BCCallbackObject)cbObject;
-
-/**
  * Method retrieves the user statistics for the given category.
  *
  * Service Name - PlayerStatistics
@@ -90,13 +67,6 @@
                         cbObject:(BCCallbackObject)cbObject;
 
 /**
-* @deprecated Use resetAllUserStats instead - removal after September 1 2017
-*/
-- (void)resetAllPlayerStats:(BCCompletionBlock)completionBlock
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Reset all of the statistics for this user back to their initial value.
 *
 * Service Name - PlayerStatistics
@@ -109,14 +79,6 @@
 - (void)resetAllUserStats:(BCCompletionBlock)completionBlock
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject;
-
-/**
-* @deprecated Use readUserState instead - removal after September 1 2017
-*/
-- (void)incrementPlayerStats:(NSString *)jsonData
-             completionBlock:(BCCompletionBlock)completionBlock
-        errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                    cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Atomically increment (or decrement) user statistics.

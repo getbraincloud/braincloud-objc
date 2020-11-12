@@ -10,8 +10,14 @@
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
-#include "braincloud/BrainCloudClient.h"
-#include "braincloud/BrainCloudRTT.h"
+
+typedef NS_ENUM(NSUInteger, BCRTTConnectionStatus)
+{
+    BC_RTT_CONNECTION_STATUS_CONNETED = 0,
+    BC_RTT_CONNECTION_STATUS_DISCONNETED = 1,
+    BC_RTT_CONNECTION_STATUS_CONNETING  = 2,
+    BC_RTT_CONNECTION_STATUS_DISCONNETING = 3
+};
 
 @class BrainCloudClient;
 
@@ -71,7 +77,7 @@
 /**
  * Get the rtt connection status
  */
--(BrainCloud::BrainCloudRTT::RTTConnectionStatus) getConnectionStatus;
+-(BCRTTConnectionStatus) getConnectionStatus;
 
 /**
  * Listen to real time events.
