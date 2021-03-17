@@ -18,7 +18,6 @@ NSString const *const BrainCloudServiceNamePushNotification = [NSString stringWi
 NSString const *const BrainCloudServiceNameGlobalGameStatistics = [NSString stringWithCString:BrainCloud::ServiceName::GlobalGameStatistics.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNamePlayerStatisticsEvent = [NSString stringWithCString:BrainCloud::ServiceName::PlayerStatisticsEvent.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNameTwitter = [NSString stringWithCString:BrainCloud::ServiceName::Twitter.getValue().c_str() encoding:NSASCIIStringEncoding];
-NSString const *const BrainCloudServiceNameSteam = [NSString stringWithCString:BrainCloud::ServiceName::Steam.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNamePlayerState = [NSString stringWithCString:BrainCloud::ServiceName::PlayerState.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNameEntity = [NSString stringWithCString:BrainCloud::ServiceName::Entity.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNameGlobalEntity = [NSString stringWithCString:BrainCloud::ServiceName::GlobalEntity.getValue().c_str() encoding:NSASCIIStringEncoding];

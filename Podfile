@@ -9,7 +9,7 @@ inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 def shared_pods
-  pod 'BrainCloudCpp', '4.6.0'
+  pod 'BrainCloudCpp', '4.7.0'
   # pod 'BrainCloudCpp', :path => '~/git/braincloud-cpp/'
 end
 
