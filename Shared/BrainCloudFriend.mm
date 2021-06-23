@@ -190,6 +190,20 @@
         TypeHelpers::NSStringArrayToVector(profileIds), new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)addFriendsFromPlatform:(FriendPlatformObjc *)friendPlatform
+                          mode:(NSString *)mode
+                   externalIds:(NSArray *)externalIds
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject;
+{
+    _client->getFriendService()->addFriendsFromPlatform(
+        BrainCloud::FriendPlatform::fromString([[friendPlatform toString] UTF8String]),
+        [mode UTF8String],
+        TypeHelpers::NSStringArrayToVector(externalIds),
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)removeFriends:(NSArray *)profileIds
       completionBlock:(BCCompletionBlock)cb
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
