@@ -95,4 +95,54 @@
     errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject;
 
+/**
+ * Delete a list of events out of the user's incoming mailbox.
+ *
+ * Service Name - event
+ * Service Operation - DELETE_INCOMING_EVENTS
+ *
+ * @param eventIds Collection of event ids
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)deleteIncomingEvents:(NSArray *)eventIds
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Delete any events older than the given date out of the user's incoming mailbox.
+ *
+ * Service Name - event
+ * Service Operation - DELETE_INCOMING_EVENTS_OLDER_THAN
+ *
+ * @param dateMillis createdAt cut-off time whereby older events will be deleted (In UTC since Epoch)
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)deleteIncomingEventsOlderThan:(int64_t)dateMillis
+                      completionBlock:(BCCompletionBlock)cb
+                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                             cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Delete any events of the given type older than the given date out of the user's incoming mailbox.
+ *
+ * Service Name - event
+ * Service Operation - DELETE_INCOMING_EVENTS_BY_TYPE_OLDER_THAN
+ *
+ * @param eventType The user-defined type of the event
+ * @param dateMillis createdAt cut-off time whereby older events will be deleted (In UTC since Epoch)
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)deleteIncomingEventsByTypeOlderThan:(NSString *)eventType
+                                 dateMillis:(int64_t)dateMillis
+                            completionBlock:(BCCompletionBlock)cb
+                       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                   cbObject:(BCCallbackObject)cbObject;
+
 @end

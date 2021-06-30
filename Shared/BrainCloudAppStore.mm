@@ -71,6 +71,14 @@
     _client->getAppStoreService()->getEligiblePromotions(new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+
+- (void)refreshPromotions:(BCCompletionBlock)cb
+     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                 cbObject:(BCCallbackObject)cbObject
+{
+    _client->getAppStoreService()->refreshPromotions(new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 /**
  * gets the active sales inventory for the passed in currencytype
  *

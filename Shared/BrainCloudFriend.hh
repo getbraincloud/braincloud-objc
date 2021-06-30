@@ -257,6 +257,26 @@
                 cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Links the profiles for the specified externalIds for the given friend platform as internal friends.
+ *
+ * Service Name - Friend
+ * Service Operation - ADD_FRIENDS_FROM_PLATFORM
+ *
+ * @param friendPlatform Platform to add from (i.e: [FriendPlatformObjc Facebook]).
+ * @param mode ADD or SYNC
+ * @param externalIds Collection of external IDs from the friend platform.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)addFriendsFromPlatform:(FriendPlatformObjc *)friendPlatform
+                          mode:(NSString *)mode
+                   externalIds:(NSArray *)externalIds
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Unlinks the current user and the specified users as brainCloud friends.
  *
  * Service Name - Friend

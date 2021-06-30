@@ -10,6 +10,7 @@
 #import "BrainCloudClient.hh"
 #include "braincloud/BrainCloudClient.h"
 #include "BrainCloudCallback.hh"
+#include "TypeHelpers.hh"
 
 @interface BrainCloudEvent ()
 {
@@ -67,6 +68,31 @@
 {
     _client->getEventService()->getEvents(
         new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)deleteIncomingEvents:(NSArray *)eventIds
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject
+{
+    _client->getEventService()->deleteIncomingEvents(TypeHelpers::NSStringArrayToVector(eventIds), new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)deleteIncomingEventsOlderThan:(int64_t)dateMillis
+                      completionBlock:(BCCompletionBlock)cb
+                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                             cbObject:(BCCallbackObject)cbObject
+{
+    _client->getEventService()->deleteIncomingEventsOlderThan(dateMillis, new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)deleteIncomingEventsByTypeOlderThan:(NSString *)eventType
+                                 dateMillis:(int64_t)dateMillis
+                            completionBlock:(BCCompletionBlock)cb
+                       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getEventService()->deleteIncomingEventsByTypeOlderThan([eventType UTF8String], dateMillis, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 @end

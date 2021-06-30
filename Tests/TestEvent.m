@@ -57,6 +57,48 @@ NSString *eventData = @"{ \"globalTestName\":\"testValue\" }";
     [self waitForResult];
 }
 
+- (void)testDeleteIncomingEvents
+{
+    NSString* eventId1 = [self sendEvent];
+    NSString* eventId2 = [self sendEvent];
+    
+    NSArray* eventIds = [NSArray arrayWithObjects:eventId1, eventId2, nil];
+    
+    [[m_client eventService] deleteIncomingEvents:eventIds
+                                  completionBlock:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
+    
+    [self waitForResult];
+}
+
+- (void)testDeleteIncomingEventsOlderThan
+{
+    NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = [now timeIntervalSince1970] * 1000;
+    
+    [[m_client eventService] deleteIncomingEventsOlderThan:nowEpochSeconds
+                                           completionBlock:successBlock
+                                      errorCompletionBlock:failureBlock
+                                                  cbObject:nil];
+    
+    [self waitForResult];
+}
+
+- (void)testDeleteIncomingEventsByTypeOlderThan
+{
+    NSDate *now = [NSDate date];
+    NSTimeInterval nowEpochSeconds = [now timeIntervalSince1970] * 1000;
+    
+    [[m_client eventService] deleteIncomingEventsByTypeOlderThan:eventType
+                                                      dateMillis:nowEpochSeconds
+                                                 completionBlock:successBlock
+                                            errorCompletionBlock:failureBlock
+                                                        cbObject:nil];
+    
+    [self waitForResult];
+}
+
 - (void)testGetEvents
 {
     [self sendEvent];

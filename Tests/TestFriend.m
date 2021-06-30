@@ -122,6 +122,19 @@
 
 - (void)testAddFriends { [self addFriend]; }
 
+- (void)testAddFriendsFromPlatform
+{
+    NSArray *externalIds = @[];
+
+    [[m_client friendService] addFriendsFromPlatform:[FriendPlatformObjc Facebook]
+                                                mode:@"ADD"
+                                         externalIds:externalIds
+                                     completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testRemoveFriends
 {
     [self addFriend];

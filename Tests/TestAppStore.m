@@ -84,4 +84,12 @@
     [self waitForFailedResult];
 }
 
+- (void)testRefreshPromotions
+{
+    [[m_client appStoreService] refreshPromotions:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
+    [self waitForResult];
+}
+
 @end
