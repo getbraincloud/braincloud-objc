@@ -77,6 +77,17 @@
     return _client->getRelayService()->getNetIdForProfileId([profileId UTF8String]);
 }
 
+-(NSString*) getCxIdForNetId:(int)netId
+{
+    const auto& cxId = _client->getRelayService()->getCxIdForNetId(netId);
+    return [NSString stringWithUTF8String:cxId.c_str()];
+}
+
+-(int) getNetIdForCxId:(NSString*)cxId
+{
+    return _client->getRelayService()->getNetIdForCxId([cxId UTF8String]);
+}
+
 -(void) send:(NSData*)data
      toNetId:(uint64_t)toNetId
     reliable:(BOOL)reliable
@@ -160,6 +171,12 @@
 {
     const auto& ownerId = _client->getRelayService()->getOwnerProfileId();
     return [NSString stringWithUTF8String:ownerId.c_str()];
+}
+
+-(NSString*) ownerCxId
+{
+    const auto& ownerCxId = _client->getRelayService()->getOwnerCxId();
+    return [NSString stringWithUTF8String:ownerCxId.c_str()];
 }
 
 @end
