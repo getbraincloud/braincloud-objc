@@ -9,9 +9,9 @@ inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 def shared_pods
-  if ENV['CPPSOURCE'] == "JENKINS" do
+  if ENV['CPPSOURCE'] == "JENKINS" then
     pod 'BrainCloudCpp', :path => './braincloud-cpp/'
-  elsif ENV['CPPSOURCE'] == "HOME" do
+  elsif ENV['CPPSOURCE'] == "HOME" then
     pod 'BrainCloudCpp', :path => '~/git/braincloud-cpp/'
   else
     pod 'BrainCloudCpp', '4.8.0'
