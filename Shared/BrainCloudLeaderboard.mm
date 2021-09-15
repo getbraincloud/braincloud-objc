@@ -233,6 +233,24 @@
         [leaderboardId UTF8String], score, [jsonData UTF8String], (BrainCloud::SocialLeaderboardType)leaderboardType,
         rotationResetUTC, retainedCount, numDaysToRotate, new BrainCloudCallback(cb, ecb, cbObject));
 }
+
+- (void)postScoreToDynamicGroupLeaderboardDaysUTC:(NSString *)leaderboardId
+                                  groupId:(NSString *)groupId
+                                    score:(int)score
+                                 jsonData:(NSString *)jsonData
+                          leaderboardType:(LeaderboardType)leaderboardType
+                           roatationResetUTC:(int64_t)rotationResetUTC
+                            retainedCount:(int)retainedCount
+                          numDaysToRotate:(int)numDaysToRotate
+                          completionBlock:(BCCompletionBlock)cb
+                     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                 cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLeaderboardService()->postScoreToDynamicGroupLeaderboardDaysUTC(
+        [leaderboardId UTF8String], [groupId UTF8String], score, [jsonData UTF8String], "DAYS",
+        rotationResetUTC, retainedCount, numDaysToRotate, new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)removePlayerScore:(NSString *)leaderboardId
                 versionId:(int)versionId
           completionBlock:(BCCompletionBlock)cb
