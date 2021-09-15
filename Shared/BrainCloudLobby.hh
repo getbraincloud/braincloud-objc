@@ -263,6 +263,26 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject;
 
+/**
+ * Gets a map keyed by rating of the visible lobby instances matching the given type and rating range.
+ *
+ * Service Name - Lobby
+ * Service Operation - GET_VISIBLE_LOBBY_INSTANCES
+ *
+ * @param lobbyType The type of lobby to look for
+ * @param minRating Minimum lobby rating
+ * @param maxRating Maximum lobby rating
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getVisibleLobbyInstances:(NSString *)lobbyType
+                       minRating:(int)minRating
+                       maxRating:(int)maxRating
+                 completionBlock:(BCCompletionBlock)cb
+            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                        cbObject:(BCCallbackObject)cbObject;
+
 
 //Cancels this members find, join and search for lobbies
 //available when rtt is supported.

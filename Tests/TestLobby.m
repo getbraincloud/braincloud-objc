@@ -267,4 +267,24 @@
     [self waitForFailedResult];
 }
 
+- (void)testGetVisibleLobbyInstances
+{
+    [[m_client authenticationService]
+     authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+     password:[TestFixtureBase getUser:@"UserA"].m_password
+     forceCreate:true
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] getVisibleLobbyInstances:@"MATCH_UNRANKED"
+                                            minRating:1
+                                            maxRating:10000
+                                      completionBlock:successBlock
+                                 errorCompletionBlock:failureBlock
+                                             cbObject:nil];
+    [self waitForResult];
+}
+
 @end
