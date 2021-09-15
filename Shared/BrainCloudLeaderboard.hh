@@ -464,6 +464,39 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                           completionBlock:(BCCompletionBlock)cb
                      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Posts score to group leaderbopard and dynamically creates if necessary.
+* leaderboardType, rotationReset, retainedCount and rotationType are required.
+* uses UTC time in milliseconds since epoch
+*
+* Service Name - leaderboard
+* Service Operation - POST_GROUP_SCORE_DYNAMIC
+*
+* @param leaderboardId The leaderboard to post to
+* @param groupId the group's id
+* @param score The score to post
+* @param data Optional user-defined data to post with the score
+* @param leaderboardType leaderboard type
+* @param rotationResetUTC uses utc time in milliseconds since epoch
+* @param retainedCount How many rotations to keep
+* @param numDaysToRotate How many days between each rotation
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*/
+- (void)postScoreToDynamicGroupLeaderboardDaysUTC:(NSString *)leaderboardId
+                                  groupId:(NSString *)groupId
+                                    score:(int)score
+                                 jsonData:(NSString *)jsonData
+                          leaderboardType:(LeaderboardType)leaderboardType
+                           roatationResetUTC:(int64_t)rotationResetUTC
+                            retainedCount:(int)retainedCount
+                          numDaysToRotate:(int)numDaysToRotate
+                          completionBlock:(BCCompletionBlock)cb
+                     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                 cbObject:(BCCallbackObject)cbObject;
+
 /**
  * Removes a player's score from the leaderboard
  *
