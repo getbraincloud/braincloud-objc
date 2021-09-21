@@ -47,6 +47,21 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
         isReady, [extraJson UTF8String], [teamCode UTF8String], [settings UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+-(void)createLobbyWithPingData:(NSString *)lobbyType
+              rating:(int)rating
+      otherUserCxIds:(NSArray *)otherUserCxIds
+             isReady:(bool)isReady
+           extraJson:(NSString *) extraJson
+            teamCode:(NSString *)teamCode
+            settings:(NSString *)settings
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLobbyService()->createLobbyWithPingData([lobbyType UTF8String], rating, TypeHelpers::NSStringArrayToVector(otherUserCxIds),
+        isReady, [extraJson UTF8String], [teamCode UTF8String], [settings UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 -(void)findLobby:(NSString *)lobbyType
               rating:(int)rating
             maxSteps:(int)maxSteps
@@ -61,6 +76,22 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject
 {
     _client->getLobbyService()->findLobby([lobbyType UTF8String], rating, maxSteps, [algo UTF8String], [filterJson UTF8String], TypeHelpers::NSStringArrayToVector(otherUserCxIds),isReady, [extraJson UTF8String], [teamCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+-(void)findLobbyWithPingData:(NSString *)lobbyType
+              rating:(int)rating
+            maxSteps:(int)maxSteps
+                algo:(NSString *)algo
+          filterJson:(NSString *)filterJson
+      otherUserCxIds:(NSArray *)otherUserCxIds
+             isReady:(bool)isReady
+           extraJson:(NSString *) extraJson
+            teamCode:(NSString *)teamCode
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLobbyService()->findLobbyWithPingData([lobbyType UTF8String], rating, maxSteps, [algo UTF8String], [filterJson UTF8String], TypeHelpers::NSStringArrayToVector(otherUserCxIds),isReady, [extraJson UTF8String], [teamCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 -(void)findOrCreateLobby:(NSString *)lobbyType
@@ -78,6 +109,23 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject
 {
         _client->getLobbyService()->findOrCreateLobby([lobbyType UTF8String], rating, maxSteps, [algo UTF8String], [filterJson UTF8String], TypeHelpers::NSStringArrayToVector(otherUserCxIds), [settings UTF8String], isReady, [extraJson UTF8String], [teamCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+-(void)findOrCreateLobbyWithPingData:(NSString *)lobbyType
+                  rating:(int)rating
+                maxSteps:(int)maxSteps
+                    algo:(NSString *)algo
+              filterJson:(NSString *)filterJson
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *) extraJson
+                teamCode:(NSString *)teamCode
+                settings:(NSString *)settings
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
+{
+        _client->getLobbyService()->findOrCreateLobbyWithPingData([lobbyType UTF8String], rating, maxSteps, [algo UTF8String], [filterJson UTF8String], TypeHelpers::NSStringArrayToVector(otherUserCxIds), [settings UTF8String], isReady, [extraJson UTF8String], [teamCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)getLobbyData:(NSString *)lobbyId
@@ -155,14 +203,37 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
     _client->getLobbyService()->updateSettings([lobbyId UTF8String], [settings UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)getVisibleLobbyInstances:(NSString *)lobbyType
-                       minRating:(int)minRating
-                       maxRating:(int)maxRating
+- (void)getLobbyInstances:(NSString *)lobbyType
+                    criteriaJson:(NSString *)criteriaJson
                  completionBlock:(BCCompletionBlock)cb
             errorCompletionBlock:(BCErrorCompletionBlock)ecb
                         cbObject:(BCCallbackObject)cbObject
 {
-    _client->getLobbyService()->getVisibleLobbyInstances([lobbyType UTF8String], minRating, maxRating, new BrainCloudCallback(cb, ecb, cbObject));
+    _client->getLobbyService()->getLobbyInstances([lobbyType UTF8String], [criteriaJson UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)getLobbyInstancesWithPingData:(NSString *)lobbyType
+                    criteriaJson:(NSString *)criteriaJson
+                 completionBlock:(BCCompletionBlock)cb
+            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                        cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLobbyService()->getLobbyInstancesWithPingData([lobbyType UTF8String], [criteriaJson UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)getRegionsForLobbies:(NSArray *)roomTypes
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLobbyService()->getRegionsForLobbies(TypeHelpers::NSStringArrayToVector(roomTypes), new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)pingRegions:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLobbyService()->pingRegions(new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 //available when rtt is supported.

@@ -49,6 +49,34 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Creates a new lobby. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
+ *
+ * Service Name - Lobby
+ * Service Operation - CREATE_LOBBY
+ *
+ * @param lobbyType type of lobby to lok for. these types are defined in the portal
+ * @param rating the skill rating to use for finiding the lobby. Provided as a separate parameter because it may not exactly match the users rating especially in cases where parties are involved.
+ * @param otherUserCxIds
+ * @param isReady initial ready status of this user
+ * @param extraJson initial extra data about this user
+ * @param teamCode preferred team for this user, if applicable, send "" or null for automatic assignment
+ * @param settings configuration data for the room
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+-(void)createLobbyWithPingData:(NSString *)lobbyType
+              rating:(int)rating
+      otherUserCxIds:(NSArray *)otherUserCxIds
+             isReady:(bool)isReady
+           extraJson:(NSString *) extraJson
+            teamCode:(NSString *)teamCode
+            settings:(NSString *)settings
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Finds a lobby matching the specified parameters. Asynchronous - returns 200 to indicate matchmaking has started.
  *
  * Service Name - Lobby
@@ -81,6 +109,38 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Finds a lobby matching the specified parameters. Asynchronous - returns 200 to indicate matchmaking has started. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
+ *
+ * Service Name - Lobby
+ * Service Operation - FIND_LOBBY
+ *
+ * @param lobbyType type of lobby to lok for. these types are defined in the portal
+ * @param rating the skill rating to use for finiding the lobby. Provided as a separate parameter because it may not exactly match the users rating especially in cases where parties are involved.
+ * @param maxSteps the max number of steps to wait when looking for an applicable lobby. Each step around ~5
+ * @param algo the algorithm to use for increasing the search scope
+ * @param filterJson used to help filter the list of rooms to consider. Passed to matchmaking filter if configured
+ * @param otherUserCxIds Array of other users (party members) to add to the lobby as well. Will constrain things so only lobbies with room for all players is considered.
+ * @param isReady initial ready status of this user
+ * @param extraJson initial extra data about this user
+ * @param teamCode preferred team for this user, if applicable, send "" or null for automatic assignment
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+-(void)findLobbyWithPingData:(NSString *)lobbyType
+               rating:(int)rating
+             maxSteps:(int)maxSteps
+                 algo:(NSString *)algo
+           filterJson:(NSString *)filterJson
+       otherUserCxIds:(NSArray *)otherUserCxIds
+              isReady:(bool)isReady
+            extraJson:(NSString *) extraJson
+             teamCode:(NSString *)teamCode
+      completionBlock:(BCCompletionBlock)cb
+ errorCompletionBlock:(BCErrorCompletionBlock)ecb
+             cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Adds a user to the lobby entry queue and will create a lobby if none are found
  *
  * Service Name - Lobby
@@ -100,6 +160,39 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 -(void)findOrCreateLobby:(NSString *)lobbyType
+                  rating:(int)rating
+                maxSteps:(int)maxSteps
+                    algo:(NSString *)algo
+              filterJson:(NSString *)filterJson
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *) extraJson
+                teamCode:(NSString *)teamCode
+                settings:(NSString *)settings
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Adds a user to the lobby entry queue and will create a lobby if none are found. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
+ *
+ * Service Name - Lobby
+ * Service Operation - FIND_OR_CREATE_LOBBY
+ *
+ * @param lobbyType type of lobby to lok for. these types are defined in the portal
+ * @param rating the skill rating to use for finiding the lobby. Provided as a separate parameter because it may not exactly match the users rating especially in cases where parties are involved.
+ * @param maxSteps the max number of steps to wait when looking for an applicable lobby. Each step around ~5
+ * @param algo the algorithm to use for increasing the search scope
+ * @param filterJson used to help filter the list of rooms to consider. Passed to matchmaking filter if configured
+ * @param otherUserCxIds Array of other users (party members) to add to the lobby as well. Will constrain things so only lobbies with room for all players is considered.
+ * @param isReady initial ready status of this user
+ * @param extraJson initial extra data about this user
+ * @param teamCode preferred team for this user, if applicable, send "" or null for automatic assignment
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+-(void)findOrCreateLobbyWithPingData:(NSString *)lobbyType
                   rating:(int)rating
                 maxSteps:(int)maxSteps
                     algo:(NSString *)algo
@@ -267,22 +360,59 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * Gets a map keyed by rating of the visible lobby instances matching the given type and rating range.
  *
  * Service Name - Lobby
- * Service Operation - GET_VISIBLE_LOBBY_INSTANCES
+ * Service Operation - GET_LOBBY_INSTANCES
  *
  * @param lobbyType The type of lobby to look for
- * @param minRating Minimum lobby rating
- * @param maxRating Maximum lobby rating
+ * @param criteriaJson A JSON string used to describe filter criteria.
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)getVisibleLobbyInstances:(NSString *)lobbyType
-                       minRating:(int)minRating
-                       maxRating:(int)maxRating
+- (void)getLobbyInstances:(NSString *)lobbyType
+                    criteriaJson:(NSString *)criteriaJson
                  completionBlock:(BCCompletionBlock)cb
             errorCompletionBlock:(BCErrorCompletionBlock)ecb
                         cbObject:(BCCallbackObject)cbObject;
 
+/**
+ * Gets a map keyed by rating of the visible lobby instances matching the given type and rating range.
+ * Only lobby instances in the regions that satisfy the ping portion of the criteriaJson (based on the values provided in pingData) will be returned.
+ *
+ * Service Name - Lobby
+ * Service Operation - GET_LOBBY_INSTANCES_WITH_PING_DATA
+ *
+ * @param lobbyType The type of lobby to look for
+ * @param criteriaJson A JSON string used to describe filter criteria.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getLobbyInstancesWithPingData:(NSString *)lobbyType
+                    criteriaJson:(NSString *)criteriaJson
+                 completionBlock:(BCCompletionBlock)cb
+            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                        cbObject:(BCCallbackObject)cbObject;
+
+
+/* Retrieves the region settings for each of the given lobby types. Upon success or afterwards, call pingRegions to start retrieving appropriate data.
+*
+* Service Name - Lobby
+* Service Operation - GetRegionsForLobbies
+*
+* @param roomTypes Ids of the lobby types.
+*/
+- (void)getRegionsForLobbies:(NSArray *)roomTypes
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject;
+
+/* Retrieves associated Ping Data averages to be used with all associated <>WithPingData APIs.
+* Call anytime after GetRegionsForLobbies before proceeding.
+* Once that completes, the associated region Ping Data is retrievable via getPingData and all associated <>WithPingData APIs are useable
+*/
+- (void)pingRegions:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject;
 
 //Cancels this members find, join and search for lobbies
 //available when rtt is supported.
