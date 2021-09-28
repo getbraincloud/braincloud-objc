@@ -11,6 +11,7 @@
 #include "braincloud/BrainCloudClient.h"
 #include "BrainCloudCallback.hh"
 #import "BrainCloudClient.hh"
+#import "TypeHelpers.hh"
 
 
 @interface BrainCloudGlobalApp ()
@@ -37,6 +38,26 @@
               cbObject:(BCCallbackObject)cbObject
 {
     _client->getGlobalAppService()->readProperties(
+        new BrainCloudCallback(completionBlock, ecb, cbObject));
+}
+
+- (void)readSelectedProperties:(NSArray *)propertyNames
+               completionBlock:(BCCompletionBlock)completionBlock
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject
+{
+    _client->getGlobalAppService()->readSelectedProperties(
+        TypeHelpers::NSStringArrayToVector(propertyNames),
+        new BrainCloudCallback(completionBlock, ecb, cbObject));
+}
+
+- (void)readPropertiesInCategories:(NSArray *)categories
+                   completionBlock:(BCCompletionBlock)completionBlock
+              errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                          cbObject:(BCCallbackObject)cbObject
+{
+    _client->getGlobalAppService()->readPropertiesInCategories(
+        TypeHelpers::NSStringArrayToVector(categories),
         new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 

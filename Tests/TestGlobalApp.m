@@ -26,4 +26,22 @@
     [self waitForResult];
 }
 
+- (void)testReadSelectedProperties
+{
+    [[m_client globalAppService] readSelectedProperties:@[@"prop1", @"prop2", @"prop3"]
+                                        completionBlock:successBlock
+                                   errorCompletionBlock:failureBlock
+                                               cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testReadPropertiesInCategories
+{
+    [[m_client globalAppService] readPropertiesInCategories:@[@"test"]
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForResult];
+}
+
 @end
