@@ -8,6 +8,7 @@
 
 #import "BrainCloudAuthentication.hh"
 #import "BrainCloudClient.hh"
+#include "braincloud/AuthenticationIds.h"
 #include "braincloud/ServiceName.h"
 #include "braincloud/ServiceOperation.h"
 #include "braincloud/BrainCloudClient.h"
@@ -125,6 +126,40 @@
     _client->getAuthenticationService()->authenticateUniversal(
         [userid cStringUsingEncoding:NSUTF8StringEncoding],
         [password cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
+}
+
+- (void)authenticateAdvanced:(AuthenticationTypeObjc *)authenticationType
+           authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+                 forceCreate:(BOOL)forceCreate
+                   extraJson:(NSString *)extraJson
+             completionBlock:(BCCompletionBlock)completionBlock
+        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                    cbObject:(BCCallbackObject)cbObject
+{
+    BrainCloudCallback *brainCloudCallback =
+        new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
+
+    // Translate the IDs struct
+    BrainCloud::AuthenticationIds cppIds;
+    if (authenticationIds)
+    {
+        if ([authenticationIds externalId]) 
+            cppIds.externalId = [[authenticationIds externalId] cStringUsingEncoding:NSUTF8StringEncoding];
+        if ([authenticationIds authenticationToken]) 
+            cppIds.authenticationToken = [[authenticationIds authenticationToken] cStringUsingEncoding:NSUTF8StringEncoding];
+        if ([authenticationIds authenticationSubType]) 
+            cppIds.authenticationSubType = [[authenticationIds authenticationSubType] cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+
+    std::string cppExtraJson;
+    if (extraJson != nil) cppExtraJson = [extraJson cStringUsingEncoding:NSUTF8StringEncoding];
+    
+    _client->getAuthenticationService()->authenticateAdvanced(
+        BrainCloud::AuthenticationType::fromString([[authenticationType toString] UTF8String]), 
+        cppIds,
+        forceCreate, 
+        cppExtraJson,
+        brainCloudCallback);
 }
 
 - (void)authenticateSteam:(NSString *)userID

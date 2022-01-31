@@ -220,4 +220,18 @@
     [self waitForResult];
 }
 
+- (void)testAuthenticateAdvanced
+{
+    [[m_client authenticationService]
+     authenticateAdvanced:[AuthenticationTypeObjc Universal]
+     authenticationIds:[[AuthenticationIdsObjc alloc] initWithExternalId:@"authAdvancedUser" authenticationToken:@"authAdvancedPass" authenticationSubType:nil]
+     forceCreate:true
+     extraJson:@"{\"AnswerToEverything\":42}"
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    
+    [self waitForResult];
+}
+
 @end

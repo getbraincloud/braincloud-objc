@@ -526,6 +526,29 @@ static BrainCloudWrapper *sharedWrapper = nil;
 }
 
 
+- (void)authenticateAdvanced:(AuthenticationTypeObjc *)authenticationType
+           authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+                 forceCreate:(BOOL)forceCreate
+                   extraJson:(NSString *)extraJson
+             completionBlock:(BCCompletionBlock)completionBlock
+        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                    cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+    
+    AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+    aco.completionBlock = completionBlock;
+    aco.errorCompletionBlock = errorCompletionBlock;
+    aco.cbObject = cbObject;
+    
+    [[_bcClient authenticationService] authenticateAdvanced:authenticationType
+                                          authenticationIds:authenticationIds
+                                                forceCreate:forceCreate
+                                                  extraJson:extraJson
+                                            completionBlock:self.authSuccessCompletionBlock
+                                       errorCompletionBlock:self.authErrorCompletionBlock
+                                                   cbObject:aco];
+}
 
 
 
@@ -773,6 +796,37 @@ static BrainCloudWrapper *sharedWrapper = nil;
                                            completionBlock:self.authSuccessCompletionBlock
                                       errorCompletionBlock:self.authErrorCompletionBlock
                                                   cbObject:aco];
+    };
+    
+    [self smartSwitchAuthentication:authCallback];
+}
+
+
+
+- (void)smartSwitchAuthenticateAdvanced:(AuthenticationTypeObjc *)authenticationType
+                      authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+                            forceCreate:(BOOL)forceCreate
+                              extraJson:(NSString *)extraJson
+                        completionBlock:(BCCompletionBlock)completionBlock
+                   errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                               cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+
+    BCSmartSwitchCompletionBlock authCallback = ^()
+    {
+        AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+        aco.completionBlock = completionBlock;
+        aco.errorCompletionBlock = errorCompletionBlock;
+        aco.cbObject = cbObject;
+
+        [[_bcClient authenticationService] authenticateAdvanced:authenticationType
+                                              authenticationIds:authenticationIds
+                                                    forceCreate:forceCreate
+                                                      extraJson:extraJson
+                                                completionBlock:self.authSuccessCompletionBlock
+                                           errorCompletionBlock:self.authErrorCompletionBlock
+                                                       cbObject:aco];
     };
     
     [self smartSwitchAuthentication:authCallback];
