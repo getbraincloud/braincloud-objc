@@ -11,6 +11,7 @@
 #include "braincloud/BrainCloudClient.h"
 #include "BrainCloudCallback.hh"
 #include "braincloud/AuthenticationType.h"
+#include "braincloud/AuthenticationIds.h"
 #import "BrainCloudClient.hh"
 #import "BrainCloudIdentity.hh"
 
@@ -302,6 +303,83 @@
 {
     _client->getIdentityService()->detachTwitterIdentity(
         [twitterId UTF8String], continueAnon, new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)attachAdvancedIdentity:(AuthenticationTypeObjc *)authenticationType
+             authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+                     extraJson:(NSString *)extraJson
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject
+{
+    // Translate the IDs struct
+    BrainCloud::AuthenticationIds cppIds;
+    if (authenticationIds)
+    {
+        if ([authenticationIds externalId]) 
+            cppIds.externalId = [[authenticationIds externalId] cStringUsingEncoding:NSUTF8StringEncoding];
+        if ([authenticationIds authenticationToken]) 
+            cppIds.authenticationToken = [[authenticationIds authenticationToken] cStringUsingEncoding:NSUTF8StringEncoding];
+        if ([authenticationIds authenticationSubType]) 
+            cppIds.authenticationSubType = [[authenticationIds authenticationSubType] cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+
+    std::string cppExtraJson;
+    if (extraJson != nil) cppExtraJson = [extraJson cStringUsingEncoding:NSUTF8StringEncoding];
+
+    _client->getIdentityService()->attachAdvancedIdentity(
+        BrainCloud::AuthenticationType::fromString([[authenticationType toString] UTF8String]),
+        cppIds,
+        cppExtraJson,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)mergeAdvancedIdentity:(AuthenticationTypeObjc *)authenticationType
+            authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+                    extraJson:(NSString *)extraJson
+              completionBlock:(BCCompletionBlock)cb
+         errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                     cbObject:(BCCallbackObject)cbObject
+{
+    // Translate the IDs struct
+    BrainCloud::AuthenticationIds cppIds;
+    if (authenticationIds)
+    {
+        if ([authenticationIds externalId]) 
+            cppIds.externalId = [[authenticationIds externalId] cStringUsingEncoding:NSUTF8StringEncoding];
+        if ([authenticationIds authenticationToken]) 
+            cppIds.authenticationToken = [[authenticationIds authenticationToken] cStringUsingEncoding:NSUTF8StringEncoding];
+        if ([authenticationIds authenticationSubType]) 
+            cppIds.authenticationSubType = [[authenticationIds authenticationSubType] cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+
+    std::string cppExtraJson;
+    if (extraJson != nil) cppExtraJson = [extraJson cStringUsingEncoding:NSUTF8StringEncoding];
+
+    _client->getIdentityService()->mergeAdvancedIdentity(
+        BrainCloud::AuthenticationType::fromString([[authenticationType toString] UTF8String]),
+        cppIds,
+        cppExtraJson,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)detachAdvancedIdentity:(AuthenticationTypeObjc *)authenticationType
+             authenticationIds:(NSString *)externalId
+                  continueAnon:(bool)continueAnon
+                     extraJson:(NSString *)extraJson
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject
+{
+    std::string cppExtraJson;
+    if (extraJson != nil) cppExtraJson = [extraJson cStringUsingEncoding:NSUTF8StringEncoding];
+
+    _client->getIdentityService()->detachAdvancedIdentity(
+        BrainCloud::AuthenticationType::fromString([[authenticationType toString] UTF8String]),
+        [externalId UTF8String],
+        continueAnon, 
+        cppExtraJson,
+        new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)attachParseIdentity:(NSString *)parseId
