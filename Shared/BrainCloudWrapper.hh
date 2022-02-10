@@ -160,7 +160,7 @@
  * @param userid The user id
  * @param token The user token (password etc)
  * @param externalAuthName The name of the cloud script to call for external authentication
- * @param force Should a new profile be created for this user if the account does not exist?
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
  *
  * @returns   runs the completion block on success, errorCompletion block on failure
  */
@@ -309,7 +309,7 @@
  *
  * @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
  * @param ultraIdToken The "id_token" taken from Ultra's JWT.
- * @param force Should a new profile be created for this user if the account does not exist?
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
@@ -432,10 +432,10 @@
  * Service Name - Authenticate
  * Server Operation - Authenticate
  *
- * @param in_userid The user id
- * @param in_token The user token (password etc)
- * @param in_externalAuthName The name of the cloud script to call for external authentication
- * @param in_force Should a new profile be created for this user if the account does not exist?
+ * @param userid The user id
+ * @param token The user token (password etc)
+ * @param externalAuthName The name of the cloud script to call for external authentication
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
  *
  * @returns   performs the in_success callback on success, in_failure callback on failure
  */
@@ -611,7 +611,7 @@
  *
  * @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
  * @param ultraIdToken The "id_token" taken from Ultra's JWT.
- * @param force Should a new profile be created for this user if the account does not exist?
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
