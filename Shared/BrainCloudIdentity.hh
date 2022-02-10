@@ -348,6 +348,71 @@
                    cbObject:(BCCallbackObject)cbObject;
 
 /**
+* Attach an Ultra identity to the current profile.
+*
+* Service Name - Identity
+* Service Operation - Attach
+*
+* @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
+* @param ultraIdToken The "id_token" taken from Ultra's JWT.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+* Errors to watch for:  SWITCHING_PROFILES - this means that the email address you provided
+* already points to a different profile.  You will likely want to offer the player the
+* choice to *SWITCH* to that profile, or *MERGE* the profiles.
+*
+* To switch profiles, call ClearSavedProfileID() and then call AuthenticateUltra()).
+*/
+- (void)attachUltraIdentity:(NSString *)ultraUsername
+               ultraIdToken:(NSString *)ultraIdToken
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Merge the profile associated with the provided Ultra ids with the current profile.
+*
+* Service Name - Identity
+* Service Operation - Merge
+*
+* @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
+* @param ultraIdToken The "id_token" taken from Ultra's JWT.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+*/
+- (void)mergeUltraIdentity:(NSString *)ultraUsername
+              ultraIdToken:(NSString *)ultraIdToken
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Detach the Ultra identity from the current profile
+*
+* Service Name - Identity
+* Service Operation - Detach
+*
+* @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
+* @param continueAnon Proceed even if the profile will revert to anonymous?
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+* Watch for DOWNGRADING_TO_ANONYMOUS_ERROR - occurs if you set continueAnon to false, and
+* disconnecting this identity would result in the profile being anonymous (which means that
+* the profile wouldn't be retrievable if the user loses their device)
+*/
+- (void)detachUltraIdentity:(NSString *)ultraUsername
+               continueAnon:(bool)continueAnon
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Attach the user's Google credentials to the current profile.
 *
 * Service Name - Identity

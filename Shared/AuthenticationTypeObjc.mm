@@ -27,6 +27,7 @@ static AuthenticationTypeObjc * _GoogleOpenId = [[AuthenticationTypeObjc alloc] 
 static AuthenticationTypeObjc * _Twitter = [[AuthenticationTypeObjc alloc] initWithValue:@"Twitter"];
 static AuthenticationTypeObjc * _Parse = [[AuthenticationTypeObjc alloc] initWithValue:@"Parse"];
 static AuthenticationTypeObjc * _External = [[AuthenticationTypeObjc alloc] initWithValue:@"External"];
+static AuthenticationTypeObjc * _Ultra = [[AuthenticationTypeObjc alloc] initWithValue:@"Ultra"];
 static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initWithValue:@"UNKNOWN"];
 
 - (id)initWithValue:(NSString *)value;
@@ -81,6 +82,10 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
 {
     return _External;
 }
++ (AuthenticationTypeObjc*) Ultra
+{
+    return _Ultra;
+}
 + (AuthenticationTypeObjc*) Unknown
 {
     return _Unknown;
@@ -127,6 +132,10 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
     if ([platform compare:_External.toString] == NSOrderedSame)
     {
         return _External;
+    }
+    if ([platform compare:_Ultra.toString] == NSOrderedSame)
+    {
+        return _Ultra;
     }
 
     return _Unknown;
