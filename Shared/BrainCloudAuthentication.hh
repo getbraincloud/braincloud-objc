@@ -188,7 +188,7 @@ extern NSString *const AUTH_FACEBOOK;
  *
  * @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
  * @param ultraIdToken The "id_token" taken from Ultra's JWT.
- * @param force Should a new profile be created for this user if the account does not exist?
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
@@ -539,7 +539,7 @@ extern NSString *const AUTH_FACEBOOK;
 * @param userid The user id
 * @param token The user token (password etc)
 * @param externalAuthName The name of the cloud script to call for external authentication
-* @param force Should a new profile be created for this user if the account does not exist?
+* @param forceCreate Should a new profile be created for this user if the account does not exist?
 */
 - (void)authenticateExternal:(NSString *)userID
          authenticationToken:(NSString *)authToken
