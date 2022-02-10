@@ -162,6 +162,20 @@
         brainCloudCallback);
 }
 
+- (void)authenticateUltra:(NSString *)ultraUsername
+             ultraIdToken:(NSString *)ultraIdToken
+              forceCreate:(BOOL)forceCreate
+          completionBlock:(BCCompletionBlock)completionBlock
+     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                 cbObject:(BCCallbackObject)cbObject
+{
+    BrainCloudCallback *brainCloudCallback =
+        new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
+    _client->getAuthenticationService()->authenticateUltra(
+        [ultraUsername cStringUsingEncoding:NSUTF8StringEncoding],
+        [ultraIdToken cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
+}
+
 - (void)authenticateSteam:(NSString *)userID
             sessionTicket:(NSString *)sessionticket
               forceCreate:(BOOL)forceCreate

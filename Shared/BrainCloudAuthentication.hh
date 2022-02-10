@@ -181,6 +181,26 @@ extern NSString *const AUTH_FACEBOOK;
                     cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Authenticate the user for Ultra.
+ *
+ * Service Name - Authenticate
+ * Server Operation - Authenticate
+ *
+ * @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
+ * @param ultraIdToken The "id_token" taken from Ultra's JWT.
+ * @param force Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)authenticateUltra:(NSString *)ultraUsername
+             ultraIdToken:(NSString *)ultraIdToken
+              forceCreate:(BOOL)forceCreate
+          completionBlock:(BCCompletionBlock)completionBlock
+     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                 cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Authenticate the user using a steam userid and session ticket (without any validation on the userid).
 *
 * Service Name - Authenticate

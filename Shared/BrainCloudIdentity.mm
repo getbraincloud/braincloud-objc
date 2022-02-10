@@ -182,6 +182,36 @@
         [steamId UTF8String], continueAnon, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)attachUltraIdentity:(NSString *)ultraUsername
+               ultraIdToken:(NSString *)ultraIdToken
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getIdentityService()->attachUltraIdentity(
+        [ultraUsername UTF8String], [ultraIdToken UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)mergeUltraIdentity:(NSString *)ultraUsername
+              ultraIdToken:(NSString *)ultraIdToken
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+    _client->getIdentityService()->mergeUltraIdentity(
+        [ultraUsername UTF8String], [ultraIdToken UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)detachUltradentity:(NSString *)ultraUsername
+               continueAnon:(bool)continueAnon
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getIdentityService()->detachUltraIdentity(
+        [ultraUsername UTF8String], continueAnon, new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)attachGoogleIdentity:(NSString *)googleId
          authenticationToken:(NSString *)token
              completionBlock:(BCCompletionBlock)cb

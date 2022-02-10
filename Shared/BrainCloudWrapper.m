@@ -479,6 +479,28 @@ static BrainCloudWrapper *sharedWrapper = nil;
                                                 cbObject:aco];
 }
 
+- (void)authenticateUltra:(NSString *)ultraUsername
+            sessionTicket:(NSString *)ultraIdToken
+              forceCreate:(BOOL)forceCreate
+          completionBlock:(BCCompletionBlock)completionBlock
+     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                 cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+    
+    AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+    aco.completionBlock = completionBlock;
+    aco.errorCompletionBlock = errorCompletionBlock;
+    aco.cbObject = cbObject;
+    
+    [[_bcClient authenticationService] authenticateUltra:ultraUsername
+                                            ultraIdToken:ultraIdToken
+                                             forceCreate:forceCreate
+                                         completionBlock:self.authSuccessCompletionBlock
+                                    errorCompletionBlock:self.authErrorCompletionBlock
+                                                cbObject:aco];
+}
+
 - (void)authenticateTwitter:(NSString *)userId
                       token:(NSString *)token
                      secret:(NSString *)secret
@@ -767,6 +789,32 @@ static BrainCloudWrapper *sharedWrapper = nil;
                                     errorCompletionBlock:self.authErrorCompletionBlock
                                                 cbObject:aco];
         
+    };
+    
+    [self smartSwitchAuthentication:authCallback];
+}
+
+- (void)smartSwitchAuthenticateUltra:(NSString *)ultraUsername
+                       sessionTicket:(NSString *)ultraIdToken
+                         forceCreate:(BOOL)forceCreate
+                     completionBlock:(BCCompletionBlock)completionBlock
+                errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                            cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+
+    BCSmartSwitchCompletionBlock authCallback = ^() {
+        AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+        aco.completionBlock = completionBlock;
+        aco.errorCompletionBlock = errorCompletionBlock;
+        aco.cbObject = cbObject;
+
+        [[_bcClient authenticationService] authenticateUltra:ultraUsername
+                                                ultraIdToken:ultraIdToken
+                                                 forceCreate:forceCreate
+                                             completionBlock:self.authSuccessCompletionBlock
+                                        errorCompletionBlock:self.authErrorCompletionBlock
+                                                    cbObject:aco];
     };
     
     [self smartSwitchAuthentication:authCallback];
