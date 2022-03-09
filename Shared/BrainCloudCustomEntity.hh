@@ -179,6 +179,25 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                   cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Replaces the specified custom entity's data, and optionally updates the acl and expiry, on the server, enforcing current ownership/ACL permissions.
+ *
+ * @param entityType The entity type as defined by the user
+ * @param entityId
+ * @param version
+ * @param fieldsJson
+ * @param shardKeyJson The shard key field(s) and value(s), as JSON, applicable to the entity being updated.
+ * @param callback Callback.
+ */
+- (void)updateEntityFieldsSharded:(NSString *)entityType
+                         entityId:(NSString *)entityId
+                          version:(int)version
+                       fieldsJson:(NSString *)fieldsJson
+                     shardKeyJson:(NSString *)shardKeyJson
+                  completionBlock:(BCCompletionBlock)completionBlock
+             errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                         cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Deletes the specified custom entity singleton, owned by the session's user, for the specified entity type, on the server
  * @param entityType The entity type as defined by the user
  * @param version
