@@ -175,6 +175,24 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                     new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
+- (void)updateEntityFieldsSharded:(NSString *)entityType
+                         entityId:(NSString *)entityId
+                          version:(int)version
+                       fieldsJson:(NSString *)fieldsJson
+                     shardKeyJson:(NSString *)shardKeyJson
+                  completionBlock:(BCCompletionBlock)completionBlock
+             errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                         cbObject:(BCCallbackObject)cbObject
+{
+    _client->getCustomEntityService()->updateEntityFieldsSharded(
+                                                    [entityType UTF8String],
+                                                    [entityId UTF8String],
+                                                    version,
+                                                    [fieldsJson UTF8String],
+                                                    [shardKeyJson UTF8String],
+                                                    new BrainCloudCallback(completionBlock, ecb, cbObject));
+}
+
 - (void)deleteSingleton:(NSString *)entityType
                    version:(int)version
            completionBlock:(BCCompletionBlock)completionBlock
