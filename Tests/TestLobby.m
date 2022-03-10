@@ -267,4 +267,53 @@
     [self waitForFailedResult];
 }
 
+- (void)testGetLobbyInstances
+{
+    [[m_client authenticationService]
+     authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+     password:[TestFixtureBase getUser:@"UserA"].m_password
+     forceCreate:true
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] getLobbyInstances:@"MATCH_UNRANKED"
+                                  criteriaJson:@"{\"rating\":{\"min\":1,\"max\":1000}}"
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetLobbyInstancesWithPingData
+{
+    [[m_client authenticationService]
+     authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+     password:[TestFixtureBase getUser:@"UserA"].m_password
+     forceCreate:true
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] getRegionsForLobbies:@[@"MATCH_UNRANKED"]
+                                  completionBlock:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] pingRegions:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] getLobbyInstancesWithPingData:@"MATCH_UNRANKED"
+                                  criteriaJson:@"{\"rating\":{\"min\":1,\"max\":1000},\"ping\":{\"max\":100}}"
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
+    [self waitForResult];
+}
+
 @end

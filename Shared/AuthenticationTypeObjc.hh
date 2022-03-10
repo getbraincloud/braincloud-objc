@@ -24,6 +24,7 @@
 + (AuthenticationTypeObjc *) Handoff;
 + (AuthenticationTypeObjc *) SettopHandoff;
 + (AuthenticationTypeObjc *) External;
++ (AuthenticationTypeObjc *) Ultra;
 + (AuthenticationTypeObjc *) Unknown;
 
 - (NSString *)toString;

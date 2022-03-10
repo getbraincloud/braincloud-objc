@@ -220,4 +220,62 @@
     [self waitForResult];
 }
 
+- (void)testAuthenticateAdvanced
+{
+    [[m_client authenticationService]
+     authenticateAdvanced:[AuthenticationTypeObjc Universal]
+     authenticationIds:[[AuthenticationIdsObjc alloc] initWithExternalId:@"authAdvancedUser" authenticationToken:@"authAdvancedPass" authenticationSubType:nil]
+     forceCreate:true
+     extraJson:@"{\"AnswerToEverything\":42}"
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    
+    [self waitForResult];
+}
+
+- (void)testAuthenticateUltra
+{
+    if ([m_serverUrl containsString:@"api-internal.braincloudservers.com"] == NO &&
+        [m_serverUrl containsString:@"internala.braincloudservers.com"] == NO &&
+        [m_serverUrl containsString:@"api.internalg.braincloudservers.com"] == NO /* &&
+        [m_serverUrl containsString:@"api.ultracloud.ultra.io"] == NO*/)
+        return;
+
+    // Authenticate universal first so we can run a script to get the ultra JWT
+    [[m_client authenticationService]
+        authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                     password:[TestFixtureBase getUser:@"UserA"].m_password
+                  forceCreate:true
+              completionBlock:successBlock
+         errorCompletionBlock:failureBlock
+                     cbObject:nil];
+    [self waitForResult];
+    
+    // Get ultra id_token from the JWT
+    [[m_client scriptService]runScript:@"getUltraToken" jsonScriptData:@"{}" completionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+    
+    NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:nil];
+    NSDictionary *JWT = [(NSDictionary *)[(NSDictionary *)[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"response"] objectForKey:@"data"] objectForKey:@"json"];
+    
+    NSString *id_token = [JWT objectForKey:@"id_token"];
+    
+    // Log out
+    [[m_client playerStateService] logout:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+    
+    // Auth with Ultra
+    [[m_client authenticationService] authenticateUltra:@"braincloud1"
+                                           ultraIdToken:id_token
+                                            forceCreate:YES
+                                        completionBlock:successBlock
+                                   errorCompletionBlock:failureBlock
+                                               cbObject:nil];
+    [self waitForResult];
+}
+
 @end

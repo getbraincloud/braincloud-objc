@@ -72,6 +72,16 @@ typedef NS_ENUM(NSUInteger, BCRelayConnectionType)
 -(int) getNetIdForProfileId:(NSString*)profileId;
 
 /**
+ * Returns the RTT connection id associated with a netId.
+ */
+-(NSString*) getCxIdForNetId:(int)netId;
+
+/**
+ * Returns the netId associated with an RTT connection id.
+ */
+-(int) getNetIdForCxId:(NSString*)cxId;
+
+/**
  * Send a packet to peer(s)
  *
  * @param data Byte array for the data to send
@@ -176,5 +186,6 @@ typedef NS_ENUM(NSUInteger, BCRelayConnectionType)
 @property(readonly) int ping;
 @property(readonly) BOOL isConnected;
 @property(readonly) NSString* ownerProfileId;
+@property(readonly) NSString* ownerCxId;
 
 @end

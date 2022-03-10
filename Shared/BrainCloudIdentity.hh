@@ -348,6 +348,71 @@
                    cbObject:(BCCallbackObject)cbObject;
 
 /**
+* Attach an Ultra identity to the current profile.
+*
+* Service Name - Identity
+* Service Operation - Attach
+*
+* @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
+* @param ultraIdToken The "id_token" taken from Ultra's JWT.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+* Errors to watch for:  SWITCHING_PROFILES - this means that the email address you provided
+* already points to a different profile.  You will likely want to offer the player the
+* choice to *SWITCH* to that profile, or *MERGE* the profiles.
+*
+* To switch profiles, call ClearSavedProfileID() and then call AuthenticateUltra()).
+*/
+- (void)attachUltraIdentity:(NSString *)ultraUsername
+               ultraIdToken:(NSString *)ultraIdToken
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Merge the profile associated with the provided Ultra ids with the current profile.
+*
+* Service Name - Identity
+* Service Operation - Merge
+*
+* @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
+* @param ultraIdToken The "id_token" taken from Ultra's JWT.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+*/
+- (void)mergeUltraIdentity:(NSString *)ultraUsername
+              ultraIdToken:(NSString *)ultraIdToken
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Detach the Ultra identity from the current profile
+*
+* Service Name - Identity
+* Service Operation - Detach
+*
+* @param ultraUsername it's what the user uses to log into the Ultra endpoint initially
+* @param continueAnon Proceed even if the profile will revert to anonymous?
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+* Watch for DOWNGRADING_TO_ANONYMOUS_ERROR - occurs if you set continueAnon to false, and
+* disconnecting this identity would result in the profile being anonymous (which means that
+* the profile wouldn't be retrievable if the user loses their device)
+*/
+- (void)detachUltraIdentity:(NSString *)ultraUsername
+               continueAnon:(bool)continueAnon
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Attach the user's Google credentials to the current profile.
 *
 * Service Name - Identity
@@ -622,6 +687,80 @@
               completionBlock:(BCCompletionBlock)cb
          errorCompletionBlock:(BCErrorCompletionBlock)ecb
                      cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Attach the user's credentials to the current profile.
+*
+* Service Name - Identity
+* Service Operation - Attach
+*
+* @param authenticationType Universal, Email, Facebook, etc
+* @param ids Auth IDs structure
+* @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks. Leave empty string for no extraJson.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+* Errors to watch for:  SWITCHING_PROFILES - this means that the identity you provided
+* already points to a different profile.  You will likely want to offer the user the
+* choice to *SWITCH* to that profile, or *MERGE* the profiles.
+*
+* To switch profiles, call ClearSavedProfileID() and call AuthenticateAdvanced().
+*/
+- (void)attachAdvancedIdentity:(AuthenticationTypeObjc *)authenticationType
+             authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+                     extraJson:(NSString *)extraJson
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Merge the profile associated with the provided credentials with the
+* current profile.
+*
+* Service Name - Identity
+* Service Operation - Merge
+*
+* @param authenticationType Universal, Email, Facebook, etc
+* @param ids Auth IDs structure
+* @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks. Leave empty string for no extraJson.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+*/
+- (void)mergeAdvancedIdentity:(AuthenticationTypeObjc *)authenticationType
+            authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+                    extraJson:(NSString *)extraJson
+              completionBlock:(BCCompletionBlock)cb
+         errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                     cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Detach the identity from this profile.
+*
+* Service Name - Identity
+* Service Operation - Detach
+*
+* @param authenticationType Universal, Email, Facebook, etc
+* @param externalId User external Id
+* @param continueAnon Proceed even if the profile will revert to anonymous?
+* @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks. Leave empty string for no extraJson.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+* Watch for DOWNGRADING_TO_ANONYMOUS_ERROR - occurs if you set continueAnon to false, and
+* disconnecting this identity would result in the profile being anonymous (which means that
+* the profile wouldn't be retrievable if the user loses their device)
+*/
+- (void)detachAdvancedIdentity:(AuthenticationTypeObjc *)authenticationType
+             authenticationIds:(NSString *)externalId
+                  continueAnon:(bool)continueAnon
+                     extraJson:(NSString *)extraJson
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Attach the user's Parse credentials to the current profile.

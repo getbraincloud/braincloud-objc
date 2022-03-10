@@ -183,6 +183,43 @@
     [self waitForResult];
 }
 
+- (void)testUpdateEntityFieldsSharded
+
+{
+    [[m_client authenticationService]
+     authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+     password:[TestFixtureBase getUser:@"UserA"].m_password
+     forceCreate:true
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    [self waitForResult];
+    
+        
+            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+        errorCompletionBlock:failureBlock
+        cbObject:nil];
+        [self waitForResult];
+
+        NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
+                                                                options:NSJSONReadingMutableContainers
+                                                                  error:nil];
+
+    NSString *entityId=[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"entityId"];
+    
+    [[m_client customEntityService]
+        updateEntityFieldsSharded:@"athletes"
+                         entityId:entityId
+                          version:1
+                       fieldsJson:@"{\"position\":\"defense\"}"
+                     shardKeyJson:[NSString stringWithFormat:@"{\"ownerId\":\"%@\"}", [TestFixtureBase getUser:@"UserA"].m_profileId]
+                  completionBlock:successBlock
+             errorCompletionBlock:failureBlock
+                         cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetCount
 
 {
