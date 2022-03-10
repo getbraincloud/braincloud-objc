@@ -52,19 +52,19 @@
     [self waitForResult];
 }
 
-- (void)testEnableDisableRTTWithTCP
-{
-    // Disable RTT
-    [[m_client rttService] disableRTT];
+// - (void)testEnableDisableRTTWithTCP
+// {
+//     // Disable RTT
+//     [[m_client rttService] disableRTT];
 
-    // Enable RTT
-    [[m_client rttService]
-     enableRTT:NO
-     successCompletionBlock:rttConnectSuccessBlock
-     failureCompletionBlock:rttConnectFailureBlock
-     cbObject:nil];
-    [self waitForResult];
-}
+//     // Enable RTT
+//     [[m_client rttService]
+//      enableRTT:NO
+//      successCompletionBlock:rttConnectSuccessBlock
+//      failureCompletionBlock:rttConnectFailureBlock
+//      cbObject:nil];
+//     [self waitForResult];
+// }
 
 - (void)testEnableDisableRTTWithWS
 {
