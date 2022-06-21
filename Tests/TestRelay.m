@@ -63,7 +63,7 @@
     // Enable RTT
     {
         [[m_client rttService]
-         enableRTT:NO
+         enableRTT:YES
          successCompletionBlock:rttConnectSuccessBlock
          failureCompletionBlock:rttConnectFailureBlock
          cbObject:nil];
