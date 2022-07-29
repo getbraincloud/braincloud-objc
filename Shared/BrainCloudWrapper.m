@@ -286,6 +286,15 @@ static BrainCloudWrapper *sharedWrapper = nil;
          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                      cbObject:(BCCallbackObject)cbObject
 {
+    [self authenticateAnonymous:completionBlock errorCompletionBlock:errorCompletionBlock cbObject:cbObject forceCreate:TRUE];
+
+}
+
+- (void)authenticateAnonymous:(BCCompletionBlock)completionBlock
+         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                     cbObject:(BCCallbackObject)cbObject
+                  forceCreate:(BOOL)forceCreate
+{
     [self _initializeIdentity:TRUE];
     
     AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
@@ -293,7 +302,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
     
-    [[_bcClient authenticationService] authenticateAnonymous:TRUE
+    [[_bcClient authenticationService] authenticateAnonymous:forceCreate
                                              completionBlock:self.authSuccessCompletionBlock
                                         errorCompletionBlock:self.authErrorCompletionBlock
                                                     cbObject:aco];
@@ -1065,7 +1074,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
             cbObject:(BCCallbackObject)cbObject
 {
-    [self authenticateAnonymous:completionBlock errorCompletionBlock:errorCompletionBlock cbObject:cbObject];
+    [self authenticateAnonymous:completionBlock errorCompletionBlock:errorCompletionBlock cbObject:cbObject forceCreate:false];
 }
 
 /*
