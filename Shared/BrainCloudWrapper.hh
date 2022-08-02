@@ -121,6 +121,11 @@
          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                      cbObject:(BCCallbackObject)cbObject;
 
+- (void)authenticateAnonymous:(BCCompletionBlock)completionBlock
+         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                     cbObject:(BCCallbackObject)cbObject
+                    forceCreate:(BOOL)forceCreate;
+
 /**
  * Authenticate the user with a custom Email and Password.  Note that the client app
  * is responsible for collecting (and storing) the e-mail and potentially password
