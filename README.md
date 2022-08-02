@@ -68,7 +68,7 @@ It is recommended to use the wrapper by default.
 If using the wrapper use the following code.
 ```objective_c
 _bc = [[BrainCloudWrapper alloc] init]; // optionally pass in a _wrapperName
-[_bc initialize: @"https://sharedprod.braincloudservers.com/dispatcherv2"
+[_bc initialize: @"https://api.braincloudservers.com/dispatcherv2"
       secretKey:_secret
           appId:_appId
         version:_version
