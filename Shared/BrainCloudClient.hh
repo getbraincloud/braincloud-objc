@@ -492,6 +492,7 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 @property(readonly) BrainCloudLeaderboard *leaderboardService;
 @property(readonly) BrainCloudGlobalApp *globalAppService;
 @property(readonly) BrainCloudFriend *friendService;
+@property(readonly) BrainCloudBlockchain *blockchainService;
 @property(readonly) BrainCloudMail *mailService;
 @property(readonly) BrainCloudMessaging *messagingService;
 @property(readonly) BrainCloudLobby *lobbyService;
