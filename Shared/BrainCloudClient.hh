@@ -15,6 +15,7 @@
 #import "BrainCloudEvent.hh"
 #import "BrainCloudFile.hh"
 #import "BrainCloudGlobalFile.hh"
+#import "BrainCloudBlockchain.hh"
 #import "BrainCloudFriend.hh"
 #import "BrainCloudGamification.hh"
 #import "BrainCloudGlobalApp.hh"

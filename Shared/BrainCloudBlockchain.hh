@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @class BrainCloudClient;
-@class FriendPlatformObjc;
-@class AuthenticationTypeObjc;
 @interface BrainCloudBlockchain : NSObject
 
 /**
