@@ -6,14 +6,10 @@
 //
 
 #import "BrainCloudBlockchain.hh"
-#import "FriendPlatformObjc.hh"
-#import "AuthenticationTypeObjc.hh"
 #import "BrainCloudClient.hh"
 #include "BrainCloudCallback.hh"
 #include "TypeHelpers.hh"
 #include "braincloud/BrainCloudClient.h"
-#include "braincloud/FriendPlatform.h"
-#include "braincloud/AuthenticationType.h"
 
 @interface BrainCloudBlockchain ()
 {
@@ -35,7 +31,7 @@
     return self;
 }
 
-- (void)GetBlockchainItems:(NSString *)in_integrationID
+- (void)getBlockchainItems:(NSString *)in_integrationID
 					contextJson:(NSString *)in_contextJson
 					completionBlock:(BCCompletionBlock)cb
 					errorCompletionBlock:(BCErrorCompletionBlock)ecb
@@ -43,11 +39,11 @@
 {
     _client->getBlockchainService()->GetBlockchainItems(
 					[in_integrationID UTF8String],
-					[in_contextJson UTF8String],
+					TypeHelpers::NSStringToStdString(in_contextJson),
 					new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)GetUniqs:(NSString *)in_integrationID
+- (void)getUniqs:(NSString *)in_integrationID
 					contextJson:(NSString *)in_contextJson
 					completionBlock:(BCCompletionBlock)cb
 					errorCompletionBlock:(BCErrorCompletionBlock)ecb
@@ -55,7 +51,7 @@
 {
 	_client->getBlockchainService()->GetUniqs(
 					[in_integrationID UTF8String],
-					[in_contextJson UTF8String],
+					TypeHelpers::NSStringToStdString(in_contextJson),
 					new BrainCloudCallback(cb, ecb, cbObject));
 }
 

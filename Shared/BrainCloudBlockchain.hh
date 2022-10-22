@@ -19,7 +19,7 @@
 /**
  * @brief Retrieves the blockchain items owned by the caller.
  */
-- (void)GetBlockchainItems:(NSString *)in_integrationID
+- (void)getBlockchainItems:(NSString *)in_integrationID
 					contextJson:(NSString *)in_contextJson
                     completionBlock:(BCCompletionBlock)cb
 					errorCompletionBlock:(BCErrorCompletionBlock)ecb
@@ -28,7 +28,7 @@
 /**
  * @brief Retrieves the uniqs owned by the caller.
  */
-- (void)GetUniqs:(NSString *)in_integrationID
+- (void)getUniqs:(NSString *)in_integrationID
 					contextJson:(NSString *)in_contextJson
 					completionBlock:(BCCompletionBlock)cb
 					errorCompletionBlock:(BCErrorCompletionBlock)ecb
