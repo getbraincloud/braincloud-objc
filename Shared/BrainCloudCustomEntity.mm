@@ -256,4 +256,15 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                     [fieldsJson UTF8String],
                                                     new BrainCloudCallback(completionBlock, ecb, cbObject));}
 
+- (void)incrementSingletonData:(NSString *)entityType
+				fieldsJson:(NSString *)fieldsJson
+		   completionBlock:(BCCompletionBlock)completionBlock
+	  errorCompletionBlock:(BCErrorCompletionBlock)ecb
+				  cbObject:(BCCallbackObject)cbObject
+{
+		_client->getCustomEntityService()->incrementSingletonData(
+													[entityType UTF8String],
+													[fieldsJson UTF8String],
+													new BrainCloudCallback(completionBlock, ecb, cbObject));}
+
 @end
