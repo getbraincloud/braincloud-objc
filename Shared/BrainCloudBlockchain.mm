@@ -8,7 +8,6 @@
 #import "BrainCloudBlockchain.hh"
 #import "BrainCloudClient.hh"
 #include "BrainCloudCallback.hh"
-#include "TypeHelpers.hh"
 #include "braincloud/BrainCloudClient.h"
 
 @interface BrainCloudBlockchain ()
@@ -39,7 +38,7 @@
 {
     _client->getBlockchainService()->GetBlockchainItems(
 					[in_integrationID UTF8String],
-					TypeHelpers::NSStringToStdString(in_contextJson),
+					[in_contextJson UTF8String],
 					new BrainCloudCallback(cb, ecb, cbObject));
 }
 
@@ -51,7 +50,7 @@
 {
 	_client->getBlockchainService()->GetUniqs(
 					[in_integrationID UTF8String],
-					TypeHelpers::NSStringToStdString(in_contextJson),
+					[in_contextJson UTF8String],
 					new BrainCloudCallback(cb, ecb, cbObject));
 }
 

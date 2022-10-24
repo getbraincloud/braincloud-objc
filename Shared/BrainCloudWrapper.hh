@@ -920,6 +920,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
 @property(readonly) BrainCloudTime *timeService;
 @property(readonly) BrainCloudTournament *tournamentService;
 @property(readonly) BrainCloudCustomEntity *customEntityService;
+@property(readonly) BrainCloudCustomEntity *blockchainService;
 @property(readonly) BrainCloudUserItems *userItemsService;
 @property(readonly) BrainCloudUserItems *itemCatalogService;
 @property(readonly) BrainCloudPresence *presenceService;

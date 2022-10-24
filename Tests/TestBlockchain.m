@@ -1,8 +1,7 @@
 //
-//  TestBlcokchain.m
+//  TestBlockchain.m
 //  brainCloudClientObjc
 //
-//  Created by Hill, Bradley on 2015-08-10.
 //  Copyright (c) 2022 bitHeads. All rights reserved.
 //
 
@@ -25,8 +24,7 @@
 						completionBlock:successBlock
 						errorCompletionBlock:failureBlock
 						cbObject:nil];
-//	[self waitForFailedResult];
-	[self waitForResultExpectedCount:1 expectFail:true];
+	[self waitForFailedResult];
 }
 
 - (void)testGetUniqs

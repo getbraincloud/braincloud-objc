@@ -1216,6 +1216,11 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
     return [_bcClient tournamentService];
 }
 
+- (BrainCloudBlockchain *)blockchainService
+{
+	return [_bcClient blockchainService];
+}
+
 - (BrainCloudCustomEntity *)customEntityService
 {
     return [_bcClient customEntityService];
