@@ -404,6 +404,24 @@ NSString *entityId=[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:
     [self waitForFailedResult];
 }
 
+- (void)testIncrementSingletonData
+{
+	[[m_client authenticationService]
+	 authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+	 password:[TestFixtureBase getUser:@"UserA"].m_password
+	 forceCreate:true
+	 completionBlock:successBlock
+	 errorCompletionBlock:failureBlock
+	 cbObject:nil];
+	[self waitForResult];
+	
+	
+	[[m_client customEntityService]
+	 incrementSingletonData:@"athletes" fieldsJson:@"{\"goals\":3,\"assists\":5}" completionBlock:successBlock
+	 errorCompletionBlock:failureBlock
+	 cbObject:nil];
+	[self waitForFailedResult];
+}
 
 /* Helper functions */
 - (NSString *)createDefaultEntity:(Access)access
