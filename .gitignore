@@ -28,4 +28,4 @@ Podfile.lock
 ids.txt
 *.swp
 build/
-localcpp.sh
+
