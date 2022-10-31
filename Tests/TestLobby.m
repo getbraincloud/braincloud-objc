@@ -64,7 +64,6 @@
     NSString* _lobbyType = @"MATCH_UNRANKED";
     NSArray* _otherUserCxIds = @[];
     NSString* _extraJson = @"{}";
-    NSString* _settings = @"{}";
     NSString* _teamCode = @"all";
     NSString* _algo = @"{\"strategy\":\"ranged-absolute\",\"alignment\":\"center\",\"ranges\":[1000]}";
     NSString* _filterJson = @"{}";

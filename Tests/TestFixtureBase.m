@@ -48,84 +48,84 @@ NSMutableDictionary *m_users;
         successBlock = ^(NSString *serviceName, NSString *serviceOperation, NSString *jsonData,
                          BCCallbackObject cbObject)
         {
-            if(_expectFail >= 1)
+			if(self->_expectFail >= 1)
             {
                 _XCTPrimitiveFail(weakSelf, @"%@", jsonData);
             }
             
-            _apiCountExpected -= 1;
-            if (_apiCountExpected <= 0)
+			self->_apiCountExpected -= 1;
+			if (self->_apiCountExpected <= 0)
             {
-               _result = true;
+				self->_result = true;
             }
-            _jsonResponse = jsonData;
+			self->_jsonResponse = jsonData;
         };
 
         failureBlock = ^(NSString *serviceName, NSString *serviceOperation, NSInteger statusCode,
                          NSInteger returnCode, NSString *statusMessage, BCCallbackObject cbObject)
         {
-            if(_expectFail == 0)
+			if(self->_expectFail == 0)
             {
                 _XCTPrimitiveFail(weakSelf, @"%@", statusMessage);
             }
             
-            _apiCountExpected -= 1;
-            if (_apiCountExpected <= 0)
+            self->_apiCountExpected -= 1;
+			if (self->_apiCountExpected <= 0)
             {
-                _result = true;
+                self->_result = true;
             }
-            _statusCode = statusCode;
-            _reasonCode = returnCode;
-            _statusMessage = statusMessage;
+            self->_statusCode = statusCode;
+            self->_reasonCode = returnCode;
+            self->_statusMessage = statusMessage;
         };
         
         globalErrorBlock = ^(NSString *serviceName, NSString *serviceOperation, NSInteger statusCode,
                               NSInteger returnCode, NSString *statusMessage, BCCallbackObject cbObject)
         {
-            if(_expectFail == 0)
+            if(self->_expectFail == 0)
             {
                 _XCTPrimitiveFail(weakSelf, @"%@", statusMessage);
             }
             
-            _apiCountExpected -= 1;
-            if (_apiCountExpected <= 0)
+            self->_apiCountExpected -= 1;
+            if (self->_apiCountExpected <= 0)
             {
-                _result = true;
+                self->_result = true;
             }
-            _statusCode = statusCode;
-            _reasonCode = returnCode;
-            _statusMessage = statusMessage;
-            _globalErrorCount += 1;
+            self->_statusCode = statusCode;
+            self->_reasonCode = returnCode;
+            self->_statusMessage = statusMessage;
+            self->_globalErrorCount += 1;
         };
         
         networkErrorBlock = ^()
         {
-            if(_expectFail == 0)
+            if(self->_expectFail == 0)
             {
                 _XCTPrimitiveFail(weakSelf, @"Network error block unexpected");
             }
             
-            _apiCountExpected -= 1;
-            if (_apiCountExpected <= 0)
+            self->_apiCountExpected -= 1;
+            if (self->_apiCountExpected <= 0)
             {
-                _result = true;
+                self->_result = true;
             }
-           // _statusCode = statusCode;
+           // self->_statusCode = statusCode;
            // _reasonCode = returnCode;
            // _statusMessage = statusMessage;
-            _networkErrorCount += 1;
+            self->_networkErrorCount += 1;
         };
 
         eventBlock = ^(NSString *eventsJson) {
-            _eventCallbackReceived = true;
-            _eventCallbackJson = eventsJson;
+            self->_eventCallbackReceived = true;
+            self->_eventCallbackJson = eventsJson;
         };
-        
+		
         fileUploadCompletedBlock = ^(NSString *fileUploadId, NSString *jsonResponse) {
             FileUploadCompletedDetails * details = [[FileUploadCompletedDetails alloc] init];
             [details setFileUploadId:fileUploadId];
             [details setJsonResponse:jsonResponse];
-            [_fileUploadCompletedReceived addObject:details];
+            [self->_fileUploadCompletedReceived addObject:details];
         };
         fileUploadFailedBlock = ^(NSString *fileUploadId, NSInteger status, NSInteger reasonCode, NSString *jsonResponse) {
             FileUploadFailedDetails * details = [[FileUploadFailedDetails alloc] init];
@@ -133,7 +133,7 @@ NSMutableDictionary *m_users;
             [details setStatus:status];
             [details setReasonCode:reasonCode];
             [details setJsonResponse:jsonResponse];
-            [_fileUploadFailedReceived addObject:details];
+            [self->_fileUploadFailedReceived addObject:details];
         };
         
         rewardBlock = ^(NSString *eventsJson) {
@@ -144,53 +144,53 @@ NSMutableDictionary *m_users;
                                                                       error:nil];
             int apiRewardsSize = 0;
             apiRewardsSize = (int) [(NSArray *)[jsonObj objectForKey:@"apiRewards"] count];
-            _rewardCallbacksReceived += 1;
-            _apiRewardsReceived += apiRewardsSize;
-            _rewardCallbackJson = eventsJson;
+            self->_rewardCallbacksReceived += 1;
+            self->_apiRewardsReceived += apiRewardsSize;
+            self->_rewardCallbackJson = eventsJson;
         };
         
         rttConnectSuccessBlock = ^(BCCallbackObject cbObject)
         {
-            if(_expectFail >= 1)
+            if(self->_expectFail >= 1)
             {
                 _XCTPrimitiveFail(weakSelf, @"");
             }
             
-            _apiCountExpected -= 1;
-            if (_apiCountExpected <= 0)
+            self->_apiCountExpected -= 1;
+            if (self->_apiCountExpected <= 0)
             {
-               _result = true;
+               self->_result = true;
             }
         };
 
         rttConnectFailureBlock = ^(NSString *errorMessage, BCCallbackObject cbObject)
         {
-            if(_expectFail == 0)
+            if(self->_expectFail == 0)
             {
                 _XCTPrimitiveFail(weakSelf, @"%@", errorMessage);
             }
             
-            _apiCountExpected -= 1;
-            if (_apiCountExpected <= 0)
+            self->_apiCountExpected -= 1;
+            if (self->_apiCountExpected <= 0)
             {
-                _result = true;
+                self->_result = true;
             }
-            _statusMessage = errorMessage;
+            self->_statusMessage = errorMessage;
         };
 
         rttEventBlock = ^(NSString *jsonData, BCCallbackObject cbObject)
         {
-            if(_expectFail >= 1)
+            if(self->_expectFail >= 1)
             {
                 _XCTPrimitiveFail(weakSelf, @"");
             }
             
-            _apiCountExpected -= 1;
-            if (_apiCountExpected <= 0)
+            self->_apiCountExpected -= 1;
+            if (self->_apiCountExpected <= 0)
             {
-               _result = true;
+               self->_result = true;
             }
-            _jsonResponse = jsonData;
+            self->_jsonResponse = jsonData;
         };
     }
     return self;

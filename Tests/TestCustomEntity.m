@@ -36,7 +36,7 @@
     
     
     [[m_client customEntityService]
-     createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+     createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
      errorCompletionBlock:failureBlock
      cbObject:nil];
     [self waitForResult];
@@ -98,7 +98,7 @@
     [self waitForResult];
     
         
-            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
         errorCompletionBlock:failureBlock
         cbObject:nil];
         [self waitForResult];
@@ -132,7 +132,7 @@
     
     
         
-            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
         errorCompletionBlock:failureBlock
         cbObject:nil];
         [self waitForResult];
@@ -164,7 +164,7 @@
     [self waitForResult];
     
         
-            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
         errorCompletionBlock:failureBlock
         cbObject:nil];
         [self waitForResult];
@@ -196,7 +196,7 @@
     [self waitForResult];
     
         
-            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+            [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
         errorCompletionBlock:failureBlock
         cbObject:nil];
         [self waitForResult];
@@ -252,7 +252,7 @@
      cbObject:nil];
     [self waitForResult];
     
-        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
     errorCompletionBlock:failureBlock
     cbObject:nil];
     [self waitForResult];
@@ -305,7 +305,7 @@ NSString *entityId=[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:
     [self waitForResult];
     
         
-        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
     errorCompletionBlock:failureBlock
     cbObject:nil];
     [self waitForResult];
@@ -330,7 +330,7 @@ NSString *entityId=[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:
     
     
     [[m_client customEntityService]
-     updateSingleton:@"athletes" version:1 dataJson:@"{\"position\":\"defense\"}" acl:@"{\"test\":\"testing\"}" timeToLive:NULL completionBlock:successBlock
+     updateSingleton:@"athletes" version:1 dataJson:@"{\"position\":\"defense\"}" acl:@"{\"test\":\"testing\"}" timeToLive:0 completionBlock:successBlock
      errorCompletionBlock:failureBlock
      cbObject:nil];
     [self waitForResult];
@@ -349,7 +349,7 @@ NSString *entityId=[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:
     [self waitForResult];
     
         
-        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
     errorCompletionBlock:failureBlock
     cbObject:nil];
     [self waitForResult];
@@ -373,7 +373,7 @@ NSString *entityId=[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:
     [self waitForResult];
     
         
-        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+        [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
     errorCompletionBlock:failureBlock
     cbObject:nil];
     [self waitForResult];
@@ -426,7 +426,7 @@ NSString *entityId=[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:
 /* Helper functions */
 - (NSString *)createDefaultEntity:(Access)access
 {
-    [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:NULL isOwned:true completionBlock:successBlock
+    [[m_client customEntityService] createEntity:@"athletes" dataJson:@"{\test\":\"Testing\"}" acl:@"{\test\":\"Testing\"}" timeToLive:0 isOwned:true completionBlock:successBlock
     errorCompletionBlock:failureBlock
     cbObject:nil];
     [self waitForResult];
