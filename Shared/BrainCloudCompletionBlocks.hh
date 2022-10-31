@@ -119,7 +119,7 @@ typedef void (^BCFileUploadFailedCompletionBlock)(NSString *fileUploadId, NSInte
  *
  * Note this method is *not* invoked when FlushCachedMessages(true) is called.
  */
-typedef void (^BCNetworkErrorCompletionBlock)();
+typedef void (^BCNetworkErrorCompletionBlock)(void);
 
 /**
  * Completion block called when RTT connected successfully.

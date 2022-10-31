@@ -244,7 +244,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     version:(int)version
                    dataJson:(NSString *)dataJson
                         acl:(NSString *)acl
-                        timeToLive:(NSString *)timeToLive
+                        timeToLive:(int64_t)timeToLive
             completionBlock:(BCCompletionBlock)completionBlock
       errorCompletionBlock:(BCErrorCompletionBlock)ecb
                   cbObject:(BCCallbackObject)cbObject;

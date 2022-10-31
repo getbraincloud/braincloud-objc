@@ -935,7 +935,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
 @property(readonly) BrainCloudGlobalFile *globalFileService;
 @property(readonly) BrainCloudGroup *groupService;
 
-typedef void (^BCSmartSwitchCompletionBlock)();
+typedef void (^BCSmartSwitchCompletionBlock)(void);
 
 
 @end

@@ -284,7 +284,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)compelteMatchWithSummaryData:(NSString *)ownerId
+- (void)completeMatchWithSummaryData:(NSString *)ownerId
                              matchId:(NSString *)matchId
                          pushContent:(NSString *)pushContent
                              summary:(NSString *)summary

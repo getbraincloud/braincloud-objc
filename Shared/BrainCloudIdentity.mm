@@ -202,7 +202,7 @@
         [ultraUsername UTF8String], [ultraIdToken UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)detachUltradentity:(NSString *)ultraUsername
+- (void)detachUltraIdentity:(NSString *)ultraUsername
                continueAnon:(bool)continueAnon
             completionBlock:(BCCompletionBlock)cb
        errorCompletionBlock:(BCErrorCompletionBlock)ecb

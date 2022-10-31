@@ -61,6 +61,8 @@ static BrainCloudWrapper *sharedWrapper = nil;
 {
     self.alwaysAllowProfileSwitch = YES;
     
+	__weak __typeof__(self) weakSelf = self;
+	
     // the generic authentication completion blocks
     self.authSuccessCompletionBlock = ^(NSString *serviceName, NSString *serviceOperation, NSString *jsonData, BCCallbackObject cbObject)
     {
@@ -68,9 +70,9 @@ static BrainCloudWrapper *sharedWrapper = nil;
         NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
                                                                 options:NSJSONReadingMutableContainers
                                                                   error:nil];
-        
-        self.storedProfileId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"profileId"];
-        
+		
+		weakSelf.storedProfileId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"profileId"];
+
         AuthenticationCallbackObject *aco = (AuthenticationCallbackObject*) cbObject;
         if (aco.completionBlock != nil)
         {
@@ -489,7 +491,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
 }
 
 - (void)authenticateUltra:(NSString *)ultraUsername
-            sessionTicket:(NSString *)ultraIdToken
+			 ultraIdToken:(NSString *)ultraIdToken
               forceCreate:(BOOL)forceCreate
           completionBlock:(BCCompletionBlock)completionBlock
      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
@@ -804,7 +806,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
 }
 
 - (void)smartSwitchAuthenticateUltra:(NSString *)ultraUsername
-                       sessionTicket:(NSString *)ultraIdToken
+                       ultraIdToken:(NSString *)ultraIdToken
                          forceCreate:(BOOL)forceCreate
                      completionBlock:(BCCompletionBlock)completionBlock
                 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
