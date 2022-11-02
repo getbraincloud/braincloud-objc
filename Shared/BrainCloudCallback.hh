@@ -5,6 +5,8 @@
  */
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
@@ -80,3 +82,5 @@ class BrainCloudCallback : public BrainCloud::IServerCallback
         // do nothing for server warning
     }
 };
+
+#pragma clang diagnostic pop

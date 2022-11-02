@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
@@ -185,3 +187,5 @@
                  cbObject:(BCCallbackObject)cbObject;
 
 @end
+
+#pragma clang diagnostic pop
