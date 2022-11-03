@@ -26,6 +26,8 @@ static AuthenticationTypeObjc * _Google = [[AuthenticationTypeObjc alloc] initWi
 static AuthenticationTypeObjc * _GoogleOpenId = [[AuthenticationTypeObjc alloc] initWithValue:@"GoogleOpenId"];
 static AuthenticationTypeObjc * _Twitter = [[AuthenticationTypeObjc alloc] initWithValue:@"Twitter"];
 static AuthenticationTypeObjc * _Parse = [[AuthenticationTypeObjc alloc] initWithValue:@"Parse"];
+static AuthenticationTypeObjc * _Handoff = [[AuthenticationTypeObjc alloc] initWithValue:@"Handoff"];
+static AuthenticationTypeObjc * _SettopHandoff = [[AuthenticationTypeObjc alloc] initWithValue:@"SettopHandoff"];
 static AuthenticationTypeObjc * _External = [[AuthenticationTypeObjc alloc] initWithValue:@"External"];
 static AuthenticationTypeObjc * _Ultra = [[AuthenticationTypeObjc alloc] initWithValue:@"Ultra"];
 static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initWithValue:@"UNKNOWN"];
@@ -78,6 +80,14 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
 {
     return _Parse;
 }
++ (AuthenticationTypeObjc*) Handoff
+{
+	return _Handoff;
+}
++ (AuthenticationTypeObjc*) SettopHandoff
+{
+	return _SettopHandoff;
+}
 + (AuthenticationTypeObjc*) External
 {
     return _External;
@@ -129,6 +139,14 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
     {
         return _Parse;
     }
+	if ([platform compare:_Handoff.toString] == NSOrderedSame)
+	{
+		return _Handoff;
+	}
+	if ([platform compare:_SettopHandoff.toString] == NSOrderedSame)
+	{
+		return _SettopHandoff;
+	}
     if ([platform compare:_External.toString] == NSOrderedSame)
     {
         return _External;

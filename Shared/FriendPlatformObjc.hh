@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 @interface FriendPlatformObjc : NSObject
 
@@ -25,3 +27,5 @@
 @property (readonly) NSString *value;
 
 @end
+
+#pragma clang diagnostic pop

@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
@@ -284,7 +286,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)compelteMatchWithSummaryData:(NSString *)ownerId
+- (void)completeMatchWithSummaryData:(NSString *)ownerId
                              matchId:(NSString *)matchId
                          pushContent:(NSString *)pushContent
                              summary:(NSString *)summary
@@ -315,3 +317,5 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                             cbObject:(BCCallbackObject)cbObject;
 
 @end
+
+#pragma clang diagnostic pop

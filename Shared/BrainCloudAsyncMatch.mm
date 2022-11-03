@@ -154,11 +154,10 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
         new BrainCloudCallback(cb, ecb, cbObject));
 }
 
-- (void)compelteMatchWithSummaryData:(NSString *)ownerId
+- (void)completeMatchWithSummaryData:(NSString *)ownerId
                              matchId:(NSString *)matchId
                          pushContent:(NSString *)pushContent
                              summary:(NSString *)summary
-                         summaryData:(NSString *)summaryData
                                   cb:(BCCompletionBlock)cb
                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
                             cbObject:(BCCallbackObject)cbObject
@@ -175,7 +174,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                             matchId:(NSString *)matchId
                         pushContent:(NSString *)pushContent
                             summary:(NSString *)summary
-                        summaryData:(NSString *)summaryData
                                  cb:(BCCompletionBlock)cb
                errorCompletionBlock:(BCErrorCompletionBlock)ecb
                            cbObject:(BCCallbackObject)cbObject

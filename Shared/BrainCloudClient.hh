@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import "BrainCloudAsyncMatch.hh"
 #import "BrainCloudAuthentication.hh"
@@ -15,6 +17,7 @@
 #import "BrainCloudEvent.hh"
 #import "BrainCloudFile.hh"
 #import "BrainCloudGlobalFile.hh"
+#import "BrainCloudBlockchain.hh"
 #import "BrainCloudFriend.hh"
 #import "BrainCloudGamification.hh"
 #import "BrainCloudGlobalApp.hh"
@@ -492,6 +495,7 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 @property(readonly) BrainCloudLeaderboard *leaderboardService;
 @property(readonly) BrainCloudGlobalApp *globalAppService;
 @property(readonly) BrainCloudFriend *friendService;
+@property(readonly) BrainCloudBlockchain *blockchainService;
 @property(readonly) BrainCloudMail *mailService;
 @property(readonly) BrainCloudMessaging *messagingService;
 @property(readonly) BrainCloudLobby *lobbyService;
@@ -524,3 +528,5 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 @property NSInteger frameInterval;
 
 @end
+
+#pragma clang diagnostic pop

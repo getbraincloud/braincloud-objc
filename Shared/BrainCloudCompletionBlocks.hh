@@ -8,6 +8,8 @@
 
 #ifndef brainCloudClientObjc_BrainCloudCompletionBlocks_h
 #define brainCloudClientObjc_BrainCloudCompletionBlocks_h
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import <Foundation/Foundation.h>
 
@@ -119,7 +121,7 @@ typedef void (^BCFileUploadFailedCompletionBlock)(NSString *fileUploadId, NSInte
  *
  * Note this method is *not* invoked when FlushCachedMessages(true) is called.
  */
-typedef void (^BCNetworkErrorCompletionBlock)();
+typedef void (^BCNetworkErrorCompletionBlock)(void);
 
 /**
  * Completion block called when RTT connected successfully.
@@ -182,5 +184,7 @@ typedef void (^BCRelayEventBlock)(int netId, NSData* data, BCCallbackObject cbOb
  * be returned in the completion block.
  */
 typedef void (^BCRelaySystemEventBlock)(NSString* jsonResponse, BCCallbackObject cbObject);
+
+#pragma clang diagnostic pop
 
 #endif

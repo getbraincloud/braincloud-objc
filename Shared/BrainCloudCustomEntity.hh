@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import "BrainCloudCompletionBlocks.hh"
 #import <Foundation/Foundation.h>
@@ -244,7 +246,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     version:(int)version
                    dataJson:(NSString *)dataJson
                         acl:(NSString *)acl
-                        timeToLive:(NSString *)timeToLive
+                        timeToLive:(int64_t)timeToLive
             completionBlock:(BCCompletionBlock)completionBlock
       errorCompletionBlock:(BCErrorCompletionBlock)ecb
                   cbObject:(BCCallbackObject)cbObject;
@@ -264,4 +266,19 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
       errorCompletionBlock:(BCErrorCompletionBlock)ecb
                   cbObject:(BCCallbackObject)cbObject;
 
+/**
+ * Increments the specified fields, of the singleton owned by the user, by the specified amount within the custom entity data on the server.
+ *
+ * @param entityType The entity type as defined by the user
+ * @param fieldsJson
+ * @param callback Callback.
+ */
+- (void)incrementSingletonData:(NSString *)entityType
+				fieldsJson:(NSString *)fieldsJson
+		   completionBlock:(BCCompletionBlock)completionBlock
+	  errorCompletionBlock:(BCErrorCompletionBlock)ecb
+				  cbObject:(BCCallbackObject)cbObject;
+
 @end
+
+#pragma clang diagnostic pop

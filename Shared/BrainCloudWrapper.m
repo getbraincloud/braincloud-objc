@@ -61,6 +61,8 @@ static BrainCloudWrapper *sharedWrapper = nil;
 {
     self.alwaysAllowProfileSwitch = YES;
     
+	__typeof__(self) __weak weakSelf = self;
+	
     // the generic authentication completion blocks
     self.authSuccessCompletionBlock = ^(NSString *serviceName, NSString *serviceOperation, NSString *jsonData, BCCallbackObject cbObject)
     {
@@ -68,9 +70,9 @@ static BrainCloudWrapper *sharedWrapper = nil;
         NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
                                                                 options:NSJSONReadingMutableContainers
                                                                   error:nil];
-        
-        self.storedProfileId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"profileId"];
-        
+		
+		weakSelf.storedProfileId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"profileId"];
+
         AuthenticationCallbackObject *aco = (AuthenticationCallbackObject*) cbObject;
         if (aco.completionBlock != nil)
         {
@@ -489,7 +491,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
 }
 
 - (void)authenticateUltra:(NSString *)ultraUsername
-            sessionTicket:(NSString *)ultraIdToken
+			 ultraIdToken:(NSString *)ultraIdToken
               forceCreate:(BOOL)forceCreate
           completionBlock:(BCCompletionBlock)completionBlock
      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
@@ -600,7 +602,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
         aco.errorCompletionBlock = errorCompletionBlock;
         aco.cbObject = cbObject;
         
-        [[_bcClient authenticationService] authenticateEmailPassword:email
+		[[self->_bcClient authenticationService] authenticateEmailPassword:email
                                                             password:password
                                                          forceCreate:forceCreate
                                                      completionBlock:self.authSuccessCompletionBlock
@@ -629,7 +631,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateExternal:userId
+		[[self->_bcClient authenticationService] authenticateExternal:userId
                                         authenticationToken:authToken
                                  externalAuthenticationName:externalAuthName
                                                 forceCreate:forceCreate
@@ -657,7 +659,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateFacebook:fbUserId
+		[[self->_bcClient authenticationService] authenticateFacebook:fbUserId
                                         authenticationToken:fbAuthToken
                                                 forceCreate:forceCreate
                                             completionBlock:self.authSuccessCompletionBlock
@@ -683,7 +685,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateGameCenter:gameCenterId
+		[[self->_bcClient authenticationService] authenticateGameCenter:gameCenterId
                                                   forceCreate:forceCreate
                                               completionBlock:self.authSuccessCompletionBlock
                                          errorCompletionBlock:self.authErrorCompletionBlock
@@ -709,7 +711,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateGoogle:userID
+		[[self->_bcClient authenticationService] authenticateGoogle:userID
                                            serverAuthCode:token
                                               forceCreate:forceCreate
                                           completionBlock:self.authSuccessCompletionBlock
@@ -736,7 +738,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateGoogleOpenId:googleUserAccountEmail
+		[[self->_bcClient authenticationService] authenticateGoogleOpenId:googleUserAccountEmail
                                            idToken:idToken
                                               forceCreate:forceCreate
                                           completionBlock:self.authSuccessCompletionBlock
@@ -763,7 +765,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateApple:appleUserId
+		[[self->_bcClient authenticationService] authenticateApple:appleUserId
                                            identityToken:identityToken
                                               forceCreate:forceCreate
                                           completionBlock:self.authSuccessCompletionBlock
@@ -791,7 +793,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateSteam:userId
+		[[self->_bcClient authenticationService] authenticateSteam:userId
                                            sessionTicket:sessionticket
                                              forceCreate:forceCreate
                                          completionBlock:self.authSuccessCompletionBlock
@@ -804,7 +806,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
 }
 
 - (void)smartSwitchAuthenticateUltra:(NSString *)ultraUsername
-                       sessionTicket:(NSString *)ultraIdToken
+                       ultraIdToken:(NSString *)ultraIdToken
                          forceCreate:(BOOL)forceCreate
                      completionBlock:(BCCompletionBlock)completionBlock
                 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
@@ -818,7 +820,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
         aco.errorCompletionBlock = errorCompletionBlock;
         aco.cbObject = cbObject;
 
-        [[_bcClient authenticationService] authenticateUltra:ultraUsername
+		[[self->_bcClient authenticationService] authenticateUltra:ultraUsername
                                                 ultraIdToken:ultraIdToken
                                                  forceCreate:forceCreate
                                              completionBlock:self.authSuccessCompletionBlock
@@ -846,7 +848,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
     aco.errorCompletionBlock = errorCompletionBlock;
     aco.cbObject = cbObject;
 
-    [[_bcClient authenticationService] authenticateTwitter:userId
+		[[self->_bcClient authenticationService] authenticateTwitter:userId
                                                      token:token
                                                     secret:secret
                                                forceCreate:forceCreate
@@ -877,7 +879,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
         aco.errorCompletionBlock = errorCompletionBlock;
         aco.cbObject = cbObject;
 
-        [[_bcClient authenticationService] authenticateAdvanced:authenticationType
+		[[self->_bcClient authenticationService] authenticateAdvanced:authenticationType
                                               authenticationIds:authenticationIds
                                                     forceCreate:forceCreate
                                                       extraJson:extraJson
@@ -898,8 +900,8 @@ static BrainCloudWrapper *sharedWrapper = nil;
                      cbObject:(BCCallbackObject)cbObject
 {
     [self _initializeIdentity:FALSE];
-    
-    BCSmartSwitchCompletionBlock authCallback = ^() {
+	
+	BCSmartSwitchCompletionBlock authCallback = ^() {
         [self _initializeIdentity:TRUE];
         
         AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
@@ -907,7 +909,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
         aco.errorCompletionBlock = errorCompletionBlock;
         aco.cbObject = cbObject;
         
-        [[_bcClient authenticationService] authenticateUniversal:userId
+		[[self->_bcClient authenticationService] authenticateUniversal:userId
                                                         password:password
                                                      forceCreate:forceCreate
                                                  completionBlock:completionBlock
@@ -1214,6 +1216,11 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
 - (BrainCloudTournament *)tournamentService
 {
     return [_bcClient tournamentService];
+}
+
+- (BrainCloudBlockchain *)blockchainService
+{
+	return [_bcClient blockchainService];
 }
 
 - (BrainCloudCustomEntity *)customEntityService
