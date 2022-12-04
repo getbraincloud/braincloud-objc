@@ -3012,7 +3012,7 @@
 				INFOPLIST_FILE = "BrainCloud-OSX/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-OSX";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -3034,7 +3034,7 @@
 				INFOPLIST_FILE = "BrainCloud-OSX/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-OSX";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
