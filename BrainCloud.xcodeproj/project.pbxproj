@@ -434,7 +434,6 @@
 		DBB9053D24EAE678000067CE /* TestRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB9053C24EAE678000067CE /* TestRelay.m */; };
 		DBB9053E24EAE678000067CE /* TestRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB9053C24EAE678000067CE /* TestRelay.m */; };
 		DBB9053F24EAE678000067CE /* TestRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB9053C24EAE678000067CE /* TestRelay.m */; };
-		DBB9054024EAE678000067CE /* TestRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB9053C24EAE678000067CE /* TestRelay.m */; };
 		DBB9054824EAEA76000067CE /* BrainCloudRelay.hh in Headers */ = {isa = PBXBuildFile; fileRef = DBB9054624EAEA76000067CE /* BrainCloudRelay.hh */; };
 		DBB9054924EAEA76000067CE /* BrainCloudRelay.hh in Headers */ = {isa = PBXBuildFile; fileRef = DBB9054624EAEA76000067CE /* BrainCloudRelay.hh */; };
 		DBB9054A24EAEA76000067CE /* BrainCloudRelay.hh in Headers */ = {isa = PBXBuildFile; fileRef = DBB9054624EAEA76000067CE /* BrainCloudRelay.hh */; };
@@ -2712,7 +2711,6 @@
 				DB83B16127A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */,
 				85EA9472233950E400E7938F /* TestItemCatalog.m in Sources */,
 				DF2231481CE39E15003A7D8D /* TestWrapper.m in Sources */,
-				DBB9054024EAE678000067CE /* TestRelay.m in Sources */,
 				DF2231491CE39E15003A7D8D /* TestUser.m in Sources */,
 				DF22314A1CE39E15003A7D8D /* TestGlobalEntity.m in Sources */,
 				DF22314B1CE39E15003A7D8D /* TestPlayerStatisticsEvent.m in Sources */,
