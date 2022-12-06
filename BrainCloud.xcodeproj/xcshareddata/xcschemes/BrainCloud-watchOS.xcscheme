@@ -68,6 +68,16 @@
          </AdditionalOption>
       </AdditionalOptions>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DF22312E1CE39E15003A7D8D"
+               BuildableName = "BrainCloud-watchOSTests.xctest"
+               BlueprintName = "BrainCloud-watchOSTests"
+               ReferencedContainer = "container:BrainCloud.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
