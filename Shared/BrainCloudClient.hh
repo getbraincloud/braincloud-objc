@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import "BrainCloudAsyncMatch.hh"
 #import "BrainCloudAuthentication.hh"
@@ -526,3 +528,5 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 @property NSInteger frameInterval;
 
 @end
+
+#pragma clang diagnostic pop

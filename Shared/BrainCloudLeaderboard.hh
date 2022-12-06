@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import "BrainCloudCompletionBlocks.hh"
 #import <Foundation/Foundation.h>
@@ -773,3 +775,5 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                                 cbObject:(BCCallbackObject)cbObject;
 
 @end
+
+#pragma clang diagnostic pop
