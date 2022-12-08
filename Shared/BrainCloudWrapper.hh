@@ -1,3 +1,7 @@
+#pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #import <Foundation/Foundation.h>
 #import "BrainCloudClient.hh"
 
@@ -939,3 +943,4 @@ typedef void (^BCSmartSwitchCompletionBlock)(void);
 
 
 @end
+#pragma clang diagnostic pop
