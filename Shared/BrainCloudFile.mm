@@ -118,13 +118,13 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 
 - (NSInteger) getUploadBytesTransferred:(NSString *)uploadId
 {
-    return _client->getFileService()->getUploadBytesTransferred([uploadId UTF8String]);
+    return (NSInteger)_client->getFileService()->getUploadBytesTransferred([uploadId UTF8String]);
 }
 
 
 - (NSInteger) getUploadTotalBytesToTransfer:(NSString *)uploadId
 {
-    return _client->getFileService()->getUploadTotalBytesToTransfer([uploadId UTF8String]);
+    return (NSInteger)_client->getFileService()->getUploadTotalBytesToTransfer([uploadId UTF8String]);
 }
 
 @end
