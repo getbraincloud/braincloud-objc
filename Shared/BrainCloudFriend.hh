@@ -5,6 +5,9 @@
 //  Created by Hill, Bradley on 2015-08-10.
 //  Copyright (c) 2016 bitHeads. All rights reserved.
 //
+#pragma once
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #import "BrainCloudCompletionBlocks.hh"
 #import <Foundation/Foundation.h>
@@ -311,3 +314,4 @@
                     cbObject:(BCCallbackObject)cbObject;
 
 @end
+#pragma clang diagnostic pop
