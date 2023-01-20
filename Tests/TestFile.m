@@ -6,6 +6,7 @@
 //
 
 #import "TestFixtureBase.h"
+#import "StatusCodes.hh"
 #import "ReasonCodes.hh"
 
 @interface TestFile : TestFixtureBase
@@ -154,9 +155,8 @@ long createFile(const char * in_path, int64_t in_size)
         _XCTPrimitiveFail(self, @"Uploads failed not 1");
     }
     
-    if ([(FileUploadFailedDetails*)[_fileUploadFailedReceived objectAtIndex:0] status] != 900)
+    if ([(FileUploadFailedDetails*)[_fileUploadFailedReceived objectAtIndex:0] status] != HTTP_CUSTOM)
     {
-        // HTTP_CUSTOM is 900
         _XCTPrimitiveFail(self, @"Wrong http status");
     }
     if ([(FileUploadFailedDetails*)[_fileUploadFailedReceived objectAtIndex:0] reasonCode] != CLIENT_UPLOAD_FILE_CANCELLED)
