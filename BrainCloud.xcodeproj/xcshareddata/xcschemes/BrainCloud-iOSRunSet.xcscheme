@@ -161,9 +161,6 @@
                   Identifier = "TestPushNotification">
                </Test>
                <Test
-                  Identifier = "TestRTT">
-               </Test>
-               <Test
                   Identifier = "TestRedemptionCode">
                </Test>
                <Test
