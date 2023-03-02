@@ -57,7 +57,7 @@ typedef NS_ENUM(NSUInteger, BCRelayConnectionType)
 -(void) disconnect;
 
 /**
- * Disconnects from the relay server
+ * Terminate the match instance by the owner.
  */
 -(void) endMatch:(NSString *)jsonPayload;
 
