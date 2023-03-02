@@ -24,7 +24,7 @@
     self.continueAfterFailure = NO;
     
     @try {
-        [self relayFullFlow:BC_CONNECTION_TYPE_TCP];
+        [self relayFullFlow:BC_CONNECTION_TYPE_TCP endMatch:false];
     } @finally {
         self.continueAfterFailure = YES;
     }
@@ -35,7 +35,28 @@
     self.continueAfterFailure = NO;
     
     @try {
-        [self relayFullFlow:BC_CONNECTION_TYPE_UDP];
+        [self relayFullFlow:BC_CONNECTION_TYPE_UDP endMatch:false];
+    } @finally {
+        self.continueAfterFailure = YES;
+    }
+}
+- (void)testTCPEndMatch
+{
+    self.continueAfterFailure = NO;
+    
+    @try {
+        [self relayFullFlow:BC_CONNECTION_TYPE_TCP endMatch:true];
+    } @finally {
+        self.continueAfterFailure = YES;
+    }
+}
+
+- (void)testUDPEndMatch
+{
+    self.continueAfterFailure = NO;
+    
+    @try {
+        [self relayFullFlow:BC_CONNECTION_TYPE_UDP endMatch:true];
     } @finally {
         self.continueAfterFailure = YES;
     }
@@ -55,6 +76,7 @@
  */
 
 - (void)relayFullFlow:(BCRelayConnectionType)connectionType
+             endMatch:(bool)endMatch
 {
     __block BOOL isRoomReady = NO;
     __block NSDictionary *connectionInfo = nil;
@@ -138,6 +160,7 @@
     NSData* messageData = [@"Hello World!" dataUsingEncoding:NSUTF8StringEncoding];
     
     __block BOOL hasReceivedSystemMessage = NO;
+    __block BOOL hasReceivedEndMatch = NO;
     [[m_client relayService] registerSystemCallback:^(NSString *jsonResponse, BCCallbackObject cbObject)
     {
         NSData *data = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
@@ -149,6 +172,10 @@
         if ([op isEqualToString:@"CONNECT"])
         {
             hasReceivedSystemMessage = YES;
+        }
+        if ([op isEqualToString:@"END_MATCH"])
+        {
+            hasReceivedEndMatch = YES;
         }
     } cbObject:nil];
     
@@ -212,6 +239,48 @@
             }
         }
         if (!hasReceivedSystemMessage || !hasReceivedEcho)
+        {
+            _XCTPrimitiveFail(weakSelf, @"");
+        }
+    }
+    
+    if(endMatch)
+    {
+        [[m_client relayService] endMatch:@"{\"AnswerToEverything\":42}"];
+        
+        long maxWait = 30 * 1000;
+        while (!hasReceivedEndMatch)
+        {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+            maxWait -= 10;
+            [m_client runCallBacks];
+            if (maxWait < 0)
+            {
+                break;
+            }
+        }
+        if (!hasReceivedEndMatch || [[m_client relayService] isConnected])
+        {
+            _XCTPrimitiveFail(weakSelf, @"");
+        }
+    }
+    else
+    {
+        relayFailed = false;
+        [[m_client relayService] disconnect];
+        
+        long maxWait = 30 * 1000;
+        while (!relayFailed)
+        {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+            maxWait -= 10;
+            [m_client runCallBacks];
+            if (maxWait < 0)
+            {
+                break;
+            }
+        }
+        if ([[m_client relayService] isConnected])
         {
             _XCTPrimitiveFail(weakSelf, @"");
         }

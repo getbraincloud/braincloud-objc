@@ -57,6 +57,11 @@ typedef NS_ENUM(NSUInteger, BCRelayConnectionType)
 -(void) disconnect;
 
 /**
+ * Terminate the match instance by the owner.
+ */
+-(void) endMatch:(NSString *)jsonPayload;
+
+/**
  * Set the ping interval. Ping allows to keep the connection
  * alive, but also inform the player of his current ping.
  * The default is 1000 miliseconds interval. (1 seconds)
