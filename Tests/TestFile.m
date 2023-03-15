@@ -22,25 +22,6 @@
 
 - (void)tearDown { [super tearDown]; }
 
-long createFile(const char * in_path, int64_t in_size)
-{
-    FILE* fp = NULL;
-    fp = fopen(in_path, "w");
-    if (fp == NULL)
-    {
-        return -1;
-    }
-    for (int i = 0; i < in_size; ++i)
-    {
-        fputc('!', fp);
-    }
-    fseek(fp, 0, SEEK_END);
-    long fileLen = ftell(fp);
-    fclose(fp);
-    fp = NULL;
-    return fileLen;
-}
-
 - (bool) simpleUpload:(NSInteger)mb
             cloudPath:(NSString *)cloudPath
         cloudFilename:(NSString *)cloudFilename

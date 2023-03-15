@@ -98,7 +98,7 @@ groupId:(NSString *)groupId
 groupTreeId:(NSString *)groupTreeId
 groupFilename:(NSString *)groupFilename
 groupFileAcl:(NSString *)groupFileAcl
-overwriteIfPresent:(NSString *)overwriteIfPresent
+overwriteIfPresent:(bool)overwriteIfPresent
 completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
