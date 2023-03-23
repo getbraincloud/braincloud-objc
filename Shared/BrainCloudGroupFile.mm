@@ -2,8 +2,8 @@
 //  BrainCloudGroup.mm
 //  brainCloudClientObjc
 //
-//  Created by Hill, Bradley on 2016-05-11.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+//  Created by Joanne Hoar on 2023-03-03.
+//  Copyright © 2023 BitHeads Inc. All rights reserved.
 //
 
 #include "BrainCloudCallback.hh"
