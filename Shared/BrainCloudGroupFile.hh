@@ -24,7 +24,7 @@
 - (instancetype) init: (BrainCloudClient*) client;
 
 /**
- * checkFilenameExists
+ * Check if filename exists for provided path and name
  *
  * Service Name GroupFile
  * Service Operation CheckFilenameExists
@@ -45,7 +45,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * checkFullpathFilenameExists
+ * Check if filename exists for provided full path name
  *
  * Service Name GroupFile
  * Service Operation CheckFullpathFilenameExists
@@ -64,7 +64,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * copyFile
+ *  Copy a file.
  *
  * Service Name GroupFile
  * Service Operation CopyFile
@@ -93,7 +93,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * deleteFile
+ * Delete a file.
  *
  * Service Name GroupFile
  * Service Operation DeleteFile
@@ -116,9 +116,9 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * getFileInfo
+ * Returns information on a file using fileId
  *
- * Service Name GroupFile
+ * Service Name Returns information on a file using fileId.
  * Service Operation GetFileInfo
  *
  * @param groupId the groupId
@@ -135,7 +135,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * getCDNUrl
+ * Return CDN url for file for clients that cannot handle redirect.
  *
  * Service Name GroupFile
  * Service Operation GetCdnUrl
@@ -154,7 +154,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * getFileInfoSimple
+ * Returns information on a file using path and name
  *
  * Service Name GroupFile
  * Service Operation GetFileInfoSimple
@@ -175,7 +175,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * getFileList
+ * Returns a list of files.
  *
  * Service Name GroupFile
  * Service Operation GetFileList
@@ -196,7 +196,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * moveFile
+ *  Move a file.
  *
  * Service Name GroupFile
  * Service Operation MoveFile
@@ -224,7 +224,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * moveUserToGroupFile
+ * Move a file from user space to group space.
  *
  * Service Name GroupFile
  * Service Operation MoveUserToGroupFile
@@ -253,7 +253,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * updateFileInfo
+ * updates information on a file given fileId.
  *
  * Service Name GroupFile
  * Service Operation UpdateFileInfo
