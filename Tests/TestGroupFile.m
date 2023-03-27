@@ -111,8 +111,8 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
                                               options:NSJSONReadingMutableContainers
                                                 error:nil];
     
-    bool exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
-    if(!exists){
+    NSString *exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
+    if([exists isEqual:@"false"]){
         _XCTPrimitiveFail(self, @"File not found");
     }
 }
@@ -131,8 +131,8 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
     NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
                                               options:NSJSONReadingMutableContainers
                                                 error:nil];
-    bool exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
-    if(exists){
+    NSString *exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
+    if([exists isEqual:@"true"]){
         _XCTPrimitiveFail(self, @"File not expected");
     }
 }
