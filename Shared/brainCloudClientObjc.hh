@@ -28,6 +28,7 @@
 #import "BrainCloudGlobalEntity.hh"
 #import "BrainCloudGlobalStatistics.hh"
 #import "BrainCloudGroup.hh"
+#import "BrainCloudGroupFile.hh"
 #import "BrainCloudIdentity.hh"
 #import "BrainCloudLeaderboard.hh"
 #import "BrainCloudMail.hh"

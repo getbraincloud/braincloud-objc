@@ -61,6 +61,14 @@
     _client->getRelayService()->disconnect();
 }
 
+-(void) endMatch:(NSString *)jsonPayload
+{
+    std::string cppJsonPayload;
+    if (jsonPayload != nil) cppJsonPayload = [jsonPayload cStringUsingEncoding:NSUTF8StringEncoding];
+
+    _client->getRelayService()->endMatch(cppJsonPayload);
+}
+
 -(void) setPingInterval:(int)intervalMS
 {
     _client->getRelayService()->setPingInterval(intervalMS);

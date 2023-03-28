@@ -98,4 +98,6 @@
 
 - (bool)authenticateOnSetup;
 
+long createFile(const char * in_path, int64_t in_size);
+
 @end

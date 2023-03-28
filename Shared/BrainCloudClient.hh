@@ -24,6 +24,7 @@
 #import "BrainCloudGlobalEntity.hh"
 #import "BrainCloudGlobalStatistics.hh"
 #import "BrainCloudGroup.hh"
+#import "BrainCloudGroupFile.hh"
 #import "BrainCloudIdentity.hh"
 #import "BrainCloudLeaderboard.hh"
 #import "BrainCloudMail.hh"
@@ -525,6 +526,7 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 @property(readonly) BrainCloudFile *fileService;
 @property(readonly) BrainCloudGlobalFile *globalFileService;
 @property(readonly) BrainCloudGroup *groupService;
+@property(readonly) BrainCloudGroupFile *groupFileService;
 @property NSInteger frameInterval;
 
 @end
