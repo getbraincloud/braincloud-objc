@@ -14,7 +14,7 @@ def shared_pods
   elsif ENV['CPPSOURCE'] == "HOME" then
     pod 'BrainCloudCpp', :path => '~/git/braincloud-cpp/'
   else
-    pod 'BrainCloudCpp', '4.13.2'
+    pod 'BrainCloudCpp', '4.14.0'
   end
 end
 
