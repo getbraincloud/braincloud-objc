@@ -57,3 +57,16 @@ target 'BrainCloud-watchOSTests' do
   platform :watchos, '4.0'
   shared_pods
 end
+
+post_install do |installer|
+    installer.generated_projects.each do |project|
+          project.targets.each do |target|
+              target.build_configurations.each do |config|
+                config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+                config.build_settings.delete 'WATCHOS_DEPLOYMENT_TARGET'
+                config.build_settings.delete 'TVOS_DEPLOYMENT_TARGET'
+                config.build_settings.delete 'MACOSX_DEPLOYMENT_TARGET'
+               end
+          end
+   end
+end
