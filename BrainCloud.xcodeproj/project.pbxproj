@@ -1928,18 +1928,23 @@
 					};
 					D84596EC1C6D06D0003DA016 = {
 						CreatedOnToolsVersion = 7.2.1;
+						ProvisioningStyle = Manual;
 					};
 					D84596FF1C6D06E2003DA016 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 					D84597081C6D06E2003DA016 = {
 						CreatedOnToolsVersion = 7.2.1;
+						ProvisioningStyle = Manual;
 					};
 					D845971B1C6D06FE003DA016 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 					D84597241C6D06FE003DA016 = {
 						CreatedOnToolsVersion = 7.2.1;
+					};
+					DF22312E1CE39E15003A7D8D = {
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -3056,12 +3061,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BCA43D34093C6A360566F77 /* Pods-BrainCloud-tvOSTests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "BrainCloud-tvOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
@@ -3073,12 +3081,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C870E3EB136301B65A5C235D /* Pods-BrainCloud-tvOSTests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "BrainCloud-tvOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
@@ -3132,6 +3143,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9864B1C74A0BAC7BBBE6C200 /* Pods-BrainCloud-iOSTests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "BrainCloud-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3139,6 +3152,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
@@ -3149,6 +3163,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0D84F3E426218C9A6595A52B /* Pods-BrainCloud-iOSTests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "BrainCloud-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3156,6 +3172,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
@@ -3306,6 +3323,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C7383233D3B1DB4CD92790FD /* Pods-BrainCloud-watchOSTests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "BrainCloud-watchOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3313,6 +3332,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-watchOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = 4;
@@ -3325,6 +3345,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CEDB0C38CC877E529B3913C /* Pods-BrainCloud-watchOSTests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "BrainCloud-watchOSTests/Info.plist";
@@ -3333,6 +3355,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitheads.BrainCloud-watchOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = 4;
