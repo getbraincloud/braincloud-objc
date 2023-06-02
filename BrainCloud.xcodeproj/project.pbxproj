@@ -1935,6 +1935,7 @@
 					};
 					D84597081C6D06E2003DA016 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 3HU3N8Z2U7;
 						ProvisioningStyle = Manual;
 					};
 					D845971B1C6D06FE003DA016 = {
@@ -3145,6 +3146,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HU3N8Z2U7;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3HU3N8Z2U7;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "BrainCloud-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3165,6 +3168,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HU3N8Z2U7;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3HU3N8Z2U7;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "BrainCloud-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
