@@ -9,12 +9,11 @@ inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 def shared_pods
-  if ENV['CPPSOURCE'] == "JENKINS" then
-    pod 'BrainCloudCpp', :path => './braincloud-cpp/'
-  elsif ENV['CPPSOURCE'] == "HOME" then
-    pod 'BrainCloudCpp', :path => '~/git/braincloud-cpp/'
-  else
-    pod 'BrainCloudCpp', '4.14.1'
+  if ENV['CPPSOURCE'] == "" then
+        pod 'BrainCloudCpp', '4.14.1'
+    else
+        pod 'BrainCloudCpp', :path => ENV['CPPSOURCE'] 
+        pod 'BrainCloudJsonCpp', :path => ENV['JSONSOURCE'] 
   end
 end
 
@@ -59,14 +58,22 @@ target 'BrainCloud-watchOSTests' do
 end
 
 post_install do |installer|
-    installer.generated_projects.each do |project|
-          project.targets.each do |target|
-              target.build_configurations.each do |config|
-                config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-                config.build_settings.delete 'WATCHOS_DEPLOYMENT_TARGET'
-                config.build_settings.delete 'TVOS_DEPLOYMENT_TARGET'
-                config.build_settings.delete 'MACOSX_DEPLOYMENT_TARGET'
+   installer.generated_projects.each do |project|
+         project.targets.each do |target|
+             target.build_configurations.each do |config|
+               if Gem::Version.new('11.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'])
+                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
                end
-          end
-   end
+               if Gem::Version.new('4.0') > Gem::Version.new(config.build_settings['WATCHOS_DEPLOYMENT_TARGET'])
+                 config.build_settings['WATCHOS_DEPLOYMENT_TARGET'] = '4.0'
+               end
+               if Gem::Version.new('11.0') > Gem::Version.new(config.build_settings['TVOS_DEPLOYMENT_TARGET'])
+                 config.build_settings['TVOS_DEPLOYMENT_TARGET'] = '11.0'
+               end
+               if Gem::Version.new('10.13') > Gem::Version.new(config.build_settings['MACOSX_DEPLOYMENT_TARGET'])
+                 config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
+               end
+             end
+         end
+ end
 end
