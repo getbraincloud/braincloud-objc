@@ -12,7 +12,7 @@
 #import "AuthenticationTypeObjc.hh"
 #include <stdlib.h>
 
-#define MAX_WAIT_SECS 120
+
 #define ID_FILE_NAME = "ids.txt"
 
 @implementation FileUploadCompletedDetails
@@ -21,19 +21,27 @@
 @implementation FileUploadFailedDetails
 @end
 
-@interface TestFixtureBase ()
-
-
-- (void)loadIds;
-- (void)createUsers;
-- (void)createUser:(NSString *)prefix suffix:(int)suffix;
-- (NSString *)authenticateUser:(NSString *)userId password:(NSString *)password;
-
-@end
-
 NSMutableDictionary *m_users;
 
 @implementation TestFixtureBase
+
+static NSString *parentLevel;
+static NSString *childAppId;
+static NSString *childSecret;
+static NSString *serverUrl;
+static NSString *appId;
+static NSString *secret;
+static NSString *bcversion;
+static NSString *peerName;
+
++(NSString *) appId{ return appId;}
++(NSString *) parentLevel{ return parentLevel; }
++(NSString *) childAppId{ return childAppId; }
++(NSString *) childSecret{ return childSecret; }
++(NSString *) serverUrl{ return serverUrl; }
++(NSString *) secret{ return secret; }
++(NSString *) bcversion{ return bcversion; }
++(NSString *) peerName{ return peerName; }
 
 long createFile(const char * in_path, int64_t in_size)
 {
@@ -218,10 +226,17 @@ long createFile(const char * in_path, int64_t in_size)
 - (void)setUp
 {
     m_bcWrapper = [[BrainCloudWrapper alloc] init];
-    
-    
+        
     [super setUp];
-    [self loadIds];
+    [TestFixtureBase loadIds];
+    m_appId = appId;
+    m_parentLevel = parentLevel;
+    m_childAppId = childAppId;
+    m_childSecret = childSecret;
+    m_serverUrl = serverUrl;
+    m_secret = secret;
+    m_version = bcversion;
+    m_peerName = peerName;
     m_client = [m_bcWrapper getBCClient];
     NSDictionary* secretMap = @{
         m_appId      : m_secret, 
@@ -254,7 +269,7 @@ long createFile(const char * in_path, int64_t in_size)
     [super tearDown];
 }
 
-- (void)loadIds
++ (void)loadIds
 {
     // syntax if loading file from bundle of a running app
     // NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ids" ofType:@"txt"];
@@ -272,42 +287,42 @@ long createFile(const char * in_path, int64_t in_size)
         if ([line hasPrefix:@"appId"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_appId = [line substringFromIndex:range.location + 1];
+            appId = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"serverUrl"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_serverUrl = [line substringFromIndex:range.location + 1];
+            serverUrl = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"secret"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_secret = [line substringFromIndex:range.location + 1];
+            secret = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"version"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_version = [line substringFromIndex:range.location + 1];
+            bcversion = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"childAppId"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_childAppId = [line substringFromIndex:range.location + 1];
+            childAppId = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"childSecret"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_childSecret = [line substringFromIndex:range.location + 1];
+            childSecret = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"parentLevelName"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_parentLevel = [line substringFromIndex:range.location + 1];
+            parentLevel = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"peerName"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_peerName = [line substringFromIndex:range.location + 1];
+            peerName = [line substringFromIndex:range.location + 1];
         }
     }
 }
@@ -482,6 +497,9 @@ long createFile(const char * in_path, int64_t in_size)
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     return jsonString;
+}
+
++ (void)setUp {
 }
 
 @end

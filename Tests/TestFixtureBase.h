@@ -15,6 +15,8 @@
 #import "TestUser.h"
 #import "BrainCloudWrapper.hh"
 
+#define MAX_WAIT_SECS 120
+
 @interface FileUploadCompletedDetails : NSObject
 @property NSString *fileUploadId;
 @property NSString *jsonResponse;
@@ -82,6 +84,12 @@
 + (NSDictionary *)getDataFromResponse:(NSString *)jsonResponse;
 + (NSString *)getJsonString:(id)object;
 
++ (void)loadIds;
+- (void)createUsers;
+- (void)createUser:(NSString *)prefix suffix:(int)suffix;
+- (NSString *)authenticateUser:(NSString *)userId password:(NSString *)password;
+
++ (void)setUp;
 - (void)setUp;
 - (void)tearDown;
 - (void)waitForResult;
@@ -97,6 +105,15 @@
 - (bool)detachPeer;
 
 - (bool)authenticateOnSetup;
+
++(NSString *)appId;
++(NSString *)parentLevel;
++(NSString *)childAppId;
++(NSString *)childSecret;
++(NSString *)serverUrl;
++(NSString *)secret;
++(NSString *)bcversion;
++(NSString *)peerName;
 
 long createFile(const char * in_path, int64_t in_size);
 

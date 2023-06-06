@@ -25,6 +25,74 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
 
 - (bool)authenticateOnSetup { return false; }
 
+// static class method: executed once at start of whole test suite
++ (void) setUp {
+//    extern NSString *parentLevel;
+//    extern NSString *childAppId;
+//    extern NSString *childSecret;
+//    extern NSString *serverUrl;
+//    extern NSString *appId;
+//    extern NSString *secret;
+//    extern NSString *bcversion;
+//    extern NSString *peerName;
+
+    BrainCloudWrapper* wrapper = [[BrainCloudWrapper alloc] init];
+    
+    [super setUp];
+    [TestFixtureBase loadIds];
+    BrainCloudClient* client = [wrapper getBCClient];
+    NSDictionary* secretMap = @{
+        [TestFixtureBase appId]      : [TestFixtureBase secret],
+        [TestFixtureBase childAppId] : [TestFixtureBase childSecret],
+    };
+    [client initializeWithApps:[TestFixtureBase serverUrl]
+                    defaultAppId:[TestFixtureBase appId]
+                       secretMap:secretMap
+                      appVersion:[TestFixtureBase bcversion]];
+    [client enableLogging:TRUE];
+    
+    NSString * uploadId = nil;
+    if (![TestGroupFile simpleUpload:client fileSize: 5 cloudPath:@"TestFolder" cloudFilename:filename uploadId:&uploadId])
+    {
+        return;
+    }
+    
+//    if ([_fileUploadCompletedReceived count] != 1)
+//    {
+//        _XCTPrimitiveFail(self, @"Uploads completed not 1");
+//        return;
+//    }
+//    if ([_fileUploadFailedReceived count] != 0)
+//    {
+//        _XCTPrimitiveFail(self, @"Uploads failed not 0");
+//        return;
+//    }
+    /*
+    NSString *testAcl = @"{ \"other\": 2, \"member\": 2 }";
+    
+    [[m_client groupFileService] moveUserToGroupFile:@"TestFolder/"
+                                   userCloudFilename:tempFilename
+                                             groupId:groupID
+                                         groupTreeId:@""
+                                       groupFilename:tempFilename
+                                        groupFileAcl:testAcl
+                                  overwriteIfPresent:true                                  completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
+    
+    [self waitForResult];
+    
+    
+    NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:nil];
+    
+    NSString *newFileId = [(NSDictionary *)[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"fileDetails"] objectForKey:@"fileId"];
+    */
+}
+
+// instance class method: executed once at the start of EACH test
 - (void)setUp {
     
     [super setUp];
@@ -57,7 +125,10 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
     [[m_client authenticationService] clearSavedProfile];
 }
 
-- (bool) simpleUpload:(NSInteger)mb
+
+
++ (bool) simpleUpload:(BrainCloudClient*) bc
+             fileSize:(NSInteger)mb
             cloudPath:(NSString *)cloudPath
         cloudFilename:(NSString *)cloudFilename
              uploadId:(NSString **)uploadId
@@ -66,32 +137,45 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
     
     const char * localPath = [cloudFilename UTF8String];
     createFile(localPath, mb*1024LL*1024LL);
+
+    __block bool result = false;
+    BCCompletionBlock resultSuccess = ^(NSString *serviceName, NSString *serviceOperation, NSString *jsonData,
+                     BCCallbackObject cbObject)
+    {
+        result = true;
+    };
+    BCErrorCompletionBlock resultFail = ^(NSString *serviceName, NSString *serviceOperation, NSInteger statusCode,
+                                          NSInteger returnCode, NSString *statusMessage, BCCallbackObject cbObject)
+    {
+        result = false;
+    };
     
-    [[m_client fileService] uploadFile:cloudPath
+    [[bc fileService] uploadFile:cloudPath
                          cloudFilename:cloudFilename
                              shareable:true
                        replaceIfExists:true
                              localPath:cloudFilename
-                       completionBlock:successBlock
-                  errorCompletionBlock:failureBlock
+                       completionBlock:resultSuccess
+                  errorCompletionBlock:resultFail
                               cbObject:nil];
     
-    [self waitForResult];
-    
-    *uploadId = [[[TestFixtureBase getDataFromResponse:self.jsonResponse] valueForKey:@"fileDetails"] valueForKey:@"uploadId"];
-    
-    [m_client registerFileUploadCallback:fileUploadCompletedBlock failedBlock:fileUploadFailedBlock];
-    while ([_fileUploadCompletedReceived count] == 0 && [_fileUploadFailedReceived count] == 0)
+    long maxWait = 120 * 1000; // MAX_WAIT_SECS should be visible from TestFixtureBase
+
+    while (!result && maxWait > 0)
     {
-        int64_t transferred = [[m_client fileService] getUploadBytesTransferred:*uploadId];
-        int64_t total = [[m_client fileService] getUploadTotalBytesToTransfer:*uploadId];
-        double progress = [[m_client fileService] getUploadProgress:*uploadId];
-        NSLog(@"%lld transfered %lld total %f progress\n", transferred, total, progress);
-        
-        [NSThread sleepForTimeInterval:0.3f];
-        [m_client runCallBacks];
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+        maxWait -= 10;
+        [bc runCallBacks];
     }
-    [m_client deregisterFileUploadCallback];
+    
+    if (!result)
+    {
+        _XCTPrimitiveFail(self, @"Timed out");
+    }
+    
+    // more stuff
+    
+    [bc deregisterFileUploadCallback];
     
     return true;
 }
@@ -210,7 +294,8 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
                                 newTreeId:@""
                               treeVersion:0
                               newFilename:filename
-                       overwriteIfPresent:true                                 completionBlock:successBlock
+                       overwriteIfPresent:true
+                          completionBlock:successBlock
                      errorCompletionBlock:failureBlock
                                  cbObject:nil];
     
@@ -220,7 +305,7 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
 - (void)testMoveUserToGroupFile
 {
     NSString * uploadId = nil;
-    if (![self simpleUpload:5 cloudPath:@"TestFolder" cloudFilename:tempFilename uploadId:&uploadId])
+    if (![TestGroupFile simpleUpload:m_client fileSize:5 cloudPath:@"TestFolder" cloudFilename:tempFilename uploadId:&uploadId])
     {
         return;
     }
@@ -280,38 +365,37 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
                               newFilename:newFileName
                        overwriteIfPresent:true
                           completionBlock:successBlock
-                                errorCompletionBlock:failureBlock
-                                            cbObject:nil];
+                     errorCompletionBlock:failureBlock
+                                 cbObject:nil];
     [self waitForResult];
     NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
-                                              options:NSJSONReadingMutableContainers
-                                                error:nil];
-    
-    //NSString *newFileId = [(NSDictionary *)[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"fileDetails"] objectForKey:@"fileId"];
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:nil];
     
     NSDictionary *response = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"fileDetails"];
     
     NSString *newFileId = [response objectForKey:@"fileId"];
     
-    
-//    [[m_client groupFileService] checkFilenameExists:groupID
-//                                          folderPath:@""
-//                                            fileName:newFileName
-//                                     completionBlock:successBlock
-//                                errorCompletionBlock:failureBlock
-//                                            cbObject:nil];
-//    [self waitForResult];
-//
-//    data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-//    jsonObj = [NSJSONSerialization JSONObjectWithData:data
-//                                              options:NSJSONReadingMutableContainers
-//                                                error:nil];
-//
-//    bool exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
-//    if(!exists){
-//        _XCTPrimitiveFail(self, @"File not copied");
-//    }
+    // --- comment back in to verify file exists
+    //    [[m_client groupFileService] checkFilenameExists:groupID
+    //                                          folderPath:@""
+    //                                            fileName:newFileName
+    //                                     completionBlock:successBlock
+    //                                errorCompletionBlock:failureBlock
+    //                                            cbObject:nil];
+    //    [self waitForResult];
+    //
+    //    data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    //    jsonObj = [NSJSONSerialization JSONObjectWithData:data
+    //                                              options:NSJSONReadingMutableContainers
+    //                                                error:nil];
+    //
+    //    bool exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
+    //    if(!exists){
+    //        _XCTPrimitiveFail(self, @"File not copied");
+    //    }
+    // ---
     
     // delete file
     [[m_client groupFileService] deleteFile:groupID
@@ -323,23 +407,25 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
                                    cbObject:nil];
     [self waitForResult];
     
-//    [[m_client groupFileService] checkFilenameExists:groupID
-//                                          folderPath:@""
-//                                            fileName:newFileName
-//                                     completionBlock:successBlock
-//                                errorCompletionBlock:failureBlock
-//                                            cbObject:nil];
-//    [self waitForResult];
-//    
-//    data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-//    jsonObj = [NSJSONSerialization JSONObjectWithData:data
-//                                              options:NSJSONReadingMutableContainers
-//                                                error:nil];
-//    
-//    exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
-//    if(exists){
-//        _XCTPrimitiveFail(self, @"File not deleted");
-//    }
+    // --- comment back in to verify file no longer exists
+    //    [[m_client groupFileService] checkFilenameExists:groupID
+    //                                          folderPath:@""
+    //                                            fileName:newFileName
+    //                                     completionBlock:successBlock
+    //                                errorCompletionBlock:failureBlock
+    //                                            cbObject:nil];
+    //    [self waitForResult];
+    //
+    //    data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    //    jsonObj = [NSJSONSerialization JSONObjectWithData:data
+    //                                              options:NSJSONReadingMutableContainers
+    //                                                error:nil];
+    //
+    //    exists = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"exists"];
+    //    if(exists){
+    //        _XCTPrimitiveFail(self, @"File not deleted");
+    //    }
+    // ...
 }
 
 - (void)testUpdateFileInfo
@@ -350,7 +436,8 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
                                          fileId:groupFileId
                                         version:version
                                     newFilename:updatedName
-                                         newAcl:testAcl                                     completionBlock:successBlock
+                                         newAcl:testAcl
+                                completionBlock:successBlock
                            errorCompletionBlock:failureBlock
                                        cbObject:nil];
     [self waitForResult];
@@ -359,7 +446,8 @@ NSString *updatedName = @"UpdatedGroupFile.dat";
                                          fileId:groupFileId
                                         version:version
                                     newFilename:filename
-                                         newAcl:testAcl                                     completionBlock:successBlock
+                                         newAcl:testAcl
+                                completionBlock:successBlock
                            errorCompletionBlock:failureBlock
                                        cbObject:nil];
     [self waitForResult];
