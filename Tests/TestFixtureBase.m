@@ -21,10 +21,49 @@
 @implementation FileUploadFailedDetails
 @end
 
+// a mechanism for multifile upload
+@implementation FileUploadProgress
+- (id)init
+{
+    self = [super init];
+
+    _fileUploadCompletedReceived = [[NSMutableArray alloc] init];
+    _fileUploadFailedReceived = [[NSMutableArray alloc] init];
+
+    return self;
+}
+-(void) updateCompleted:(FileUploadCompletedDetails*)details
+{
+    [_fileUploadCompletedReceived addObject:details];
+}
+-(void) updateFailed:(FileUploadFailedDetails*)details
+{
+    [_fileUploadFailedReceived addObject:details];
+}
+-(NSUInteger) countCompleted
+{
+    return [_fileUploadCompletedReceived count];
+}
+-(NSUInteger) countFailed
+{
+    return [_fileUploadFailedReceived count];
+}
+-(FileUploadFailedDetails*) failedDetailsAtIndex:(NSUInteger)index
+{
+    return [_fileUploadFailedReceived objectAtIndex:index];
+}
+-(FileUploadCompletedDetails*) completedDetailsAtIndex:(NSUInteger)index
+{
+    return [_fileUploadFailedReceived objectAtIndex:index];
+}
+@end
+
 NSMutableDictionary *m_users;
 
 @implementation TestFixtureBase
 
+// braincloud connection data for STATIC methods
+// instance methods can access corresponding m_ members
 static NSString *parentLevel;
 static NSString *childAppId;
 static NSString *childSecret;
@@ -66,11 +105,9 @@ long createFile(const char * in_path, int64_t in_size)
 {
     self = [super initWithInvocation:invocation];
 
-    _fileUploadCompletedReceived = [[NSMutableArray alloc] init];
-    _fileUploadFailedReceived = [[NSMutableArray alloc] init];
-
     if (self)
     {
+        __unsafe_unretained typeof(self) safeSelf = self;
         __weak TestFixtureBase *weakSelf = self;
         successBlock = ^(NSString *serviceName, NSString *serviceOperation, NSString *jsonData,
                          BCCallbackObject cbObject)
@@ -152,7 +189,7 @@ long createFile(const char * in_path, int64_t in_size)
             FileUploadCompletedDetails * details = [[FileUploadCompletedDetails alloc] init];
             [details setFileUploadId:fileUploadId];
             [details setJsonResponse:jsonResponse];
-            [self->_fileUploadCompletedReceived addObject:details];
+            [safeSelf->_fileUploadProgress updateCompleted:details];
         };
         fileUploadFailedBlock = ^(NSString *fileUploadId, NSInteger status, NSInteger reasonCode, NSString *jsonResponse) {
             FileUploadFailedDetails * details = [[FileUploadFailedDetails alloc] init];
@@ -160,7 +197,7 @@ long createFile(const char * in_path, int64_t in_size)
             [details setStatus:status];
             [details setReasonCode:reasonCode];
             [details setJsonResponse:jsonResponse];
-            [self->_fileUploadFailedReceived addObject:details];
+            [safeSelf->_fileUploadProgress updateFailed:details];
         };
         
         rewardBlock = ^(NSString *eventsJson) {
@@ -269,6 +306,8 @@ long createFile(const char * in_path, int64_t in_size)
     [super tearDown];
 }
 
+// static function to loads ids.txt
+// sets members accessible for static methods through getters
 + (void)loadIds
 {
     // syntax if loading file from bundle of a running app
@@ -327,6 +366,19 @@ long createFile(const char * in_path, int64_t in_size)
     }
 }
 
++ (void)waitForResponse:(BrainCloudClient*)bc
+          watchResult:(bool*)watchResult
+{
+    long maxWait = MAX_WAIT_SECS * 1000;
+
+    while (!*watchResult && maxWait > 0)
+    {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+        maxWait -= 10;
+        [bc runCallBacks];
+    }
+}
+
 - (void)waitForResult
 {
     [self waitForResultExpectedCount:1 expectFail:false];
@@ -349,14 +401,7 @@ long createFile(const char * in_path, int64_t in_size)
     _apiCountExpected = numApiCalls;
     _expectFail = expectFail ? 1 : 0;
     
-    long maxWait = MAX_WAIT_SECS * 1000;
-
-    while (!_result && maxWait > 0)
-    {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
-        maxWait -= 10;
-        [m_client runCallBacks];
-    }
+    [TestFixtureBase waitForResponse:m_client watchResult: &_result];
     
     if (!_result)
     {
@@ -379,8 +424,7 @@ long createFile(const char * in_path, int64_t in_size)
     _apiRewardsReceived = 0;
     _expectFail = 0;
     
-    // [m_client resetCommunication];
-    // [[m_client authenticationService] clearSavedProfile]; // [dsl] Ok this causes issues. Why is this even there. We dont reset briancluod here, but only the test results
+    //  We dont reset braincloud here, but only the test results
 }
 
 - (void)createUsers
@@ -449,7 +493,7 @@ long createFile(const char * in_path, int64_t in_size)
                                 errorCompletionBlock:failureBlock
                                             cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 - (bool)goToParentProfile
@@ -459,7 +503,7 @@ long createFile(const char * in_path, int64_t in_size)
                                          errorCompletionBlock:failureBlock
                                                      cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 - (bool)attachPeer:(NSString*)user
@@ -475,7 +519,7 @@ long createFile(const char * in_path, int64_t in_size)
                                  errorCompletionBlock:failureBlock
                                              cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 - (bool)detachPeer
@@ -485,7 +529,7 @@ long createFile(const char * in_path, int64_t in_size)
                                  errorCompletionBlock:failureBlock
                                              cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 + (NSString *)getJsonString:(id)object
