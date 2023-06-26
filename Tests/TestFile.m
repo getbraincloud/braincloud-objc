@@ -41,21 +41,23 @@
                   errorCompletionBlock:failureBlock
                               cbObject:nil];
     
+    [m_client registerFileUploadCallback:fileUploadCompletedBlock failedBlock:fileUploadFailedBlock];
     [self waitForResult];
     
     *uploadId = [[[TestFixtureBase getDataFromResponse:self.jsonResponse] valueForKey:@"fileDetails"] valueForKey:@"uploadId"];
     
-    [m_client registerFileUploadCallback:fileUploadCompletedBlock failedBlock:fileUploadFailedBlock];
     while ([_fileUploadProgress countCompleted] == 0 && [_fileUploadProgress countFailed] == 0)
     {
         int64_t transferred = [[m_client fileService] getUploadBytesTransferred:*uploadId];
         int64_t total = [[m_client fileService] getUploadTotalBytesToTransfer:*uploadId];
         double progress = [[m_client fileService] getUploadProgress:*uploadId];
         NSLog(@"%lld transfered %lld total %f progress\n", transferred, total, progress);
-
+        if(progress < 0)
+            break; // failsafe in case callbacks not caught
         [NSThread sleepForTimeInterval:0.3f];
         [m_client runCallBacks];
     }
+    
     [m_client deregisterFileUploadCallback];
     
     return true;
@@ -77,6 +79,8 @@
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 0");
     }
+    
+    [_fileUploadProgress clearProgress];
 }
 
 - (void)testUploadSimpleFileAndCancel
@@ -125,6 +129,7 @@
         [NSThread sleepForTimeInterval:0.3f];
         [m_client runCallBacks];
     }
+
     [m_client deregisterFileUploadCallback];
     
     if ([_fileUploadProgress countCompleted] != 0)
@@ -144,6 +149,8 @@
     {
         _XCTPrimitiveFail(self, @"Wrong reason code");
     }
+    
+    [_fileUploadProgress clearProgress];
 }
 
 
@@ -200,6 +207,7 @@
         [NSThread sleepForTimeInterval:0.3f];
         [m_client runCallBacks];
     }
+
     [m_client deregisterFileUploadCallback];
     
     if ([_fileUploadProgress countCompleted] != numTransfers)
@@ -210,6 +218,8 @@
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 0");
     }
+    
+    [_fileUploadProgress clearProgress];
 }
 
 
