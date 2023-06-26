@@ -34,6 +34,7 @@
 @property NSMutableArray *fileUploadCompletedReceived;
 @property NSMutableArray *fileUploadFailedReceived;
 -(void) updateCompleted:(FileUploadCompletedDetails*)details;
+-(void) clearProgress;
 -(void) updateFailed:(FileUploadFailedDetails*)details;
 -(NSUInteger) countCompleted;
 -(NSUInteger) countFailed;

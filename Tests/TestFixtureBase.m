@@ -32,6 +32,11 @@
 
     return self;
 }
+-(void) clearProgress
+{
+    [_fileUploadCompletedReceived removeAllObjects];
+    [_fileUploadFailedReceived removeAllObjects];
+}
 -(void) updateCompleted:(FileUploadCompletedDetails*)details
 {
     [_fileUploadCompletedReceived addObject:details];
@@ -184,7 +189,9 @@ long createFile(const char * in_path, int64_t in_size)
             self->_eventCallbackReceived = true;
             self->_eventCallbackJson = eventsJson;
         };
-		
+        
+        _fileUploadProgress = [[FileUploadProgress alloc] init];
+        
         fileUploadCompletedBlock = ^(NSString *fileUploadId, NSString *jsonResponse) {
             FileUploadCompletedDetails * details = [[FileUploadCompletedDetails alloc] init];
             [details setFileUploadId:fileUploadId];
@@ -197,7 +204,7 @@ long createFile(const char * in_path, int64_t in_size)
             [details setStatus:status];
             [details setReasonCode:reasonCode];
             [details setJsonResponse:jsonResponse];
-            [safeSelf->_fileUploadProgress updateFailed:details];
+            [_fileUploadProgress updateFailed:details];
         };
         
         rewardBlock = ^(NSString *eventsJson) {

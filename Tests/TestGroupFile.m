@@ -77,17 +77,6 @@ static FileUploadProgress *fileProgress;
 
 
     XCTAssertTrue(callbackResult);
-/*
-    callbackResult = false;
-    [[bc groupFileService] deleteFile:groupID
-                                     fileId:@"be909cad-ceaf-4b83-8de1-f0b47f095389"
-                                    version:version
-                          newFilename:filename
-                            completionBlock:resultSuccess
-                       errorCompletionBlock:resultFail
-                                   cbObject:nil];
-    [TestFixtureBase waitForResponse:bc watchResult:&callbackResult];
-  */
 
     // upload file
     NSString * uploadId = nil;
@@ -100,18 +89,8 @@ static FileUploadProgress *fileProgress;
     XCTAssertEqual([fileProgress countCompleted], 1);
     XCTAssertEqual([fileProgress countFailed], 0);
     
-    /*
-    if ([fileProgress countCompleted] != 1)
-    {
-        // Uploads completed not 1
-        return;
-    }
-    if ([fileProgress countFailed] != 0)
-    {
-        // Uploads failed not 0
-        return;
-    }
- */
+    [fileProgress clearProgress];
+
     // join group
     [[bc groupService] joinGroup:groupID completionBlock:resultSuccess errorCompletionBlock:resultFail cbObject:nil];
 
@@ -196,7 +175,7 @@ static FileUploadProgress *fileProgress;
 
     __block bool uploadResult = false;
     __block bool callbackResult = false;
-    //__block FileUploadProgress *fileProgress;
+
     BCFileUploadCompletedCompletionBlock fileSuccess = ^(NSString *fileUploadId, NSString *jsonResponse)
     {
         FileUploadCompletedDetails * successDetails = [[FileUploadCompletedDetails alloc] init];
@@ -242,6 +221,7 @@ static FileUploadProgress *fileProgress;
     if (!uploadResult)
     {
         // timed out
+        [fileProgress clearProgress];
         [bc deregisterFileUploadCallback];
         return false;
     }
@@ -380,17 +360,19 @@ static FileUploadProgress *fileProgress;
         return;
     }
     
-    if ([_fileUploadProgress countCompleted] != 1)
+    if ([fileProgress countCompleted] != 1)
     {
         _XCTPrimitiveFail(self, @"Uploads completed not 1");
         return;
     }
-    if ([_fileUploadProgress countFailed] != 0)
+    if ([fileProgress countFailed] != 0)
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 0");
         return;
     }
-    
+
+    [fileProgress clearProgress];
+
     NSString *testAcl = @"{ \"other\": 2, \"member\": 2 }";
     
     [[m_client groupFileService] moveUserToGroupFile:@"TestFolder/"
