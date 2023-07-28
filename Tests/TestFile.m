@@ -41,21 +41,23 @@
                   errorCompletionBlock:failureBlock
                               cbObject:nil];
     
+    [m_client registerFileUploadCallback:fileUploadCompletedBlock failedBlock:fileUploadFailedBlock];
     [self waitForResult];
     
     *uploadId = [[[TestFixtureBase getDataFromResponse:self.jsonResponse] valueForKey:@"fileDetails"] valueForKey:@"uploadId"];
     
-    [m_client registerFileUploadCallback:fileUploadCompletedBlock failedBlock:fileUploadFailedBlock];
-    while ([_fileUploadCompletedReceived count] == 0 && [_fileUploadFailedReceived count] == 0)
+    while ([_fileUploadProgress countCompleted] == 0 && [_fileUploadProgress countFailed] == 0)
     {
         int64_t transferred = [[m_client fileService] getUploadBytesTransferred:*uploadId];
         int64_t total = [[m_client fileService] getUploadTotalBytesToTransfer:*uploadId];
         double progress = [[m_client fileService] getUploadProgress:*uploadId];
         NSLog(@"%lld transfered %lld total %f progress\n", transferred, total, progress);
-
+        if(progress < 0)
+            break; // failsafe in case callbacks not caught
         [NSThread sleepForTimeInterval:0.3f];
         [m_client runCallBacks];
     }
+    
     [m_client deregisterFileUploadCallback];
     
     return true;
@@ -69,14 +71,16 @@
         return;
     }
     
-    if ([_fileUploadCompletedReceived count] != 1)
+    if ([_fileUploadProgress countCompleted] != 1)
     {
         _XCTPrimitiveFail(self, @"Uploads completed not 1");
     }
-    if ([_fileUploadFailedReceived count] != 0)
+    if ([_fileUploadProgress countFailed] != 0)
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 0");
     }
+    
+    [_fileUploadProgress clearProgress];
 }
 
 - (void)testUploadSimpleFileAndCancel
@@ -120,30 +124,33 @@
     NSLog(@"Cancelling upload...");
     
     [[m_client fileService] cancelUpload:uploadId];
-    while ([_fileUploadCompletedReceived count] == 0 && [_fileUploadFailedReceived count] == 0)
+    while ([_fileUploadProgress countCompleted] == 0 && [_fileUploadProgress countFailed] == 0)
     {
         [NSThread sleepForTimeInterval:0.3f];
         [m_client runCallBacks];
     }
+
     [m_client deregisterFileUploadCallback];
     
-    if ([_fileUploadCompletedReceived count] != 0)
+    if ([_fileUploadProgress countCompleted] != 0)
     {
         _XCTPrimitiveFail(self, @"Uploads completed not 0");
     }
-    if ([_fileUploadFailedReceived count] != 1)
+    if ([_fileUploadProgress countFailed] != 1)
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 1");
     }
     
-    if ([(FileUploadFailedDetails*)[_fileUploadFailedReceived objectAtIndex:0] status] != BC_HTTP_CUSTOM)
+    if ([(FileUploadFailedDetails*)[_fileUploadProgress failedDetailsAtIndex: 0] status] != BC_HTTP_CUSTOM)
     {
         _XCTPrimitiveFail(self, @"Wrong http status");
     }
-    if ([(FileUploadFailedDetails*)[_fileUploadFailedReceived objectAtIndex:0] reasonCode] != CLIENT_UPLOAD_FILE_CANCELLED)
+    if ([(FileUploadFailedDetails*)[_fileUploadProgress failedDetailsAtIndex: 0] reasonCode] != CLIENT_UPLOAD_FILE_CANCELLED)
     {
         _XCTPrimitiveFail(self, @"Wrong reason code");
     }
+    
+    [_fileUploadProgress clearProgress];
 }
 
 
@@ -185,7 +192,7 @@
     }
     
     [m_client registerFileUploadCallback:fileUploadCompletedBlock failedBlock:fileUploadFailedBlock];
-    while ([_fileUploadCompletedReceived count] + [_fileUploadFailedReceived count] < numTransfers)
+    while ([_fileUploadProgress countCompleted] + [_fileUploadProgress countFailed] < numTransfers)
     {
         for (int i = 0; i < numTransfers; ++i)
         {
@@ -200,16 +207,19 @@
         [NSThread sleepForTimeInterval:0.3f];
         [m_client runCallBacks];
     }
+
     [m_client deregisterFileUploadCallback];
     
-    if ([_fileUploadCompletedReceived count] != numTransfers)
+    if ([_fileUploadProgress countCompleted] != numTransfers)
     {
         _XCTPrimitiveFail(self, @"Not all uploads succeeded");
     }
-    if ([_fileUploadFailedReceived count] != 0)
+    if ([_fileUploadProgress countFailed] != 0)
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 0");
     }
+    
+    [_fileUploadProgress clearProgress];
 }
 
 
@@ -222,12 +232,12 @@
         return;
     }
     
-    if ([_fileUploadCompletedReceived count] != 1)
+    if ([_fileUploadProgress countCompleted] != 1)
     {
         _XCTPrimitiveFail(self, @"Uploads completed not 1");
         return;
     }
-    if ([_fileUploadFailedReceived count] != 0)
+    if ([_fileUploadProgress countFailed] != 0)
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 0");
         return;
@@ -250,12 +260,12 @@
         return;
     }
 
-    if ([_fileUploadCompletedReceived count] != 1)
+    if ([_fileUploadProgress countCompleted] != 1)
     {
         _XCTPrimitiveFail(self, @"Uploads completed not 1");
         return;
     }
-    if ([_fileUploadFailedReceived count] != 0)
+    if ([_fileUploadProgress countFailed] != 0)
     {
         _XCTPrimitiveFail(self, @"Uploads failed not 0");
         return;

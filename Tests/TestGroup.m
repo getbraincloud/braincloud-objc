@@ -316,7 +316,7 @@ NSString *groupId = @"";
                                    cbObject:nil];
     [self waitForResult];
 
-    context = [self getContext:_jsonResponse];
+    context = [self getContext:self.jsonResponse];
 
     [[m_client groupService] listGroupsPageByOffset:context
                                          pageOffset:1
@@ -382,7 +382,7 @@ NSString *groupId = @"";
                                           cbObject:nil];
     [self waitForResult];
 
-    context = [self getContext:_jsonResponse];
+    context = [self getContext:self.jsonResponse];
 
     [[m_client groupService] readGroupEntitiesPageByOffset:context
                                                 pageOffset:1

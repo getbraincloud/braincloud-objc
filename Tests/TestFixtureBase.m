@@ -12,7 +12,7 @@
 #import "AuthenticationTypeObjc.hh"
 #include <stdlib.h>
 
-#define MAX_WAIT_SECS 120
+
 #define ID_FILE_NAME = "ids.txt"
 
 @implementation FileUploadCompletedDetails
@@ -21,19 +21,71 @@
 @implementation FileUploadFailedDetails
 @end
 
-@interface TestFixtureBase ()
+// a mechanism for multifile upload
+@implementation FileUploadProgress
+- (id)init
+{
+    self = [super init];
 
+    _fileUploadCompletedReceived = [[NSMutableArray alloc] init];
+    _fileUploadFailedReceived = [[NSMutableArray alloc] init];
 
-- (void)loadIds;
-- (void)createUsers;
-- (void)createUser:(NSString *)prefix suffix:(int)suffix;
-- (NSString *)authenticateUser:(NSString *)userId password:(NSString *)password;
-
+    return self;
+}
+-(void) clearProgress
+{
+    [_fileUploadCompletedReceived removeAllObjects];
+    [_fileUploadFailedReceived removeAllObjects];
+}
+-(void) updateCompleted:(FileUploadCompletedDetails*)details
+{
+    [_fileUploadCompletedReceived addObject:details];
+}
+-(void) updateFailed:(FileUploadFailedDetails*)details
+{
+    [_fileUploadFailedReceived addObject:details];
+}
+-(NSUInteger) countCompleted
+{
+    return [_fileUploadCompletedReceived count];
+}
+-(NSUInteger) countFailed
+{
+    return [_fileUploadFailedReceived count];
+}
+-(FileUploadFailedDetails*) failedDetailsAtIndex:(NSUInteger)index
+{
+    return [_fileUploadFailedReceived objectAtIndex:index];
+}
+-(FileUploadCompletedDetails*) completedDetailsAtIndex:(NSUInteger)index
+{
+    return [_fileUploadFailedReceived objectAtIndex:index];
+}
 @end
 
 NSMutableDictionary *m_users;
 
 @implementation TestFixtureBase
+
+// braincloud connection data for STATIC methods
+// instance methods can access corresponding m_ members
+static NSString *parentLevel;
+static NSString *childAppId;
+static NSString *childSecret;
+static NSString *serverUrl;
+static NSString *appId;
+static NSString *secret;
+static NSString *bcversion;
+static NSString *peerName;
+
++(NSString *) appId{ return appId;}
++(NSString *) parentLevel{ return parentLevel; }
++(NSString *) childAppId{ return childAppId; }
++(NSString *) childSecret{ return childSecret; }
++(NSString *) serverUrl{ return serverUrl; }
++(NSString *) secret{ return secret; }
++(NSString *) bcversion{ return bcversion; }
++(NSString *) peerName{ return peerName; }
 
 long createFile(const char * in_path, int64_t in_size)
 {
@@ -58,11 +110,9 @@ long createFile(const char * in_path, int64_t in_size)
 {
     self = [super initWithInvocation:invocation];
 
-    _fileUploadCompletedReceived = [[NSMutableArray alloc] init];
-    _fileUploadFailedReceived = [[NSMutableArray alloc] init];
-
     if (self)
     {
+        __unsafe_unretained typeof(self) safeSelf = self;
         __weak TestFixtureBase *weakSelf = self;
         successBlock = ^(NSString *serviceName, NSString *serviceOperation, NSString *jsonData,
                          BCCallbackObject cbObject)
@@ -139,12 +189,14 @@ long createFile(const char * in_path, int64_t in_size)
             self->_eventCallbackReceived = true;
             self->_eventCallbackJson = eventsJson;
         };
-		
+        
+        _fileUploadProgress = [[FileUploadProgress alloc] init];
+        
         fileUploadCompletedBlock = ^(NSString *fileUploadId, NSString *jsonResponse) {
             FileUploadCompletedDetails * details = [[FileUploadCompletedDetails alloc] init];
             [details setFileUploadId:fileUploadId];
             [details setJsonResponse:jsonResponse];
-            [self->_fileUploadCompletedReceived addObject:details];
+            [safeSelf->_fileUploadProgress updateCompleted:details];
         };
         fileUploadFailedBlock = ^(NSString *fileUploadId, NSInteger status, NSInteger reasonCode, NSString *jsonResponse) {
             FileUploadFailedDetails * details = [[FileUploadFailedDetails alloc] init];
@@ -152,7 +204,7 @@ long createFile(const char * in_path, int64_t in_size)
             [details setStatus:status];
             [details setReasonCode:reasonCode];
             [details setJsonResponse:jsonResponse];
-            [self->_fileUploadFailedReceived addObject:details];
+            [_fileUploadProgress updateFailed:details];
         };
         
         rewardBlock = ^(NSString *eventsJson) {
@@ -218,10 +270,17 @@ long createFile(const char * in_path, int64_t in_size)
 - (void)setUp
 {
     m_bcWrapper = [[BrainCloudWrapper alloc] init];
-    
-    
+        
     [super setUp];
-    [self loadIds];
+    [TestFixtureBase loadIds];
+    m_appId = appId;
+    m_parentLevel = parentLevel;
+    m_childAppId = childAppId;
+    m_childSecret = childSecret;
+    m_serverUrl = serverUrl;
+    m_secret = secret;
+    m_version = bcversion;
+    m_peerName = peerName;
     m_client = [m_bcWrapper getBCClient];
     NSDictionary* secretMap = @{
         m_appId      : m_secret, 
@@ -254,7 +313,9 @@ long createFile(const char * in_path, int64_t in_size)
     [super tearDown];
 }
 
-- (void)loadIds
+// static function to loads ids.txt
+// sets members accessible for static methods through getters
++ (void)loadIds
 {
     // syntax if loading file from bundle of a running app
     // NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ids" ofType:@"txt"];
@@ -272,43 +333,56 @@ long createFile(const char * in_path, int64_t in_size)
         if ([line hasPrefix:@"appId"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_appId = [line substringFromIndex:range.location + 1];
+            appId = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"serverUrl"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_serverUrl = [line substringFromIndex:range.location + 1];
+            serverUrl = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"secret"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_secret = [line substringFromIndex:range.location + 1];
+            secret = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"version"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_version = [line substringFromIndex:range.location + 1];
+            bcversion = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"childAppId"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_childAppId = [line substringFromIndex:range.location + 1];
+            childAppId = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"childSecret"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_childSecret = [line substringFromIndex:range.location + 1];
+            childSecret = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"parentLevelName"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_parentLevel = [line substringFromIndex:range.location + 1];
+            parentLevel = [line substringFromIndex:range.location + 1];
         }
         else if ([line hasPrefix:@"peerName"])
         {
             NSRange range = [line rangeOfString:@"="];
-            m_peerName = [line substringFromIndex:range.location + 1];
+            peerName = [line substringFromIndex:range.location + 1];
         }
+    }
+}
+
++ (void)waitForResponse:(BrainCloudClient*)bc
+          watchResult:(bool*)watchResult
+{
+    long maxWait = MAX_WAIT_SECS * 1000;
+
+    while (!*watchResult && maxWait > 0)
+    {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+        maxWait -= 10;
+        [bc runCallBacks];
     }
 }
 
@@ -334,14 +408,7 @@ long createFile(const char * in_path, int64_t in_size)
     _apiCountExpected = numApiCalls;
     _expectFail = expectFail ? 1 : 0;
     
-    long maxWait = MAX_WAIT_SECS * 1000;
-
-    while (!_result && maxWait > 0)
-    {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
-        maxWait -= 10;
-        [m_client runCallBacks];
-    }
+    [TestFixtureBase waitForResponse:m_client watchResult: &_result];
     
     if (!_result)
     {
@@ -364,8 +431,7 @@ long createFile(const char * in_path, int64_t in_size)
     _apiRewardsReceived = 0;
     _expectFail = 0;
     
-    // [m_client resetCommunication];
-    // [[m_client authenticationService] clearSavedProfile]; // [dsl] Ok this causes issues. Why is this even there. We dont reset briancluod here, but only the test results
+    //  We dont reset braincloud here, but only the test results
 }
 
 - (void)createUsers
@@ -434,7 +500,7 @@ long createFile(const char * in_path, int64_t in_size)
                                 errorCompletionBlock:failureBlock
                                             cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 - (bool)goToParentProfile
@@ -444,7 +510,7 @@ long createFile(const char * in_path, int64_t in_size)
                                          errorCompletionBlock:failureBlock
                                                      cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 - (bool)attachPeer:(NSString*)user
@@ -460,7 +526,7 @@ long createFile(const char * in_path, int64_t in_size)
                                  errorCompletionBlock:failureBlock
                                              cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 - (bool)detachPeer
@@ -470,7 +536,7 @@ long createFile(const char * in_path, int64_t in_size)
                                  errorCompletionBlock:failureBlock
                                              cbObject:nil];
     [self waitForResult];
-    return self.result;
+    return self->_result;
 }
 
 + (NSString *)getJsonString:(id)object
@@ -482,6 +548,9 @@ long createFile(const char * in_path, int64_t in_size)
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     return jsonString;
+}
+
++ (void)setUp {
 }
 
 @end

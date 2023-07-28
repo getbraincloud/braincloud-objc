@@ -189,7 +189,7 @@
      errorCompletionBlock:failureBlock
      cbObject:nil];
     
-    NSString* email = @"ryanr@bitheads.com";
+    NSString* email = @"braincloudunittest@gmail.com";
     
     [m_bcWrapper resetEmailPasswordWithExpiry:email
                                        tokenTtlInMinutes:5
@@ -209,8 +209,8 @@
      errorCompletionBlock:failureBlock
      cbObject:nil];
     
-    NSString* email = @"ryanr@bitheads.com";
-    NSString* content = @"{\"fromAddress\": \"ryanr@bitheads.com\",\"fromName\": \"ryan\",\"replyToAddress\": \"ryanr@bitheads.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
+    NSString* email = @"braincloudunittest@gmail.com";
+    NSString* content = @"{\"fromAddress\": \"braincloudunittest@gmail.com\",\"fromName\": \"ryan\",\"replyToAddress\": \"braincloudunittest@gmail.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
     
     [m_bcWrapper resetEmailPasswordAdvancedWithExpiry:email
                                                    serviceParams:content
@@ -249,7 +249,7 @@
      errorCompletionBlock:failureBlock
      cbObject:nil];
 
-    NSString* content = @"{\"fromAddress\": \"ryanr@bitheads.com\",\"fromName\": \"ryan\",\"replyToAddress\": \"ryanr@bitheads.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
+    NSString* content = @"{\"fromAddress\": \"braincloudunittest@gmail.com\",\"fromName\": \"ryan\",\"replyToAddress\": \"braincloudunittest@gmail.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
     
     [m_bcWrapper resetUniversalIdPasswordAdvanced:[TestFixtureBase getUser:@"UserA"].m_id
                                                    serviceParams:content
