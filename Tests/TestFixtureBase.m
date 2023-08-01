@@ -309,7 +309,6 @@ long createFile(const char * in_path, int64_t in_size)
 - (void)tearDown
 {
     [m_client resetCommunication];
-    [[m_client authenticationService] clearSavedProfile];
     [super tearDown];
 }
 
@@ -475,7 +474,6 @@ long createFile(const char * in_path, int64_t in_size)
                                                    cbObject:nil];
     [self waitForResult];
     NSString *playerId = [m_client authenticationService].profileID;
-    [[m_client authenticationService] clearSavedProfile];
     return playerId;
 }
 

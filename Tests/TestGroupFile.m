@@ -126,7 +126,6 @@ static FileUploadProgress *fileProgress;
     
 
     [bc resetCommunication];
-    [[bc authenticationService] clearSavedProfile];
 }
 
 // instance class method: executed once at the start of EACH test
@@ -159,7 +158,6 @@ static FileUploadProgress *fileProgress;
 {
     [[m_client playerStateService] logout:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
-    [[m_client authenticationService] clearSavedProfile];
 }
 
 + (bool) simpleUpload:(BrainCloudClient*) bc

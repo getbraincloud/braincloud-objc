@@ -34,8 +34,6 @@
     NSString *anonId = [m_bcWrapper storedAnonymousId];
     NSString *profileId = [m_bcWrapper storedProfileId];
     
-    [[[m_bcWrapper getBCClient] authenticationService] clearSavedProfile];
-    
     [m_bcWrapper authenticateAnonymous:successBlock
                   errorCompletionBlock:failureBlock
                               cbObject:nil];
