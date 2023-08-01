@@ -441,16 +441,13 @@ long createFile(const char * in_path, int64_t in_size)
     [self createUser:@"UserA" suffix:arc4random()];
     [self createUser:@"UserB" suffix:arc4random()];
     [self createUser:@"UserC" suffix:arc4random()];
-
-    [[m_client playerStateService] logout:successBlock
-                     errorCompletionBlock:failureBlock
-                                 cbObject:nil];
-    [self waitForResult];
 }
 
 - (void)createUser:(NSString *)prefix suffix:(int)suffix
 {
     TestUser *user = [[TestUser alloc] initWithIds:prefix suffix:suffix];
+    
+    // login to create a user
     user.m_profileId = [self authenticateUser:user.m_id password:user.m_password];
     
     [[m_client playerStateService] updateContactEmail:@"braincloudunittest@gmail.com"
@@ -460,6 +457,12 @@ long createFile(const char * in_path, int64_t in_size)
     [self waitForResult];
     
     [m_users setObject:user forKey:prefix];
+
+    // logout again
+    [[m_client playerStateService] logout:successBlock
+                     errorCompletionBlock:failureBlock
+                                 cbObject:nil];
+    [self waitForResult];
 }
 
 - (NSString *)authenticateUser:(NSString *)userId password:(NSString *)password

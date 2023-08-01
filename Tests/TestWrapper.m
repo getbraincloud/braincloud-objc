@@ -24,10 +24,6 @@
 - (void)testAuthenticateAnonymous
 {
     [m_bcWrapper initialize:m_serverUrl secretKey:m_secret appId:m_appId appVersion:m_version companyName:@"wrapper" appName:@"unittest"];
-
-    //reset ids
-    [m_bcWrapper setStoredProfileId:@""];
-    [m_bcWrapper setStoredAnonymousId:@""];
     
     [m_bcWrapper authenticateAnonymous:successBlock
                   errorCompletionBlock:failureBlock
@@ -85,9 +81,13 @@
 {
     [m_bcWrapper initialize:m_serverUrl secretKey:m_secret appId:m_appId appVersion:m_version companyName:@"wrapper" appName:@"unittest"];
     
-    //reset ids
-    [m_bcWrapper setStoredProfileId:@""];
-    [m_bcWrapper setStoredAnonymousId:@""];
+    [m_bcWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                                                  password:[TestFixtureBase getUser:@"UserA"].m_password
+                                               forceCreate:YES
+                                           completionBlock:successBlock
+                                      errorCompletionBlock:failureBlock
+                                                  cbObject:nil];
+    [self waitForResult];
     
     //so we check for something else. expected 40307 - token not matching user
     [m_bcWrapper smartSwitchAuthenticateUniversal:@"invalidProfileID"
@@ -106,18 +106,10 @@
 {
     [m_bcWrapper initialize:m_serverUrl secretKey:m_secret appId:m_appId appVersion:m_version companyName:@"wrapper" appName:@"unittest"];
     
-    //reset ids
-    [m_bcWrapper setStoredProfileId:@""];
-    [m_bcWrapper setStoredAnonymousId:@""];
-    
-    [[[m_bcWrapper getBCClient] authenticationService] clearSavedProfile];
-    
     [m_bcWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id password:[TestFixtureBase getUser:@"UserA"].m_password forceCreate:true completionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     
     [self waitForResult];
     [self reset];
-    
-    
     
     [m_bcWrapper smartSwitchAuthenticateEmailPassword:[TestFixtureBase getUser:@"UserA"].m_email
                                          password:[TestFixtureBase getUser:@"UserA"].m_password
@@ -127,20 +119,12 @@
                                          cbObject:nil];
     [self waitForResult];
     [self reset];
-    
-    
 }
 
 
 - (void)testSwitchNoAuth
 {
     [m_bcWrapper initialize:m_serverUrl secretKey:m_secret appId:m_appId appVersion:m_version companyName:@"wrapper" appName:@"unittest"];
-    
-    //reset ids
-    [m_bcWrapper setStoredProfileId:@""];
-    [m_bcWrapper setStoredAnonymousId:@""];
-    
-    [[[m_bcWrapper getBCClient] authenticationService] clearSavedProfile];
     
     
     [m_bcWrapper smartSwitchAuthenticateEmailPassword:[TestFixtureBase getUser:@"UserA"].m_email
@@ -151,7 +135,6 @@
                                              cbObject:nil];
     [self waitForResult];
     [self reset];
-    
 }
 
 - (void)testResetEmailPassword
@@ -210,7 +193,7 @@
      cbObject:nil];
     
     NSString* email = @"braincloudunittest@gmail.com";
-    NSString* content = @"{\"fromAddress\": \"braincloudunittest@gmail.com\",\"fromName\": \"ryan\",\"replyToAddress\": \"braincloudunittest@gmail.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
+    NSString* content = @"{\"fromAddress\": \"braincloudunittest@gmail.com\",\"fromName\": \"braincloudunittest\",\"replyToAddress\": \"braincloudunittest@gmail.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
     
     [m_bcWrapper resetEmailPasswordAdvancedWithExpiry:email
                                                    serviceParams:content
@@ -249,7 +232,7 @@
      errorCompletionBlock:failureBlock
      cbObject:nil];
 
-    NSString* content = @"{\"fromAddress\": \"braincloudunittest@gmail.com\",\"fromName\": \"ryan\",\"replyToAddress\": \"braincloudunittest@gmail.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
+    NSString* content = @"{\"fromAddress\": \"braincloudunittest@gmail.com\",\"fromName\": \"braincloudunittest\",\"replyToAddress\": \"braincloudunittest@gmail.com\",\"replyToName\": \"replyToName\", \"templateId\": \"8f14c77d-61f4-4966-ab6d-0bee8b13d090\", \"substitutions\": { \":name\": \"John Doe\",\":resetLink\": \"www.dummuyLink.io\"}, \"categories\": [\"category1\",\"category2\" ]}";
     
     [m_bcWrapper resetUniversalIdPasswordAdvanced:[TestFixtureBase getUser:@"UserA"].m_id
                                                    serviceParams:content
