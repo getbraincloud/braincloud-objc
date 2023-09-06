@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
   # hack for use_frameworks!
   # hack for use_frameworks!
   s.xcconfig = {
-    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include"'
+   'USER_HEADER_SEARCH_PATHS' => '"${SRCROOT}/braincloud-cpp/include/"'
   }
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -53,6 +53,6 @@ Pod::Spec.new do |s|
   s.libraries                = 'c++', 'z'
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.dependency 'BrainCloudCpp', '4.15.0'
+  s.dependency 'BrainCloudCpp'
 
 end
