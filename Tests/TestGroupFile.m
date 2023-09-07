@@ -449,17 +449,20 @@ static FileUploadProgress *fileProgress;
     //    }
     // ---
     
-    // delete file
-    [[m_client groupFileService] deleteFile:groupID
-                                     fileId:newFileId
-                                    version:version
-                                newFilename:newFileName
-                            completionBlock:successBlock
-                       errorCompletionBlock:failureBlock
-                                   cbObject:nil];
-    [self waitForResult];
-    
-    XCTAssertTrue(_result);
+    if(newFileId != nil) {
+        
+        // delete file
+        [[m_client groupFileService] deleteFile:groupID
+                                         fileId:newFileId
+                                        version:version
+                                    newFilename:newFileName
+                                completionBlock:successBlock
+                           errorCompletionBlock:failureBlock
+                                       cbObject:nil];
+        [self waitForResult];
+        
+        XCTAssertTrue(_result);
+    }
     
     // --- comment back in to verify file no longer exists
     //    [[m_client groupFileService] checkFilenameExists:groupID
