@@ -734,7 +734,6 @@ NSString *groupId = @"";
 {
     [[m_client playerStateService] logout:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
-    [[m_client authenticationService] clearSavedProfile];
 }
 
 - (NSString *)createContext:(NSString *)searchField searchValue:(NSString *)value

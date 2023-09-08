@@ -66,8 +66,8 @@ static FileUploadProgress *fileProgress;
     };
     
     callbackResult = false; // reset flag to watch
-    [[bc authenticationService] authenticateEmailPassword:@"cpp-tester"
-                                                       password:@"cpp-tester"
+    [[bc authenticationService] authenticateEmailPassword:@"objc-tester"
+                                                       password:@"objc-tester"
                                                     forceCreate:true
                                                 completionBlock:resultSuccess
                                            errorCompletionBlock:resultFail
@@ -126,7 +126,6 @@ static FileUploadProgress *fileProgress;
     
 
     [bc resetCommunication];
-    [[bc authenticationService] clearSavedProfile];
 }
 
 // instance class method: executed once at the start of EACH test
@@ -134,7 +133,7 @@ static FileUploadProgress *fileProgress;
     
     [super setUp];
     
-    [self authenticate:@"cpp-tester"];
+    [self authenticate:@"objc-tester"];
 }
 
 - (void)tearDown {
@@ -159,7 +158,6 @@ static FileUploadProgress *fileProgress;
 {
     [[m_client playerStateService] logout:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
-    [[m_client authenticationService] clearSavedProfile];
 }
 
 + (bool) simpleUpload:(BrainCloudClient*) bc
@@ -451,17 +449,20 @@ static FileUploadProgress *fileProgress;
     //    }
     // ---
     
-    // delete file
-    [[m_client groupFileService] deleteFile:groupID
-                                     fileId:newFileId
-                                    version:version
-                                newFilename:newFileName
-                            completionBlock:successBlock
-                       errorCompletionBlock:failureBlock
-                                   cbObject:nil];
-    [self waitForResult];
-    
-    XCTAssertTrue(_result);
+    if(newFileId != nil) {
+        
+        // delete file
+        [[m_client groupFileService] deleteFile:groupID
+                                         fileId:newFileId
+                                        version:version
+                                    newFilename:newFileName
+                                completionBlock:successBlock
+                           errorCompletionBlock:failureBlock
+                                       cbObject:nil];
+        [self waitForResult];
+        
+        XCTAssertTrue(_result);
+    }
     
     // --- comment back in to verify file no longer exists
     //    [[m_client groupFileService] checkFilenameExists:groupID
