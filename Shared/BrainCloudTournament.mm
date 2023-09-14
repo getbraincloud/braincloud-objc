@@ -112,7 +112,9 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
     _client->getTournamentService()->leaveTournament(
         [leaderboardId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
-
+/*
+    deprecated Use PostTournamentScoreUTC instead - Removal after september 1 2021
+ */
 - (void)postTournamentScore:(NSString *)leaderboardId
                       score:(int)score
                    jsonData:(NSString *)jsonData
@@ -123,10 +125,12 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 {
     time_t time = [roundStartedTime timeIntervalSince1970];
     struct tm *timeStruct = gmtime(&time);
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
     _client->getTournamentService()->postTournamentScore(
         [leaderboardId UTF8String], score, jsonData == nil ? "" : [jsonData UTF8String], timeStruct,
         new BrainCloudCallback(cb, ecb, cbObject));
+#pragma diagnostic pop
 }
 
 - (void)postTournamentScoreUTC:(NSString *)leaderboardId
@@ -142,7 +146,9 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
     new BrainCloudCallback(cb, ecb, cbObject));
     
 }
-
+/*
+    deprecated Use PostTournamentScoreWithResultsUTC instead - Removal after september 1 2021
+ */
 - (void)postTournamentScoreWithResults:(NSString *)leaderboardId
                                  score:(int)score
                               jsonData:(NSString *)jsonData
@@ -157,11 +163,13 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 {
     time_t time = [roundStartedTime timeIntervalSince1970];
     struct tm *timeStruct = gmtime(&time);
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
     _client->getTournamentService()->postTournamentScoreWithResults(
-        [leaderboardId UTF8String], score, jsonData == nil ? "" : [jsonData UTF8String], timeStruct,
-        (BrainCloud::SortOrder)sortOrder, beforeCount, afterCount, initialScore,
-        new BrainCloudCallback(cb, ecb, cbObject));
+                                                                    [leaderboardId UTF8String], score, jsonData == nil ? "" : [jsonData UTF8String], timeStruct,
+                                                                    (BrainCloud::SortOrder)sortOrder, beforeCount, afterCount, initialScore,
+                                                                    new BrainCloudCallback(cb, ecb, cbObject));
+#pragma diagnostic pop
 }
 
 - (void)postTournamentScoreWithResultsUTC:(NSString *)leaderboardId

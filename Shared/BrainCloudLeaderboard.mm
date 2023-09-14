@@ -165,6 +165,8 @@
         [leaderboardId UTF8String], score, [jsonOtherData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+// this has been deprecated in C++ but the obj-c wrapper is still available
+//Use postScoreToDynamicLeaderboardUTC instead - Removal after september 1 2021
 - (void)postScoreToDynamicLeaderboard:(NSString *)leaderboardId
                                 score:(int)score
                              jsonData:(NSString *)jsonData
@@ -178,10 +180,12 @@
 {
     time_t time = [rotationReset timeIntervalSince1970];
     struct tm *timeStruct = localtime(&time);
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
     _client->getLeaderboardService()->postScoreToDynamicLeaderboard(
         [leaderboardId UTF8String], score, [jsonData UTF8String], (BrainCloud::SocialLeaderboardType)leaderboardType,
         (BrainCloud::RotationType)rotationType, timeStruct, retainedCount, new BrainCloudCallback(cb, ecb, cbObject));
+#pragma clang diagnostic pop
 }
 
 - (void)postScoreToDynamicLeaderboardUTC:(NSString *)leaderboardId
@@ -199,6 +203,9 @@
         [leaderboardId UTF8String], score, [jsonData UTF8String], (BrainCloud::SocialLeaderboardType)leaderboardType,
         (BrainCloud::RotationType)rotationType, rotationResetUTC, retainedCount, new BrainCloudCallback(cb, ecb, cbObject));
 }
+
+// this has been deprecated in C++ but the obj-c wrapper is still available
+// Use postScoreToDynamicLeaderboardDaysUTC instead - Removal after september 1 2021
 - (void)postScoreToDynamicLeaderboardDays:(NSString *)leaderboardId
                                     score:(int)score
                                  jsonData:(NSString *)jsonData
@@ -212,10 +219,12 @@
 {
     time_t time = [rotationReset timeIntervalSince1970];
     struct tm *timeStruct = localtime(&time);
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
     _client->getLeaderboardService()->postScoreToDynamicLeaderboardDays(
         [leaderboardId UTF8String], score, [jsonData UTF8String], (BrainCloud::SocialLeaderboardType)leaderboardType,
         timeStruct, retainedCount, numDaysToRotate, new BrainCloudCallback(cb, ecb, cbObject));
+#pragma clang diagnostic pop
 }
 
 - (void)postScoreToDynamicLeaderboardDaysUTC:(NSString *)leaderboardId
@@ -363,6 +372,8 @@
         [leaderboardId UTF8String], [groupId UTF8String], score, [jsonData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+// this has been deprecated in C++ but the obj-c wrapper is still available
+// Use postScoreToDynamicGroupLeaderboardUTC instead - Removal after september 1 2021
 - (void)postScoreToDynamicGroupLeaderboard:(NSString *)leaderboardId
                                    groupId:(NSString *)groupId
                                      score:(int)score
@@ -375,9 +386,12 @@
                       errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                   cbObject:(BCCallbackObject)cbObject
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
     _client->getLeaderboardService()->postScoreToDynamicGroupLeaderboard(
-            [leaderboardId UTF8String], [groupId UTF8String], score, [jsonData UTF8String],[leaderboardType UTF8String],
-                [rotationType UTF8String], rotationResetTime, retainedCount, new BrainCloudCallback(cb, ecb, cbObject));
+                                                                         [leaderboardId UTF8String], [groupId UTF8String], score, [jsonData UTF8String],[leaderboardType UTF8String],
+                                                                         [rotationType UTF8String], rotationResetTime, retainedCount, new BrainCloudCallback(cb, ecb, cbObject));
+#pragma clang diagnostic pop
 }
 
 - (void)postScoreToDynamicGroupLeaderboardUTC:(NSString *)leaderboardId

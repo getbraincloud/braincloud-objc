@@ -92,7 +92,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPlayerStateService()->updateName(
+    _client->getPlayerStateService()->updateUserName(
             [name UTF8String], new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
@@ -101,7 +101,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPlayerStateService()->updateName(
+    _client->getPlayerStateService()->updateUserName(
             [name UTF8String], new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
@@ -110,7 +110,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject
 {
-    _client->getPlayerStateService()->updateName(
+    _client->getPlayerStateService()->updateUserName(
             [name UTF8String], new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
