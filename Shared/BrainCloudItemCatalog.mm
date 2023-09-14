@@ -12,6 +12,8 @@
 #import "BrainCloudItemCatalog.hh"
 #import "BrainCloudClient.hh"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 @interface BrainCloudItemCatalog()
 {
@@ -84,3 +86,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop

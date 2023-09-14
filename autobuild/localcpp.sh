@@ -1,6 +1,7 @@
 #~/bin/bash
 # pull the braincloud-cpp repo to braincloud-cpp/ folder
 # checkout to the branch you'd like to test
+# Run from the folder where the podspec is
 
 set -e
 
@@ -10,11 +11,11 @@ then
     export JSONSOURCE=""
 else
     export CPPSOURCE="braincloud-cpp" # This will prevent from fetch remote pod, and use local clone instead for cpp
-    export JSONSOURCE="braincloud-cpp/lib/jsoncpp-1.0.0" 
-
-    #Need to get into the folder where the pod is
-    pod deintegrate
-    pod install --repo-update
+    export JSONSOURCE="braincloud-cpp/lib/jsoncpp-1.0.0"
 fi
+
+pod deintegrate
+rm -rf Podfile.lock
+pod install --repo-update
 
 pod update

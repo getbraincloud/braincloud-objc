@@ -12,6 +12,9 @@
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 @class BrainCloudClient;
 
 @interface BrainCloudPresence : NSObject
@@ -191,3 +194,5 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 #endif /* BrainCloudPresence_h */
 
 @end
+
+    #pragma clang diagnostic pop

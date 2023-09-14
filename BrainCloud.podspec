@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.name     = "BrainCloud"
 
-  s.version  = "5.0.0"
+  s.version  = "5.0.1"
 
   s.summary  = "The Objective-C/Swift client library for brainCloud"
   s.homepage = "http://getbraincloud.com/"
@@ -41,18 +41,19 @@ Pod::Spec.new do |s|
   s.private_header_files   = 'Shared/**/{BrainCloudCallback,TypeHelpers,BrainCloudRTTCallback,BrainCloudRTTConnectCallback,BrainCloudRelayCallback,BrainCloudRelaySystemCallback,BrainCloudRelayConnectCallback}.hh'
   s.source_files           = 'Shared/**/*.{h,hh,m,mm}'
 
-
-  # hack for use_frameworks!
-  # hack for use_frameworks!
+  # for use_frameworks!
+  # to use development pod: change below to your full source code path
+  # to use cocoapod release: change to be relative to ${PODS_ROOT}
   s.xcconfig = {
-   'USER_HEADER_SEARCH_PATHS' => '"${SRCROOT}/braincloud-cpp/include/"'
+  # eg. 'USER_HEADER_SEARCH_PATHS' => '"/local/path/to/braincloud-cpp/include"'
+          'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include"'
   }
-
+  
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.libraries                = 'c++', 'z'
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.dependency 'BrainCloudCpp', '5.0.0'
+  s.dependency 'BrainCloudCpp', '5.0.1'
 
 end

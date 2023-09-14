@@ -12,6 +12,8 @@
 #import "BrainCloudAppStore.hh"
 #import "BrainCloudClient.hh"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 @interface BrainCloudAppStore ()
 {
@@ -172,3 +174,4 @@
 }
 
 @end
+#pragma clang diagnostic pop
