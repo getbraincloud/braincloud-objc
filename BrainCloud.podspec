@@ -28,7 +28,6 @@ Pod::Spec.new do |s|
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.authors                = {"brainCloud Team" => "support@getbraincloud.com"}
-  s.social_media_url       = "https://twitter.com/braincloudbaas"
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
@@ -45,8 +44,8 @@ Pod::Spec.new do |s|
   # to use development pod: change below to your full source code path
   # to use cocoapod release: change to be relative to ${PODS_ROOT}
   s.xcconfig = {
-  # eg. 'USER_HEADER_SEARCH_PATHS' => '"/local/path/to/braincloud-cpp/include"'
-          'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include"'
+    # eg. '"${PODS_ROOT}/BrainCloudCpp/include"', '"/local/path/to/braincloud-cpp/include"'
+    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include"'
   }
   
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
