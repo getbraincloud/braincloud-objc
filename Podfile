@@ -19,12 +19,12 @@ def shared_pods
 end
 
 target 'BrainCloud-iOS' do
-  platform :ios, '11.0'
+  platform :ios, '12.0'
   shared_pods
 end
 
 target 'BrainCloud-iOSTests' do
-  platform :ios, '11.0'
+  platform :ios, '12.0'
   shared_pods
 end
 
@@ -39,12 +39,12 @@ target 'BrainCloud-OSXTests' do
 end
 
 target 'BrainCloud-tvOS' do
-  platform :tvos, '11.0'
+  platform :tvos, '12.0'
   shared_pods
 end
 
 target 'BrainCloud-tvOSTests' do
-  platform :tvos, '11.0'
+  platform :tvos, '12.0'
   shared_pods
 end
 
@@ -62,14 +62,14 @@ post_install do |installer|
    installer.generated_projects.each do |project|
          project.targets.each do |target|
              target.build_configurations.each do |config|
-               if Gem::Version.new('11.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'])
-                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+               if Gem::Version.new('12.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'])
+                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
                end
                if Gem::Version.new('4.0') > Gem::Version.new(config.build_settings['WATCHOS_DEPLOYMENT_TARGET'])
                  config.build_settings['WATCHOS_DEPLOYMENT_TARGET'] = '4.0'
                end
-               if Gem::Version.new('11.0') > Gem::Version.new(config.build_settings['TVOS_DEPLOYMENT_TARGET'])
-                 config.build_settings['TVOS_DEPLOYMENT_TARGET'] = '11.0'
+               if Gem::Version.new('12.0') > Gem::Version.new(config.build_settings['TVOS_DEPLOYMENT_TARGET'])
+                 config.build_settings['TVOS_DEPLOYMENT_TARGET'] = '12.0'
                end
                if Gem::Version.new('10.13') > Gem::Version.new(config.build_settings['MACOSX_DEPLOYMENT_TARGET'])
                  config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
