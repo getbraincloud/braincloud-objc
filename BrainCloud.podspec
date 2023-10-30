@@ -11,14 +11,14 @@ Pod::Spec.new do |s|
 
   s.name     = "BrainCloud"
 
-  s.version  = "5.0.1"
+  s.version  = "5.1.0"
 
   s.summary  = "The Objective-C/Swift client library for brainCloud"
   s.homepage = "http://getbraincloud.com/"
 
-  s.ios.deployment_target  = "11.0"
+  s.ios.deployment_target  = "12.0"
   s.osx.deployment_target  = "10.13"
-  s.tvos.deployment_target = "11.0"
+  s.tvos.deployment_target = "12.0"
   s.watchos.deployment_target = "4.0"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -44,8 +44,8 @@ Pod::Spec.new do |s|
   # to use development pod: change below to your full source code path
   # to use cocoapod release: change to be relative to ${PODS_ROOT}
   s.xcconfig = {
-  # eg. 'USER_HEADER_SEARCH_PATHS' => '"/local/path/to/braincloud-cpp/include"'
-          'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include"'
+    # eg. '"${PODS_ROOT}/BrainCloudCpp/include"', '"/local/path/to/braincloud-cpp/include"'
+    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include"'
   }
   
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -53,6 +53,6 @@ Pod::Spec.new do |s|
   s.libraries                = 'c++', 'z'
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.dependency 'BrainCloudCpp', '5.0.1'
+  s.dependency 'BrainCloudCpp', '5.1.0'
 
 end
