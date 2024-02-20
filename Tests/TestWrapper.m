@@ -282,6 +282,51 @@
     [self waitForResult];
 }
 
+- (void)testLogoutRememberUser
+{
+    [m_bcWrapper initialize:m_serverUrl secretKey:m_secret appId:m_appId appVersion:m_version companyName:@"wrapper" appName:@"unittest"];
+
+    [m_bcWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                                                  password:[TestFixtureBase getUser:@"UserA"].m_password
+                                               forceCreate:YES
+                                           completionBlock:successBlock
+                                      errorCompletionBlock:failureBlock
+                                                  cbObject:nil];
+    [self waitForResult];
+    
+    NSString *profileId = [m_bcWrapper storedProfileId];
+    
+    [m_bcWrapper logout:false withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+    
+    
+    if (![profileId isEqualToString:[m_bcWrapper storedProfileId]])
+    {
+        _XCTPrimitiveFail(self, @"Logout expecting user remembered");
+    }
+}
+
+- (void)testLogoutForgetUser
+{
+    [m_bcWrapper initialize:m_serverUrl secretKey:m_secret appId:m_appId appVersion:m_version companyName:@"wrapper" appName:@"unittest"];
+
+    [m_bcWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                                                  password:[TestFixtureBase getUser:@"UserA"].m_password
+                                               forceCreate:YES
+                                           completionBlock:successBlock
+                                      errorCompletionBlock:failureBlock
+                                                  cbObject:nil];
+    [self waitForResult];
+    
+    [m_bcWrapper logout:true withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+    
+    if ([m_bcWrapper storedProfileId] != nil)
+    {
+        _XCTPrimitiveFail(self, @"Logout expecting user forgotten");
+    }
+}
+
 /*
 
 
