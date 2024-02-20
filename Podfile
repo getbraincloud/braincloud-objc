@@ -10,7 +10,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 def shared_pods
   if ENV['CPPSOURCE'] == "" then
-        pod 'BrainCloudCpp', '5.1.0'
+        pod 'BrainCloudCpp', '5.2.0'
         pod 'BrainCloudJsonCpp', '1.2.0'
     else
         pod 'BrainCloudCpp', :path => ENV['CPPSOURCE'] 
