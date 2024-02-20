@@ -686,7 +686,7 @@
                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                                cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -710,6 +710,22 @@
                          completionBlock:(BCCompletionBlock)completionBlock
                     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                                 cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Logs user out of server. optional: forget user profile Id
+*
+* Service Name - PlayerState
+* Service Operation - Logout
+*
+* @param forgetUser true to reset profile Id
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*/
+- (void)logout:(BOOL)forgetUser
+withCompletionBlock:(BCCompletionBlock)completionBlock
+errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Reset Email password - Sends a password reset email to the specified address
