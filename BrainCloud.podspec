@@ -53,6 +53,6 @@ Pod::Spec.new do |s|
   s.libraries                = 'c++', 'z'
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.dependency 'BrainCloudCpp', '5.1.0'
+  s.dependency 'BrainCloudCpp', '5.2.0'
 
 end
