@@ -966,6 +966,19 @@ static BrainCloudWrapper *sharedWrapper = nil;
     }
 }
 
+-(void)logout:(BOOL)forgetUser
+withCompletionBlock:(BCCompletionBlock)completionBlock
+errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+     cbObject:(BCCallbackObject)cbObject
+{
+    if(forgetUser)
+        [self setStoredProfileId:@""];
+    [[_bcClient playerStateService]
+     logout: completionBlock
+     errorCompletionBlock:errorCompletionBlock
+     cbObject:cbObject];
+}
+
 - (void)resetEmailPassword:(NSString *)email
        withCompletionBlock:(BCCompletionBlock)completionBlock
       errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
