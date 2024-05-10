@@ -126,6 +126,21 @@
     [self abandonMatch:matchId];
 }
 
+- (void)testUpdateMatchStateCurrentTurn
+{
+    NSString *matchId = [self createMatch:false];
+    [[m_client asyncMatchService] updateMatchStateCurrentTurn:[TestFixtureBase getUser:@"UserA"].m_profileId
+                                     matchId:matchId
+                                     version:0
+                              jsonMatchState:@"{ \"map\":\"level1\" }"
+                              jsonStatistics:@"{ \"summary\":\"test\" }"
+                             completionBlock:successBlock
+                        errorCompletionBlock:failureBlock
+                                    cbObject:nil];
+    [self waitForResult];
+    [self abandonMatch:matchId];
+}
+
 - (void)testUpdateMatchSummaryData
 {
     NSString *matchId = [self createMatch:false];

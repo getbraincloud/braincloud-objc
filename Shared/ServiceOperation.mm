@@ -107,6 +107,7 @@ NSString const *const BrainCloudServiceOperationGetShieldExpiry = [NSString stri
 NSString const *const BrainCloudServiceOperationFindPlayers = [NSString stringWithCString:BrainCloud::ServiceOperation::FindPlayers.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationFindPlayersUsingFilter = [NSString stringWithCString:BrainCloud::ServiceOperation::FindPlayersUsingFilter.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationSubmitTurn = [NSString stringWithCString:BrainCloud::ServiceOperation::SubmitTurn.getValue().c_str() encoding:NSASCIIStringEncoding];
+NSString const *const BrainCloudServiceOperationUpdateMatchStateCurrentTurn = [NSString stringWithCString:BrainCloud::ServiceOperation::UpdateMatchStateCurrentTurn.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationUpdateMatchSummary = [NSString stringWithCString:BrainCloud::ServiceOperation::UpdateMatchSummary.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationAbandon = [NSString stringWithCString:BrainCloud::ServiceOperation::Abandon.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationComplete = [NSString stringWithCString:BrainCloud::ServiceOperation::Complete.getValue().c_str() encoding:NSASCIIStringEncoding];

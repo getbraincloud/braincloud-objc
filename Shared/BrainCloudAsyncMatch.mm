@@ -75,6 +75,20 @@
         new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)updateMatchStateCurrentTurn:(NSString *)ownerId
+                    matchId:(NSString *)matchId
+                    version:(uint64_t)version
+             jsonMatchState:(NSString *)matchState
+             jsonStatistics:(NSString *)stats
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getAsyncMatchService()->updateMatchStateCurrentTurn(
+        [ownerId UTF8String], [matchId UTF8String], version, [matchState UTF8String], [stats UTF8String],
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)updateMatchSummaryData:(NSString *)ownerId
                        matchId:(NSString *)matchId
                        version:(uint64_t)version
