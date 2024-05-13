@@ -335,6 +335,15 @@
         [groupId UTF8String], [profileId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)deleteGroupJoinRequest:(NSString *)groupId
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject;
+{
+    _client->getGroupService()->deleteGroupJoinRequest(
+        [groupId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)removeGroupMember:(NSString *)groupId
                 profileId:(NSString *)profileId
           completionBlock:(BCCompletionBlock)cb
