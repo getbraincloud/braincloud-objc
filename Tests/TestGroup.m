@@ -774,7 +774,7 @@ NSString *groupId = @"";
 
 - (void)logout
 {
-    [[m_client playerStateService] logout:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+	[m_bcWrapper logout:true withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
 }
 

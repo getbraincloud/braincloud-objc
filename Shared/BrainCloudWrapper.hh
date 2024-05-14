@@ -898,6 +898,29 @@ cbObject:(BCCallbackObject)cbObject;
                     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                                 cbObject:(BCCallbackObject)cbObject;
 
+/**
+ Returns true if reconnect is possible
+ 
+ */
+-(Boolean)canReconnect;
+
+/**
+ * Clears Profile Id and Anonymous Id and deletes data entry on device
+ * Use Logout
+ * NOTE: If this is called when AnonymousAuthentication is used, the portal user cannot be reconnected or recovered!
+ */
+-(void)clearIds;
+
+/**
+ * Resets the profile id to empty string AND clear in client authentication
+ */
+-(void)resetStoredProfileId;
+
+/**
+ * Resets the anonymous id to empty string AND clear in client authentication
+ */
+-(void)resetStoredAnonymousId;
+
 
 /**
  * Re-authenticates the user with brainCloud
