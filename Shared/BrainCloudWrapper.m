@@ -71,7 +71,7 @@ static BrainCloudWrapper *sharedWrapper = nil;
                                                                 options:NSJSONReadingMutableContainers
                                                                   error:nil];
 		
-		weakSelf.storedProfileId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"profileId"];
+		[weakSelf setStoredProfileId: [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"profileId"]];
 
         AuthenticationCallbackObject *aco = (AuthenticationCallbackObject*) cbObject;
         if (aco.completionBlock != nil)
@@ -137,9 +137,9 @@ static BrainCloudWrapper *sharedWrapper = nil;
 
 }
 
-- (void)setStoredAnonymousId:(NSString *)storedAnonymousId
+- (void)setStoredAnonymousId:(NSString *)in_AnonymousId
 {
-    [self.helper saveString:storedAnonymousId forKey:[self makePrefixedName:kPersistenceKeyAnonymousId]];
+    [self.helper saveString:in_AnonymousId forKey:[self makePrefixedName:kPersistenceKeyAnonymousId]];
 }
 
 - (NSString *)storedAnonymousId
@@ -157,14 +157,34 @@ static BrainCloudWrapper *sharedWrapper = nil;
     return [self.helper stringForKey:[self makePrefixedName:kPersistenceKeyAuthenticationType]];
 }
 
-- (void)setStoredProfileId:(NSString *)storedProfileId
+- (void)setStoredProfileId:(NSString *)in_ProfileId
 {
-    [self.helper saveString:storedProfileId forKey:[self makePrefixedName:kPersistenceKeyProfileId]];
+    [self.helper saveString:in_ProfileId forKey:[self makePrefixedName:kPersistenceKeyProfileId]];
 }
 
 - (NSString *)storedProfileId
 {
     return [self.helper stringForKey:[self makePrefixedName:kPersistenceKeyProfileId]];
+}
+
+-(void)clearIds
+{
+	[self resetStoredProfileId];
+	[self resetStoredAnonymousId];
+}
+
+-(void)resetStoredProfileId
+{
+	// the save data help deletes the key if empty sting comes in
+	[self.helper saveString:@"" forKey:[self makePrefixedName:kPersistenceKeyProfileId]];
+	[[_bcClient authenticationService] setProfileID:@""];
+}
+
+-(void)resetStoredAnonymousId
+{
+	// the save data help deletes the key if empty sting comes in
+	[self.helper saveString:@"" forKey:[self makePrefixedName:kPersistenceKeyAnonymousId]];
+	[[_bcClient authenticationService] setAnonymousID:@""];
 }
 
 #pragma mark - C++ Initialization
@@ -254,8 +274,9 @@ static BrainCloudWrapper *sharedWrapper = nil;
 
 - (void)_initializeIdentity:(BOOL) isAnonymousAuth
 {
-    NSString *profileId = self.storedProfileId;
-    NSString *anonymousId = self.storedAnonymousId;
+	// the getters for the stored IDs read the save data
+    NSString *profileId = [self storedProfileId];
+    NSString *anonymousId = [self storedAnonymousId];
     if (profileId != nil && [profileId length] == 0)
     {
         profileId = nil;
@@ -265,12 +286,12 @@ static BrainCloudWrapper *sharedWrapper = nil;
         anonymousId = nil;
     }
     
-    if (nil == self.storedAnonymousId || (nil != self.storedAnonymousId && nil == self.storedProfileId))
+    if (nil == anonymousId || (nil != anonymousId && nil == profileId))
     {
-        anonymousId= [[_bcClient authenticationService] generateAnonymousId];
+        anonymousId = [[_bcClient authenticationService] generateAnonymousId];
         profileId = @"";
-        self.storedAnonymousId = anonymousId;
-        self.storedProfileId = profileId;
+		[self setStoredAnonymousId:anonymousId];
+		[self setStoredProfileId:profileId];
     }
     
     NSString *profileIdToAuthenticateWith = profileId;
@@ -972,7 +993,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
      cbObject:(BCCallbackObject)cbObject
 {
     if(forgetUser)
-        [self setStoredProfileId:@""];
+        [self resetStoredProfileId];
     [[_bcClient playerStateService]
      logout: completionBlock
      errorCompletionBlock:errorCompletionBlock
@@ -1090,6 +1111,24 @@ errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
             cbObject:(BCCallbackObject)cbObject
 {
     [self authenticateAnonymous:completionBlock errorCompletionBlock:errorCompletionBlock cbObject:cbObject forceCreate:false];
+}
+
+-(Boolean)canReconnect
+{
+	// getters read the saved data
+	NSString *profileId = [self storedProfileId];
+	NSString *anonymousId = [self storedAnonymousId];
+	if (profileId != nil && [profileId length] == 0)
+	{
+		profileId = nil;
+	}
+	if (anonymousId != nil && [anonymousId length] == 0)
+	{
+		anonymousId = nil;
+	}
+	
+	// return true if both are set
+	return (nil != anonymousId && nil != profileId);
 }
 
 /*

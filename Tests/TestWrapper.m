@@ -31,6 +31,7 @@
     [self waitForResult];
     [self reset];
     
+	// read IDs fromd device
     NSString *anonId = [m_bcWrapper storedAnonymousId];
     NSString *profileId = [m_bcWrapper storedProfileId];
     
@@ -271,15 +272,32 @@
                                                   cbObject:nil];
     [self waitForResult];
 
-    [[[m_bcWrapper getBCClient] playerStateService]logout:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+	[m_bcWrapper logout:false withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
 
     
     [m_bcWrapper reconnect:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
+}
 
-    [[[m_bcWrapper getBCClient] timeService]readServerTime:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+- (void)testReconnectMissingProfile
+{
+    [m_bcWrapper initialize:m_serverUrl secretKey:m_secret appId:m_appId appVersion:m_version companyName:@"wrapper" appName:@"unittest"];
+
+    [m_bcWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                                                  password:[TestFixtureBase getUser:@"UserA"].m_password
+                                               forceCreate:YES
+                                           completionBlock:successBlock
+                                      errorCompletionBlock:failureBlock
+                                                  cbObject:nil];
     [self waitForResult];
+
+	[m_bcWrapper logout:true withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+
+    
+    [m_bcWrapper reconnect:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForFailedResult];
 }
 
 - (void)testLogoutRememberUser
@@ -326,37 +344,5 @@
         _XCTPrimitiveFail(self, @"Logout expecting user forgotten");
     }
 }
-
-/*
-
-
-TEST_F(TestBCWrapper, AuthenticateEmailPassword)
-{
-    BrainCloud::BrainCloudWrapper::getInstance()->initialize(m_serverUrl.c_str(), m_secret.c_str(), m_appId.c_str(), m_version.c_str(), "wrapper", "unittest");
-    
-    std::string email = GetUser(UserA)->m_email;
-    email.append("_wrapper");
-    
-    TestResult tr;
-    BrainCloud::BrainCloudWrapper::getInstance()->authenticateEmailPassword(email.c_str(), GetUser(UserA)->m_password, true, &tr);
-    tr.run(m_bc);
-    
-    Logout();
-}
-
-TEST_F(TestBCWrapper, AuthenticateUniversal)
-{
-    BrainCloud::BrainCloudWrapper::getInstance()->initialize(m_serverUrl.c_str(), m_secret.c_str(), m_appId.c_str(), m_version.c_str(), "wrapper", "unittest");
-    
-    TestResult tr;
-    std::string uid = GetUser(UserA)->m_id;
-    uid.append("_wrapper");
-    BrainCloud::BrainCloudWrapper::getInstance()->authenticateUniversal(uid.c_str(), GetUser(UserA)->m_password, true, &tr);
-    tr.run(m_bc);
-    
-    Logout();
-}
-
-*/
 
 @end

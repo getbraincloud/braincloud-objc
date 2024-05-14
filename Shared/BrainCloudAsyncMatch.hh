@@ -132,7 +132,7 @@
                    cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Submits a turn for the given match.
+* Updates the state for the given match. without submitting a turn
 *
 * Service Name - AsyncMatch
 * Service Operation - UpdateMatchStateCurrentTurn
