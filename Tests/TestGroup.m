@@ -202,6 +202,48 @@ NSString *groupId = @"";
     [self logout];
 }
 
+- (void)testDeleteGroupJoinRequest
+{
+    [self createGroupAsUserA];
+    [self authenticate:@"UserB"];
+
+    [[m_client groupService] joinGroup:groupId
+                       completionBlock:successBlock
+                  errorCompletionBlock:failureBlock
+                              cbObject:nil];
+    [self waitForResult];
+
+    [[m_client groupService] getMyGroups:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+
+    NSDictionary *groups;
+    groups = [[TestFixtureBase getDataFromResponse:self.jsonResponse] valueForKey:@"requested"];
+    
+    if(groups != NULL && [groups count] > 0){
+        
+        [[m_client groupService] deleteGroupJoinRequest:groupId
+                                        completionBlock:successBlock
+                                   errorCompletionBlock:failureBlock
+                                               cbObject:nil];
+        [self waitForResult];
+        
+        [[m_client groupService] getMyGroups:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+        [self waitForResult];
+        
+        groups = [[TestFixtureBase getDataFromResponse:self.jsonResponse] valueForKey:@"requested"];
+        
+        if( !(groups == NULL || [groups count] == 0)) {
+            _XCTPrimitiveFail(self, @"");
+        }
+    }
+    else{
+        _XCTPrimitiveFail(self, @"");
+    }
+    
+    [self logout];
+    [self deleteGroupAsUserA];
+}
+
 - (void)testGetMyGroups
 {
     [self authenticate:@"UserA"];
