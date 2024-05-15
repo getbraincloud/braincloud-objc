@@ -107,6 +107,7 @@ extern NSString const *const BrainCloudServiceOperationGetShieldExpiry;
 extern NSString const *const BrainCloudServiceOperationFindPlayers;
 extern NSString const *const BrainCloudServiceOperationFindPlayersUsingFilter;
 extern NSString const *const BrainCloudServiceOperationSubmitTurn;
+extern NSString const *const BrainCloudServiceOperationUpdateMatchStateCurrentTurn;
 extern NSString const *const BrainCloudServiceOperationUpdateMatchSummary;
 extern NSString const *const BrainCloudServiceOperationAbandon;
 extern NSString const *const BrainCloudServiceOperationComplete;

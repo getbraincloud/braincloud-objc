@@ -571,7 +571,7 @@ typedef NS_ENUM(NSUInteger, AutoJoinStrategy) { JoinFirstGroup, JoinRandomGroup 
  * Reject an outstanding request to join the group.
  *
  * Service Name - group
- * Service Operation - REJECT_GROUP_JOREQUEST
+ * Service Operation - REJECT_GROUP_JOIN_REQUEST
  *
  * @param groupId ID of the group.
  * @param profileId Profile ID of the invitation being deleted.
@@ -582,6 +582,24 @@ typedef NS_ENUM(NSUInteger, AutoJoinStrategy) { JoinFirstGroup, JoinRandomGroup 
  */
 - (void)rejectGroupJoinRequest:(NSString *)groupId
                      profileId:(NSString *)profileId
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject;
+
+/**
+/**
+ * Delete an outstanding request to join the group.
+ *
+ * Service Name - group
+ * Service Operation -DELETE_GROUP_JOIN_REQUEST
+ *
+ * @param groupId ID of the group.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server
+ * response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)deleteGroupJoinRequest:(NSString *)groupId
                completionBlock:(BCCompletionBlock)cb
           errorCompletionBlock:(BCErrorCompletionBlock)ecb
                       cbObject:(BCCallbackObject)cbObject;

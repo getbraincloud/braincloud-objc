@@ -286,17 +286,18 @@ long createFile(const char * in_path, int64_t in_size)
         m_appId      : m_secret, 
         m_childAppId : m_childSecret,
     };
-    [m_client initializeWithApps:m_serverUrl
+    [m_bcWrapper initializeWithApps:m_serverUrl
                     defaultAppId:m_appId
                        secretMap:secretMap
-                      appVersion:m_version];
+                      appVersion:m_version
+						companyName:@""
+							appName:@""];
     [m_client enableLogging:TRUE];
     [self createUsers];
 
     if ([self authenticateOnSetup])
     {
-        [[m_client authenticationService]
-            authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+        [m_bcWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
                          password:[TestFixtureBase getUser:@"UserA"].m_password
                       forceCreate:true
                   completionBlock:successBlock
@@ -308,6 +309,10 @@ long createFile(const char * in_path, int64_t in_size)
 
 - (void)tearDown
 {
+	if ([self authenticateOnSetup])
+	{
+		[m_bcWrapper logout:true withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+	}
     [m_client resetCommunication];
     [super tearDown];
 }
@@ -458,15 +463,13 @@ long createFile(const char * in_path, int64_t in_size)
     [m_users setObject:user forKey:prefix];
 
     // logout again
-    [[m_client playerStateService] logout:successBlock
-                     errorCompletionBlock:failureBlock
-                                 cbObject:nil];
+	[m_bcWrapper logout:true withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
 }
 
 - (NSString *)authenticateUser:(NSString *)userId password:(NSString *)password
 {
-    [[m_client authenticationService] authenticateUniversal:userId
+    [m_bcWrapper authenticateUniversal:userId
                                                    password:password
                                                 forceCreate:true
                                             completionBlock:successBlock

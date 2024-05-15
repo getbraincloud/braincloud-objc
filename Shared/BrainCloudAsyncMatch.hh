@@ -132,6 +132,30 @@
                    cbObject:(BCCallbackObject)cbObject;
 
 /**
+* Updates the state for the given match. without submitting a turn
+*
+* Service Name - AsyncMatch
+* Service Operation - UpdateMatchStateCurrentTurn
+*
+* @param ownerId Match owner identfier
+* @param matchId Match identifier
+* @param version Game state version to ensure turns are submitted once and in order
+* @param jsonMatchState JSON string provided by the caller
+* @param jsonStatistics Optional JSON string blob provided by the caller
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*/
+- (void)updateMatchStateCurrentTurn:(NSString *)ownerId
+                    matchId:(NSString *)matchId
+                    version:(uint64_t)version
+             jsonMatchState:(NSString *)matchState
+             jsonStatistics:(NSString *)stats
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Allows the current player (only) to update Summary data without having to submit a whole turn.
 *
 * Service Name - AsyncMatch
