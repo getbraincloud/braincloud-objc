@@ -83,7 +83,8 @@ static FileUploadProgress *fileProgress;
     
     if (![TestGroupFile simpleUpload:bc fileSize: 5 cloudPath:@"TestFolder" cloudFilename:filename uploadId:&uploadId])
     {
-        return;
+        //return; 
+        NSLog(@"Group file upload has failed");
     }
 
     XCTAssertEqual([fileProgress countCompleted], 1);
