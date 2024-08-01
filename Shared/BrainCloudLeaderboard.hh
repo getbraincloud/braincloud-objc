@@ -260,6 +260,35 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                         cbObject:(BCCallbackObject)cbObject;
 
 /**
+* Method returns a page of global leaderboard results.
+*
+* Leaderboards entries contain the player's score and optionally, some user-defined
+* data associated with the score.
+*
+* Note: This method allows the client to retrieve pages from within the global leaderboard list
+*
+* This method returns the same data as getGlobalLeaderboardPage, but it will not return an error if the leaderboard does not exist.
+*
+* Service Name - SocialLeaderboard
+* Service Operation - GET_GLOBAL_LEADERBOARD_PAGE_IF_EXISTS
+*
+* @param leaderboardId The id of the leaderboard to retrieve.
+* @param sort Sort key Sort order of page.
+* @param startIndex The index at which to start the page.
+* @param endIndex The index at which to end the page.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*/
+- (void)getGlobalLeaderboardPageIfExists:(NSString *)leaderboardId
+                       sortOrder:(SortOrder)sortOrder
+                      startIndex:(int)startIndex
+                        endIndex:(int)endIndex
+                 completionBlock:(BCCompletionBlock)cb
+            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                        cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Method returns a page of global leaderboard results.
  * By using a non-current version id, the user can retrieve a historical leaderboard.
  * See GetGlobalLeaderboardVersions method to retrieve the version id.
@@ -277,6 +306,34 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
  * @param cbObject User object sent to the completion blocks
  */
 - (void)getGlobalLeaderboardPageByVersion:(NSString *)leaderboardId
+                                sortOrder:(SortOrder)sortOrder
+                               startIndex:(int)startIndex
+                                 endIndex:(int)endIndex
+                                versionId:(int)versionId
+                          completionBlock:(BCCompletionBlock)cb
+                     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                 cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Method returns a page of global leaderboard results.
+ * By using a non-current version id, the user can retrieve a historical leaderboard.
+ * See GetGlobalLeaderboardVersions method to retrieve the version id.
+ * 
+ * This method returns the same data as getGlobalLeaderboardPageByVersion, but it will not return an error if the leaderboard does not exist.
+ *
+ * Service Name - SocialLeaderboard
+ * Service Operation - GET_GLOBAL_LEADERBOARD_PAGE_IF_EXISTS
+ *
+ * @param leaderboardId The id of the leaderboard to retrieve.
+ * @param sort Sort key Sort order of page.
+ * @param startIndex The index at which to start the page.
+ * @param endIndex The index at which to end the page.
+ * @param versionId The historical version to retrieve.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getGlobalLeaderboardPageByVersionIfExists:(NSString *)leaderboardId
                                 sortOrder:(SortOrder)sortOrder
                                startIndex:(int)startIndex
                                  endIndex:(int)endIndex
@@ -312,6 +369,33 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
 
 /**
 * Method returns a view of global leaderboard results that centers on the current player.
+*
+* Leaderboards entries contain the player's score and optionally, some user-defined
+* data associated with the score.
+*
+* This method returns the same data as getGlobalLeaderboardView, but it will not return an error if the leaderboard does not exist.
+*
+* Service Name - SocialLeaderboard
+* Service Operation - GET_GLOBAL_LEADERBOARD_VIEW_IF_EXISTS
+*
+* @param leaderboardId The id of the leaderboard to retrieve.
+* @param sort Sort key Sort order of page.
+* @param beforeCount The count of number of players before the current player to include.
+* @param afterCount The count of number of players after the current player to include.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*/
+- (void)getGlobalLeaderboardViewIfExists:(NSString *)leaderboardId
+                       sortOrder:(SortOrder)sortOrder
+                     beforeCount:(int)beforeCount
+                      afterCount:(int)afterCount
+                 completionBlock:(BCCompletionBlock)cb
+            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                        cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Method returns a view of global leaderboard results that centers on the current player.
 * By using a non-current version id, the user can retrieve a historial leaderboard.
 * See GetGlobalLeaderboardVersions method to retrieve the version id.
 *
@@ -335,6 +419,35 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                           completionBlock:(BCCompletionBlock)cb
                      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+* Method returns a view of global leaderboard results that centers on the current player.
+* By using a non-current version id, the user can retrieve a historial leaderboard.
+* See GetGlobalLeaderboardVersions method to retrieve the version id.
+*
+* This method returns the same data as getGlobalLeaderboardViewByVersion, but it will not return an error if the leaderboard does not exist.
+*
+* Service Name - SocialLeaderboard
+* Service Operation - GET_GLOBAL_LEADERBOARD_VIEW_IF_EXISTS
+*
+* @param leaderboardId The id of the leaderboard to retrieve.
+* @param sort Sort key Sort order of page.
+* @param beforeCount The count of number of players before the current player to include.
+* @param afterCount The count of number of players after the current player to include.
+* @param versionId The historical version to retrieve.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*/
+- (void)getGlobalLeaderboardViewByVersionIfExists:(NSString *)leaderboardId
+                                sortOrder:(SortOrder)sortOrder
+                              beforeCount:(int)beforeCount
+                               afterCount:(int)afterCount
+                                versionId:(int)versionId
+                          completionBlock:(BCCompletionBlock)cb
+                     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                 cbObject:(BCCallbackObject)cbObject;
+
 /**
  * Gets the number of entries in a global leaderboard
  *
@@ -636,6 +749,25 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                            cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Retrieve the social leaderboard for a list of players.
+ * This method returns the same data as getPlayersSocialLeaderboard, but it will not return an error if the leaderboard does not exist.
+ *
+ * Service Name - leaderboard
+ * Service Operation - GET_PLAYERS_SOCIAL_LEADERBOARD_IF_EXISTS
+ *
+ * @param leaderboardId The leaderboard to retrieve
+ * @param profileIds The IDs of the players
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getPlayersSocialLeaderboardIfExists:(NSString *)leaderboardId
+                         profileIds:(NSArray *)profileIds
+                    completionBlock:(BCCompletionBlock)cb
+               errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                           cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Retrieve the social leaderboard for a list of players by their version.
  *
  * Service Name - leaderboard
@@ -649,6 +781,28 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
  * @param cbObject User object sent to the completion blocks
  */
 - (void)getPlayersSocialLeaderboardByVersion:(NSString *)leaderboardId
+                                  profileIds:(NSArray *)profileIds
+                                   versionId:(int)versionId
+                             completionBlock:(BCCompletionBlock)cb
+                        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                    cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Retrieve the social leaderboard for a list of players by their version.
+ * 
+ * This method returns the same data as getPlayersSocialLeaderboardByVersion, but it will not return an error if the leaderboard does not exist.
+ *
+ * Service Name - leaderboard
+ * Service Operation - GET_PLAYERS_SOCIAL_LEADERBOARD_BY_VERSION_IF_EXISTS
+ *
+ * @param leaderboardId The leaderboard to retrieve
+ * @param profileIds The IDs of the players
+ * @param versionId the version
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getPlayersSocialLeaderboardByVersionIfExists:(NSString *)leaderboardId
                                   profileIds:(NSArray *)profileIds
                                    versionId:(int)versionId
                              completionBlock:(BCCompletionBlock)cb

@@ -126,9 +126,59 @@ NSString *eventId = @"tournamentRewardTest";
     [self waitForResult];
 }
 
+- (void)testGetGlobalLeaderboardPageIfExistsTrue
+{
+    [[m_client leaderboardService] getGlobalLeaderboardPageIfExists:globalLeaderboardId
+                                                  sortOrder:HIGH_TO_LOW
+                                                 startIndex:0
+                                                   endIndex:10
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetGlobalLeaderboardPageIfExistsFalse
+{
+    [[m_client leaderboardService] getGlobalLeaderboardPageIfExists:nonExistentLeaderboard
+                                                  sortOrder:HIGH_TO_LOW
+                                                 startIndex:0
+                                                   endIndex:10
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetGlobalLeaderboardPageByVersion
 {
     [[m_client leaderboardService] getGlobalLeaderboardPageByVersion:globalLeaderboardId
+                                                           sortOrder:HIGH_TO_LOW
+                                                          startIndex:0
+                                                            endIndex:10
+                                                           versionId:1
+                                                     completionBlock:successBlock
+                                                errorCompletionBlock:failureBlock
+                                                            cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetGlobalLeaderboardPageByVersionIfExistsTrue
+{
+    [[m_client leaderboardService] getGlobalLeaderboardPageByVersionIfExists:globalLeaderboardId
+                                                           sortOrder:HIGH_TO_LOW
+                                                          startIndex:0
+                                                            endIndex:10
+                                                           versionId:1
+                                                     completionBlock:successBlock
+                                                errorCompletionBlock:failureBlock
+                                                            cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetGlobalLeaderboardPageByVersionIfExistsFalse
+{
+    [[m_client leaderboardService] getGlobalLeaderboardPageByVersionIfExists:nonExistentLeaderboard
                                                            sortOrder:HIGH_TO_LOW
                                                           startIndex:0
                                                             endIndex:10
@@ -160,9 +210,59 @@ NSString *eventId = @"tournamentRewardTest";
     [self waitForResult];
 }
 
+- (void)testGetGlobalLeaderboardViewIfExistsTrue
+{
+    [[m_client leaderboardService] getGlobalLeaderboardViewIfExists:globalLeaderboardId
+                                                  sortOrder:LOW_TO_HIGH
+                                                beforeCount:0
+                                                 afterCount:10
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetGlobalLeaderboardViewIfExistsFalse
+{
+    [[m_client leaderboardService] getGlobalLeaderboardViewIfExists:nonExistentLeaderboardId
+                                                  sortOrder:LOW_TO_HIGH
+                                                beforeCount:0
+                                                 afterCount:10
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetGlobalLeaderboardViewByVersion
 {
     [[m_client leaderboardService] getGlobalLeaderboardViewByVersion:globalLeaderboardId
+                                                           sortOrder:LOW_TO_HIGH
+                                                         beforeCount:0
+                                                          afterCount:10
+                                                           versionId:1
+                                                     completionBlock:successBlock
+                                                errorCompletionBlock:failureBlock
+                                                            cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetGlobalLeaderboardViewByVersionIfExistsTrue
+{
+    [[m_client leaderboardService] getGlobalLeaderboardViewByVersionIfExists:globalLeaderboardId
+                                                           sortOrder:LOW_TO_HIGH
+                                                         beforeCount:0
+                                                          afterCount:10
+                                                           versionId:1
+                                                     completionBlock:successBlock
+                                                errorCompletionBlock:failureBlock
+                                                            cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetGlobalLeaderboardViewByVersionIfExistsFalse
+{
+    [[m_client leaderboardService] getGlobalLeaderboardViewByVersionIfExists:nonExistentLeaderboardId
                                                            sortOrder:LOW_TO_HIGH
                                                          beforeCount:0
                                                           afterCount:10
@@ -395,9 +495,51 @@ NSString *eventId = @"tournamentRewardTest";
     [self waitForResult];
 }
 
+- (void)testGetPlayersSocialLeaderboardIfExistsTrue
+{
+    [[m_client leaderboardService] getPlayersSocialLeaderboardIfExists:socialLeaderboardId
+                                                    profileIds:@[ [TestFixtureBase getUser:@"UserB"].m_profileId ]
+                                               completionBlock:successBlock
+                                          errorCompletionBlock:failureBlock
+                                                      cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetPlayersSocialLeaderboardIfExistsFalse
+{
+    [[m_client leaderboardService] getPlayersSocialLeaderboardIfExists:nonExistentLeaderboardId
+                                                    profileIds:@[ [TestFixtureBase getUser:@"UserB"].m_profileId ]
+                                               completionBlock:successBlock
+                                          errorCompletionBlock:failureBlock
+                                                      cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetPlayersSocialLeaderboardByVersion
 {
     [[m_client leaderboardService] getPlayersSocialLeaderboardByVersion:socialLeaderboardId
+                                                             profileIds:@[ [TestFixtureBase getUser:@"UserB"].m_profileId ]
+                                                              versionId:0
+                                                        completionBlock:successBlock
+                                                   errorCompletionBlock:failureBlock
+                                                               cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetPlayersSocialLeaderboardByVersionIfExistsTrue
+{
+    [[m_client leaderboardService] getPlayersSocialLeaderboardByVersionIfExists:socialLeaderboardId
+                                                             profileIds:@[ [TestFixtureBase getUser:@"UserB"].m_profileId ]
+                                                              versionId:0
+                                                        completionBlock:successBlock
+                                                   errorCompletionBlock:failureBlock
+                                                               cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetPlayersSocialLeaderboardByVersionIfExistsFalse
+{
+    [[m_client leaderboardService] getPlayersSocialLeaderboardByVersionIfExists:nonExistentLeaderboardId
                                                              profileIds:@[ [TestFixtureBase getUser:@"UserB"].m_profileId ]
                                                               versionId:0
                                                         completionBlock:successBlock

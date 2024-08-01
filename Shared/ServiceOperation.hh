@@ -57,7 +57,9 @@ extern NSString const *const BrainCloudServiceOperationGetSocialLeaderboardIfExi
 extern NSString const *const BrainCloudServiceOperationGetMultiSocialLeaderboard;
 extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboard;
 extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboardPage;
+extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboardPageIfExists;
 extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboardView;
+extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboardViewIfExists;
 extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboardVersions;
 extern NSString const *const BrainCloudServiceOperationGetCompletedTournament;
 extern NSString const *const BrainCloudServiceOperationRewardTournament;
