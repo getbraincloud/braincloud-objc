@@ -53,6 +53,7 @@ extern NSString const *const BrainCloudServiceOperationReadFriends;
 extern NSString const *const BrainCloudServiceOperationReadFriendsPlayerState;
 extern NSString const *const BrainCloudServiceOperationFindPlayerByName;
 extern NSString const *const BrainCloudServiceOperationGetSocialLeaderboard;
+extern NSString const *const BrainCloudServiceOperationGetSocialLeaderboardIfExists;
 extern NSString const *const BrainCloudServiceOperationGetMultiSocialLeaderboard;
 extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboard;
 extern NSString const *const BrainCloudServiceOperationGetGlobalLeaderboardPage;

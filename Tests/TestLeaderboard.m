@@ -19,6 +19,7 @@ NSString *globalLeaderboardId = @"testLeaderboard";
 NSString *socialLeaderboardId = @"testSocialLeaderboard";
 NSString *dynamicLeaderboardId = @"testDynamicLeaderboard";
 NSString *groupLeaderboardId = @"groupLeaderboardConfig";
+NSString *nonExistentLeaderboardId = @"nonExistentLeaderboard";
 NSString *eventId = @"tournamentRewardTest";
 
 - (void)setUp { [super setUp]; }
@@ -28,6 +29,26 @@ NSString *eventId = @"tournamentRewardTest";
 - (void)testGetSocialLeaderboard
 {
     [[m_client leaderboardService] getSocialLeaderboard:globalLeaderboardId
+                                            replaceName:true
+                                        completionBlock:successBlock
+                                   errorCompletionBlock:failureBlock
+                                               cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetSocialLeaderboardIfExistsTrue
+{
+    [[m_client leaderboardService] getSocialLeaderboardIfExists:globalLeaderboardId
+                                            replaceName:true
+                                        completionBlock:successBlock
+                                   errorCompletionBlock:failureBlock
+                                               cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetSocialLeaderboardIfExistsFalse
+{
+    [[m_client leaderboardService] getSocialLeaderboardIfExists:nonExistentLeaderboard
                                             replaceName:true
                                         completionBlock:successBlock
                                    errorCompletionBlock:failureBlock

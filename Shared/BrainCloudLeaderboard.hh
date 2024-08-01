@@ -59,6 +59,38 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                     cbObject:(BCCallbackObject)cbObject;
 
 /**
+* Method returns the social leaderboard. A player's social leaderboard is
+* comprised of players who are recognized as being your friend.
+* 
+* This method returns the same data as getSocialLeaderboard, but it will not return an error if the leaderboard does not exist
+* 
+* getSocialLeaderboardIfExists will retrieve all friends from all friend platforms, so
+* - all external friends (Facebook, Steam, PlaystationNetwork)
+* - all internal friends (brainCloud)
+* - plus "self".
+*
+* Leaderboards entries contain the player's score and optionally, some user-defined
+* data associated with the score. The currently logged in player will also
+* be returned in the social leaderboard.
+*
+* Note: If no friends have played the game, the bestScore, createdAt, updatedAt
+* will contain NULL.
+*
+* @param leaderboardId The id of the leaderboard to retrieve
+* @param replaceName If true, the currently logged in player's name will be replaced
+* by the string "You".
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*
+*/
+- (void)getSocialLeaderboardIfExists:(NSString *)leaderboardId
+                 replaceName:(bool)replaceName
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Method returns the social leaderboard by its version. A player's social leaderboard is
  * comprised of players who are recognized as being your friend.
  * 

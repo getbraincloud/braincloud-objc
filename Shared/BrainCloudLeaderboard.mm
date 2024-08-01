@@ -43,6 +43,16 @@
         [leaderboardId UTF8String], replaceName, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)getSocialLeaderboardIfExists:(NSString *)leaderboardId
+                 replaceName:(bool)replaceName
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLeaderboardService()->getSocialLeaderboardIfExists(
+        [leaderboardId UTF8String], replaceName, new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)getSocialLeaderboardByVersion:(NSString *)leaderboardId
                           replaceName:(bool)replaceName
                             versionId:(int)versionId

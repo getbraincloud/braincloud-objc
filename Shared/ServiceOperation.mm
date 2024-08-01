@@ -53,6 +53,7 @@ NSString const *const BrainCloudServiceOperationReadFriends = [NSString stringWi
 NSString const *const BrainCloudServiceOperationReadFriendsPlayerState = [NSString stringWithCString:BrainCloud::ServiceOperation::ReadFriendsPlayerState.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationFindPlayerByName = [NSString stringWithCString:BrainCloud::ServiceOperation::FindPlayerByName.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationGetSocialLeaderboard = [NSString stringWithCString:BrainCloud::ServiceOperation::GetSocialLeaderboard.getValue().c_str() encoding:NSASCIIStringEncoding];
+NSString const *const BrainCloudServiceOperationGetSocialLeaderboardIfExists = [NSString stringWithCString:BrainCloud::ServiceOperation::GetSocialLeaderboardIfExists.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationGetMultiSocialLeaderboard = [NSString stringWithCString:BrainCloud::ServiceOperation::GetMultiSocialLeaderboard.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationGetGlobalLeaderboard = [NSString stringWithCString:BrainCloud::ServiceOperation::GetGlobalLeaderboard.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationGetGlobalLeaderboardPage = [NSString stringWithCString:BrainCloud::ServiceOperation::GetGlobalLeaderboardPage.getValue().c_str() encoding:NSASCIIStringEncoding];
