@@ -67,6 +67,28 @@ NSString *eventId = @"tournamentRewardTest";
     [self waitForResult];
 }
 
+- (void)testGetSocialLeaderboardByVersionIfExistsTrue
+{
+    [[m_client leaderboardService] getSocialLeaderboardByVersionIfExists:globalLeaderboardId
+                                                     replaceName:true
+                                                       versionId:0
+                                                 completionBlock:successBlock
+                                            errorCompletionBlock:failureBlock
+                                                        cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetSocialLeaderboardByVersionIfExistsFalse
+{
+    [[m_client leaderboardService] getSocialLeaderboardByVersionIfExists:nonExistentLeaderboardId
+                                                     replaceName:true
+                                                       versionId:0
+                                                 completionBlock:successBlock
+                                            errorCompletionBlock:failureBlock
+                                                        cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetMultiSocialLeaderboard
 {
     [self testPostScoreToLeaderboard];
