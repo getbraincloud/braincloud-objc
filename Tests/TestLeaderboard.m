@@ -48,7 +48,7 @@ NSString *eventId = @"tournamentRewardTest";
 
 - (void)testGetSocialLeaderboardIfExistsFalse
 {
-    [[m_client leaderboardService] getSocialLeaderboardIfExists:nonExistentLeaderboard
+    [[m_client leaderboardService] getSocialLeaderboardIfExists:nonExistentLeaderboardId
                                             replaceName:true
                                         completionBlock:successBlock
                                    errorCompletionBlock:failureBlock
