@@ -140,7 +140,7 @@ NSString *eventId = @"tournamentRewardTest";
 
 - (void)testGetGlobalLeaderboardPageIfExistsFalse
 {
-    [[m_client leaderboardService] getGlobalLeaderboardPageIfExists:nonExistentLeaderboard
+    [[m_client leaderboardService] getGlobalLeaderboardPageIfExists:nonExistentLeaderboardId
                                                   sortOrder:HIGH_TO_LOW
                                                  startIndex:0
                                                    endIndex:10
@@ -178,7 +178,7 @@ NSString *eventId = @"tournamentRewardTest";
 
 - (void)testGetGlobalLeaderboardPageByVersionIfExistsFalse
 {
-    [[m_client leaderboardService] getGlobalLeaderboardPageByVersionIfExists:nonExistentLeaderboard
+    [[m_client leaderboardService] getGlobalLeaderboardPageByVersionIfExists:nonExistentLeaderboardId
                                                            sortOrder:HIGH_TO_LOW
                                                           startIndex:0
                                                             endIndex:10
