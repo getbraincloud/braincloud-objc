@@ -315,7 +315,7 @@ NSString *eventId = @"tournamentRewardTest";
 
 - (void)testPostScoreToDynamicLeaderboardUsingConfig
 {
-    [[m_client leaderboardService] testPostScoreToDynamicLeaderboardUsingConfig:dynamicLeaderboardId
+    [[m_client leaderboardService] postScoreToDynamicLeaderboardUsingConfig:dynamicLeaderboardId
                                                                           score:10
                                                                       scoreData:@"{\"nickname\": \"OBJC-Tester\"}"
                                                                      configJson:@"{\"leaderboardType\": \"HIGH_VALUE\", \"rotationType\": \"DAYS\", \"numDaysToRotate\": 4, \"resetAt\": \"[[#ts+60000]]\", \"retainedCount\": 2, \"expireInMins\": None}"
