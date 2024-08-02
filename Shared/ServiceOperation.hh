@@ -65,6 +65,7 @@ extern NSString const *const BrainCloudServiceOperationGetCompletedTournament;
 extern NSString const *const BrainCloudServiceOperationRewardTournament;
 extern NSString const *const BrainCloudServiceOperationPostScore;
 extern NSString const *const BrainCloudServiceOperationPostScoreDynamic;
+extern NSString const *const BrainCloudServiceOperationPostScoreDynamicUsingConfig;
 extern NSString const *const BrainCloudServiceOperationInitThirdParty;
 extern NSString const *const BrainCloudServiceOperationPostThirdPartyLeaderboardScore;
 extern NSString const *const BrainCloudServiceOperationIncrementThirdPartyLeaderboardScore;

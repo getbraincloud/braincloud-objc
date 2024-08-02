@@ -263,6 +263,18 @@
 #pragma clang diagnostic pop
 }
 
+- (void)postScoreToDynamicLeaderboardUsingConfig:(NSString *)leaderboardId
+                                           score:(int)score
+                                       scoreData:(NSString *)scoreData
+                                      configJson:(NSString *)configJson
+                                 completionBlock:(BCCompletionBlock)cb
+                            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                        cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLeaderboardService()->postScoreToDynamicLeaderboardUsingConfig(
+        [leaderboardId UTF8String], score, [scoreData UTF8String], [configJson UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)postScoreToDynamicLeaderboardUTC:(NSString *)leaderboardId
                                 score:(int)score
                              jsonData:(NSString *)jsonData

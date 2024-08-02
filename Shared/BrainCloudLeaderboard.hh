@@ -554,6 +554,51 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                              cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Post the player's score to the given social leaderboard, 
+ * dynamically creating the leaderboard if it does not exist yet. 
+ * To create new leaderboard, configJson must specify
+ * leaderboardType, rotationType, resetAt, and retainedCount, 
+ * at a minimum, with support to optionally specify an expiry in minutes.
+ * 
+ * Service Name - Social Leaderboard
+ * Service Operation - POST_SCORE_DYNAMIC_USING_CONFIG
+ * 
+ * @param leaderboardId The leaderboard to post to.
+ * @param score A score to post.
+ * @param scoreData Optional user-defined data to post with the score.
+ * @param configJson Configuration for the leaderboard if it does not exist yet, specified as JSON object. 
+ *                   Configuration fields supported are: 
+ *                       'leaderboardType': Required. Type of leaderboard. Valid values are:
+ *                          'LAST_VALUE', 
+ *                          'HIGH_VALUE', 
+ *                          'LOW_VALUE', 
+ *                          'CUMULATIVE',
+ *                          'ARCADE_HIGH',
+ *                          'ARCADE_LOW';
+ *                       'rotationType': Required. Type of rotation. Valid values are:
+ *                           'NEVER',
+ *                           'DAILY',
+ *                           'DAYS', 
+ *                           'WEEKLY',
+ *                           'MONTHLY', 
+ *                           'YEARLY';
+ *                       'numDaysToRotate': Required if 'DAYS' rotation type, with valid values between 2 and 14; otherwise, null;
+ *                       'resetAt': UTC timestamp, in milliseconds, at which to rotate the period. Always null if 'NEVER' rotation type; 
+ *                       'retainedCount': Required. Number of rotations (versions) of the leaderboard to retain; 
+ *                       'expireInMins': Optional. Duration, in minutes, before the leaderboard is to automatically expire.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)postScoreToDynamicLeaderboardUsingConfig:(NSString *)leaderboardId
+                                score:(int)score
+                            scoreData:(NSString *)scoreData
+                           configJson:(NSString *)configJson
+                      completionBlock:(BCCompletionBlock)cb
+                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                             cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Post the players score to the given social leaderboard.
 * Pass leaderboard config data to dynamically create if necessary.
 * You can optionally send a user-defined json string of data

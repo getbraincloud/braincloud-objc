@@ -65,6 +65,7 @@ NSString const *const BrainCloudServiceOperationGetCompletedTournament = [NSStri
 NSString const *const BrainCloudServiceOperationRewardTournament = [NSString stringWithCString:BrainCloud::ServiceOperation::RewardTournament.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationPostScore = [NSString stringWithCString:BrainCloud::ServiceOperation::PostScore.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationPostScoreDynamic = [NSString stringWithCString:BrainCloud::ServiceOperation::PostScoreDynamic.getValue().c_str() encoding:NSASCIIStringEncoding];
+NSString const *const BrainCloudServiceOperationPostScoreDynamicUsingConfig = [NSString stringWithCString:BrainCloud::ServiceOperation::PostScoreDynamicUsingConfig.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationInitThirdParty = [NSString stringWithCString:BrainCloud::ServiceOperation::InitThirdParty.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationPostThirdPartyLeaderboardScore = [NSString stringWithCString:BrainCloud::ServiceOperation::PostThirdPartyLeaderboardScore.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationIncrementThirdPartyLeaderboardScore = [NSString stringWithCString:BrainCloud::ServiceOperation::IncrementThirdPartyLeaderboardScore.getValue().c_str() encoding:NSASCIIStringEncoding];
