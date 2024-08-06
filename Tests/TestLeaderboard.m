@@ -318,7 +318,7 @@ NSString *eventId = @"tournamentRewardTest";
     [[m_client leaderboardService] postScoreToDynamicLeaderboardUsingConfig:dynamicLeaderboardId
                                                                           score:10
                                                                       scoreData:@"{\"nickname\": \"OBJC-Tester\"}"
-                                                                     configJson:@"{\"leaderboardType\": \"HIGH_VALUE\", \"rotationType\": \"DAYS\", \"numDaysToRotate\": 4, \"resetAt\": \"[[#ts+60000]]\", \"retainedCount\": 2, \"expireInMins\": None}"
+                                                                     configJson:@"{\"leaderboardType\": \"HIGH_VALUE\", \"rotationType\": \"DAYS\", \"numDaysToRotate\": 4, \"resetAt\": \"1722965911665\", \"retainedCount\": 2, \"expireInMins\": None}"
                                                                 completionBlock:successBlock
                                                            errorCompletionBlock:failureBlock
                                                                        cbObject:nil];
