@@ -69,6 +69,25 @@
                        cbObject:(BCCallbackObject)cbObject;
 
 /**
+* Updates an event in the player's incoming event mailbox.
+* Returns the same data as UpdateIncomingEventData, but will not return an error if the event does not exist.
+*
+* Service Name - event
+* Service Operation - UPDATE_EVENT_DATA_IF_EXISTS
+*
+* @param eventId The event id
+* @param jsonEventData The user-defined data for this event encoded in JSON.
+* @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+*/
+- (void)updateIncomingEventDataIfExists:(NSString *)evId
+                  jsonEventData:(NSString *)eventData
+                completionBlock:(BCCompletionBlock)cb
+           errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                       cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Delete an event out of the player's incoming mailbox.
 *
 * Service Name - event
