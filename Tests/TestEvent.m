@@ -47,6 +47,28 @@ NSString *eventData = @"{ \"globalTestName\":\"testValue\" }";
     [self waitForResult];
 }
 
+- (void)testUpdateIncomingEventDataIfExistsTrue
+{
+    NSString* eventId = [self sendEvent];
+    [[m_client eventService] updateIncomingEventData:eventId
+                                       jsonEventData:eventData
+                                     completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testUpdateIncomingEventDataIfExistsFalse
+{
+    NSString* nonExistentEventId = @"66ba5285d9002730d8f707a0";
+    [[m_client eventService] updateIncomingEventData:nonExistentEventId
+                                       jsonEventData:eventData
+                                     completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testDeleteIncomingEvent
 {
     NSString* eventId = [self sendEvent];
