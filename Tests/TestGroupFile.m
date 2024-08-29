@@ -89,6 +89,8 @@ static FileUploadProgress *fileProgress;
     XCTAssertEqual([fileProgress countCompleted], 1);
     XCTAssertEqual([fileProgress countFailed], 0);
     
+    NSLog(@"Upload progress asserted to be true");
+
     [fileProgress clearProgress];
 
     // join group
@@ -218,12 +220,14 @@ static FileUploadProgress *fileProgress;
     
     if (!uploadResult)
     {
+        NSLog(@"File upload failed - timed out");
         // timed out
         [fileProgress clearProgress];
         [bc deregisterFileUploadCallback];
         return false;
     }
     
+    NSLog(@"File upload completed successfully");
     [bc deregisterFileUploadCallback]; // upload complete
     return true;
 }

@@ -53,6 +53,16 @@
         [evId UTF8String], [eventData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)updateIncomingEventDataIfExists:(NSString *)evId
+                  jsonEventData:(NSString *)eventData
+                completionBlock:(BCCompletionBlock)cb
+           errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                       cbObject:(BCCallbackObject)cbObject
+{
+    _client->getEventService()->updateIncomingEventDataIfExists(
+        [evId UTF8String], [eventData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)deleteIncomingEvent:(NSString *)evId
             completionBlock:(BCCompletionBlock)cb
        errorCompletionBlock:(BCErrorCompletionBlock)ecb
