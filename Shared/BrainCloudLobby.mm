@@ -243,7 +243,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject
 {
-    _client->getLobbyService()->resetFindRequest([lobbyId UTF8String], [entryId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+    _client->getLobbyService()->cancelFindRequest([lobbyId UTF8String], [entryId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 @end
