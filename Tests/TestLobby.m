@@ -118,6 +118,51 @@
     [self waitForResult];
 }
 
+- (void)testCancelFindRequest
+{
+    authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+     password:[TestFixtureBase getUser:@"UserA"].m_password
+     forceCreate:true
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    [self waitForResult];
+    
+    NSString* _lobbyType = @"MATCH_UNRANKED";
+    NSArray* _otherUserCxIds = @[];
+    NSString* _extraJson = @"{}";
+    NSString* _settings = @"{}";
+    NSString* _teamCode = @"all";
+    NSString* _algo = @"{\"strategy\":\"ranged-absolute\",\"alignment\":\"center\",\"ranges\":[1000]}";
+    NSString* _filterJson = @"{}";
+    
+    [[m_client lobbyService] findOrCreateLobby:_lobbyType
+                                        rating:0
+                                      maxSteps:1
+                                          algo:_algo
+                                    filterJson:_filterJson
+                                otherUserCxIds:_otherUserCxIds
+                                       isReady:true
+                                     extraJson:_extraJson
+                                      teamCode:_teamCode
+                                      settings:_settings
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
+    [self waitForResult];
+
+    NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSString *_entryId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"entryId"];
+
+    [[m_client lobbyService] testCancelFindRequest:_lobbyType
+                                           entryId: _entryId
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetLobbyData
 {
     [[m_client authenticationService]

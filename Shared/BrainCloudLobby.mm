@@ -237,13 +237,14 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 }
 
 //available when rtt is supported.
-//- (void)cancelFindRequest:(NSString *)lobbyId
-//          completionBlock:(BCCompletionBlock)cb
-//     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-//                 cbObject:(BCCallbackObject)cbObject
-//{
-//    _client->getLobbyService()->resetFindRequest([lobbyId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
-//}
+- (void)cancelFindRequest:(NSString *)lobbyId
+                  entryId:(NSString *)entryId
+          completionBlock:(BCCompletionBlock)cb
+     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                 cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLobbyService()->resetFindRequest([lobbyId UTF8String], [entryId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
 
 @end
 
