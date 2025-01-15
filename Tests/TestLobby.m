@@ -156,11 +156,11 @@
     NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     NSString *_entryId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"entryId"];
 
-    [[m_client lobbyService] testCancelFindRequest:_lobbyType
-                                           entryId: _entryId
-                                   completionBlock:successBlock
-                              errorCompletionBlock:failureBlock
-                                          cbObject:nil];
+    [[m_client lobbyService] cancelFindRequest:_lobbyType
+                                       entryId:_entryId
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
     [self waitForResult];
 }
 
