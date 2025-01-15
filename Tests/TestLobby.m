@@ -120,6 +120,7 @@
 
 - (void)testCancelFindRequest
 {
+    [[m_client authenticationService]
     authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
      password:[TestFixtureBase getUser:@"UserA"].m_password
      forceCreate:true
