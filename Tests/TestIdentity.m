@@ -100,7 +100,7 @@
 {
     NSString *externalAuthName = @"";
 
-    [[_bc identityService] getIdentityStatus:
+    [[m_client identityService] getIdentityStatus:
             authenticationType:[AuthenticationTypeObjc Universal]
               externalAuthName:externalAuthName
                completionBlock:successBlock
