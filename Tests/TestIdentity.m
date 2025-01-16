@@ -100,12 +100,11 @@
 {
     NSString *externalAuthName = @"";
 
-    [[m_client identityService] getIdentityStatus:
-            authenticationType:[AuthenticationTypeObjc Universal]
-              externalAuthName:externalAuthName
-               completionBlock:successBlock
-          errorCompletionBlock:failureBlock
-                      cbObject:nil];
+    [[m_client identityService] getIdentityStatus:[AuthenticationTypeObjc Universal]
+                                 externalAuthName:externalAuthName
+                                  completionBlock:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
     [self waitForResult];
 }
 
