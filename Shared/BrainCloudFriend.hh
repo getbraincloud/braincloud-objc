@@ -41,6 +41,24 @@
                            cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Retrieves profile information for the specified user. Silently fails, if profile does not exist, just returns null and success, instead of an error.
+ *
+ * Service Name - friend
+ * Service Operation - GET_PROFILE_INFO_FOR_CREDENTIAL_IF_EXISTS
+ *
+ * @param externalId The users's external ID
+ * @param authenticationType The authentication type of the user ID
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getProfileInfoForCredentialIfExists:(NSString *)externalId
+                 authenticationType:(AuthenticationTypeObjc *)authenticationType
+                    completionBlock:(BCCompletionBlock)cb
+               errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                           cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Retrieves profile information for the specified external auth user.
  *
  * Service Name - friend

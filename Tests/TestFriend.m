@@ -30,6 +30,16 @@
     [self waitForResult];
 }
 
+- (void)testGetProfileInfoForCredentialIfExists
+{
+    [[m_client friendService] getProfileInfoForCredentialIfExists:[TestFixtureBase getUser:@"UserA"].m_id
+                                       authenticationType:[AuthenticationTypeObjc Universal]
+                                         completionBlock:successBlock
+                                    errorCompletionBlock:failureBlock
+                                                cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetProfileInfoForExternalAuthId
 {
     [[m_client friendService] getProfileInfoForExternalAuthId:[TestFixtureBase getUser:@"UserA"].m_profileId
