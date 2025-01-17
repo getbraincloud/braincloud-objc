@@ -565,6 +565,25 @@ NSString *groupId = @"";
     [self deleteGroup];
 }
 
+-(void)testUpdateGroupEntityAcl
+{
+    [self authenticate:@"UserA"];
+    [self createGroup];
+
+    NSString *entityId = [self createGroupEntity];
+
+    [[m_client groupService] updateGroupEntityAcl:groupId
+                                         entityId:entityId
+                                             acl:testAcl
+                                 completionBlock:successBlock
+                            errorCompletionBlock:failureBlock
+                                        cbObject:nil];
+    [self waitForResult]
+
+    [self deleteGroup];
+    [self logout];
+}
+
 - (void)testUpdateGroupEntityData
 {
     [self authenticate:@"UserA"];
@@ -625,6 +644,22 @@ NSString *groupId = @"";
                                  cbObject:nil];
     //no group exists
     [self waitForFailedResult];
+}
+
+-(void)testUpdateGroupAcl
+{
+    [self authenticate:@"UserA"];
+    [self createGroup];
+
+    [[m_client groupService] updateGroupAcl:groupId
+                                        acl:testAcl
+                            completionBlock:successBlock
+                       errorCompletionBlock:failureBlock
+                                   cbObject:nil];
+    [self waitForResult]
+
+    [self deleteGroup];
+    [self logout];
 }
 
 - (void)testPost

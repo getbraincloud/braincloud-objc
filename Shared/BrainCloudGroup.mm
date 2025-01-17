@@ -365,6 +365,17 @@
         [groupId UTF8String], version, [jsonData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)updateGroupEntityAcl:(NSString *)groupId
+                    entityId:(NSString *)entityId
+                         acl:(NSString *)acl
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject;
+{
+    _client->getGroupService()->updateGroupEntityAcl(
+        [groupId UTF8String], [entityId UTF8String], [acl UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)updateGroupEntityData:(NSString *)groupId
                      entityId:(NSString *)entityId
                       version:(int32_t)version
@@ -409,6 +420,16 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 {
     _client->getGroupService()->setGroupOpen(
          [groupId UTF8String], isOpenGroup, new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)updateGroupAcl:(NSString *)groupId
+                   acl:(NSString *)acl
+       completionBlock:(BCCompletionBlock)cb
+  errorCompletionBlock:(BCErrorCompletionBlock)ecb
+              cbObject:(BCCallbackObject)cbObject;
+{
+    _client->getGroupService()->updateGroupAcl(
+        [groupId UTF8String], [acl UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)updateGroupSummaryData:(NSString *)groupId
