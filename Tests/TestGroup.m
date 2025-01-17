@@ -656,7 +656,7 @@ NSString *groupId = @"";
                             completionBlock:successBlock
                        errorCompletionBlock:failureBlock
                                    cbObject:nil];
-    [self waitForResult]
+    [self waitForResult];
 
     [self deleteGroup];
     [self logout];
