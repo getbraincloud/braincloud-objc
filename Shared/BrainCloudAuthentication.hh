@@ -158,6 +158,20 @@ extern NSString *const AUTH_FACEBOOK;
          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                      cbObject:(BCCallbackObject)cbObject;
 
+/**
+ * Get server version.
+ * 
+ * Service Name - Authentication
+ * Service Operation - GET_SERVER_VERSION
+ * 
+ * @param completionBlock Block to call on return of successful server response
+* @param errorCompletionBlock Block to call on return of unsuccessful server response
+* @param cbObject User object sent to the completion blocks
+ */
+- (void)getServerVersion:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
+
 
 /**
 * A generic Authenticate method that translates to the same as calling a specific one, except it takes an extraJson
