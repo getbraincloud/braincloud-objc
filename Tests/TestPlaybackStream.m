@@ -78,14 +78,13 @@
 -(void)testProtectStreamUntil
 {
     NSString *playbackStreamId = [self startStream];
-    (int32_t) numDays = 1;
 
     [[m_client playbackStreamService] protectStreamUntil:playbackStreamId
-                                                 numDays:numDays
+                                                 numDays:1
                                          completionBlock:successBlock
                                     errorCompletionBlock:failureBlock
                                                 cbObject:nil];
-    [self waitForResult]
+    [self waitForResult];
     [self endStream:playbackStreamId];
 }
 
