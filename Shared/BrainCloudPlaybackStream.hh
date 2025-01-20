@@ -158,7 +158,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
-- (void)protectStreamUntil:(BSString *)playbackStreamId
+- (void)protectStreamUntil:(NSString *)playbackStreamId
                    numDays:(int)numDays
            completionBlock:(BCCompletionBlock)cb
       errorCompletionBlock:(BCErrorCompletionBlock)ecb
