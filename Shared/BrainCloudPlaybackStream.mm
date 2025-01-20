@@ -103,4 +103,12 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 
 }
 
+- (void)protectStreamUntil:(NSString *)playbackStreamId
+                   numDays:(int)numDays
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+    _client->getPlaybackStreamService()->protectStreamUntil([playbackStreamId UTF8String], numDays, new BrainCloudCallback(cb, ecb, cbObject));
+}
 @end

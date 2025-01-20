@@ -144,6 +144,26 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                    errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                cbObject:(BCCallbackObject)cbObject;
 
+/**
+ * Protects a playback stream from being purged (but not deleted) for the given number of days (from now).
+ * If the number of days given is less than the normal purge interval days (from createdAt), the longer protection date is applied.
+ * Can only be called by users involved in the playback stream.
+ * 
+ * Service Name - Playback Stream
+ * Service Operation - PROTECT_STREAM_UNTIL
+ * 
+ * @param playbackStreamId Identifies the stream to protect
+ * @param numDays The number of days the stream is to be protected (from now)
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)protectStreamUntil:(BSString *)playbackStreamId
+                   numDays:(int)numDays
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
+
 @end
 
 #pragma clang diagnostic pop
