@@ -188,7 +188,7 @@ NSString *groupId = @"";
     [self authenticate:@"UserA"];
     [self createGroup];
 
-    NSString *entityId = [self createGroupEntity];
+    NSString *entityId = [self createGroupEntity:false];
 
     [[m_client groupService] deleteGroupEntity:groupId
                                       entityId:entityId
@@ -275,7 +275,7 @@ NSString *groupId = @"";
     [self authenticate:@"UserA"];
     [self createGroup];
 
-    NSString *entityId = [self createGroupEntity];
+    NSString *entityId = [self createGroupEntity:false];
 
     [[m_client groupService] incrementGroupEntityData:groupId
                                              entityId:entityId
@@ -440,7 +440,7 @@ NSString *groupId = @"";
     [self authenticate:@"UserA"];
     [self createGroup];
 
-    NSString *entityId = [self createGroupEntity];
+    NSString *entityId = [self createGroupEntity:false];
 
     [[m_client groupService] readGroupEntity:groupId
                                     entityId:entityId
@@ -570,7 +570,7 @@ NSString *groupId = @"";
     [self authenticate:@"UserA"];
     [self createGroup];
 
-    NSString *entityId = [self createGroupEntity];
+    NSString *entityId = [self createGroupEntity:true];
 
     [[m_client groupService] updateGroupEntityAcl:groupId
                                          entityId:entityId
@@ -589,7 +589,7 @@ NSString *groupId = @"";
     [self authenticate:@"UserA"];
     [self createGroup];
 
-    NSString *entityId = [self createGroupEntity];
+    NSString *entityId = [self createGroupEntity:false];
 
     [[m_client groupService] updateGroupEntityData:groupId
                                           entityId:entityId
@@ -778,11 +778,11 @@ NSString *groupId = @"";
     groupId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"groupId"];
 }
 
-- (NSString *)createGroupEntity
+- (NSString *)createGroupEntity:(BOOL)isOwnedByGroupMember
 {
     [[m_client groupService] createGroupEntity:groupId
                                     entityType:groupEntityType
-                          isOwnedByGroupMember:NO
+                          isOwnedByGroupMember:isOwnedByGroupMember
                                            acl:testAcl
                                       jsonData:testJsonPair
                                completionBlock:successBlock
