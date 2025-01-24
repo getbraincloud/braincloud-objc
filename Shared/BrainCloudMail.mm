@@ -2,6 +2,7 @@
 #include "braincloud/BrainCloudClient.h"
 #import "BrainCloudClient.hh"
 #import "BrainCloudMail.hh"
+#include "TypeHelpers.hh"
 
 @interface BrainCloudMail ()
 {
