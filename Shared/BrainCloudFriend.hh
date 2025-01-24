@@ -75,6 +75,24 @@
                         completionBlock:(BCCompletionBlock)cb
                    errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                cbObject:(BCCallbackObject)cbObject;
+                               
+/**
+ * Retrieves profile information for the specified external auth user.
+ *
+ * Service Name - Friend
+ * Service Operation - GET_PROFILE_INFO_FOR_EXTERNAL_AUTH_ID_IF_EXISTS
+ *
+ * @param externalId External ID of the user to find
+ * @param externalAuthType The external authentication type used for this user's external ID
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getProfileInfoForExternalAuthIdIfExists:(NSString *)externalId
+                       externalAuthType:(NSString *)externalAuthType
+                        completionBlock:(BCCompletionBlock)cb
+                   errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                               cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Returns user state of a particular user.

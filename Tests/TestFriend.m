@@ -50,6 +50,16 @@
     [self waitForFailedResult];
 }
 
+- (void)testGetProfileInfoForExternalAuthIdIfExists
+{
+    [[m_client friendService] getProfileInfoForExternalAuthIdIfExists:[TestFixtureBase getUser:@"UserA"].m_profileId
+                                       externalAuthType:@"failAuth"
+                                          completionBlock:successBlock
+                                     errorCompletionBlock:failureBlock
+                                                 cbObject:nil];
+    [self waitForFailedResult];
+}
+
 - (void)testFindUsersByExactName
 {
     [[m_client friendService] findUsersByExactName:@"name"
