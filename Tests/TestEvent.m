@@ -40,12 +40,12 @@ NSString *eventData = @"{ \"globalTestName\":\"testValue\" }";
 {
     NSArray *toIds = @[[TestFixtureBase getUser:@"UserA"].m_profileId];
     [m_client registerEventCallback:eventBlock];
-    [[m_client eventService] testSendEventToProfiles:toIds
-                                           eventType:eventType
-                                           eventData:eventData
-                                     completionBlock:successBlock
-                                errorCompletionBlock:failureBlock
-                                            cbObject:nil];
+    [[m_client eventService] SendEventToProfiles:toIds
+                                       eventType:eventType
+                                       eventData:eventData
+                                 completionBlock:successBlock
+                            errorCompletionBlock:failureBlock
+                                        cbObject:nil];
     [self waitForResult];
     [m_client deregisterEventCallback];
 }
