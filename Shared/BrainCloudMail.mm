@@ -63,7 +63,7 @@
                           cbObject:(BCCallbackObject)cbObject
 {
     _client->getMailService()->sendAdvancedEmailByAddresses(
-            [emailAddresses cStringUsingEncoding:NSUTF8StringEncoding],
+            TypeHelpers::NSStringArrayToVector(emailAddresses),
             [jsonServiceParams cStringUsingEncoding:NSUTF8StringEncoding], new BrainCloudCallback(cb, ecb, cbObject));
 }
 

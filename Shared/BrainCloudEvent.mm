@@ -50,7 +50,7 @@
       errorCompletionBlock:(BCErrorCompletionBlock)ecb
                   cbObject:(BCCallbackObject)cbObject
 {
-    _client->getEventService()->sendEventToProfiles(TypeHelpers::NSStringArrayToVector(toIds), [eventType UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+    _client->getEventService()->sendEventToProfiles(TypeHelpers::NSStringArrayToVector(toIds), [eventType UTF8String], [eventData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)updateIncomingEventData:(NSString *)evId
