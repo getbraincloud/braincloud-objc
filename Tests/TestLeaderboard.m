@@ -451,7 +451,7 @@ NSString *eventId = @"tournamentRewardTest";
                                                                          groupId:groupId
                                                                            score:99
                                                                        scoreData:@""
-                                                           configJson:configJson:@"{\"leaderboardType\": \"HIGH_VALUE\", \"rotationType\": \"NEVER\", \"numDaysToRotate\": null, \"resetAt\": null, \"retainedCount\": 2, \"expireInMins\": None}"
+                                                                      configJson:@"{\"leaderboardType\": \"HIGH_VALUE\", \"rotationType\": \"NEVER\", \"numDaysToRotate\": null, \"resetAt\": null, \"retainedCount\": 2, \"expireInMins\": None}"
                                                                  completionBlock:successBlock
                                                             errorCompletionBlock:failureBlock
                                                                         cbObject:nil];
