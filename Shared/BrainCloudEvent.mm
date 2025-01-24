@@ -43,6 +43,16 @@
         new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+-(void)sendEventToProfiles:(NSArray *)toIds
+                 eventType:(NSString *)eventType
+                 eventData:(NSString *)eventData
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject
+{
+    _client->getEventService()->sendEventToProfiles(TypeHelpers::NSStringArrayToVector(toIds), [eventType UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)updateIncomingEventData:(NSString *)evId
                   jsonEventData:(NSString *)eventData
                 completionBlock:(BCCompletionBlock)cb
