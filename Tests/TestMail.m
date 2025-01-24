@@ -73,7 +73,7 @@
 
     NSString * jsonData = [TestFixtureBase getJsonString:dict];
 
-    NSArray *emailAddresses = @["testEmail@email.com", "anotherTestEmail@email.com"];
+    NSArray *emailAddresses = @[@"testEmail@email.com", @"anotherTestEmail@email.com"];
 
     [[m_client mailService] sendAdvancedEmailByAddresses:emailAddresses
                                      jsonServiceParams:jsonData
