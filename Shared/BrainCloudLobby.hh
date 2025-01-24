@@ -417,7 +417,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     cbObject:(BCCallbackObject)cbObject;
 
 //Cancels this members find, join and search for lobbies
-//available when rtt is supported.
 - (void)cancelFindRequest:(NSString *)lobbyId
                   entryId:(NSString *)entryId
           completionBlock:(BCCompletionBlock)cb
