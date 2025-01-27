@@ -88,7 +88,7 @@
  * Sends an advanced email to the email addresses.
  *
  * Service Name - mail
- * Service Operation - SEND_ADVANCED_EMAIL_BY_ADDRESS
+ * Service Operation - SEND_ADVANCED_EMAIL_BY_ADDRESSES
  *
  * @param in_emailAddresses The addresses to send the email to
  * @param in_jsonServiceParams Parameters to send to the email service. See the documentation for
