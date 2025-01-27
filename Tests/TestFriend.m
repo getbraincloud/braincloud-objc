@@ -30,6 +30,16 @@
     [self waitForResult];
 }
 
+- (void)testGetProfileInfoForCredentialIfExists
+{
+    [[m_client friendService] getProfileInfoForCredentialIfExists:[TestFixtureBase getUser:@"UserA"].m_id
+                                       authenticationType:[AuthenticationTypeObjc Universal]
+                                         completionBlock:successBlock
+                                    errorCompletionBlock:failureBlock
+                                                cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetProfileInfoForExternalAuthId
 {
     [[m_client friendService] getProfileInfoForExternalAuthId:[TestFixtureBase getUser:@"UserA"].m_profileId
@@ -38,6 +48,16 @@
                                      errorCompletionBlock:failureBlock
                                                  cbObject:nil];
     [self waitForFailedResult];
+}
+
+- (void)testGetProfileInfoForExternalAuthIdIfExists
+{
+    [[m_client friendService] getProfileInfoForExternalAuthIdIfExists:[TestFixtureBase getUser:@"UserA"].m_profileId
+                                       externalAuthType:@"testExternal"
+                                          completionBlock:successBlock
+                                     errorCompletionBlock:failureBlock
+                                                 cbObject:nil];
+    [self waitForResult];
 }
 
 - (void)testFindUsersByExactName

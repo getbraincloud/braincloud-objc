@@ -645,6 +645,26 @@ typedef NS_ENUM(NSUInteger, AutoJoinStrategy) { JoinFirstGroup, JoinRandomGroup 
                cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Update the acl settings for a group entity, enforcing ownership.
+ * 
+ * Service Name - Group
+ * Service Operation - UPDATE_GROUP_ENTITY_ACL
+ * 
+ * @param groupId ID of the group
+ * @param entityId The id of the entity to update
+ * @param acl The group's access control list. A null ACL implies default
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)updateGroupEntityAcl:(NSString *)groupId
+              entityId:(NSString *)entityId
+                   acl:(NSString *)acl
+       completionBlock:(BCCompletionBlock)cb
+  errorCompletionBlock:(BCErrorCompletionBlock)ecb
+              cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Update a group entity.
  *
  * Service Name - group
@@ -728,6 +748,24 @@ typedef NS_ENUM(NSUInteger, AutoJoinStrategy) { JoinFirstGroup, JoinRandomGroup 
      completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Set a group's access conditions.
+ * 
+ * Service Name - Group
+ * Service Operation - UPDATE_GROUP_ACL
+ * 
+ * @param groupId ID of the group
+ * @param acl The group's access control list. A null ACL implies default
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)updateGroupAcl:(NSString *)groupId
+                   acl:(NSString *)acl
+       completionBlock:(BCCompletionBlock)cb
+  errorCompletionBlock:(BCErrorCompletionBlock)ecb
+              cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Update a group's summary data

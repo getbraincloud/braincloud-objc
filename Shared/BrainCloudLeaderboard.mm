@@ -347,6 +347,18 @@
         rotationResetUTC, retainedCount, numDaysToRotate, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)postScoreToDynamicGroupLeaderboardUsingConfig:(NSString *)leaderboardId
+                                              groupId:(NSString *)groupId
+                                                score:(int)score
+                                            scoreData:(NSString *)scoreData
+                                           configJson:(NSString *)configJson
+                                      completionBlock:(BCCompletionBlock)cb
+                                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                             cbObject:(BCCallbackObject)cbObject
+{
+    _client->getLeaderboardService()->postScoreToDynamicGroupLeaderboardUsingConfig([leaderboardId UTF8String], [groupId UTF8String], score, [scoreData UTF8String], [configJson UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)removePlayerScore:(NSString *)leaderboardId
                 versionId:(int)versionId
           completionBlock:(BCCompletionBlock)cb

@@ -726,6 +726,31 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                                  cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Post the group's score to the given social leaderboard, dynamically creating the group leaderboard if it does not exist yet.
+ * To create new leaderboard, configJson must specify leaderboardType, rotationType, resetAt, and retainedCount, at a minimum, with support to optionally specify an expiry in minutes.
+ *
+ * Service Name - Leaderboard
+ * Service Operation - POST_GROUP_SCORE_DYNAMIC_USING_CONFIG
+ *
+ * @param leaderboardId The leaderboard to post to
+ * @param groupId The id of the group
+ * @param score A score to post
+ * @param scoreData Optional user-defined data to post with the score.
+ * @param configJson Configuration for the leaderboard if it does not exist yet, specified as JSON object. The supporting configuration fields are listed in the following table of configJson fields.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)postScoreToDynamicGroupLeaderboardUsingConfig:(NSString *)leaderboardId
+                                              groupId:(NSString *)groupId
+                                                score:(int)score
+                                            scoreData:(NSString *)scoreData
+                                           configJson:(NSString *)configJson
+                                      completionBlock:(BCCompletionBlock)cb
+                                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                             cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Removes a player's score from the leaderboard
  *
  * Service Name - leaderboard
