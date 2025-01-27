@@ -278,4 +278,12 @@
     [self waitForResult];
 }
 
+- (void)testGetServerVersion
+{
+    [[m_client authenticationService] getServerVersion:successBlock
+                                  errorCompletionBlock:failureBlock
+                                              cbObject:nil];
+    [self waitForResult];
+}
+
 @end

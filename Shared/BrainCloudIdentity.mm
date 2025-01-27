@@ -511,6 +511,16 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
         new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)getIdentityStatus:(AuthenticationTypeObjc *)type
+         externalAuthName:(NSString *)externalAuthName
+          completionBlock:(BCCompletionBlock)cb
+     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                 cbObject:(BCCallbackObject)cbObject
+{
+    _client->getIdentityService()->getIdentityStatus(BrainCloud::AuthenticationType::fromString([[type toString] UTF8String]),
+        [externalAuthName UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)getExpiredIdentities:(BCCompletionBlock)cb
         errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     cbObject:(BCCallbackObject)cbObject

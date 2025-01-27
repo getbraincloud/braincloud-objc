@@ -427,6 +427,44 @@ NSString *eventId = @"tournamentRewardTest";
     [self waitForResult];
 }
 
+- (void)testPostScoreToDynamicGroupLeaderboardUsingConfig
+{
+    [[m_client groupService] createGroup:@"testGroup"
+                               groupType:@"test"
+                             isOpenGroup:NO
+                                     acl:@""
+                                jsonData:@""
+                     jsonOwnerAttributes:@""
+             jsonDefaultMemberAttributes:@""
+                         completionBlock:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+    
+    NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonObj =
+        [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+
+    NSString *groupId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"groupId"];
+
+    [[m_client leaderboardService] postScoreToDynamicGroupLeaderboardUsingConfig:groupLeaderboardId
+                                                                         groupId:groupId
+                                                                           score:99
+                                                                       scoreData:@""
+                                                                      configJson:@"{\"leaderboardType\": \"HIGH_VALUE\", \"rotationType\": \"NEVER\", \"numDaysToRotate\": null, \"resetAt\": null, \"retainedCount\": 2, \"expireInMins\": None}"
+                                                                 completionBlock:successBlock
+                                                            errorCompletionBlock:failureBlock
+                                                                        cbObject:nil];
+    [self waitForResult];
+
+    [[m_client groupService] deleteGroup:groupId
+                                 version:-1
+                         completionBlock:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetGroupSocialLeaderboard
 {
     [[m_client groupService] createGroup:@"testGroup"

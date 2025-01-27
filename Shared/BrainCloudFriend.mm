@@ -46,6 +46,16 @@
         [externalId UTF8String], BrainCloud::AuthenticationType::fromString([[authenticationType toString] UTF8String]), new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)getProfileInfoForCredentialIfExists:(NSString *)externalId
+                 authenticationType:(AuthenticationTypeObjc *)authenticationType
+                    completionBlock:(BCCompletionBlock)cb
+               errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                           cbObject:(BCCallbackObject)cbObject
+{
+    _client->getFriendService()->getProfileInfoForCredentialIfExists(
+        [externalId UTF8String], BrainCloud::AuthenticationType::fromString([[authenticationType toString] UTF8String]), new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 - (void)getProfileInfoForExternalAuthId:(NSString *)externalId
                       externalAuthType:(NSString *)externalAuthType
                         completionBlock:(BCCompletionBlock)cb
@@ -53,6 +63,16 @@
                                cbObject:(BCCallbackObject)cbObject
 {
     _client->getFriendService()->getProfileInfoForExternalAuthId(
+        [externalId UTF8String], [externalAuthType UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)getProfileInfoForExternalAuthIdIfExists:(NSString *)externalId
+                      externalAuthType:(NSString *)externalAuthType
+                        completionBlock:(BCCompletionBlock)cb
+                   errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                               cbObject:(BCCallbackObject)cbObject
+{
+    _client->getFriendService()->getProfileInfoForExternalAuthIdIfExists(
         [externalId UTF8String], [externalAuthType UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 

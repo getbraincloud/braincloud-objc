@@ -2,6 +2,7 @@
 #include "braincloud/BrainCloudClient.h"
 #import "BrainCloudClient.hh"
 #import "BrainCloudMail.hh"
+#include "TypeHelpers.hh"
 
 @interface BrainCloudMail ()
 {
@@ -53,6 +54,17 @@
 {
     _client->getMailService()->sendAdvancedEmailByAddress(
             [emailAddress cStringUsingEncoding:NSUTF8StringEncoding],
+            [jsonServiceParams cStringUsingEncoding:NSUTF8StringEncoding], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)sendAdvancedEmailByAddresses:(NSArray *)emailAddresses
+                 jsonServiceParams:(NSString *)jsonServiceParams
+                   completionBlock:(BCCompletionBlock)cb
+              errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                          cbObject:(BCCallbackObject)cbObject
+{
+    _client->getMailService()->sendAdvancedEmailByAddresses(
+            TypeHelpers::NSStringArrayToVector(emailAddresses),
             [jsonServiceParams cStringUsingEncoding:NSUTF8StringEncoding], new BrainCloudCallback(cb, ecb, cbObject));
 }
 

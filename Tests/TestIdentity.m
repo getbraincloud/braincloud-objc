@@ -96,6 +96,18 @@
     [self waitForResult];
 }
 
+- (void)testGetIdentityStatus
+{
+    NSString *externalAuthName = @"";
+
+    [[m_client identityService] getIdentityStatus:[AuthenticationTypeObjc Universal]
+                                 externalAuthName:externalAuthName
+                                  completionBlock:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testGetExpiredIdentities
 {
     [[m_client identityService] getExpiredIdentities:successBlock errorCompletionBlock:failureBlock cbObject:nil];

@@ -958,6 +958,21 @@
                 cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Retrieves identity status for given identity type for this profile.
+ * 
+ * Service Name - Identity
+ * Service Operation - GET_IDENTITY_STATUS
+ * 
+ * @param authenticationType Type of authentication
+ * @param externalAuthName The name of the external authentication mechanism (optional, used for custom authentication types)
+ */
+- (void)getIdentityStatus:(AuthenticationTypeObjc *)type
+         externalAuthName:(NSString *)externalAuthName
+          completionBlock:(BCCompletionBlock)cb
+     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                 cbObject:(BCCallbackObject)cbObject;
+
+/**
 * Retrieve list of expired identities
 *
 * Service Name - Identity

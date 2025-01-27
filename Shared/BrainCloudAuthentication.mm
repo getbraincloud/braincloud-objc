@@ -128,6 +128,13 @@
         [password cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
 }
 
+- (void)getServerVersion:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
+{
+    _client->getAuthenticationService()->getServerVersion(new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject));
+}
+
 - (void)authenticateAdvanced:(AuthenticationTypeObjc *)authenticationType
            authenticationIds:(AuthenticationIdsObjc *)authenticationIds
                  forceCreate:(BOOL)forceCreate

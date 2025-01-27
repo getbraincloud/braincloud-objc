@@ -75,6 +75,19 @@
     [self waitForResult];
 }
 
+-(void)testProtectStreamUntil
+{
+    NSString *playbackStreamId = [self startStream];
+
+    [[m_client playbackStreamService] protectStreamUntil:playbackStreamId
+                                                 numDays:1
+                                         completionBlock:successBlock
+                                    errorCompletionBlock:failureBlock
+                                                cbObject:nil];
+    [self waitForResult];
+    [self endStream:playbackStreamId];
+}
+
 - (void)testReadStream
 {
     NSString *streamId = [self startStream];
