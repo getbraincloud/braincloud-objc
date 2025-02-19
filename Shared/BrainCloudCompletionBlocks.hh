@@ -89,7 +89,7 @@ typedef void (^BCRewardCompletionBlock)(NSString *jsonData);
  *     "gameId": "99999",
  *     "path": "test2",
  *     "filename": "testup.dat",
- *     "downloadUrl": "https://sharedprod.braincloudservers.com/s3/bc/g/99999/u/bf8a1433-62d2-448e-b396-f3dbffff44/f/test2/testup.dat"
+ *     "downloadUrl": "https://api.braincloudservers.com/s3/bc/g/99999/u/bf8a1433-62d2-448e-b396-f3dbffff44/f/test2/testup.dat"
  *     "cloudLocation": "bc/g/99999/u/bf8a1433-62d2-448e-b396-f3dbffff44/f/test2/testup.dat"
  *    }
  *   ]
