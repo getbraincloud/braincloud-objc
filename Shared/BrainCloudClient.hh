@@ -169,7 +169,7 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 
 /**
  * Method initializes the BrainCloudClient with a map of appid->secretkey
- * Automatically uses current serverURL https://sharedprod.braincloudservers.com/dispatcherv2
+ * Automatically uses current serverURL https://api.braincloudservers.com/dispatcherv2
  *
  * @param defaultAppId The default app id to start with
  * @param secretMap All app ids to secret keys used by this application
