@@ -170,7 +170,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
 @implementation BrainCloudClient
 
 static BrainCloudClient *s_instance = nil;
-const NSString* BC_SERVER_URL = @"https://sharedprod.braincloudservers.com/dispatcherv2";
+const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2";
 
 + (BrainCloudClient *)getInstance
 {
