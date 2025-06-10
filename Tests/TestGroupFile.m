@@ -66,7 +66,7 @@ static FileUploadProgress *fileProgress;
     };
     
     callbackResult = false; // reset flag to watch
-    [[bc authenticationService] authenticateEmailPassword:@"objc-tester"
+    [[bc authenticationService] authenticateEmailPassword:@"objc-tester@place.com"
                                                        password:@"objc-tester"
                                                     forceCreate:true
                                                 completionBlock:resultSuccess
