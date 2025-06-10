@@ -135,7 +135,7 @@ static FileUploadProgress *fileProgress;
     
     [super setUp];
     
-    [self authenticate:@"objc-tester"];
+    [self authenticate:@"objc-tester@place.com"];
 }
 
 - (void)tearDown {
