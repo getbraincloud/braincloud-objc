@@ -67,7 +67,7 @@ static FileUploadProgress *fileProgress;
     
     callbackResult = false; // reset flag to watch
     [[bc authenticationService] authenticateEmailPassword:@"objc-tester@place.com"
-                                                       password:@"objc-tester"
+                                                       password:@"objc-tester@place.com"
                                                     forceCreate:true
                                                 completionBlock:resultSuccess
                                            errorCompletionBlock:resultFail
@@ -135,7 +135,7 @@ static FileUploadProgress *fileProgress;
     
     [super setUp];
     
-    [self authenticate:@"objc-tester"];
+    [self authenticate:@"objc-tester@place.com"];
 }
 
 - (void)tearDown {
