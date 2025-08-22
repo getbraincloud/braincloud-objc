@@ -35,6 +35,32 @@
 }
 
 /**
+ * Before making a purchase with the IAP store, you will need to store the purchase
+ * payload context on brainCloud so that the purchase can be verified for the proper IAP product.
+ * This payload will be used during the VerifyPurchase method to ensure the
+ * user properly paid for the correct product before awarding them the IAP product.
+ *
+ * Service Name - AppStore
+ * Service Operation - CACHE_PURCHASE_PAYLOAD_CONTEXT
+ *
+ * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld, steam, windows, windowsPhone, googlePlay
+ * @param iapId The IAP product Id as configured for the product on brainCloud
+ * @param payload The payload retrieved for the IAP product after the GetSalesInventory method
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+-(void)cachePurchaseContext:(NSString *)storeId
+                      iapId:(NSString *)iapId
+                    payload:(NSString *)payload
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getAppStoreService()->cachePurchaseContext([storeId UTF8String], [iapId UTF8String], [payload UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+/**
  * Verifies that purchase was properly made at the store
  *
  * Service Name - AppStore
@@ -52,8 +78,7 @@
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject
 {
-    _client->getAppStoreService()->verifyPurchase(
-         [storeId UTF8String], [receiptData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+    _client->getAppStoreService()->verifyPurchase([storeId UTF8String], [receiptData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 /**
