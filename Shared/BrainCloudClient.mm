@@ -184,21 +184,6 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     return s_instance;
 }
 
-+ (void)setInstance: (BrainCloudClient *) instance
-{
-    s_instance = instance;
-}
-
-+ (void) setEnableSingletonMode: (bool) state
-{
-    BrainCloud::BrainCloudClient::EnableSingletonMode = state;
-}
-
-+ (bool) getEnableSingletonMode
-{
-    return BrainCloud::BrainCloudClient::EnableSingletonMode;
-}
-
 - (instancetype)init
 {
     self = [super init];

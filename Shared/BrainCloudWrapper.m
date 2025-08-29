@@ -40,23 +40,6 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
 
 static BrainCloudWrapper *sharedWrapper = nil;
 
-+ (BrainCloudWrapper *) getInstance
-{
-    NSAssert([BrainCloudClient getEnableSingletonMode], @"Singleton usage is disabled. If called by mistake, use your own variable that holds an instance of the bcWrapper/bcClient.");
-    
-    @synchronized(self) {
-        if(sharedWrapper == nil) {
-            sharedWrapper = [[self alloc] init];
-            
-            [sharedWrapper setupCallBacks];
-            
-            [BrainCloudClient setInstance:[sharedWrapper getBCClient]];
-        }
-    }
-
-    return sharedWrapper;
-}
-
 -(void) setupCallBacks
 {
     self.alwaysAllowProfileSwitch = YES;
