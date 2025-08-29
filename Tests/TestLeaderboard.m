@@ -92,7 +92,6 @@ NSString *eventId = @"tournamentRewardTest";
 - (void)testGetMultiSocialLeaderboard
 {
     [self testPostScoreToLeaderboard];
-    [self testPostScoreToDynamicLeaderboard];
     NSArray *lbIds = [NSArray arrayWithObjects:globalLeaderboardId, dynamicLeaderboardId, nil];
     [[m_client leaderboardService] getMultiSocialLeaderboard:lbIds
                                       leaderboardResultCount:10
