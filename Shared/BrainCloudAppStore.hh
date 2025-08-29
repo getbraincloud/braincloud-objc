@@ -38,7 +38,7 @@
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)cachePurchaseContext:(NSString *)storeId
+-(void)cachePurchasePayloadContext:(NSString *)storeId
                       iapId:(NSString *)iapId
                     payload:(NSString *)payload
             completionBlock:(BCCompletionBlock)cb
