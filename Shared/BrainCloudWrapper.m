@@ -103,11 +103,6 @@ static BrainCloudWrapper *sharedWrapper = nil;
     return self;
 }
 
-+ (BrainCloudClient *) getBC
-{
-    return [[self getInstance] getBCClient];
-}
-
 - (BrainCloudClient *) getBCClient
 {
     return _bcClient;
