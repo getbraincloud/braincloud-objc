@@ -698,6 +698,4 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     return _groupFileService;
 }
 
-+ (BrainCloudClient *)defaultClient { return [BrainCloudClient getInstance]; }
-
 @end
