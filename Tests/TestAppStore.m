@@ -26,12 +26,12 @@
 
 - (void)testCachePurchaseContext
 {
-    [[m_client appStoreService] cachePurchaseContext:@"invalid_storeId"
-                                               iapId:@"invalid_iapId"
-                                             payload:@"{}"
-                                     completionBlock:successBlock
-                                errorCompletionBlock:failureBlock
-                                            cbObject:nil];
+    [[m_client appStoreService] cachePurchasePayloadContext:@"invalid_storeId"
+                                                      iapId:@"invalid_iapId"
+                                                    payload:@"{}"
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
     [self waitForFailedResult];
 }
 
