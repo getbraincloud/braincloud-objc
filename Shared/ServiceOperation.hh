@@ -137,7 +137,6 @@ extern NSString const *const BrainCloudServiceOperationResetMilestones;
 extern NSString const *const BrainCloudServiceOperationReadCompletedMilestones;
 extern NSString const *const BrainCloudServiceOperationReadInProgressMilestones;
 extern NSString const *const BrainCloudServiceOperationLogout;
-extern NSString const *const BrainCloudServiceOperationUpdateName;
 extern NSString const *const BrainCloudServiceOperationStartMatch;
 extern NSString const *const BrainCloudServiceOperationCancelMatch;
 extern NSString const *const BrainCloudServiceOperationCompleteMatch;
