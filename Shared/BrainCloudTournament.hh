@@ -164,28 +164,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * Post the users score to the leaderboard - LOCAL time
- *
- * Service Name - tournament
- * Service Operation - POST_TOURNAMENT_SCORE
- *
- * @param leaderboardId The leaderboard for the tournament
- * @param score The score to post
- * @param jsonData Optional data attached to the leaderboard entry
- * @param roundStartedTimeLocal Time the user started the match and is converted
- * @param completionBlock Block to call on return of successful server response
- * @param errorCompletionBlock Block to call on return of unsuccessful server response
- * @param cbObject User object sent to the completion blocks
- */
-- (void)postTournamentScore:(NSString *)leaderboardId
-                      score:(int)score
-                   jsonData:(NSString *)jsonData
-           roundStartedTimeLocal:(NSDate *)roundStartedTimeLocal
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject;
-
-/**
  * Post the users score to the leaderboard - UTC time
  *
  * Service Name - tournament
@@ -206,36 +184,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
             completionBlock:(BCCompletionBlock)cb
        errorCompletionBlock:(BCErrorCompletionBlock)ecb
                    cbObject:(BCCallbackObject)cbObject;
-/**
-* Post the users score to the leaderboard - LOCAL time
-*
-* Service Name - tournament
-* Service Operation - POST_TOURNAMENT_SCORE_WITH_RESULTS
-*
-* @param leaderboardId The leaderboard for the tournament
-* @param score The score to post
-* @param jsonData Optional data attached to the leaderboard entry
-* @param roundStartedTimeLocal Time the user started the match and is converted
-* @param sort Sort key Sort order of page.
-* @param beforeCount The count of number of players before the current player to include.
-* @param afterCount The count of number of players after the current player to include.
-* @param initialScore The initial score for players first joining a tournament
-*                         Usually 0, unless leaderboard is LOW_VALUE
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
-- (void)postTournamentScoreWithResults:(NSString *)leaderboardId
-                                 score:(int)score
-                              jsonData:(NSString *)jsonData
-                      roundStartedTimeLocal:(NSDate *)roundStartedTimeLocal
-                             sortOrder:(SortOrder)sortOrder
-                           beforeCount:(int)beforeCount
-                            afterCount:(int)afterCount
-                          initialScore:(int)initialScore
-                       completionBlock:(BCCompletionBlock)cb
-                  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                              cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Post the users score to the leaderboard - UTC time

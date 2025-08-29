@@ -169,35 +169,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
 
 @implementation BrainCloudClient
 
-static BrainCloudClient *s_instance = nil;
 const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2";
-
-+ (BrainCloudClient *)getInstance
-{
-    NSAssert(BrainCloud::BrainCloudClient::EnableSingletonMode, [NSString stringWithUTF8String:BrainCloud::BrainCloudClient::SingletonUseErrorMessage]);
-    
-    @synchronized(self) {
-        if(s_instance == nil) {
-            s_instance = [[BrainCloudClient alloc] init];
-        }
-    }
-    return s_instance;
-}
-
-+ (void)setInstance: (BrainCloudClient *) instance
-{
-    s_instance = instance;
-}
-
-+ (void) setEnableSingletonMode: (bool) state
-{
-    BrainCloud::BrainCloudClient::EnableSingletonMode = state;
-}
-
-+ (bool) getEnableSingletonMode
-{
-    return BrainCloud::BrainCloudClient::EnableSingletonMode;
-}
 
 - (instancetype)init
 {
