@@ -105,7 +105,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
             [name UTF8String], new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
-- (void)updateName:(NSString *)name
+- (void)updateUserName:(NSString *)name
        completionBlock:(BCCompletionBlock)completionBlock
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject
