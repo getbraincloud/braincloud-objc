@@ -106,14 +106,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject;
 
 /**
- * @deprecated user updateUserName instead - Removal September 1, 2021
-*/
-- (void)updateName:(NSString *)name
-       completionBlock:(BCCompletionBlock)completionBlock
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject;
-
-/**
 * Retrieve the player attributes.
 *
 * Service Name - PlayerState

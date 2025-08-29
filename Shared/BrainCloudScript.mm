@@ -35,24 +35,6 @@
         [scriptName cStringUsingEncoding:NSUTF8StringEncoding],
         [jsonScriptData cStringUsingEncoding:NSUTF8StringEncoding], new BrainCloudCallback(cb, ecb, cbObject));
 }
-/*
-    deprecated Use scheduleRunScriptMillisUTC instead - Removal after september 1 2021
- */
-- (void)scheduleRunScriptUTC:(NSString *)scriptName
-              jsonScriptData:(NSString *)jsonScriptData
-              startDateLocal:(NSDate *)startDateLocal
-             completionBlock:(BCCompletionBlock)cb
-        errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                    cbObject:(BCCallbackObject)cbObject
-{
-    time_t time = [startDateLocal timeIntervalSince1970];
-    struct tm *timeStruct = localtime(&time);
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
-    _client->getScriptService()->scheduleRunScriptUTC(
-        [scriptName UTF8String], [jsonScriptData UTF8String], timeStruct, new BrainCloudCallback(cb, ecb, cbObject));
-#pragma diagnostic pop
-}
 
 - (void)scheduleRunScriptMillisUTC:(NSString *)scriptName
               jsonScriptData:(NSString *)jsonScriptData
