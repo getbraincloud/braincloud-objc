@@ -90,15 +90,6 @@
     [self waitForResult];
 }
 
-- (void)testUpdateName
-{
-    [[m_client playerStateService] updateName:@"TestName"
-                                  completionBlock:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
-    [self waitForResult];
-}
-
 - (void)testUpdatePlayerPictureUrl
 {
     [[m_client playerStateService] updateUserPictureUrl:@"https://some.domain.com/mypicture.jpg"

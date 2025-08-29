@@ -24,7 +24,7 @@
     [super tearDown];
 }
 
-- (void)testCachePurchaseContext
+- (void)testcachePurchasePayloadContext
 {
     [[m_client appStoreService] cachePurchasePayloadContext:@"invalid_storeId"
                                                       iapId:@"invalid_iapId"

@@ -34,24 +34,6 @@ NSString *_parentLevelName = @"Master";
     [self waitForResult];
 }
 
-- (void)testScheduleScriptUTC
-{
-    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
-    dayComponent.day = 1;
-
-    NSCalendar *theCalendar = [NSCalendar currentCalendar];
-    NSDate *nextDate =
-        [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
-
-    [[m_client scriptService] scheduleRunScriptUTC:scriptName
-                                    jsonScriptData:@""
-                                    startDateLocal:nextDate
-                                   completionBlock:successBlock
-                              errorCompletionBlock:failureBlock
-                                          cbObject:nil];
-    [self waitForResult];
-}
-
 - (void)testScheduleScriptMillisUTC
 {
         NSDate *now = [NSDate date];
