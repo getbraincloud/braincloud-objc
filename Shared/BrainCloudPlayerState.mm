@@ -105,15 +105,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
             [name UTF8String], new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
-- (void)updateName:(NSString *)name
-       completionBlock:(BCCompletionBlock)completionBlock
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject
-{
-    _client->getPlayerStateService()->updateUserName(
-            [name UTF8String], new BrainCloudCallback(completionBlock, ecb, cbObject));
-}
-
 - (void)getAttributes:(BCCompletionBlock)completionBlock
  errorCompletionBlock:(BCErrorCompletionBlock)ecb
              cbObject:(BCCallbackObject)cbObject

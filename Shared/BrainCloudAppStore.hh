@@ -38,12 +38,12 @@
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)cachePurchaseContext:(NSString *)storeId
-                      iapId:(NSString *)iapId
-                    payload:(NSString *)payload
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject;
+-(void)cachePurchasePayloadContext:(NSString *)storeId
+                             iapId:(NSString *)iapId
+                           payload:(NSString *)payload
+                   completionBlock:(BCCompletionBlock)cb
+              errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                          cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Verifies that purchase was properly made at the store

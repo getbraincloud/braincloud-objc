@@ -79,37 +79,6 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 @interface BrainCloudClient : NSObject
 
 /**
- * BrainCloudClient is a singleton object. This method gives the caller access
- * to the singleton object in order to use the class.
- *
- * @return BrainCloudClient * - pointer to the singleton BrainCloudClient object
- *
- * @deprecated Use of the *singleton* has been deprecated. We recommend that you create your own *variable* to hold an instance of the brainCloudWrapper. Explanation here: http://getbraincloud.com/apidocs/wrappers-clients-and-inconvenient-singletons/
- */
-+ (BrainCloudClient *)getInstance;
-
-/**
- * Internal method used by the brainCloud client to set the instance.
- *
- * @param BrainCloudClient * - pointer to the singleton BrainCloudClient object
- *
- * @deprecated Use of the *singleton* has been deprecated. We recommend that you create your own *variable* to hold an instance of the brainCloudWrapper. Explanation here: http://getbraincloud.com/apidocs/wrappers-clients-and-inconvenient-singletons/
- */
-+ (void)setInstance: (BrainCloudClient *) instance;
-
-/**
- * Disabling Singleton mode will ensure an error is thrown if the brainCloud Singleton is used
- *
- * @param state of singleton mode
- */
-+ (void) setEnableSingletonMode: (bool) state;
-
-/**
- * @return state of singleton mode
- */
-+ (bool) getEnableSingletonMode;
-
-/**
  * Initializes the brainCloud Client
  */
 - (instancetype) init;

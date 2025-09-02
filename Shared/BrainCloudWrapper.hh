@@ -33,17 +33,6 @@
 @property (nonatomic) BOOL alwaysAllowProfileSwitch;
 
 /**
- * Method returns a singleton instance of the BrainCloudWrapper.
- *
- * Note: if using a local instance of the brainCloud client, refer to it instead of getInstance.
- *
- * @return A singleton instance of the BrainCloudWrapper.
- *
- * @deprecated Use of the *singleton* has been deprecated. We recommend that you create your own *variable* to hold an instance of the brainCloudWrapper. Explanation here: http://getbraincloud.com/apidocs/wrappers-clients-and-inconvenient-singletons/
- */
-+ (BrainCloudWrapper *) getInstance;
-
-/**
  * Initializes the brainCloud Wrapper
  */
 - (instancetype) init;
@@ -54,15 +43,6 @@
  * @param wrapperName value used to differentiate saved wrapper data
  */
 - (instancetype) init: (NSString*) wrapperName;
-
-
-/**
- * Method returns a singleton instance of the BrainCloudClient.
- * @return A singleton instance of the BrainCloudClient.
- *
- * @deprecated Use of the *singleton* has been deprecated. We recommend that you create your own *variable* to hold an instance of the brainCloudWrapper. Explanation here: http://getbraincloud.com/apidocs/wrappers-clients-and-inconvenient-singletons/
- */
-+ (BrainCloudClient *) getBC;
 
 /**
  * Method returns an instance of the BrainCloudClient.
