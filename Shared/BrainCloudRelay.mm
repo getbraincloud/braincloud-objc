@@ -69,9 +69,9 @@
     _client->getRelayService()->endMatch(cppJsonPayload);
 }
 
--(void) setPingInterval:(int)intervalMS
+-(void) setPingInterval:(int)intervalSeconds
 {
-    _client->getRelayService()->setPingInterval(intervalMS);
+    _client->getRelayService()->setPingInterval(intervalSeconds);
 }
 
 -(NSString*) getProfileIdForNetId:(int)netId

@@ -64,9 +64,9 @@ typedef NS_ENUM(NSUInteger, BCRelayConnectionType)
 /**
  * Set the ping interval. Ping allows to keep the connection
  * alive, but also inform the player of his current ping.
- * The default is 1000 miliseconds interval. (1 seconds)
+ * The default is 1 second interval.
  */
--(void) setPingInterval:(int)intervalMS;
+-(void) setPingInterval:(int)intervalSeconds;
 
 /**
  * Returns the profileId associated with a netId.
