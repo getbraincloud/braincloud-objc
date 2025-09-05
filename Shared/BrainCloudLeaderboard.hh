@@ -522,38 +522,6 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                       cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Post the players score to the given social leaderboard.
-* Pass leaderboard config data to dynamically create if necessary.
-* You can optionally send a user-defined json string of data
-* with the posted score. This string could include information
-* relevant to the posted score.
-*
-* Service Name - SocialLeaderboard
-* Service Operation - PostScoreDynamic
-*
-* @param leaderboardId The leaderboard to post to
-* @param score The score to post
-* @param data Optional user-defined data to post with the score
-* @param leaderboardType leaderboard type
-* @param rotationType Type of rotation
-* @param rotationReset Date to start rotation calculations
-* @param retainedCount How many rotations to keep
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
-- (void)postScoreToDynamicLeaderboard:(NSString *)leaderboardId
-                                score:(int)score
-                             jsonData:(NSString *)jsonData
-                      leaderboardType:(LeaderboardType)leaderboardType
-                         rotationType:(RotationType)rotationType
-                       roatationReset:(NSDate *)rotationReset
-                        retainedCount:(int)retainedCount
-                      completionBlock:(BCCompletionBlock)cb
-                 errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                             cbObject:(BCCallbackObject)cbObject;
-
-/**
  * Post the player's score to the given social leaderboard, 
  * dynamically creating the leaderboard if it does not exist yet. 
  * To create new leaderboard, configJson must specify
@@ -629,37 +597,6 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                       completionBlock:(BCCompletionBlock)cb
                  errorCompletionBlock:(BCErrorCompletionBlock)ecb
                              cbObject:(BCCallbackObject)cbObject;
-/**
-* Post the players score to the given social leaderboard.
-* Pass leaderboard config data to dynamically create if necessary.
-* You can optionally send a user-defined json string of data
-* with the posted score. This string could include information
-* relevant to the posted score.
-*
-* Service Name - SocialLeaderboard
-* Service Operation - PostScoreDynamic
-*
-* @param leaderboardId The leaderboard to post to
-* @param score The score to post
-* @param data Optional user-defined data to post with the score
-* @param leaderboardType leaderboard type
-* @param rotationReset Date to start rotation calculations
-* @param retainedCount How many rotations to keep
-* @param numDaysToRotate How many days between each rotation
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
-- (void)postScoreToDynamicLeaderboardDays:(NSString *)leaderboardId
-                                    score:(int)score
-                                 jsonData:(NSString *)jsonData
-                          leaderboardType:(LeaderboardType)leaderboardType
-                           roatationReset:(NSDate *)rotationReset
-                            retainedCount:(int)retainedCount
-                          numDaysToRotate:(int)numDaysToRotate
-                          completionBlock:(BCCompletionBlock)cb
-                     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                                 cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Post the players score to the given social leaderboard.
@@ -944,34 +881,6 @@ typedef NS_ENUM(NSUInteger, SortOrder) { HIGH_TO_LOW, LOW_TO_HIGH };
                     completionBlock:(BCCompletionBlock)cb
                errorCompletionBlock:(BCErrorCompletionBlock)ecb
                            cbObject:(BCCallbackObject)cbObject;
-
-/**
- * Post score to Group Leaderboard - Note the user must be a member of the group
- *
- * Service Name - leaderboard
- * Service Operation - POST_GROUP_SCORE
- *
- * @param leaderboardId
- * @param groupId
- * @param score
- * @param jsonData custom data
- * @param leaderboardType
- * @param rotationType
- * @param rotationResetTime
- * @param retainedCount
- * @param callback The method to be invoked when the server response is received
- */
-- (void)postScoreToDynamicGroupLeaderboard:(NSString *)leaderboardId
-                                   groupId:(NSString *)groupId
-                                     score:(int)score
-                                  jsonData:(NSString *)jsonData
-                           leaderboardType:(NSString *)leaderboardType
-                              rotationType:(NSString *)rotationType
-                         rotationResetTime:(int64_t)rotationResetTime
-                             retainedCount:(int32_t)retainedCount
-                           completionBlock:(BCCompletionBlock)cb
-                      errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                                  cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Post score to Group Leaderboard - Note the user must be a member of the group - uses UTC time

@@ -24,6 +24,17 @@
     [super tearDown];
 }
 
+- (void)testcachePurchasePayloadContext
+{
+    [[m_client appStoreService] cachePurchasePayloadContext:@"invalid_storeId"
+                                                      iapId:@"invalid_iapId"
+                                                    payload:@"{}"
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForFailedResult];
+}
+
 - (void)testVerifyPurchase
 {
     [[m_client appStoreService] verifyPurchase:@"invalid_storeId"

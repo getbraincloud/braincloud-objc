@@ -51,6 +51,15 @@
     [self waitForResult];
 }
 
+- (void)testUpdateUserName
+{
+    [[m_client playerStateService] updateUserName:@"TestUserName"
+                                  completionBlock:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testReadPlayerState
 {
     [[m_client playerStateService] readUserState:successBlock
@@ -85,15 +94,6 @@
 - (void)testResetPlayerState
 {
     [[m_client playerStateService] resetUserState:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
-    [self waitForResult];
-}
-
-- (void)testUpdateName
-{
-    [[m_client playerStateService] updateName:@"TestName"
-                                  completionBlock:successBlock
                              errorCompletionBlock:failureBlock
                                          cbObject:nil];
     [self waitForResult];
