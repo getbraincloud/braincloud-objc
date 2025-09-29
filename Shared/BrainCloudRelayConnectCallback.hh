@@ -1,3 +1,5 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 /**
  * This class handles relay connection success/failure callbacks
  */

@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  TypeHelpers.mm
 //  brainCloudClientObjc
 //
 //  Created by Hill, Bradley on 2015-12-07.
-//  Copyright © 2015 bitHeads. All rights reserved.
+
 //
 
 #import <Foundation/Foundation.h>

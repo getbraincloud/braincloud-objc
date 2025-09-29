@@ -1,3 +1,4 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
 
 #pragma once
 #pragma clang diagnostic push

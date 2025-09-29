@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudRTT.mm
 //  BrainCloud
 //
 //  Created by David St-Louis on 2020-01-07.
-//  Copyright © 2020 BitHeads Inc. All rights reserved.
+
 //
 
 #include "braincloud/BrainCloudClient.h"

@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudPushNotification.mm
 //  brainCloudClientObjc
 //
 //  Created by Ryan Homer on 2/5/2015.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #include "BrainCloudCallback.hh"

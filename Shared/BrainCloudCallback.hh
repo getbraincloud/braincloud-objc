@@ -1,3 +1,5 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 /**
  * This class handles the server callbacks and passes the data to Objective-C
  *via blocks.

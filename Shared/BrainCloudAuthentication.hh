@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudAuthentication.hh
 //  brainCloudClientObjc
 //
 //  Created by Ryan Homer on 8/4/2015.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #pragma once

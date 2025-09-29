@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudFile.m
 //  brainCloudClientObjc
 //
 //  Created by Preston Jennings on 2016-01-21.
-//  Copyright © 2016 bitHeads. All rights reserved.
+
 //
 
 #import "BrainCloudFile.hh"

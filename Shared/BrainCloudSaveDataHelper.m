@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudSaveDataHelper.m
 //  BrainCloud
 //
 //  Created by Benoit Sarrazin on 2016-02-29.
-//  Copyright © 2016 BitHeads Inc. All rights reserved.
+
 //
 
 #import "BrainCloudSaveDataHelper.h"
