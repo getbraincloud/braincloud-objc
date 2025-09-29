@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudTime.h
 //  brainCloudClientObjc
 //
 //  Created by Hill, Bradley on 2015-08-12.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #pragma once

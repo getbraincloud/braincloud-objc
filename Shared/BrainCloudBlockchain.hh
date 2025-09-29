@@ -1,8 +1,10 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudBlockchain.h
 //  brainCloudClientObjc
 //
-//  Copyright (c) 2022 bitHeads. All rights reserved.
+
 //
 
 #import "BrainCloudCompletionBlocks.hh"

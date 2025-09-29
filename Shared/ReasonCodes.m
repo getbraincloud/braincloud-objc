@@ -1,3 +1,5 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 #include "ReasonCodes.hh"
 
 const NSInteger NO_REASON_CODE = 0;

@@ -1,3 +1,5 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 #include "BrainCloudCallback.hh"
 #include "braincloud/BrainCloudClient.h"
 #import "BrainCloudClient.hh"

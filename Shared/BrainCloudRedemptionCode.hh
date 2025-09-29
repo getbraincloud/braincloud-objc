@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudRedemptionCode.hh
 //  brainCloudClientObjc
 //
 //  Created by Hill, Bradley on 2015-10-26.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #pragma once

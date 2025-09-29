@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudGroupFile.hh
 //  brainCloudClientObjc
 //
 //  Created by Joanne Hoar on 2023-03-03.
-//  Copyright © 2023 BitHeads Inc. All rights reserved.
+
 //
 
 #pragma once

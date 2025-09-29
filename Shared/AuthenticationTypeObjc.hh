@@ -1,9 +1,11 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  AuthenticationTypeObjc.hh
 //  brainCloudClientObjc
 //
 //  Created by Brad Hill on 2016-04-04.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #import <Foundation/Foundation.h>

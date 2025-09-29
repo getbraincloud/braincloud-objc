@@ -1,8 +1,10 @@
+// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudClient.mm
 //  brainCloudClientObjc
 //
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #import "BrainCloudClient.hh"
