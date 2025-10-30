@@ -8,6 +8,10 @@
 
 #pragma once
 
+@interface BCServiceName : NSObject
+
++ (NSString *) getAuthenticateServiceName:() authServiceName;
+
 extern NSString const *const BrainCloudServiceNameNone;
 extern NSString const *const BrainCloudServiceNameAppStore;
 extern NSString const *const BrainCloudServiceNameAuthenticate;
@@ -45,3 +49,5 @@ extern NSString const *const BrainCloudServiceNameDataStream;
 extern NSString const *const BrainCloudServiceNameProfanity;
 extern NSString const *const BrainCloudServiceNameFile;
 extern NSString const *const BrainCloudServiceNameVirtualCurrency;
+
+@end

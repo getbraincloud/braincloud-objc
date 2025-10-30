@@ -7,6 +7,13 @@
 #import "ServiceName.hh"
 #import "braincloud/ServiceName.h"
 
+@implementation BCServiceName
+
++ (NSString *) getAuthenticateServiceName: () authServiceName
+{
+    return [NSString stringWithCString:BrainCloud::ServiceName::Authenticate.getValue().c_str() encoding:NSASCIIStringEncoding];
+}
+
 NSString const *const BrainCloudServiceNameNone = [NSString stringWithCString:BrainCloud::ServiceName::None.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNameAppStore = [NSString stringWithCString:BrainCloud::ServiceName::AppStore.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNameAuthenticate = [NSString stringWithCString:BrainCloud::ServiceName::Authenticate.getValue().c_str() encoding:NSASCIIStringEncoding];
@@ -43,3 +50,5 @@ NSString const *const BrainCloudServiceNameDataStream = [NSString stringWithCStr
 NSString const *const BrainCloudServiceNameProfanity = [NSString stringWithCString:BrainCloud::ServiceName::Profanity.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNameFile = [NSString stringWithCString:BrainCloud::ServiceName::File.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceNameVirtualCurrency = [NSString stringWithCString:BrainCloud::ServiceName::VirtualCurrency.getValue().c_str() encoding:NSASCIIStringEncoding];
+
+@end

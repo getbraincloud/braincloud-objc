@@ -2,6 +2,14 @@
 
 #include "ReasonCodes.hh"
 
+@implementation BCReasonCodes
+
++ (NSInteger)getInvalidNotificationReasonCode
+{
+    return INVALID_NOTIFICATION;
+}
+
+
 const NSInteger NO_REASON_CODE = 0;
 const NSInteger INVALID_NOTIFICATION = 20200;
 const NSInteger INVALID_REQUEST = 40001;
@@ -681,3 +689,6 @@ const NSInteger CLIENT_NETWORK_ERROR_TIMEOUT = 90001;
 const NSInteger CLIENT_UPLOAD_FILE_CANCELLED = 90100;
 const NSInteger CLIENT_UPLOAD_FILE_TIMED_OUT = 90101;
 const NSInteger CLIENT_UPLOAD_FILE_UNKNOWN = 90102;
+
+
+@end

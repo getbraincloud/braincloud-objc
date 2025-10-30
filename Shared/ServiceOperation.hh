@@ -8,6 +8,10 @@
 
 #pragma once
 
+@interface BCServiceOperation : NSObject
+
++ (NSString *) getAuthenticateServiceOperation:() authServiceName;
+
 extern NSString const *const BrainCloudServiceOperationNone;
 extern NSString const *const BrainCloudServiceOperationAuthenticate;
 extern NSString const *const BrainCloudServiceOperationAttach;
@@ -186,3 +190,4 @@ extern NSString const *const BrainCloudServiceOperationPrepareUserUpload;
 extern NSString const *const BrainCloudServiceOperationListUserFiles;
 extern NSString const *const BrainCloudServiceOperationDeleteUserFiles;
 
+@end

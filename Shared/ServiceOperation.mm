@@ -7,6 +7,13 @@
 #import "ServiceOperation.hh"
 #import "braincloud/ServiceOperation.h"
 
+@implementation BCServiceOperation
+
++ (NSString *) getAuthenticateServiceOperation: () authServiceOperation
+{
+    return [NSString stringWithCString:BrainCloud::ServiceOperation::Authenticate.getValue().c_str() encoding:NSASCIIStringEncoding];
+}
+
 NSString const *const BrainCloudServiceOperationNone = [NSString stringWithCString:BrainCloud::ServiceOperation::None.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationAuthenticate = [NSString stringWithCString:BrainCloud::ServiceOperation::Authenticate.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationAttach = [NSString stringWithCString:BrainCloud::ServiceOperation::Attach.getValue().c_str() encoding:NSASCIIStringEncoding];
@@ -187,4 +194,4 @@ NSString const *const BrainCloudServiceOperationProfanityIdenitfyBadWords = [NSS
 NSString const *const BrainCloudServiceOperationPrepareUserUpload = [NSString stringWithCString:BrainCloud::ServiceOperation::PrepareUserUpload.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationListUserFiles = [NSString stringWithCString:BrainCloud::ServiceOperation::ListUserFiles.getValue().c_str() encoding:NSASCIIStringEncoding];
 NSString const *const BrainCloudServiceOperationDeleteUserFiles = [NSString stringWithCString:BrainCloud::ServiceOperation::DeleteUserFiles.getValue().c_str() encoding:NSASCIIStringEncoding];
-
+@end
