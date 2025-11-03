@@ -7,9 +7,6 @@
 //
 
 #import "TestFixtureBase.h"
-#import "ServiceOperation.hh"
-#import "ServiceName.hh"
-#import "ReasonCodes.hh"
 #import "ACL.hh"
 
 @interface TestEntity : TestFixtureBase
@@ -29,14 +26,7 @@ NSString *entityData = @"{ \"street\":\"testAddress\" }";
 - (void)testCreateEntity
 {
     NSString *entityId = [self createDefaultEntity:ReadWrite];
-    NSString *authName = [BCServiceName getAuthenticateServiceName: authName];
-    NSLog(@"Service Operation Name: %@", authName);
-    
-    NSString *authOperation = [BCServiceOperation getAuthenticateServiceOperation: authOperation];
-    NSLog(@"Service Operation: %@", authOperation);
-    
-    NSInteger noReasonCode = [BCReasonCodes getInvalidNotificationReasonCode];
-    NSLog(@"Reason Code: %ld", (long)noReasonCode);
+
     
     [self deleteEntity:entityId version:1];
 }
