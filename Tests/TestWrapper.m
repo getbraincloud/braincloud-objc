@@ -11,6 +11,7 @@
 #import "BCServiceName.hh"
 #import "BCOperationParam.hh"
 #import "ReasonCodes.hh"
+#import "StatusCodes.hh"
 #import "BrainCloudWrapper.hh"
 
 @interface TestWrapper : TestFixtureBase
@@ -375,6 +376,16 @@
     
     XCTAssertEqual((long)reasonCode, expectedResult, @"Result should be 40212 for MERGE_PROFILE reason code");
     XCTAssertTrue(reasonCode > 0, @"MERGE_PROFILE should not be 0");
+}
+
+- (void)testStatusCodeAccessIsValid
+{
+    NSInteger statusCode = HTTP_GATEWAY_TIMEOUT;
+    NSInteger expectedResult = 504;
+    NSLog(@"Status Code: %ld", (long)statusCode);
+    
+    XCTAssertEqual((long)statusCode, expectedResult, @"Result should be 504 for HTTP_GATEWAY_TIMEOUT status code");
+    XCTAssertTrue(statusCode > 0, @"HTTP_GATEWAY_TIMEOUT should not be 0");
 }
 
 - (void) testOperationParamAccessIsValid
