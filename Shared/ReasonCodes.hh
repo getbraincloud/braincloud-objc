@@ -8,10 +8,6 @@
 
 #pragma once
 
-@interface BCReasonCodes : NSObject
-
-+ (NSInteger) getInvalidNotificationReasonCode;
-
 extern const NSInteger NO_REASON_CODE;
 extern const NSInteger INVALID_NOTIFICATION;
 extern const NSInteger INVALID_REQUEST;
@@ -692,4 +688,3 @@ extern const NSInteger CLIENT_UPLOAD_FILE_CANCELLED;
 extern const NSInteger CLIENT_UPLOAD_FILE_TIMED_OUT;
 extern const NSInteger CLIENT_UPLOAD_FILE_UNKNOWN;
 
-@end
