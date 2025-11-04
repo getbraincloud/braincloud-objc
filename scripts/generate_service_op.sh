@@ -34,16 +34,16 @@ OUT_HEADER="$OUT_DIR/Shared/BCServiceOperation.hh"
 OUT_IMPL="$OUT_DIR/Shared/BCServiceOperation.mm"
 
 if [[ ! -f "$SRC_HEADER" ]]; then
-  echo "❌ Missing header file: $SRC_HEADER"
+  echo "Missing header file: $SRC_HEADER"
   exit 1
 fi
 
 if [[ ! -f "$SRC_CPP" ]]; then
-  echo "❌ Missing source file: $SRC_CPP"
+  echo "Missing source file: $SRC_CPP"
   exit 1
 fi
 
-echo "🔍 Parsing: $SRC_HEADER"
+echo "Parsing: $SRC_HEADER"
 
 # ------------------------------
 # Robust extraction of identifiers
@@ -63,18 +63,18 @@ ops=$(
 )
 
 if [[ -z "$ops" ]]; then
-  echo "⚠️ No valid operations found in $SRC_HEADER"
+  echo "No valid operations found in $SRC_HEADER"
   exit 0
 fi
 
-echo "✅ Found operations:"
+echo "Found operations:"
 # Print each on its own line, indented
 printf '%s\n' "$ops" | sed 's/^/   - /'
 
 # ------------------------------
 # Generate header
 # ------------------------------
-echo "🧩 Generating $OUT_HEADER"
+echo "Generating $OUT_HEADER"
 
 cat > "$OUT_HEADER" <<'EOF'
 #import <Foundation/Foundation.h>
@@ -97,7 +97,7 @@ EOF
 # ------------------------------
 # Generate implementation
 # ------------------------------
-echo "🧩 Generating $OUT_IMPL"
+echo "Generating $OUT_IMPL"
 
 cat > "$OUT_IMPL" <<'EOF'
 #import "BCServiceOperation.hh"
@@ -108,11 +108,8 @@ EOF
 
 printf '%s\n' "$ops" | while IFS= read -r op; do
   cat >> "$OUT_IMPL" <<EOF
++ (NSString *)$op { return [NSString stringWithCString:BrainCloud::ServiceOperation::$op.getValue().c_str() encoding:NSASCIIStringEncoding]; }
 
-+ (NSString *)$op {
-    return [NSString stringWithCString:BrainCloud::ServiceOperation::$op.getValue().c_str()
-                              encoding:NSASCIIStringEncoding];
-}
 EOF
 done
 
@@ -121,6 +118,6 @@ cat >> "$OUT_IMPL" <<'EOF'
 @end
 EOF
 
-echo "✨ Generation complete!"
+echo "Generation complete!"
 echo "  - $OUT_HEADER"
 echo "  - $OUT_IMPL"
