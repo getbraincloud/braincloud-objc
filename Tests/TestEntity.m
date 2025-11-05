@@ -26,6 +26,8 @@ NSString *entityData = @"{ \"street\":\"testAddress\" }";
 - (void)testCreateEntity
 {
     NSString *entityId = [self createDefaultEntity:ReadWrite];
+
+    
     [self deleteEntity:entityId version:1];
 }
 

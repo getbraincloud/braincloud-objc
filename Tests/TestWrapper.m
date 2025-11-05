@@ -7,6 +7,11 @@
 //
 
 #import "TestFixtureBase.h"
+#import "BCServiceOperation.hh"
+#import "BCServiceName.hh"
+#import "BCOperationParam.hh"
+#import "ReasonCodes.hh"
+#import "StatusCodes.hh"
 #import "BrainCloudWrapper.hh"
 
 @interface TestWrapper : TestFixtureBase
@@ -343,6 +348,53 @@
     {
         _XCTPrimitiveFail(self, @"Logout expecting user forgotten");
     }
+}
+
+- (void)testServiceNameAccessIsValid
+{
+    NSString *authName = [BCServiceName Presence];
+    NSLog(@"Service Operation Name: %@", authName);
+    
+    XCTAssertNotNil(authName, @"Presence should not be nil(null)");
+    XCTAssertTrue(authName.length > 0, @"Presence should not be empty");
+}
+
+- (void)testServiceOperationAccessIsValid
+{
+    NSString *authOperation = [BCServiceOperation GetLobbyData];
+    NSLog(@"Service Operation: %@", authOperation);
+    
+    XCTAssertNotNil(authOperation, @"GetLobbyData should not be nil (null)");
+    XCTAssertTrue(authOperation.length > 0, @"GetLobbyData should not be empty");
+}
+
+- (void)testReasonCodeAccessIsValid
+{
+    NSInteger reasonCode = MERGE_PROFILES;
+    NSInteger expectedResult = 40212;
+    NSLog(@"Reason Code: %ld", (long)reasonCode);
+    
+    XCTAssertEqual((long)reasonCode, expectedResult, @"Result should be 40212 for MERGE_PROFILE reason code");
+    XCTAssertTrue(reasonCode > 0, @"MERGE_PROFILE should not be 0");
+}
+
+- (void)testStatusCodeAccessIsValid
+{
+    NSInteger statusCode = HTTP_GATEWAY_TIMEOUT;
+    NSInteger expectedResult = 504;
+    NSLog(@"Status Code: %ld", (long)statusCode);
+    
+    XCTAssertEqual((long)statusCode, expectedResult, @"Result should be 504 for HTTP_GATEWAY_TIMEOUT status code");
+    XCTAssertTrue(statusCode > 0, @"HTTP_GATEWAY_TIMEOUT should not be 0");
+}
+
+- (void) testOperationParamAccessIsValid
+{
+    NSString *operationParam = [BCOperationParam LobbyCriteria];
+    NSLog(@"Operation Param: %@", operationParam);
+    
+    XCTAssertNotNil(operationParam, @"LobbyCriteria should not be nil (null)");
+    XCTAssertTrue(operationParam.length > 0, @"LobbyCriteria should not be empty");
 }
 
 @end

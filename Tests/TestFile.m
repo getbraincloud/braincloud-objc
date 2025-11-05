@@ -141,7 +141,7 @@
         _XCTPrimitiveFail(self, @"Uploads failed not 1");
     }
     
-    if ([(FileUploadFailedDetails*)[_fileUploadProgress failedDetailsAtIndex: 0] status] != BC_HTTP_CUSTOM)
+    if ([(FileUploadFailedDetails*)[_fileUploadProgress failedDetailsAtIndex: 0] status] != HTTP_CUSTOM)
     {
         _XCTPrimitiveFail(self, @"Wrong http status");
     }
