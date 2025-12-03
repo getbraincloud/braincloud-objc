@@ -146,5 +146,18 @@
     [self waitForFailedResult];
 }
 
+- (void)awardUserItemWithOptions
+{
+    NSString* optionsJson = @"{\"AnswerToEverything\":42}";
+    [[m_client userItemsService]  awardUserItemWithOptions:@"sword001"
+                                      quantity:5
+                                    includeDef:true
+                                   optionsJson:optionsJson
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
+    
+    [self waitForResult];
+}
 
 @end
