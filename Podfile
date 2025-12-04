@@ -21,6 +21,7 @@ end
 target 'BrainCloud-iOS' do
   platform :ios, '12.0'
   shared_pods
+  pod 'SSKeychain'
 end
 
 target 'BrainCloud-iOSTests' do
