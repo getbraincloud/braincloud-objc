@@ -57,6 +57,30 @@
 		24F29CEA1CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24F29CE61CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm */; };
 		24F29CEB1CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24F29CE61CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm */; };
 		24F29CEC1CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24F29CE61CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm */; };
+		5212F5342EE213A70069B6EF /* BCServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5312EE213A70069B6EF /* BCServiceName.mm */; };
+		5212F5352EE213A70069B6EF /* BCServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5332EE213A70069B6EF /* BCServiceOperation.mm */; };
+		5212F5362EE213A70069B6EF /* BCOperationParam.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F52F2EE213A70069B6EF /* BCOperationParam.mm */; };
+		5212F5372EE213A70069B6EF /* BCServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5302EE213A70069B6EF /* BCServiceName.hh */; };
+		5212F5382EE213A70069B6EF /* BCOperationParam.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F52E2EE213A70069B6EF /* BCOperationParam.hh */; };
+		5212F5392EE213A70069B6EF /* BCServiceOperation.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5322EE213A70069B6EF /* BCServiceOperation.hh */; };
+		5212F53A2EE213A70069B6EF /* BCServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5312EE213A70069B6EF /* BCServiceName.mm */; };
+		5212F53B2EE213A70069B6EF /* BCServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5332EE213A70069B6EF /* BCServiceOperation.mm */; };
+		5212F53C2EE213A70069B6EF /* BCOperationParam.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F52F2EE213A70069B6EF /* BCOperationParam.mm */; };
+		5212F53D2EE213A70069B6EF /* BCServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5302EE213A70069B6EF /* BCServiceName.hh */; };
+		5212F53E2EE213A70069B6EF /* BCOperationParam.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F52E2EE213A70069B6EF /* BCOperationParam.hh */; };
+		5212F53F2EE213A70069B6EF /* BCServiceOperation.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5322EE213A70069B6EF /* BCServiceOperation.hh */; };
+		5212F5402EE213A70069B6EF /* BCServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5312EE213A70069B6EF /* BCServiceName.mm */; };
+		5212F5412EE213A70069B6EF /* BCServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5332EE213A70069B6EF /* BCServiceOperation.mm */; };
+		5212F5422EE213A70069B6EF /* BCOperationParam.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F52F2EE213A70069B6EF /* BCOperationParam.mm */; };
+		5212F5432EE213A70069B6EF /* BCServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5302EE213A70069B6EF /* BCServiceName.hh */; };
+		5212F5442EE213A70069B6EF /* BCOperationParam.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F52E2EE213A70069B6EF /* BCOperationParam.hh */; };
+		5212F5452EE213A70069B6EF /* BCServiceOperation.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5322EE213A70069B6EF /* BCServiceOperation.hh */; };
+		5212F5462EE213A70069B6EF /* BCServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5312EE213A70069B6EF /* BCServiceName.mm */; };
+		5212F5472EE213A70069B6EF /* BCServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F5332EE213A70069B6EF /* BCServiceOperation.mm */; };
+		5212F5482EE213A70069B6EF /* BCOperationParam.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5212F52F2EE213A70069B6EF /* BCOperationParam.mm */; };
+		5212F5492EE213A70069B6EF /* BCServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5302EE213A70069B6EF /* BCServiceName.hh */; };
+		5212F54A2EE213A70069B6EF /* BCOperationParam.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F52E2EE213A70069B6EF /* BCOperationParam.hh */; };
+		5212F54B2EE213A70069B6EF /* BCServiceOperation.hh in Headers */ = {isa = PBXBuildFile; fileRef = 5212F5322EE213A70069B6EF /* BCServiceOperation.hh */; };
 		5743615029BECF0C00E18AB4 /* TestGroupFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5743614F29BECF0C00E18AB4 /* TestGroupFile.m */; };
 		5743615129BECF0C00E18AB4 /* TestGroupFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5743614F29BECF0C00E18AB4 /* TestGroupFile.m */; };
 		5743615229BECF0C00E18AB4 /* TestGroupFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5743614F29BECF0C00E18AB4 /* TestGroupFile.m */; };
@@ -396,12 +420,6 @@
 		D84598321C6D23B4003DA016 /* ReasonCodes.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597731C6D23B3003DA016 /* ReasonCodes.hh */; };
 		D84598331C6D23B4003DA016 /* ReasonCodes.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597731C6D23B3003DA016 /* ReasonCodes.hh */; };
 		D84598341C6D23B4003DA016 /* ReasonCodes.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597731C6D23B3003DA016 /* ReasonCodes.hh */; };
-		D84598351C6D23B4003DA016 /* ServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597741C6D23B3003DA016 /* ServiceName.hh */; };
-		D84598361C6D23B4003DA016 /* ServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597741C6D23B3003DA016 /* ServiceName.hh */; };
-		D84598371C6D23B4003DA016 /* ServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597741C6D23B3003DA016 /* ServiceName.hh */; };
-		D84598381C6D23B4003DA016 /* ServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597751C6D23B3003DA016 /* ServiceName.mm */; };
-		D84598391C6D23B4003DA016 /* ServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597751C6D23B3003DA016 /* ServiceName.mm */; };
-		D845983A1C6D23B4003DA016 /* ServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597751C6D23B3003DA016 /* ServiceName.mm */; };
 		D845983B1C6D23B4003DA016 /* TypeHelpers.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597761C6D23B3003DA016 /* TypeHelpers.hh */; };
 		D845983C1C6D23B4003DA016 /* TypeHelpers.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597761C6D23B3003DA016 /* TypeHelpers.hh */; };
 		D845983D1C6D23B4003DA016 /* TypeHelpers.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597761C6D23B3003DA016 /* TypeHelpers.hh */; };
@@ -469,11 +487,7 @@
 		DBB9055C24EAF86E000067CE /* BrainCloudRelaySystemCallback.hh in Headers */ = {isa = PBXBuildFile; fileRef = DBB9055224EAF86E000067CE /* BrainCloudRelaySystemCallback.hh */; };
 		DBB9055D24EAF86E000067CE /* BrainCloudRelaySystemCallback.hh in Headers */ = {isa = PBXBuildFile; fileRef = DBB9055224EAF86E000067CE /* BrainCloudRelaySystemCallback.hh */; };
 		DBB9055E24EAF86E000067CE /* BrainCloudRelaySystemCallback.hh in Headers */ = {isa = PBXBuildFile; fileRef = DBB9055224EAF86E000067CE /* BrainCloudRelaySystemCallback.hh */; };
-		DF1D3FB51C8DEEA000225572 /* ServiceOperation.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF1D3FB31C8DEEA000225572 /* ServiceOperation.hh */; };
-		DF1D3FB61C8DEEA000225572 /* ServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF1D3FB41C8DEEA000225572 /* ServiceOperation.mm */; };
 		DF1D3FB81C8DF1F700225572 /* StatusCodes.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF1D3FB71C8DF1F700225572 /* StatusCodes.hh */; };
-		DF2230351CE37684003A7D8D /* ServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF1D3FB41C8DEEA000225572 /* ServiceOperation.mm */; };
-		DF2230361CE37685003A7D8D /* ServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF1D3FB41C8DEEA000225572 /* ServiceOperation.mm */; };
 		DF2230D31CE39E09003A7D8D /* ACL.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597361C6D23B3003DA016 /* ACL.mm */; };
 		DF2230D41CE39E09003A7D8D /* BrainCloudGlobalApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845974D1C6D23B3003DA016 /* BrainCloudGlobalApp.mm */; };
 		DF2230D51CE39E09003A7D8D /* BrainCloudDataStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597411C6D23B3003DA016 /* BrainCloudDataStream.mm */; };
@@ -482,7 +496,6 @@
 		DF2230D81CE39E09003A7D8D /* BrainCloudEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597451C6D23B3003DA016 /* BrainCloudEvent.mm */; };
 		DF2230D91CE39E09003A7D8D /* BrainCloudSaveDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D9A61C84B9ED004AAD42 /* BrainCloudSaveDataHelper.m */; };
 		DF2230DA1CE39E09003A7D8D /* BrainCloudClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845973D1C6D23B3003DA016 /* BrainCloudClient.mm */; };
-		DF2230DB1CE39E09003A7D8D /* ServiceOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF1D3FB41C8DEEA000225572 /* ServiceOperation.mm */; };
 		DF2230DC1CE39E09003A7D8D /* ReasonCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD59AB21C8E294200A69FEF /* ReasonCodes.m */; };
 		DF2230DD1CE39E09003A7D8D /* BrainCloudGlobalStatistics.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597511C6D23B3003DA016 /* BrainCloudGlobalStatistics.mm */; };
 		DF2230DE1CE39E09003A7D8D /* BrainCloudFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597471C6D23B3003DA016 /* BrainCloudFile.mm */; };
@@ -498,7 +511,6 @@
 		DF2230E91CE39E09003A7D8D /* BrainCloudWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D809D99E1C84B5C5004AAD42 /* BrainCloudWrapper.m */; };
 		DF2230EA1CE39E09003A7D8D /* BrainCloudOneWayMatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597591C6D23B3003DA016 /* BrainCloudOneWayMatch.mm */; };
 		DF2230EB1CE39E09003A7D8D /* PlatformObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597721C6D23B3003DA016 /* PlatformObjc.mm */; };
-		DF2230EC1CE39E09003A7D8D /* ServiceName.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597751C6D23B3003DA016 /* ServiceName.mm */; };
 		DF2230ED1CE39E09003A7D8D /* BrainCloudS3Handling.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845976B1C6D23B3003DA016 /* BrainCloudS3Handling.mm */; };
 		DF2230EE1CE39E09003A7D8D /* StatusCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD59AB41C8E2CBA00A69FEF /* StatusCodes.m */; };
 		DF2230EF1CE39E09003A7D8D /* BrainCloudFriend.mm in Sources */ = {isa = PBXBuildFile; fileRef = D84597491C6D23B3003DA016 /* BrainCloudFriend.mm */; };
@@ -522,7 +534,6 @@
 		DF2231051CE39E09003A7D8D /* ACL.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597351C6D23B3003DA016 /* ACL.hh */; };
 		DF2231061CE39E09003A7D8D /* BrainCloudClient.hh in Headers */ = {isa = PBXBuildFile; fileRef = D845973C1C6D23B3003DA016 /* BrainCloudClient.hh */; };
 		DF2231071CE39E09003A7D8D /* BrainCloudPlaybackStream.hh in Headers */ = {isa = PBXBuildFile; fileRef = D845975A1C6D23B3003DA016 /* BrainCloudPlaybackStream.hh */; };
-		DF2231081CE39E09003A7D8D /* ServiceName.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597741C6D23B3003DA016 /* ServiceName.hh */; };
 		DF22310A1CE39E09003A7D8D /* BrainCloudEntity.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597421C6D23B3003DA016 /* BrainCloudEntity.hh */; };
 		DF22310B1CE39E09003A7D8D /* TypeHelpers.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597761C6D23B3003DA016 /* TypeHelpers.hh */; };
 		DF22310C1CE39E09003A7D8D /* BrainCloudFriend.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597481C6D23B3003DA016 /* BrainCloudFriend.hh */; };
@@ -545,7 +556,6 @@
 		DF22311E1CE39E09003A7D8D /* BrainCloudCompletionBlocks.hh in Headers */ = {isa = PBXBuildFile; fileRef = D845973F1C6D23B3003DA016 /* BrainCloudCompletionBlocks.hh */; };
 		DF22311F1CE39E09003A7D8D /* FriendPlatformObjc.hh in Headers */ = {isa = PBXBuildFile; fileRef = 24A524CB1CA9B931009A97D3 /* FriendPlatformObjc.hh */; };
 		DF2231201CE39E09003A7D8D /* brainCloudClientObjc.hh in Headers */ = {isa = PBXBuildFile; fileRef = D845973E1C6D23B3003DA016 /* brainCloudClientObjc.hh */; };
-		DF2231211CE39E09003A7D8D /* ServiceOperation.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF1D3FB31C8DEEA000225572 /* ServiceOperation.hh */; };
 		DF2231221CE39E09003A7D8D /* BrainCloudMatchMaking.hh in Headers */ = {isa = PBXBuildFile; fileRef = D84597561C6D23B3003DA016 /* BrainCloudMatchMaking.hh */; };
 		DF2231231CE39E09003A7D8D /* BrainCloudGlobalApp.hh in Headers */ = {isa = PBXBuildFile; fileRef = D845974C1C6D23B3003DA016 /* BrainCloudGlobalApp.hh */; };
 		DF2231241CE39E09003A7D8D /* BrainCloudWrapper.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF99CBF21C93681C000B2418 /* BrainCloudWrapper.hh */; };
@@ -737,6 +747,12 @@
 		2FCDF160E32A589FD37A54A0 /* Pods-BrainCloud-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-watchOS.debug.xcconfig"; path = "Target Support Files/Pods-BrainCloud-watchOS/Pods-BrainCloud-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3730FAB8F359F8963CADBC80 /* libPods-BrainCloud-OSXTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainCloud-OSXTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4905574F563B12897B8C7E37 /* Pods-BrainCloud-OSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-OSX.debug.xcconfig"; path = "Target Support Files/Pods-BrainCloud-OSX/Pods-BrainCloud-OSX.debug.xcconfig"; sourceTree = "<group>"; };
+		5212F52E2EE213A70069B6EF /* BCOperationParam.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BCOperationParam.hh; sourceTree = "<group>"; };
+		5212F52F2EE213A70069B6EF /* BCOperationParam.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BCOperationParam.mm; sourceTree = "<group>"; };
+		5212F5302EE213A70069B6EF /* BCServiceName.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BCServiceName.hh; sourceTree = "<group>"; };
+		5212F5312EE213A70069B6EF /* BCServiceName.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BCServiceName.mm; sourceTree = "<group>"; };
+		5212F5322EE213A70069B6EF /* BCServiceOperation.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BCServiceOperation.hh; sourceTree = "<group>"; };
+		5212F5332EE213A70069B6EF /* BCServiceOperation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BCServiceOperation.mm; sourceTree = "<group>"; };
 		5743614F29BECF0C00E18AB4 /* TestGroupFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TestGroupFile.m; path = Tests/TestGroupFile.m; sourceTree = SOURCE_ROOT; };
 		57F573D129071324006061F2 /* BrainCloudBlockchain.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BrainCloudBlockchain.hh; sourceTree = "<group>"; };
 		57F573D229071324006061F2 /* BrainCloudBlockchain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BrainCloudBlockchain.mm; sourceTree = "<group>"; };
@@ -862,8 +878,6 @@
 		D84597711C6D23B3003DA016 /* PlatformObjc.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlatformObjc.hh; sourceTree = "<group>"; };
 		D84597721C6D23B3003DA016 /* PlatformObjc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlatformObjc.mm; sourceTree = "<group>"; };
 		D84597731C6D23B3003DA016 /* ReasonCodes.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ReasonCodes.hh; sourceTree = "<group>"; };
-		D84597741C6D23B3003DA016 /* ServiceName.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceName.hh; sourceTree = "<group>"; };
-		D84597751C6D23B3003DA016 /* ServiceName.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ServiceName.mm; sourceTree = "<group>"; };
 		D84597761C6D23B3003DA016 /* TypeHelpers.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TypeHelpers.hh; sourceTree = "<group>"; };
 		D84597771C6D23B3003DA016 /* TypeHelpers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TypeHelpers.mm; sourceTree = "<group>"; };
 		D84598501C6D2761003DA016 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -884,8 +898,6 @@
 		DBB9055024EAF86E000067CE /* BrainCloudRelayConnectCallback.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BrainCloudRelayConnectCallback.hh; sourceTree = "<group>"; };
 		DBB9055124EAF86E000067CE /* BrainCloudRelayCallback.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BrainCloudRelayCallback.hh; sourceTree = "<group>"; };
 		DBB9055224EAF86E000067CE /* BrainCloudRelaySystemCallback.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BrainCloudRelaySystemCallback.hh; sourceTree = "<group>"; };
-		DF1D3FB31C8DEEA000225572 /* ServiceOperation.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceOperation.hh; sourceTree = "<group>"; };
-		DF1D3FB41C8DEEA000225572 /* ServiceOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ServiceOperation.mm; sourceTree = "<group>"; };
 		DF1D3FB71C8DF1F700225572 /* StatusCodes.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StatusCodes.hh; sourceTree = "<group>"; };
 		DF22312C1CE39E09003A7D8D /* BrainCloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BrainCloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2231581CE39E15003A7D8D /* BrainCloud-watchOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BrainCloud-watchOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1129,6 +1141,12 @@
 		D84597341C6D23A4003DA016 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5212F52E2EE213A70069B6EF /* BCOperationParam.hh */,
+				5212F52F2EE213A70069B6EF /* BCOperationParam.mm */,
+				5212F5302EE213A70069B6EF /* BCServiceName.hh */,
+				5212F5312EE213A70069B6EF /* BCServiceName.mm */,
+				5212F5322EE213A70069B6EF /* BCServiceOperation.hh */,
+				5212F5332EE213A70069B6EF /* BCServiceOperation.mm */,
 				57F573D129071324006061F2 /* BrainCloudBlockchain.hh */,
 				57F573D229071324006061F2 /* BrainCloudBlockchain.mm */,
 				DB83B15427A81D5B006BD318 /* AuthenticationIdsObjc.hh */,
@@ -1188,8 +1206,6 @@
 				24A524CB1CA9B931009A97D3 /* FriendPlatformObjc.hh */,
 				D84597711C6D23B3003DA016 /* PlatformObjc.hh */,
 				D84597731C6D23B3003DA016 /* ReasonCodes.hh */,
-				D84597741C6D23B3003DA016 /* ServiceName.hh */,
-				DF1D3FB31C8DEEA000225572 /* ServiceOperation.hh */,
 				DF1D3FB71C8DF1F700225572 /* StatusCodes.hh */,
 				D84597761C6D23B3003DA016 /* TypeHelpers.hh */,
 				D809D9A61C84B9ED004AAD42 /* BrainCloudSaveDataHelper.m */,
@@ -1244,8 +1260,6 @@
 				850BC8C02155892F0012B6EE /* BrainCloudVirtualCurrency.mm */,
 				24A524CC1CA9B931009A97D3 /* FriendPlatformObjc.mm */,
 				D84597721C6D23B3003DA016 /* PlatformObjc.mm */,
-				D84597751C6D23B3003DA016 /* ServiceName.mm */,
-				DF1D3FB41C8DEEA000225572 /* ServiceOperation.mm */,
 				D84597771C6D23B3003DA016 /* TypeHelpers.mm */,
 			);
 			name = Source;
@@ -1496,7 +1510,6 @@
 				D845978F1C6D23B3003DA016 /* BrainCloudClient.hh in Headers */,
 				852C388223E373520023C347 /* BrainCloudRTTCallback.hh in Headers */,
 				D84597E91C6D23B3003DA016 /* BrainCloudPlaybackStream.hh in Headers */,
-				D84598371C6D23B4003DA016 /* ServiceName.hh in Headers */,
 				57F573D529071324006061F2 /* BrainCloudBlockchain.hh in Headers */,
 				D84597A11C6D23B3003DA016 /* BrainCloudEntity.hh in Headers */,
 				85EA944F23341F9300E7938F /* BrainCloudUserItems.hh in Headers */,
@@ -1525,6 +1538,9 @@
 				D84598191C6D23B4003DA016 /* BrainCloudS3Handling.hh in Headers */,
 				D84598131C6D23B4003DA016 /* BrainCloudRedemptionCode.hh in Headers */,
 				D84597EF1C6D23B4003DA016 /* BrainCloudPlayerState.hh in Headers */,
+				5212F53D2EE213A70069B6EF /* BCServiceName.hh in Headers */,
+				5212F53E2EE213A70069B6EF /* BCOperationParam.hh in Headers */,
+				5212F53F2EE213A70069B6EF /* BCServiceOperation.hh in Headers */,
 				2422927B1CE3FDF8000EF5BF /* BrainCloudGroup.hh in Headers */,
 				85EA94592335513700E7938F /* BrainCloudItemCatalog.hh in Headers */,
 				D84597FB1C6D23B4003DA016 /* BrainCloudPlayerStatisticsEvent.hh in Headers */,
@@ -1561,13 +1577,15 @@
 				D84597AB1C6D23B3003DA016 /* BrainCloudFile.hh in Headers */,
 				240895FE1CE3FCB70099720D /* BrainCloudGroup.hh in Headers */,
 				D84597991C6D23B3003DA016 /* BrainCloudDataStream.hh in Headers */,
+				5212F5492EE213A70069B6EF /* BCServiceName.hh in Headers */,
+				5212F54A2EE213A70069B6EF /* BCOperationParam.hh in Headers */,
+				5212F54B2EE213A70069B6EF /* BCServiceOperation.hh in Headers */,
 				85EA94572335513700E7938F /* BrainCloudItemCatalog.hh in Headers */,
 				D84597781C6D23B3003DA016 /* ACL.hh in Headers */,
 				57F573D329071324006061F2 /* BrainCloudBlockchain.hh in Headers */,
 				D845978D1C6D23B3003DA016 /* BrainCloudClient.hh in Headers */,
 				D84597E71C6D23B3003DA016 /* BrainCloudPlaybackStream.hh in Headers */,
 				850BC8C721558F6C0012B6EE /* BrainCloudVirtualCurrency.hh in Headers */,
-				D84598351C6D23B4003DA016 /* ServiceName.hh in Headers */,
 				245F9D4F1DAECD6800478BC2 /* BrainCloudMail.hh in Headers */,
 				8512AF582193592A00D04938 /* BrainCloudChat.hh in Headers */,
 				D845979F1C6D23B3003DA016 /* BrainCloudEntity.hh in Headers */,
@@ -1599,7 +1617,6 @@
 				D84597961C6D23B3003DA016 /* BrainCloudCompletionBlocks.hh in Headers */,
 				24A524CD1CA9B931009A97D3 /* FriendPlatformObjc.hh in Headers */,
 				D84597931C6D23B3003DA016 /* brainCloudClientObjc.hh in Headers */,
-				DF1D3FB51C8DEEA000225572 /* ServiceOperation.hh in Headers */,
 				D84597DB1C6D23B3003DA016 /* BrainCloudMatchMaking.hh in Headers */,
 				D84597BD1C6D23B3003DA016 /* BrainCloudGlobalApp.hh in Headers */,
 				85EA944323340F9100E7938F /* BrainCloudCustomEntity.hh in Headers */,
@@ -1635,7 +1652,6 @@
 				D845978E1C6D23B3003DA016 /* BrainCloudClient.hh in Headers */,
 				852C388123E373520023C347 /* BrainCloudRTTCallback.hh in Headers */,
 				D84597E81C6D23B3003DA016 /* BrainCloudPlaybackStream.hh in Headers */,
-				D84598361C6D23B4003DA016 /* ServiceName.hh in Headers */,
 				57F573D429071324006061F2 /* BrainCloudBlockchain.hh in Headers */,
 				D84597A01C6D23B3003DA016 /* BrainCloudEntity.hh in Headers */,
 				85EA944E23341F9300E7938F /* BrainCloudUserItems.hh in Headers */,
@@ -1664,6 +1680,9 @@
 				D84598181C6D23B4003DA016 /* BrainCloudS3Handling.hh in Headers */,
 				D84598121C6D23B4003DA016 /* BrainCloudRedemptionCode.hh in Headers */,
 				D84597EE1C6D23B4003DA016 /* BrainCloudPlayerState.hh in Headers */,
+				5212F5372EE213A70069B6EF /* BCServiceName.hh in Headers */,
+				5212F5382EE213A70069B6EF /* BCOperationParam.hh in Headers */,
+				5212F5392EE213A70069B6EF /* BCServiceOperation.hh in Headers */,
 				242292791CE3FDF7000EF5BF /* BrainCloudGroup.hh in Headers */,
 				85EA94582335513700E7938F /* BrainCloudItemCatalog.hh in Headers */,
 				D84597FA1C6D23B4003DA016 /* BrainCloudPlayerStatisticsEvent.hh in Headers */,
@@ -1700,13 +1719,15 @@
 				DF2231021CE39E09003A7D8D /* StatusCodes.hh in Headers */,
 				DF2231031CE39E09003A7D8D /* BrainCloudFile.hh in Headers */,
 				85756E5F2188FFF700EFEE09 /* BrainCloudMessaging.hh in Headers */,
+				5212F5432EE213A70069B6EF /* BCServiceName.hh in Headers */,
+				5212F5442EE213A70069B6EF /* BCOperationParam.hh in Headers */,
+				5212F5452EE213A70069B6EF /* BCServiceOperation.hh in Headers */,
 				2422927D1CE3FDF8000EF5BF /* BrainCloudGroup.hh in Headers */,
 				DF2231041CE39E09003A7D8D /* BrainCloudDataStream.hh in Headers */,
 				57F573D629071324006061F2 /* BrainCloudBlockchain.hh in Headers */,
 				DF2231051CE39E09003A7D8D /* ACL.hh in Headers */,
 				DF2231061CE39E09003A7D8D /* BrainCloudClient.hh in Headers */,
 				DF2231071CE39E09003A7D8D /* BrainCloudPlaybackStream.hh in Headers */,
-				DF2231081CE39E09003A7D8D /* ServiceName.hh in Headers */,
 				245F9D581DAEDA3C00478BC2 /* BrainCloudMail.hh in Headers */,
 				DF22310A1CE39E09003A7D8D /* BrainCloudEntity.hh in Headers */,
 				DF22310B1CE39E09003A7D8D /* TypeHelpers.hh in Headers */,
@@ -1738,7 +1759,6 @@
 				8512AF572193592400D04938 /* BrainCloudLobby.hh in Headers */,
 				85EA945A2335513700E7938F /* BrainCloudItemCatalog.hh in Headers */,
 				DF2231201CE39E09003A7D8D /* brainCloudClientObjc.hh in Headers */,
-				DF2231211CE39E09003A7D8D /* ServiceOperation.hh in Headers */,
 				DF2231221CE39E09003A7D8D /* BrainCloudMatchMaking.hh in Headers */,
 				DF2231231CE39E09003A7D8D /* BrainCloudGlobalApp.hh in Headers */,
 				DF2231651CE3A50D003A7D8D /* BrainCloud.h in Headers */,
@@ -2416,6 +2436,9 @@
 				2422927C1CE3FDF8000EF5BF /* BrainCloudGroup.mm in Sources */,
 				D84598281C6D23B4003DA016 /* BrainCloudTime.mm in Sources */,
 				D84597AA1C6D23B3003DA016 /* BrainCloudEvent.mm in Sources */,
+				5212F53A2EE213A70069B6EF /* BCServiceName.mm in Sources */,
+				5212F53B2EE213A70069B6EF /* BCServiceOperation.mm in Sources */,
+				5212F53C2EE213A70069B6EF /* BCOperationParam.mm in Sources */,
 				D809D9AC1C84B9ED004AAD42 /* BrainCloudSaveDataHelper.m in Sources */,
 				8512AF5D2193593500D04938 /* BrainCloudLobby.mm in Sources */,
 				85EA944A23340F9C00E7938F /* BrainCloudCustomEntity.mm in Sources */,
@@ -2440,10 +2463,8 @@
 				85EA945423341F9F00E7938F /* BrainCloudUserItems.mm in Sources */,
 				24F29CEC1CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm in Sources */,
 				D809D9A41C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */,
-				DF2230361CE37685003A7D8D /* ServiceOperation.mm in Sources */,
 				D84597E61C6D23B3003DA016 /* BrainCloudOneWayMatch.mm in Sources */,
 				D84598311C6D23B4003DA016 /* PlatformObjc.mm in Sources */,
-				D845983A1C6D23B4003DA016 /* ServiceName.mm in Sources */,
 				57F6767C29B2956700CBBAE3 /* BrainCloudGroupFile.mm in Sources */,
 				D845981C1C6D23B4003DA016 /* BrainCloudS3Handling.mm in Sources */,
 				D84597B61C6D23B3003DA016 /* BrainCloudFriend.mm in Sources */,
@@ -2532,10 +2553,12 @@
 				D84597A81C6D23B3003DA016 /* BrainCloudEvent.mm in Sources */,
 				245F9D501DAECD6800478BC2 /* BrainCloudMail.mm in Sources */,
 				850BC8C12155892F0012B6EE /* BrainCloudVirtualCurrency.mm in Sources */,
+				5212F5462EE213A70069B6EF /* BCServiceName.mm in Sources */,
+				5212F5472EE213A70069B6EF /* BCServiceOperation.mm in Sources */,
+				5212F5482EE213A70069B6EF /* BCOperationParam.mm in Sources */,
 				D809D9AA1C84B9ED004AAD42 /* BrainCloudSaveDataHelper.m in Sources */,
 				D84597901C6D23B3003DA016 /* BrainCloudClient.mm in Sources */,
 				85EA944823340F9C00E7938F /* BrainCloudCustomEntity.mm in Sources */,
-				DF1D3FB61C8DEEA000225572 /* ServiceOperation.mm in Sources */,
 				DFD59AB31C8E294200A69FEF /* ReasonCodes.m in Sources */,
 				D84597CC1C6D23B3003DA016 /* BrainCloudGlobalStatistics.mm in Sources */,
 				D84597AE1C6D23B3003DA016 /* BrainCloudFile.mm in Sources */,
@@ -2556,7 +2579,6 @@
 				D809D9A21C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */,
 				D84597E41C6D23B3003DA016 /* BrainCloudOneWayMatch.mm in Sources */,
 				D845982F1C6D23B4003DA016 /* PlatformObjc.mm in Sources */,
-				D84598381C6D23B4003DA016 /* ServiceName.mm in Sources */,
 				854E10F6214AB498004197E0 /* BrainCloudPresence.mm in Sources */,
 				D845981A1C6D23B4003DA016 /* BrainCloudS3Handling.mm in Sources */,
 				DFD59AB51C8E2CBA00A69FEF /* StatusCodes.m in Sources */,
@@ -2649,6 +2671,9 @@
 				2422927A1CE3FDF7000EF5BF /* BrainCloudGroup.mm in Sources */,
 				D84598271C6D23B4003DA016 /* BrainCloudTime.mm in Sources */,
 				D84597A91C6D23B3003DA016 /* BrainCloudEvent.mm in Sources */,
+				5212F5342EE213A70069B6EF /* BCServiceName.mm in Sources */,
+				5212F5352EE213A70069B6EF /* BCServiceOperation.mm in Sources */,
+				5212F5362EE213A70069B6EF /* BCOperationParam.mm in Sources */,
 				D809D9AB1C84B9ED004AAD42 /* BrainCloudSaveDataHelper.m in Sources */,
 				8512AF5C2193593500D04938 /* BrainCloudLobby.mm in Sources */,
 				85EA944923340F9C00E7938F /* BrainCloudCustomEntity.mm in Sources */,
@@ -2673,10 +2698,8 @@
 				85EA945323341F9F00E7938F /* BrainCloudUserItems.mm in Sources */,
 				24F29CEB1CB2D2EE0075CB26 /* AuthenticationTypeObjc.mm in Sources */,
 				D809D9A31C84B5C5004AAD42 /* BrainCloudWrapper.m in Sources */,
-				DF2230351CE37684003A7D8D /* ServiceOperation.mm in Sources */,
 				D84597E51C6D23B3003DA016 /* BrainCloudOneWayMatch.mm in Sources */,
 				D84598301C6D23B4003DA016 /* PlatformObjc.mm in Sources */,
-				D84598391C6D23B4003DA016 /* ServiceName.mm in Sources */,
 				57F6767B29B2956700CBBAE3 /* BrainCloudGroupFile.mm in Sources */,
 				D845981B1C6D23B4003DA016 /* BrainCloudS3Handling.mm in Sources */,
 				D84597B51C6D23B3003DA016 /* BrainCloudFriend.mm in Sources */,
@@ -2765,13 +2788,15 @@
 				2422927E1CE3FDF8000EF5BF /* BrainCloudGroup.mm in Sources */,
 				DF2230D61CE39E09003A7D8D /* AuthenticationTypeObjc.mm in Sources */,
 				DF2230D71CE39E09003A7D8D /* BrainCloudTime.mm in Sources */,
+				5212F5402EE213A70069B6EF /* BCServiceName.mm in Sources */,
+				5212F5412EE213A70069B6EF /* BCServiceOperation.mm in Sources */,
+				5212F5422EE213A70069B6EF /* BCOperationParam.mm in Sources */,
 				DF2230D81CE39E09003A7D8D /* BrainCloudEvent.mm in Sources */,
 				8512AF5E2193593600D04938 /* BrainCloudLobby.mm in Sources */,
 				85EA944B23340F9C00E7938F /* BrainCloudCustomEntity.mm in Sources */,
 				245F9D5B1DAEDA4000478BC2 /* BrainCloudMail.mm in Sources */,
 				DF2230D91CE39E09003A7D8D /* BrainCloudSaveDataHelper.m in Sources */,
 				DF2230DA1CE39E09003A7D8D /* BrainCloudClient.mm in Sources */,
-				DF2230DB1CE39E09003A7D8D /* ServiceOperation.mm in Sources */,
 				DF2230DC1CE39E09003A7D8D /* ReasonCodes.m in Sources */,
 				DF2230DD1CE39E09003A7D8D /* BrainCloudGlobalStatistics.mm in Sources */,
 				DF2230DE1CE39E09003A7D8D /* BrainCloudFile.mm in Sources */,
@@ -2791,7 +2816,6 @@
 				DF2230E91CE39E09003A7D8D /* BrainCloudWrapper.m in Sources */,
 				DF2230EA1CE39E09003A7D8D /* BrainCloudOneWayMatch.mm in Sources */,
 				DF2230EB1CE39E09003A7D8D /* PlatformObjc.mm in Sources */,
-				DF2230EC1CE39E09003A7D8D /* ServiceName.mm in Sources */,
 				DF2230ED1CE39E09003A7D8D /* BrainCloudS3Handling.mm in Sources */,
 				57F6767D29B2956700CBBAE3 /* BrainCloudGroupFile.mm in Sources */,
 				DF2230EE1CE39E09003A7D8D /* StatusCodes.m in Sources */,
