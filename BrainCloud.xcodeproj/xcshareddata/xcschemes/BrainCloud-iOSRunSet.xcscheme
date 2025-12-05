@@ -43,11 +43,6 @@
             isEnabled = "YES">
          </AdditionalOption>
          <AdditionalOption
-            key = "DYLD_INSERT_LIBRARIES"
-            value = "/usr/lib/libgmalloc.dylib"
-            isEnabled = "YES">
-         </AdditionalOption>
-         <AdditionalOption
             key = "MallocScribble"
             value = ""
             isEnabled = "YES">
@@ -72,6 +67,51 @@
                </Test>
                <Test
                   Identifier = "TestAsyncMatch">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testAuthenticateAdvanced">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testAuthenticateApple">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testAuthenticateEmailPassword">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testAuthenticateGoogle">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testAuthenticateGoogleOpenId">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testAuthenticateUltra">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testAuthenticateUniversal">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testGetServerVersion">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testResetEmailPassword">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testResetEmailPasswordAdvanced">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testResetUniversalIdPassword">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testResetUniversalIdPasswordAdvanced">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testResetUniversalIdPasswordAdvancedWithExpiry">
+               </Test>
+               <Test
+                  Identifier = "TestAuthentication/testResetUniversalIdPasswordWithExpiry">
                </Test>
                <Test
                   Identifier = "TestBlockchain">
@@ -119,7 +159,43 @@
                   Identifier = "TestGroup">
                </Test>
                <Test
+                  Identifier = "TestGroupFile">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testCheckFilenameExists">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testCheckFilenameNoExists">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testCheckFullpathFilenameExists">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testCopyDeleteFile">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testGetFileInfo">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testGetFileInfoSimple">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testGetFileList">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testMoveFile">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testMoveUserToGroupFile">
+               </Test>
+               <Test
+                  Identifier = "TestGroupFile/testUpdateFileInfo">
+               </Test>
+               <Test
                   Identifier = "TestIdentity">
+               </Test>
+               <Test
+                  Identifier = "TestItemCatalog">
                </Test>
                <Test
                   Identifier = "TestLeaderboard">
@@ -159,6 +235,24 @@
                </Test>
                <Test
                   Identifier = "TestPushNotification">
+               </Test>
+               <Test
+                  Identifier = "TestRTT">
+               </Test>
+               <Test
+                  Identifier = "TestRTT/testChatCallback">
+               </Test>
+               <Test
+                  Identifier = "TestRTT/testEnableDisableRTTWithWS">
+               </Test>
+               <Test
+                  Identifier = "TestRTT/testLobbyCallback">
+               </Test>
+               <Test
+                  Identifier = "TestRTT/testRTTRegisterWithoutEnableRTT">
+               </Test>
+               <Test
+                  Identifier = "TestRTT/testRequestClientConnection">
                </Test>
                <Test
                   Identifier = "TestRedemptionCode">

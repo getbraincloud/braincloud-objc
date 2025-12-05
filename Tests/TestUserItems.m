@@ -10,7 +10,7 @@
 
 - (void)tearDown { [super tearDown]; }
 
-- (void)getCatalogItemDefinition
+- (void)testGetCatalogItemDefinition
 {
     [[m_client userItemsService]  awardUserItem:@"sword001"
                                       quantity:5
@@ -22,7 +22,7 @@
     [self waitForResult];
 }
 
-- (void)dropUserItem
+- (void)testDropUserItem
 {
     [[m_client userItemsService]  dropUserItem:@"invalidForNow"
                                      quantity:1
@@ -34,7 +34,7 @@
     [self waitForFailedResult];
 }
 
-- (void)getUserItemsPage
+- (void)testGetUserItemsPage
 {
     NSString* context = @"{\"test\": \"Testing\"}";
     [[m_client userItemsService]  getUserItemsPage:context
@@ -46,7 +46,7 @@
     [self waitForResult];
 }
 
-- (void)getUserItemsPageOffset
+- (void)testGetUserItemsPageOffset
 {
     NSString* context = @"";
     [[m_client userItemsService]  getUserItemsPageOffset:context
@@ -59,7 +59,7 @@
     [self waitForFailedResult];
 }
 
-- (void)getUserItem
+- (void)testGetUserItem
 {
     [[m_client userItemsService]  getUserItem:@"invalidForNow"
                                               includeDef:true
@@ -70,7 +70,7 @@
     [self waitForFailedResult];
 }
 
-- (void)giveUserItemTo
+- (void)testGiveUserItemTo
 {
     [[m_client userItemsService]  giveUserItemTo:[TestFixtureBase getUser:@"UserB"].m_profileId
                                        itemId:@"invalidForNow"
@@ -83,7 +83,7 @@
     [self waitForFailedResult];
 }
 
-- (void)purchaseUserItem
+- (void)testPurchaseUserItem
 {
     [[m_client userItemsService]  purchaseUserItem:@"sword001"
                                          quantity:1
@@ -96,7 +96,7 @@
     [self waitForResult];
 }
 
-- (void)receiveUserItemFrom
+- (void)testReceiveUserItemFrom
 {
     [[m_client userItemsService]  receiveUserItemFrom:[TestFixtureBase getUser:@"UserB"].m_profileId
                                                itemId:@"invalidForNow"
@@ -107,7 +107,7 @@
     [self waitForFailedResult];
 }
 
-- (void)sellUserItem
+- (void)testSellUserItem
 {
     [[m_client userItemsService]  sellUserItem:@"invalidForNow"
                                                version:1
@@ -121,7 +121,7 @@
     [self waitForFailedResult];
 }
 
-- (void)updateUserItemData
+- (void)testUpdateUserItemData
 {
     [[m_client userItemsService]  updateUserItemData:@"InvalidForNow"
                                              version:1
@@ -133,7 +133,7 @@
     [self waitForFailedResult];
 }
 
-- (void)useUserItem
+- (void)testUseUserItem
 {
     [[m_client userItemsService]  useUserItem:@"invalidForNow"
                                              version:1
@@ -146,7 +146,7 @@
     [self waitForFailedResult];
 }
 
-- (void)awardUserItemWithOptions
+- (void)testAwardUserItemWithOptions
 {
     NSString* optionsJson = @"{\"AnswerToEverything\":42}";
     [[m_client userItemsService]  awardUserItemWithOptions:@"sword001"
