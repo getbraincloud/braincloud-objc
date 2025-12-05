@@ -160,4 +160,41 @@
     [self waitForResult];
 }
 
+- (void)testPurchaseUserItemWithOptions
+{
+    NSString* optionsJson = @"{\"AnswerToEverything\":42}";
+    [[m_client userItemsService]purchaseUserItemWithOptions:@"sword001"
+                                      quantity:5
+                                    shopId: @""
+                                    includeDef:true
+                                   optionsJson:optionsJson
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
+    
+    [self waitForResult];
+}
+
+- (void)testGetItemPromotionDetails
+{
+    [[m_client userItemsService]getItemPromotionDetails:@"sword001"
+                                                 shopId:@""
+                                                 includeDef:true
+                                                 includePromotionDetails:true
+                                                 completionBlock:successBlock
+                                                 errorCompletionBlock:failureBlock
+                                                 cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetItemsOnPromotion
+{
+    [[m_client userItemsService]getItemsOnPromotion:@""
+                                         includeDef:true
+                                         includePromotionDetails:true
+                                         completionBlock:successBlock
+                                         errorCompletionBlock:failureBlock
+                                           cbObject:nil];
+}
+
 @end
