@@ -9,7 +9,7 @@ inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 def shared_pods
-  if ENV['CPPSOURCE'] == "" then
+  if ENV['CPPSOURCE'].to_s.empty?
         pod 'BrainCloudCpp'
         pod 'BrainCloudJsonCpp'
     else
@@ -19,33 +19,32 @@ def shared_pods
 end
 
 target 'BrainCloud-iOS' do
-  platform :ios, '12.0'
+  platform :ios, '15.0'
   shared_pods
-  pod 'SSKeychain'
 end
 
 target 'BrainCloud-iOSTests' do
-  platform :ios, '12.0'
+  platform :ios, '15.0'
   shared_pods
 end
 
 target 'BrainCloud-OSX' do
-  platform :osx, '10.13'
+  platform :osx, '26.1.99'
   shared_pods
 end
 
 target 'BrainCloud-OSXTests' do
-  platform :osx, '10.13'
+  platform :osx, '26.1.99'
   shared_pods
 end
 
 target 'BrainCloud-tvOS' do
-  platform :tvos, '12.0'
+  platform :tvos, '15.0'
   shared_pods
 end
 
 target 'BrainCloud-tvOSTests' do
-  platform :tvos, '12.0'
+  platform :tvos, '15.0'
   shared_pods
 end
 
@@ -64,16 +63,16 @@ post_install do |installer|
          project.targets.each do |target|
              target.build_configurations.each do |config|
                if Gem::Version.new('12.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'])
-                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
                end
                if Gem::Version.new('4.0') > Gem::Version.new(config.build_settings['WATCHOS_DEPLOYMENT_TARGET'])
-                 config.build_settings['WATCHOS_DEPLOYMENT_TARGET'] = '4.0'
+                 config.build_settings['WATCHOS_DEPLOYMENT_TARGET'] = '5.0'
                end
                if Gem::Version.new('12.0') > Gem::Version.new(config.build_settings['TVOS_DEPLOYMENT_TARGET'])
-                 config.build_settings['TVOS_DEPLOYMENT_TARGET'] = '12.0'
+                 config.build_settings['TVOS_DEPLOYMENT_TARGET'] = '15.0'
                end
                if Gem::Version.new('10.13') > Gem::Version.new(config.build_settings['MACOSX_DEPLOYMENT_TARGET'])
-                 config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
+                 config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '26.1.99'
                end
              end
          end
