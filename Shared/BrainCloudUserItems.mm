@@ -94,6 +94,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 - (void)giveUserItemTo:(NSString *)profileId
                 itemId:(NSString *)itemId
                version:(int)version
+               quantity: (int)quantity
              immediate:(bool)immediate
        completionBlock:(BCCompletionBlock)completionBlock
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
@@ -103,6 +104,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                            [profileId UTF8String],
                                                            [itemId UTF8String],
                                                            version,
+                                                           quantity,
                                                            immediate,
                                                            new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
@@ -217,5 +219,52 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                                  new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
  */
+
+- (void)awardUserItemWithOptions:(NSString *)defId quantity:(int)quantity includeDef:(bool)includeDef optionsJson:(NSString *)optionsJson completionBlock:(__strong BCCompletionBlock)completionBlock errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock cbObject:(BCCallbackObject)cbObject
+{
+    std::string cppOptionsJson;
+    if(optionsJson != nil)
+    {
+        
+        cppOptionsJson = [optionsJson cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    BrainCloudCallback *braincloudCallback = new BrainCloudCallback(completionBlock, errorCompleteBlock, cbObject);
+    _client->getUserItemsService()->awardUserItemWithOptions(
+                                                             [defId UTF8String],
+                                                             quantity,
+                                                             includeDef,
+                                                             cppOptionsJson,
+                                                             braincloudCallback
+                                                             );
+                                                       
+}
+
+- (void)getItemPromotionDetails:(NSString *)defId shopId:(NSString *)shopId includeDef:(bool)includeDef includePromotionDetails:(bool)includePromotionDetails completionBlock:(__strong BCCompletionBlock)completionBlock errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock cbObject:(BCCallbackObject)cbObject
+{
+    BrainCloudCallback *braincloudCallback = new BrainCloudCallback(completionBlock, errorCompleteBlock, cbObject);
+    
+_client->getUserItemsService()->getItemPromotionDetails([defId UTF8String],                                                             [shopId UTF8String],                                                             includeDef,                                                                      includePromotionDetails,                                                         braincloudCallback);
+}
+
+- (void)getItemsOnPromotion:(NSString *)shopId includeDef:(bool)includeDef includePromotionDetails:(bool)includePromotionDetails completionBlock:(__strong BCCompletionBlock)completionBlock errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock cbObject:(BCCallbackObject)cbObject
+{
+    BrainCloudCallback *braincloudCallback = new BrainCloudCallback(completionBlock, errorCompleteBlock, cbObject);
+    
+    _client->getUserItemsService()->getItemsOnPromotion([shopId UTF8String], includeDef, includePromotionDetails, braincloudCallback);
+}
+
+- (void)purchaseUserItemWithOptions:(NSString *)defId quantity:(int)quantity shopId:(NSString *)shopId includeDef:(bool)includeDef optionsJson:(NSString *)optionsJson completionBlock:(__strong BCCompletionBlock)completionBlock errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock cbObject:(BCCallbackObject)cbObject
+{
+    BrainCloudCallback *braincloudCallback = new BrainCloudCallback(completionBlock, errorCompleteBlock, cbObject);
+    
+    std::string cppOptionsJson;
+    if(optionsJson != nil)
+    {
+        cppOptionsJson = [optionsJson cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+    _client->getUserItemsService()->purchaseUserItemsWithOptions(
+                                                         [defId UTF8String],    quantity, [shopId UTF8String], includeDef, cppOptionsJson, braincloudCallback);
+}
 
 @end
