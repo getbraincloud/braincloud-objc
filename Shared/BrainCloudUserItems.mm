@@ -94,6 +94,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 - (void)giveUserItemTo:(NSString *)profileId
                 itemId:(NSString *)itemId
                version:(int)version
+               quantity: (int)quantity
              immediate:(bool)immediate
        completionBlock:(BCCompletionBlock)completionBlock
   errorCompletionBlock:(BCErrorCompletionBlock)ecb
@@ -103,6 +104,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                            [profileId UTF8String],
                                                            [itemId UTF8String],
                                                            version,
+                                                           quantity,
                                                            immediate,
                                                            new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
