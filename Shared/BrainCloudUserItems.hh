@@ -314,10 +314,13 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param shopId - The id identifying the store the item is being purchased from, if applicable.
  * @param includeDef - If true, the associated item definition will be included in the response.
  * @param includePromotionDetails - If true, the promotion details of the eligible promotions will be included in the response.
+ * @param optionsJson - Optional support for specifying additional options. Currently supporting option 'category' to 
+ *                      include only catalog items configured with the specified category, if desired.
  */
 - (void)getItemsOnPromotion:(NSString *)shopId
          includeDef:(bool)includeDef
          includePromotionDetails:(bool)includePromotionDetails
+         optionsJson:(NSString *)optionsJson
     completionBlock:(BCCompletionBlock)completionBlock
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
            cbObject:(BCCallbackObject)cbObject;

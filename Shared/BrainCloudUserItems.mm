@@ -225,7 +225,6 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
     std::string cppOptionsJson;
     if(optionsJson != nil)
     {
-        
         cppOptionsJson = [optionsJson cStringUsingEncoding:NSUTF8StringEncoding];
     }
     
@@ -247,11 +246,18 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 _client->getUserItemsService()->getItemPromotionDetails([defId UTF8String],                                                             [shopId UTF8String],                                                             includeDef,                                                                      includePromotionDetails,                                                         braincloudCallback);
 }
 
-- (void)getItemsOnPromotion:(NSString *)shopId includeDef:(bool)includeDef includePromotionDetails:(bool)includePromotionDetails completionBlock:(__strong BCCompletionBlock)completionBlock errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock cbObject:(BCCallbackObject)cbObject
+- (void)getItemsOnPromotion:(NSString *)shopId includeDef:(bool)includeDef includePromotionDetails:(bool)includePromotionDetails 
+         optionsJson:(NSString *)optionsJson completionBlock:(__strong BCCompletionBlock)completionBlock errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *braincloudCallback = new BrainCloudCallback(completionBlock, errorCompleteBlock, cbObject);
     
-    _client->getUserItemsService()->getItemsOnPromotion([shopId UTF8String], includeDef, includePromotionDetails, braincloudCallback);
+    std::string cppOptionsJson;
+    if(optionsJson != nil)
+    {
+        cppOptionsJson = [optionsJson cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    _client->getUserItemsService()->getItemsOnPromotion([shopId UTF8String], includeDef, includePromotionDetails, cppOptionsJson, braincloudCallback);
 }
 
 - (void)purchaseUserItemWithOptions:(NSString *)defId quantity:(int)quantity shopId:(NSString *)shopId includeDef:(bool)includeDef optionsJson:(NSString *)optionsJson completionBlock:(__strong BCCompletionBlock)completionBlock errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock cbObject:(BCCallbackObject)cbObject
