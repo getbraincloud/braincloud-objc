@@ -1,3 +1,5 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 #import "BCServiceName.hh"
 #import "braincloud/ServiceName.h"
 

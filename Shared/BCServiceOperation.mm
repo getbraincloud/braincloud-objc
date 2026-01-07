@@ -1,3 +1,5 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 #import "BCServiceOperation.hh"
 #import "braincloud/ServiceOperation.h"
 

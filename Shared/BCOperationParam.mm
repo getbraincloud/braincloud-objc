@@ -1,3 +1,5 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 #import "BCOperationParam.hh"
 #import "braincloud/OperationParam.h"
 
