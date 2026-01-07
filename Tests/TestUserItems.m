@@ -193,6 +193,7 @@
     [[m_client userItemsService]getItemsOnPromotion:@""
                                          includeDef:true
                                          includePromotionDetails:true
+                                         optionsJson:@"{}"
                                          completionBlock:successBlock
                                          errorCompletionBlock:failureBlock
                                            cbObject:nil];
