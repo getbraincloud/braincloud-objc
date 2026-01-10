@@ -100,10 +100,10 @@
     XCTAssertTrue(itemId.length > 0);
 
     [[m_client userItemsService] openBundle:itemId
-                                    version: -1
-                                    quantity: 1
-                                    includDef: true
-                                    optionsJson: @"{}"
+                                    version:-1
+                                    quantity:1
+                                    includeDef:true
+                                    optionsJson:@"{}"
                                     completionBlock:successBlock
                           errorCompletionBlock:failureBlock
                                       cbObject:nil];
