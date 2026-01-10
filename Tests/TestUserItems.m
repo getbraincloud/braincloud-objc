@@ -99,7 +99,7 @@
     XCTAssertNotNil(itemId);
     XCTAssertTrue(itemId.length > 0);
 
-    [[m_client userItemsService] openBundle:itemId:itemId
+    [[m_client userItemsService] openBundle:itemId
                                     version: -1
                                     quantity: 1
                                     includDef: true
