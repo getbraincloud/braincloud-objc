@@ -70,6 +70,47 @@
     [self waitForFailedResult];
 }
 
+- (void)testOpenBundle
+{
+    [[m_client userItemsService]  awardUserItem:@"equipmentBundle"
+                                      quantity:1
+                                    includeDef:true
+                               completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
+    
+    [self waitForResult];
+
+    NSData *data = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonObj =
+        [NSJSONSerialization JSONObjectWithData:data
+                                        options:NSJSONReadingMutableContainers
+                                          error:nil];
+
+    NSDictionary *dataObj = [jsonObj objectForKey:@"data"];
+    NSDictionary *items = [dataObj objectForKey:@"items"];
+
+    XCTAssertNotNil(items);
+    XCTAssertTrue(items.count > 0);
+
+    NSDictionary *item = [[items allValues] firstObject];
+    NSString *itemId = [item objectForKey:@"itemId"];
+
+    XCTAssertNotNil(itemId);
+    XCTAssertTrue(itemId.length > 0);
+
+    [[m_client userItemsService] openBundle:itemId
+                                    version:-1
+                                    quantity:1
+                                    includeDef:true
+                                    optionsJson:@"{}"
+                                    completionBlock:successBlock
+                          errorCompletionBlock:failureBlock
+                                      cbObject:nil];
+
+    [self waitForResult];
+}
+
 //ToDo: not sure why, but this doesn't fail in a way that xcode will mark the test as pass
 //- (void)testGiveUserItemTo
 //{

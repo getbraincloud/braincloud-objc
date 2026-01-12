@@ -139,6 +139,27 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
               cbObject:(BCCallbackObject)cbObject;
 
 /**
+ * Returns list of items on promotion available to the current user.
+ *
+ * Service Name - userItems
+ * Service Operation - OPEN_BUNDLE
+ *
+ * @param itemId - The id identifying the store the item is being purchased from, if applicable.
+ * @param version - The version of the bundle user item being sold. Accepts -1 if any version.
+ * @param quantity - The quantity of the bundle user item to open.
+ * @param includeDef - If true, the associated item definition will be included in the response for any user items awarded and if any quantity of the bundle user item remains.
+ * @param optionsJson - Optional support for specifying 'blockIfExceedItemMaxStackable' indicating how to process awarding the bundle content items if the defId for any is for a stackable item with a max stackable quantity and the specified quantity to be awarded is too high. If true and the quantity is too high, the call is blocked and an error is returned. If false (default) and quantity is too high, the quantity is adjusted to the allowed maximum and the quantity not awarded is reported in response key 'itemsNotAwarded' - unless the adjusted quantity would be 0, in which case the call is blocked and an error is returned.
+ */
+- (void)openBundle:(NSString *)itemId
+                 version:(int)version
+                quantity:(int)quantity
+              includeDef:(bool)includeDef
+             optionsJson:(NSString *)optionsJson
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
+
+/**
  * Retrieves the identified user item from the server.
  * If includeDef is true, response includes associated
  * itemDef with language fields limited to the current
