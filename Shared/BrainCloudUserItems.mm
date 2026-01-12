@@ -109,6 +109,26 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                                                            new BrainCloudCallback(completionBlock, ecb, cbObject));
 }
 
+- (void)openBundle:(NSString *)itemId
+           version:(int)version
+           quantity:(int)quantity
+           includeDef:(bool)includeDef
+           optionsJson:(NSString *)optionsJson
+           completionBlock:(__strong BCCompletionBlock)completionBlock
+           errorCompletionBlock:(__strong BCErrorCompletionBlock)errorCompleteBlock
+           cbObject:(BCCallbackObject)cbObject
+{
+    BrainCloudCallback *braincloudCallback = new BrainCloudCallback(completionBlock, errorCompleteBlock, cbObject);
+    
+    std::string cppOptionsJson;
+    if(optionsJson != nil)
+    {
+        cppOptionsJson = [optionsJson cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    _client->getUserItemsService()->openBundle([itemId UTF8String], version, quantity, includeDef, cppOptionsJson, braincloudCallback);
+}
+
 - (void)purchaseUserItem:(NSString *)defId
                 quantity:(int)quantity
                   shopId:(NSString *)shopId
