@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudDataStream.m
 //  brainCloudClientObjc
 //
 //  Created by Preston Jennings on 2015-11-26.
-//  Copyright © 2015 bitHeads. All rights reserved.
+
 //
 
 #include "braincloud/BrainCloudClient.h"

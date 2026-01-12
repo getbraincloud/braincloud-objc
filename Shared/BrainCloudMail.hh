@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudMail.hh
 //  brainCloudClientObjc
 //
 //  Created by Brad Hill on 12/10/2016.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #pragma once

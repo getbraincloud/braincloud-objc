@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudGlobalFile.hh
 //  brainCloudClientObjc
 //
 //  Created by David St-Louis on 2020-04-24.
-//  Copyright © 2020 bitHeads. All rights reserved.
+
 //
 
 #pragma once

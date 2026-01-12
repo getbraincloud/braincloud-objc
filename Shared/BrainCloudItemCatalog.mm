@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudVirtualCurrency.m
 //  BrainCloud-iOS
 //
 //  Created by Ryan Ruth on 2018-09-21.
-//  Copyright © 2018 BitHeads Inc. All rights reserved.
+
 //
 
 #include "braincloud/BrainCloudClient.h"

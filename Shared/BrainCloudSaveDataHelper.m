@@ -1,14 +1,16 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudSaveDataHelper.m
 //  BrainCloud
 //
 //  Created by Benoit Sarrazin on 2016-02-29.
-//  Copyright © 2016 BitHeads Inc. All rights reserved.
+
 //
 
 #import "BrainCloudSaveDataHelper.h"
 
-#import <SSKeychain/SSKeychain.h>
+#import <SAMKeychain.h>
 
 @interface BrainCloudSaveDataHelper ()
 
@@ -48,7 +50,7 @@
 {
     if (self.path.length == 0) return;
 
-    [SSKeychain deletePasswordForService:self.path account:key];
+    [SAMKeychain deletePasswordForService:self.path account:key];
 
     if (string.length == 0)
     {
@@ -69,12 +71,12 @@
 
 - (NSString *)migrateLoadString:(NSString *)key
 {
-    NSString *value = [SSKeychain passwordForService:self.path account:key];
+    NSString *value = [SAMKeychain passwordForService:self.path account:key];
 
     if (value != nil && value.length > 0)
     {
         [[NSUserDefaults standardUserDefaults] setValue:value forKeyPath:key];
-        [SSKeychain deletePasswordForService:self.path account:key];
+        [SAMKeychain deletePasswordForService:self.path account:key];
     }
 
     return [[NSUserDefaults standardUserDefaults] stringForKey:key];

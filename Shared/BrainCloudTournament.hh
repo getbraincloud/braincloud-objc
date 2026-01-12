@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudTournament.h
 //  BrainCloud
 //
 //  Created by Bradley Hill on 2017-01-06.
-//  Copyright © 2017 BitHeads Inc. All rights reserved.
+
 //
 
 #pragma once

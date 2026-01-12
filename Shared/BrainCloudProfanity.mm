@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudProduct.m
 //  brainCloudClientObjc
 //
 //  Created by Hill, Bradley on 2015-08-04.
-//  Copyright (c) 2015 bitHeads. All rights
+
 //  reserved.
 //
 

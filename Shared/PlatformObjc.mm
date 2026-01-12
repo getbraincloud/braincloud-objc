@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  Platform.m
 //  brainCloudClientObjc
 //
 //  Created by Preston Jennings on 2015-09-10.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #import <Foundation/Foundation.h>

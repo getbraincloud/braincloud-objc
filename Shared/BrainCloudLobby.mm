@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudLobby.m
 //  BrainCloud-iOS
 //
 //  Created by Ryan Ruth on 2018-11-06.
-//  Copyright © 2018 BitHeads Inc. All rights reserved.
+
 //
 
 #include "braincloud/BrainCloudClient.h"

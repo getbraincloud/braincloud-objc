@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudCompletionBlocks.h
 //  brainCloudClientObjc
 //
 //  Created by Ryan Homer on 30/4/2015.
-//  Copyright (c) 2016 bitHeads. All rights reserved.
+
 //
 
 #ifndef brainCloudClientObjc_BrainCloudCompletionBlocks_h

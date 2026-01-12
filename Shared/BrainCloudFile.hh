@@ -1,9 +1,11 @@
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 //
 //  BrainCloudFile.h
 //  brainCloudClientObjc
 //
 //  Created by Preston Jennings on 2016-01-21.
-//  Copyright © 2016 bitHeads. All rights reserved.
+
 //
 
 #pragma once
