@@ -86,7 +86,7 @@ EOF
 
 printf '%s\n' "$consts" | while IFS= read -r c; do
   # Extract the value from the original header
-  value=$(grep -E "static[[:space:]]+const[[:space:]]+int[[:space:]]+$c[[:space:]]*=" "$SRC_HEADER" \
+  value=$(grep -E "static[[:space:]]+const[[:space:]]+int[[:space:]]+BC_$c[[:space:]]*=" "$SRC_HEADER" \
     | sed -E 's/.*=[[:space:]]*([^;]+);.*/\1/')
   echo "const NSInteger BC_$c = $value;" >> "$OUT_IMPL"
 done
