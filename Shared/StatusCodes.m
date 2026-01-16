@@ -1,4 +1,5 @@
-// Copyright 2025 bitHeads, Inc. All Rights Reserved.
+// Copyright 2026 bitHeads, Inc. All Rights Reserved.
+
 #include "StatusCodes.hh"
 const NSInteger BC_HTTP_ACCEPTED = 202;
 const NSInteger BC_HTTP_BAD_GATEWAY = 502;
