@@ -69,7 +69,7 @@ cat > "$OUT_HEADER" <<'EOF'
 EOF
 
 printf '%s\n' "$consts" | while IFS= read -r c; do
-  echo "extern const NSInteger $c;" >> "$OUT_HEADER"
+  echo "extern const NSInteger BC_$c;" >> "$OUT_HEADER"
 done
 
 echo "✅ Wrote $OUT_HEADER"
@@ -88,7 +88,7 @@ printf '%s\n' "$consts" | while IFS= read -r c; do
   # Extract the value from the original header
   value=$(grep -E "static[[:space:]]+const[[:space:]]+int[[:space:]]+$c[[:space:]]*=" "$SRC_HEADER" \
     | sed -E 's/.*=[[:space:]]*([^;]+);.*/\1/')
-  echo "const NSInteger $c = $value;" >> "$OUT_IMPL"
+  echo "const NSInteger BC_$c = $value;" >> "$OUT_IMPL"
 done
 
 echo "✅ Wrote $OUT_IMPL"
