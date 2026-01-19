@@ -59,6 +59,7 @@
 #import "BrainCloudAppStore.hh"
 #import "PlatformObjc.hh"
 #import "ReasonCodes.hh"
-#import "ServiceName.hh"
-#import "ServiceOperation.hh"
+#import "BCServiceName.hh"
+#import "BCServiceOperation.hh"
+#import "BCOperationParam.hh"
 

@@ -380,12 +380,12 @@
 
 - (void)testStatusCodeAccessIsValid
 {
-    NSInteger statusCode = HTTP_GATEWAY_TIMEOUT;
+    NSInteger statusCode = BC_HTTP_GATEWAY_TIMEOUT;
     NSInteger expectedResult = 504;
     NSLog(@"Status Code: %ld", (long)statusCode);
     
-    XCTAssertEqual((long)statusCode, expectedResult, @"Result should be 504 for HTTP_GATEWAY_TIMEOUT status code");
-    XCTAssertTrue(statusCode > 0, @"HTTP_GATEWAY_TIMEOUT should not be 0");
+    XCTAssertEqual((long)statusCode, expectedResult, @"Result should be 504 for BC_HTTP_GATEWAY_TIMEOUT status code");
+    XCTAssertTrue(statusCode > 0, @"BC_HTTP_GATEWAY_TIMEOUT should not be 0");
 }
 
 - (void) testOperationParamAccessIsValid
