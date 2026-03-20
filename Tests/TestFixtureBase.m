@@ -206,6 +206,14 @@ long createFile(const char * in_path, int64_t in_size)
             [details setJsonResponse:jsonResponse];
             [_fileUploadProgress updateFailed:details];
         };
+
+        longSessionBlock = ^(NSString *longSessionJson) {
+            NSData *data = [longSessionJson dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
+                                                                    options:NSJSONReadingMutableContainers
+                                                                    error:nil];
+            self->_longSessionCallbacksReceived += 1;
+        }
         
         rewardBlock = ^(NSString *eventsJson) {
             
@@ -430,6 +438,7 @@ long createFile(const char * in_path, int64_t in_size)
     _statusMessage = @"";
     _eventCallbackReceived = false;
     _eventCallbackJson = @"";
+    _longSessionCallbacksReceived = 0;
     _rewardCallbacksReceived = 0;
     _rewardCallbackJson = @"";
     _apiRewardsReceived = 0;

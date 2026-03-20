@@ -27,6 +27,21 @@ class ObjCEventCallback : public BrainCloud::IEventCallback
     }
 };
 
+class ObjCLongSessionCallback : public BrainCloud::ILongSessionCallback
+{
+    public BCLongSessionCompletionBlock _longSessionCallback;
+
+    virtual void longSessionCallback(std::string const &jsonData)
+    {
+        if(_longSessionCallback != nil)
+        {
+            const char *cstr = jsonData.c_str();
+            NSString *nsJsonData = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
+            _longSessionCallback(nsJsondata);
+        }
+    }
+}
+
 class ObjCRewardCallback : public BrainCloud::IRewardCallback
 {
   public:
@@ -118,6 +133,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
     bool _timerDisabled;
     NSTimer *_timer;
     ObjCEventCallback _objcEventCallback;
+    ObjCLongSessionCallback _longSessionCallback;
     ObjCRewardCallback _objcRewardCallback;
     ObjCFileUploadCallback _objcFileUploadCallback;
     ObjCGlobalErrorCallback _objcGlobalErrorCallback;
@@ -281,6 +297,8 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     [self initializeTimer];
 }
 
+- (void)enableLongSession:(bool)shouldEnable { _client->enableLongSession(shouldEnable); }
+
 - (void)enableLogging:(bool)shouldEnable { _client->enableLogging(shouldEnable); }
 
 - (bool)isInitialized { return _client->isInitialized(); }
@@ -346,6 +364,18 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     _objcFileUploadCallback._uploadCompletedCallback = nil;
     _objcFileUploadCallback._uploadFailedCallback = nil;
     _client->deregisterFileUploadCallback();
+}
+
+- (void)registerLongSessionCallback:(BCLongSessionCompletionBlock)lcb
+{
+    _objcLongSessionCallback._longSessionCallback = lcb;
+    _client->registerLongSessionCallback(&_objcLongSessionCallback);
+}
+
+- (void)deregisterLongSessionCallback
+{
+    _objcLongSessionCallback._longSessionCallback = nil;
+    _client->deregisterLongSessionCallback();
 }
 
 - (void)registerRewardCallback:(BCRewardCompletionBlock)rcb
