@@ -20,7 +20,7 @@
 
 - (void)tearDown { [super tearDown]; }
 
-- (void)testLongSession
+- (void)testAutoReconnect
 {
     // Create User A Wrapper/Client, initialize, enable Auto-Reconnect
     BrainCloudWrapper *userAWrapper;
@@ -35,10 +35,10 @@
 	                     appName:@""];
     
     [userAClient enableLogging:TRUE];
-    [userAClient enableLongSession:TRUE];   // comment or change to FALSE for "fail" test case
+    [userAClient enableAutoReconnect:TRUE];   // comment or change to FALSE for "fail" test case
     
     // Register callback function to be triggered upon receival of the Auto-Reconnect response
-    [m_client registerLongSessionCallback:longSessionBlock];
+    [m_client registerAutoReconnectCallback:autoReconnectBlock];
 
     // Start User A session (authenticate)
     [userAWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
@@ -104,9 +104,9 @@
     [self waitForResult];
 
     // Cleanup and confirm test
-    [userAClient deregisterLongSessionCallback];
+    [userAClient deregisterAutoReconnectCallback];
 
-    XCTAssertEqual(_longSessionCallbacksReceived, 1);
+    XCTAssertEqual(_autoReconnectCallbacksReceived, 1);
 }
 
 - (void)testAuthenticateUniversal
