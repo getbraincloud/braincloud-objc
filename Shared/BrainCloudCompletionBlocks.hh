@@ -52,6 +52,13 @@ typedef void (^BCErrorCompletionBlock)(NSString *serviceName, NSString *serviceO
 typedef void (^BCEventCompletionBlock)(NSString *jsonData);
 
 /**
+ * Completion block called when an auto-reconnect attempt is made.
+ *
+ * @param jsonData The reconnect result JSON data.
+ */
+typedef void (^BCAutoReconnectCompletionBlock)(NSString *jsonData);
+
+/**
  * Completion block called whenever an api call returns rewards data.
  *
  * @param jsonData The rewards JSON data. The format is as follows:
