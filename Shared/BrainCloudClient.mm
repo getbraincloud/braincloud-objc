@@ -144,7 +144,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
     bool _timerDisabled;
     NSTimer *_timer;
     ObjCEventCallback _objcEventCallback;
-    ObjCAutoReconnectCallback _autoReconnectCallback;
+    ObjCAutoReconnectCallback _objcAutoReconnectCallback;
     ObjCRewardCallback _objcRewardCallback;
     ObjCFileUploadCallback _objcFileUploadCallback;
     ObjCGlobalErrorCallback _objcGlobalErrorCallback;
