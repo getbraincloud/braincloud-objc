@@ -213,7 +213,7 @@ long createFile(const char * in_path, int64_t in_size)
                                                                     options:NSJSONReadingMutableContainers
                                                                     error:nil];
             self->_autoReconnectCallbacksReceived += 1;
-        }
+        };
         
         rewardBlock = ^(NSString *eventsJson) {
             

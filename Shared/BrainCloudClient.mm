@@ -32,16 +32,26 @@ class ObjCAutoReconnectCallback : public BrainCloud::IAutoReconnectCallback
     public:
         BCAutoReconnectCompletionBlock _autoReconnectCallback;
 
-    virtual void autoReconnectCallback(std::string const &jsonData)
+    virtual void autoReconnectSuccess(std::string const &jsonData)
     {
         if(_autoReconnectCallback != nil)
         {
             const char *cstr = jsonData.c_str();
             NSString *nsJsonData = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
-            _autoReconnectCallback(nsJsondata);
+            _autoReconnectCallback(nsJsonData);
         }
     }
-}
+
+    virtual void autoReconnectFailed(std::string const &jsonData)
+    {
+        if(_autoReconnectCallback != nil)
+        {
+            const char *cstr = jsonData.c_str();
+            NSString *nsJsonData = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
+            _autoReconnectCallback(nsJsonData);
+        }
+    }
+};
 
 class ObjCRewardCallback : public BrainCloud::IRewardCallback
 {

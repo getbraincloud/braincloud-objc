@@ -38,7 +38,7 @@
     [userAClient enableAutoReconnect:TRUE];   // comment or change to FALSE for "fail" test case
     
     // Register callback function to be triggered upon receival of the Auto-Reconnect response
-    [m_client registerAutoReconnectCallback:autoReconnectBlock];
+    [userAClient registerAutoReconnectCallback:autoReconnectBlock];
 
     // Start User A session (authenticate)
     [userAWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
