@@ -27,17 +27,17 @@ class ObjCEventCallback : public BrainCloud::IEventCallback
     }
 };
 
-class ObjCLongSessionCallback : public BrainCloud::ILongSessionCallback
+class ObjCAutoReconnectCallback : public BrainCloud::IAutoReconnectCallback
 {
-    public BCLongSessionCompletionBlock _longSessionCallback;
+    public BCAutoReconnectCompletionBlock _autoReconnectCallback;
 
-    virtual void longSessionCallback(std::string const &jsonData)
+    virtual void autoReconnectCallback(std::string const &jsonData)
     {
-        if(_longSessionCallback != nil)
+        if(_autoReconnectCallback != nil)
         {
             const char *cstr = jsonData.c_str();
             NSString *nsJsonData = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
-            _longSessionCallback(nsJsondata);
+            _autoReconnectCallback(nsJsondata);
         }
     }
 }
@@ -133,7 +133,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
     bool _timerDisabled;
     NSTimer *_timer;
     ObjCEventCallback _objcEventCallback;
-    ObjCLongSessionCallback _longSessionCallback;
+    ObjCAutoReconnectCallback _autoReconnectCallback;
     ObjCRewardCallback _objcRewardCallback;
     ObjCFileUploadCallback _objcFileUploadCallback;
     ObjCGlobalErrorCallback _objcGlobalErrorCallback;
@@ -297,7 +297,7 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     [self initializeTimer];
 }
 
-- (void)enableLongSession:(bool)shouldEnable { _client->enableLongSession(shouldEnable); }
+- (void)enableAutoReconnect:(bool)shouldEnable { _client->enableAutoReconnect(shouldEnable); }
 
 - (void)enableLogging:(bool)shouldEnable { _client->enableLogging(shouldEnable); }
 
@@ -366,16 +366,16 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     _client->deregisterFileUploadCallback();
 }
 
-- (void)registerLongSessionCallback:(BCLongSessionCompletionBlock)lcb
+- (void)registerAutoReconnectCallback:(BCAutoReconnectCompletionBlock)arcb
 {
-    _objcLongSessionCallback._longSessionCallback = lcb;
-    _client->registerLongSessionCallback(&_objcLongSessionCallback);
+    _objcAutoReconnectCallback._autoReconnectCallback = arcb;
+    _client->registerAutoReconnectCallback(&_objcAutoReconnectCallback);
 }
 
-- (void)deregisterLongSessionCallback
+- (void)deregisterAutoReconnectCallback
 {
-    _objcLongSessionCallback._longSessionCallback = nil;
-    _client->deregisterLongSessionCallback();
+    _objcAutoReconnectCallback._autoReconnectCallback = nil;
+    _client->deregisterAutoReconnectCallback();
 }
 
 - (void)registerRewardCallback:(BCRewardCompletionBlock)rcb

@@ -165,7 +165,7 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
  *
  * @param shouldEnable Determines if Long Session should be enabled or not
  */
-- (void)enableLongSession:(bool)shouldEnable;
+- (void)enableAutoReconnect:(bool)shouldEnable;
 
 /**
  * Enables/disables the internal logging
@@ -309,11 +309,11 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 /**
  * Registers a callback that is invoked when long sessions are enabled and a re-authentication has just happened
  *
- * @param lcb The long session callback handler
+ * @param arcb The long session callback handler
  */
-- (void)registerLongSessionCallback:(BCLongSessionCompletionBlock)lcb;
+- (void)registerAutoReconnectCallback:(BCAutoReconnectCompletionBlock)arcb;
 
-- (void)deregisterLongSessionCallback;
+- (void)deregisterAutoReconnectCallback;
 
 /**
  * Sets a reward handler for any api call results that return rewards.
