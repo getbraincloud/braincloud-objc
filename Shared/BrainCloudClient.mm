@@ -29,7 +29,8 @@ class ObjCEventCallback : public BrainCloud::IEventCallback
 
 class ObjCAutoReconnectCallback : public BrainCloud::IAutoReconnectCallback
 {
-    public BCAutoReconnectCompletionBlock _autoReconnectCallback;
+    public:
+        BCAutoReconnectCompletionBlock _autoReconnectCallback;
 
     virtual void autoReconnectCallback(std::string const &jsonData)
     {
