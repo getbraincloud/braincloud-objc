@@ -22,6 +22,10 @@
 
 - (void)testAutoReconnect
 {
+    NSDictionary* secretMap = @{
+        m_appId      : m_secret, 
+        m_childAppId : m_childSecret,
+    };
     // Create User A Wrapper/Client, initialize, enable Auto-Reconnect
     BrainCloudWrapper *userAWrapper;
     BrainCloudClient *userAClient;
@@ -92,6 +96,8 @@
     [self waitForResult];
 
     // Forcibly expire User A's session via User B
+    NSString *scriptName = @"LogoutSession";
+
     [[userBClient scriptService] runScript:scriptName
                          jsonScriptData:userASessionJsonString
                         completionBlock:successBlock
