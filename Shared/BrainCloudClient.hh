@@ -163,7 +163,7 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 /**
  * When enabled, automatically attempt to reconnect and retry server calls in the event of an expired session.
  *
- * @param shouldEnable Determines if Long Session should be enabled or not
+ * @param shouldEnable Determines if Auto-Reconnect should be enabled or not
  */
 - (void)enableAutoReconnect:(bool)shouldEnable;
 
@@ -307,9 +307,9 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 - (void)deregisterFileUploadCallback;
 
 /**
- * Registers a callback that is invoked when long sessions are enabled and a re-authentication has just happened
+ * Registers a callback that is invoked when auto-reconnect is enabled and a re-authentication has just happened
  *
- * @param arcb The long session callback handler
+ * @param arcb The auto-reconnect callback handler
  */
 - (void)registerAutoReconnectCallback:(BCAutoReconnectCompletionBlock)arcb;
 
