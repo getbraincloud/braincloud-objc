@@ -62,6 +62,7 @@
     }
 }
 
+/* PROTOCOL UNIMPLEMENTED
 - (void)testWS
 {
     self.continueAfterFailure = NO;
@@ -72,7 +73,7 @@
         self.continueAfterFailure = YES;
     }
 }
- 
+ */
 
 - (void)relayFullFlow:(BCRelayConnectionType)connectionType
              endMatch:(bool)endMatch
