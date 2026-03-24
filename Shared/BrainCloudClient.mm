@@ -27,6 +27,32 @@ class ObjCEventCallback : public BrainCloud::IEventCallback
     }
 };
 
+class ObjCAutoReconnectCallback : public BrainCloud::IAutoReconnectCallback
+{
+    public:
+        BCAutoReconnectCompletionBlock _autoReconnectCallback;
+
+    virtual void autoReconnectSuccess(std::string const &jsonData)
+    {
+        if(_autoReconnectCallback != nil)
+        {
+            const char *cstr = jsonData.c_str();
+            NSString *nsJsonData = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
+            _autoReconnectCallback(nsJsonData);
+        }
+    }
+
+    virtual void autoReconnectFailed(std::string const &jsonData)
+    {
+        if(_autoReconnectCallback != nil)
+        {
+            const char *cstr = jsonData.c_str();
+            NSString *nsJsonData = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
+            _autoReconnectCallback(nsJsonData);
+        }
+    }
+};
+
 class ObjCRewardCallback : public BrainCloud::IRewardCallback
 {
   public:
@@ -118,6 +144,7 @@ class ObjCNetworkErrorCallback : public BrainCloud::INetworkErrorCallback
     bool _timerDisabled;
     NSTimer *_timer;
     ObjCEventCallback _objcEventCallback;
+    ObjCAutoReconnectCallback _objcAutoReconnectCallback;
     ObjCRewardCallback _objcRewardCallback;
     ObjCFileUploadCallback _objcFileUploadCallback;
     ObjCGlobalErrorCallback _objcGlobalErrorCallback;
@@ -281,6 +308,8 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     [self initializeTimer];
 }
 
+- (void)enableAutoReconnect:(bool)shouldEnable { _client->enableAutoReconnect(shouldEnable); }
+
 - (void)enableLogging:(bool)shouldEnable { _client->enableLogging(shouldEnable); }
 
 - (bool)isInitialized { return _client->isInitialized(); }
@@ -346,6 +375,18 @@ const NSString* BC_SERVER_URL = @"https://api.braincloudservers.com/dispatcherv2
     _objcFileUploadCallback._uploadCompletedCallback = nil;
     _objcFileUploadCallback._uploadFailedCallback = nil;
     _client->deregisterFileUploadCallback();
+}
+
+- (void)registerAutoReconnectCallback:(BCAutoReconnectCompletionBlock)arcb
+{
+    _objcAutoReconnectCallback._autoReconnectCallback = arcb;
+    _client->registerAutoReconnectCallback(&_objcAutoReconnectCallback);
+}
+
+- (void)deregisterAutoReconnectCallback
+{
+    _objcAutoReconnectCallback._autoReconnectCallback = nil;
+    _client->deregisterAutoReconnectCallback();
 }
 
 - (void)registerRewardCallback:(BCRewardCompletionBlock)rcb

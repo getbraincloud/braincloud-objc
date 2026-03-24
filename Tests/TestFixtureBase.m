@@ -206,6 +206,14 @@ long createFile(const char * in_path, int64_t in_size)
             [details setJsonResponse:jsonResponse];
             [_fileUploadProgress updateFailed:details];
         };
+
+        autoReconnectBlock = ^(NSString *autoReconnectJson) {
+            NSData *data = [autoReconnectJson dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data
+                                                                    options:NSJSONReadingMutableContainers
+                                                                    error:nil];
+            self->_autoReconnectCallbacksReceived += 1;
+        };
         
         rewardBlock = ^(NSString *eventsJson) {
             
@@ -430,6 +438,7 @@ long createFile(const char * in_path, int64_t in_size)
     _statusMessage = @"";
     _eventCallbackReceived = false;
     _eventCallbackJson = @"";
+    _autoReconnectCallbacksReceived = 0;
     _rewardCallbacksReceived = 0;
     _rewardCallbackJson = @"";
     _apiRewardsReceived = 0;

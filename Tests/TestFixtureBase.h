@@ -69,8 +69,10 @@
 
     __block bool _eventCallbackReceived;
     __block NSString *_eventCallbackJson;
+    __block int _autoReconnectCallbacksReceived;
     __block int _rewardCallbacksReceived;
     __block int _apiRewardsReceived;
+    __block NSString *_autoReconnectCallbackJson;
     __block NSString *_rewardCallbackJson;
     __block int _apiCountExpected;
     __block int _expectFail;
@@ -81,6 +83,7 @@
     BCCompletionBlock successBlock;
     BCErrorCompletionBlock failureBlock;
     BCEventCompletionBlock eventBlock;
+    BCAutoReconnectCompletionBlock autoReconnectBlock;
     BCRewardCompletionBlock rewardBlock;
     BCErrorCompletionBlock globalErrorBlock;
     BCNetworkErrorCompletionBlock networkErrorBlock;

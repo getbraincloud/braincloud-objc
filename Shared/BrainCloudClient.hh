@@ -161,6 +161,13 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
 - (void)initializeIdentity:(NSString *)profileId anonymousId:(NSString *)anonymousId;
 
 /**
+ * When enabled, automatically attempt to reconnect and retry server calls in the event of an expired session.
+ *
+ * @param shouldEnable Determines if Auto-Reconnect should be enabled or not
+ */
+- (void)enableAutoReconnect:(bool)shouldEnable;
+
+/**
  * Enables/disables the internal logging
  *
  * @param shouldEnable True if logging should be enabled, false otherwise.
@@ -298,6 +305,15 @@ typedef NS_ENUM(NSUInteger, BCBrainCloudUpdateType)
  * Deregisters the event callback
  */
 - (void)deregisterFileUploadCallback;
+
+/**
+ * Registers a callback that is invoked when auto-reconnect is enabled and a re-authentication has just happened
+ *
+ * @param arcb The auto-reconnect callback handler
+ */
+- (void)registerAutoReconnectCallback:(BCAutoReconnectCompletionBlock)arcb;
+
+- (void)deregisterAutoReconnectCallback;
 
 /**
  * Sets a reward handler for any api call results that return rewards.
