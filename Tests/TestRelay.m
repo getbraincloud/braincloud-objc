@@ -62,18 +62,16 @@
     }
 }
 
-/* PROTOCOL UNIMPLEMENTED
 - (void)testWS
 {
     self.continueAfterFailure = NO;
     
     @try {
-        [self relayFullFlow:BC_CONNECTION_TYPE_WS];
+        [self relayFullFlow:BC_CONNECTION_TYPE_WS endMatch:false];
     } @finally {
         self.continueAfterFailure = YES;
     }
 }
- */
 
 - (void)relayFullFlow:(BCRelayConnectionType)connectionType
              endMatch:(bool)endMatch

@@ -20,6 +20,101 @@
 
 - (void)tearDown { [super tearDown]; }
 
+- (void)testAutoReconnect
+{
+    NSDictionary* secretMap = @{
+        m_appId      : m_secret, 
+        m_childAppId : m_childSecret,
+    };
+    // Create User A Wrapper/Client, initialize, enable Auto-Reconnect
+    BrainCloudWrapper *userAWrapper;
+    BrainCloudClient *userAClient;
+    userAWrapper = [[BrainCloudWrapper alloc] init];
+    userAClient = [userAWrapper getBCClient];
+    [userAWrapper initializeWithApps:m_serverUrl
+                        defaultAppId:m_appId
+                           secretMap:secretMap
+                          appVersion:m_version
+	                 companyName:@""
+	                     appName:@""];
+    
+    [userAClient enableLogging:TRUE];
+    [userAClient enableAutoReconnect:TRUE];   // comment or change to FALSE for "fail" test case
+    
+    // Register callback function to be triggered upon receival of the Auto-Reconnect response
+    [userAClient registerAutoReconnectCallback:autoReconnectBlock];
+
+    // Start User A session (authenticate)
+    [userAWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                         password:[TestFixtureBase getUser:@"UserA"].m_password
+                      forceCreate:true
+                  completionBlock:successBlock
+             errorCompletionBlock:failureBlock
+                         cbObject:nil];
+    [self waitForResult];
+
+    // Get Profile and Session ID so that User A's session can be forcibly expired by User B
+    NSData *userAAuthResponseJSON = [self->_jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error = nil;
+    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:userAAuthResponseJSON options:0 error:&error];
+    NSDictionary *responseData = response[@"data"];
+    NSString *profileId = responseData[@"profileId"];
+    NSString *sessionId = responseData[@"sessionId"];
+    NSDictionary *sessionData = @{
+    @"profileId": profileId,
+    @"sessionId": sessionId
+    };
+
+    NSData *userASessionData = [NSJSONSerialization dataWithJSONObject:sessionData options:0 error:nil];
+    NSString *userASessionJsonString = [[NSString alloc] initWithData:userASessionData encoding:NSUTF8StringEncoding];
+
+    // Create User B Wrapper/Client and initialize
+    BrainCloudWrapper *userBWrapper;
+    BrainCloudClient *userBClient;
+    userBWrapper = [[BrainCloudWrapper alloc] init];
+    userBClient = [userBWrapper getBCClient];
+    [userBWrapper initializeWithApps:m_serverUrl
+                        defaultAppId:m_appId
+                           secretMap:secretMap
+                          appVersion:m_version
+                         companyName:@""
+                             appName:@""];
+
+    [userAClient enableLogging:TRUE];
+
+    // Start User A session (authenticate)
+    [userBWrapper authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                         password:[TestFixtureBase getUser:@"UserA"].m_password
+                      forceCreate:true
+                  completionBlock:successBlock
+             errorCompletionBlock:failureBlock
+                         cbObject:nil];
+    [self waitForResult];
+
+    // Verify that User A's session is still active via random call
+    [[userAClient identityService] getIdentities:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+
+    // Forcibly expire User A's session via User B
+    NSString *scriptName = @"LogoutSession";
+
+    [[userBClient scriptService] runScript:scriptName
+                         jsonScriptData:userASessionJsonString
+                        completionBlock:successBlock
+                   errorCompletionBlock:failureBlock
+                               cbObject:nil];
+    [self waitForResult];
+
+    // Verify the Auto-Reconnect was successful via random call. Disabling Auto-Reconnect would result in this failing.
+    [[userAClient identityService] getIdentities:successBlock errorCompletionBlock:failureBlock cbObject:nil];
+    [self waitForResult];
+
+    // Cleanup and confirm test
+    [userAClient deregisterAutoReconnectCallback];
+
+    XCTAssertEqual(_autoReconnectCallbacksReceived, 1);
+}
+
 - (void)testAuthenticateUniversal
 {
     [[m_client authenticationService]
