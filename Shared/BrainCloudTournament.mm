@@ -164,4 +164,120 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
         [leaderboardId UTF8String], versionId, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)getGroupDivisionInfo:(NSString *)divSetId
+                     groupId:(NSString *)groupId
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->getGroupDivisionInfo(
+        [divSetId UTF8String], [groupId UTF8String],
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)getGroupDivisions:(NSString *)groupId
+          completionBlock:(BCCompletionBlock)cb
+     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                 cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->getGroupDivisions(
+        [groupId UTF8String],
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)getGroupTournamentStatus:(NSString *)leaderboardId
+                         groupId:(NSString *)groupId
+                       versionId:(int)versionId
+                 completionBlock:(BCCompletionBlock)cb
+            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                        cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->getGroupTournamentStatus(
+        [leaderboardId UTF8String], [groupId UTF8String], versionId,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)joinGroupDivision:(NSString *)divSetId
+           tournamentCode:(NSString *)tournamentCode
+                  groupId:(NSString *)groupId
+             initialScore:(int)initialScore
+          completionBlock:(BCCompletionBlock)cb
+     errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                 cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->joinGroupDivision(
+        [divSetId UTF8String], [tournamentCode UTF8String], [groupId UTF8String], initialScore,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)joinGroupTournament:(NSString *)leaderboardId
+             tournamentCode:(NSString *)tournamentCode
+                    groupId:(NSString *)groupId
+               initialScore:(int)initialScore
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->joinGroupTournament(
+        [leaderboardId UTF8String], [tournamentCode UTF8String], [groupId UTF8String], initialScore,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)leaveGroupDivisionInstance:(NSString *)leaderboardId
+                           groupId:(NSString *)groupId
+                   completionBlock:(BCCompletionBlock)cb
+              errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                          cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->leaveGroupDivisionInstance(
+        [leaderboardId UTF8String], [groupId UTF8String],
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)leaveGroupTournament:(NSString *)leaderboardId
+                     groupId:(NSString *)groupId
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->leaveGroupTournament(
+        [leaderboardId UTF8String], [groupId UTF8String],
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)postGroupTournamentScore:(NSString *)leaderboardId
+                         groupId:(NSString *)groupId
+                           score:(int)score
+                        jsonData:(NSString *)jsonData
+             roundStartedTimeUTC:(int64_t)roundStartedTimeUTC
+                 completionBlock:(BCCompletionBlock)cb
+            errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                        cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->postGroupTournamentScore(
+        [leaderboardId UTF8String], [groupId UTF8String], score,
+        jsonData == nil ? "" : [jsonData UTF8String], roundStartedTimeUTC,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)postGroupTournamentScoreWithResults:(NSString *)leaderboardId
+                                    groupId:(NSString *)groupId
+                                      score:(int)score
+                                   jsonData:(NSString *)jsonData
+                        roundStartedTimeUTC:(int64_t)roundStartedTimeUTC
+                                  sortOrder:(SortOrder)sortOrder
+                                beforeCount:(int)beforeCount
+                                 afterCount:(int)afterCount
+                               initialScore:(int)initialScore
+                            completionBlock:(BCCompletionBlock)cb
+                       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getTournamentService()->postGroupTournamentScoreWithResults(
+        [leaderboardId UTF8String], [groupId UTF8String], score,
+        jsonData == nil ? "" : [jsonData UTF8String], roundStartedTimeUTC,
+        (BrainCloud::SortOrder)sortOrder, beforeCount, afterCount, initialScore,
+        new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 @end
