@@ -90,7 +90,7 @@
         {
             NSData *data = [propsJson dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary *root = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSDictionary *props = root[@"data"][@"response"];
+            NSDictionary *props = root[@"data"];
             for (NSString *name in @[@"prop1", @"prop2", @"prop3"])
             {
                 if (![props isKindOfClass:[NSDictionary class]] || props[name] == nil)
@@ -211,7 +211,7 @@
                 currencyJson = jsonData;
                 success(serviceName, serviceOperation, jsonData, cbObject);
             };
-            [[m_client virtualCurrencyService] getCurrency:@"_invalid_id_"
+            [[m_client virtualCurrencyService] getCurrency:nil
                                            completionBlock:capturingSuccess
                                       errorCompletionBlock:failure
                                                   cbObject:nil];
@@ -220,7 +220,7 @@
         {
             NSData *data = [currencyJson dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary *root = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSDictionary *currency = root[@"data"][@"currency"];
+            NSDictionary *currency = root[@"data"][@"currencyMap"];
             if (![currency isKindOfClass:[NSDictionary class]] || currency[@"credits"] == nil)
                 [missing addObject:@"virtual currency type: credits"];
         }
