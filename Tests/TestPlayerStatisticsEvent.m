@@ -18,6 +18,8 @@
 
 - (void)tearDown { [super tearDown]; }
 
+- (bool)shouldLogoutOnTearDown { return NO; }
+
 - (void)testTriggerPlayerStatisticsEvent
 {
     [[m_client playerStatisticsEventService] triggerStatsEvent:@"testEvent01"

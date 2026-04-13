@@ -127,6 +127,7 @@
 - (bool)detachPeer;
 
 - (bool)authenticateOnSetup;
+- (bool)shouldLogoutOnTearDown;
 
 // these methods are used for accessing the ids.txt
 // braincloud connection data from STATIC methods
