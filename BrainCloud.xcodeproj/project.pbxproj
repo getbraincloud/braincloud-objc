@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		00542017B8C664D03CD6C3C2 /* libPods-BrainCloud-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D775711AF9944F4EACE6B85 /* libPods-BrainCloud-tvOS.a */; };
+		02830F622FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */ = {isa = PBXBuildFile; fileRef = 02830F612FC8D3C4006F573A /* BrainCloudCampaign.hh */; };
+		02830F632FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */ = {isa = PBXBuildFile; fileRef = 02830F612FC8D3C4006F573A /* BrainCloudCampaign.hh */; };
+		02830F642FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */ = {isa = PBXBuildFile; fileRef = 02830F612FC8D3C4006F573A /* BrainCloudCampaign.hh */; };
+		02830F652FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */ = {isa = PBXBuildFile; fileRef = 02830F612FC8D3C4006F573A /* BrainCloudCampaign.hh */; };
+		02830F672FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F682FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F692FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F6A2FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F6C2FC8E4FF006F573A /* BrainCloudCampaign.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F6D2FC8E50E006F573A /* BrainCloudCampaign.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F6E2FC8E518006F573A /* BrainCloudCampaign.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F6F2FC8E520006F573A /* BrainCloudCampaign.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
+		02830F702FC8E529006F573A /* TestCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 02830F6B2FC8E1E7006F573A /* TestCampaign.m */; };
+		02830F712FC8E52F006F573A /* TestCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 02830F6B2FC8E1E7006F573A /* TestCampaign.m */; };
+		02830F722FC8E536006F573A /* TestCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 02830F6B2FC8E1E7006F573A /* TestCampaign.m */; };
+		02830F732FC8E53C006F573A /* TestCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 02830F6B2FC8E1E7006F573A /* TestCampaign.m */; };
 		098083FF5568541C122DB9A3 /* libPods-BrainCloud-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B492E15CE0A889A4C90C94 /* libPods-BrainCloud-iOS.a */; };
 		240895FE1CE3FCB70099720D /* BrainCloudGroup.hh in Headers */ = {isa = PBXBuildFile; fileRef = 240895FC1CE3FCB70099720D /* BrainCloudGroup.hh */; };
 		240895FF1CE3FCB70099720D /* BrainCloudGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 240895FD1CE3FCB70099720D /* BrainCloudGroup.mm */; };
@@ -727,6 +743,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02830F612FC8D3C4006F573A /* BrainCloudCampaign.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BrainCloudCampaign.hh; sourceTree = "<group>"; };
+		02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BrainCloudCampaign.mm; sourceTree = "<group>"; };
+		02830F6B2FC8E1E7006F573A /* TestCampaign.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCampaign.m; sourceTree = "<group>"; };
 		050BBAA3CC77F872E963D71F /* Pods-BrainCloud-watchOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-watchOSTests.release.xcconfig"; path = "Target Support Files/Pods-BrainCloud-watchOSTests/Pods-BrainCloud-watchOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		0EE9E1C7CC3822E84EB7205A /* libPods-BrainCloud-watchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainCloud-watchOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CBAD3C7071419FFC79B45C /* Pods-BrainCloud-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainCloud-iOS.release.xcconfig"; path = "Target Support Files/Pods-BrainCloud-iOS/Pods-BrainCloud-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -1158,6 +1177,7 @@
 				D84597371C6D23B3003DA016 /* BrainCloudAsyncMatch.hh */,
 				D84597391C6D23B3003DA016 /* BrainCloudAuthentication.hh */,
 				D845973B1C6D23B3003DA016 /* BrainCloudCallback.hh */,
+				02830F612FC8D3C4006F573A /* BrainCloudCampaign.hh */,
 				8512AF442191EA9800D04938 /* BrainCloudChat.hh */,
 				D845973C1C6D23B3003DA016 /* BrainCloudClient.hh */,
 				D845973E1C6D23B3003DA016 /* brainCloudClientObjc.hh */,
@@ -1217,6 +1237,7 @@
 				850BC8C4215589B50012B6EE /* BrainCloudAppStore.mm */,
 				D84597381C6D23B3003DA016 /* BrainCloudAsyncMatch.mm */,
 				D845973A1C6D23B3003DA016 /* BrainCloudAuthentication.mm */,
+				02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */,
 				8512AF412191EA6C00D04938 /* BrainCloudChat.mm */,
 				D845973D1C6D23B3003DA016 /* BrainCloudClient.mm */,
 				85EA944723340F9C00E7938F /* BrainCloudCustomEntity.mm */,
@@ -1411,6 +1432,8 @@
 				85C05CBF2162BEAA0003E92B /* TestAppStore.m */,
 				DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */,
 				DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */,
+				57F573DB290713F8006061F2 /* TestBlockchain.m */,
+				02830F6B2FC8E1E7006F573A /* TestCampaign.m */,
 				8512AF4821932F2300D04938 /* TestChat.m */,
 				DFF5CC501C9356A1002E62F8 /* TestClient.m */,
 				851D8CF624A5501700DCF6D3 /* TestCustomEntity.m */,
@@ -1454,7 +1477,6 @@
 				DFF5CC6C1C9356A1002E62F8 /* TestUser.m */,
 				DF99CBF01C936749000B2418 /* TestWrapper.m */,
 				DFF5CCE31C935A00002E62F8 /* ids.txt */,
-				57F573DB290713F8006061F2 /* TestBlockchain.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -1511,6 +1533,7 @@
 				852C388223E373520023C347 /* BrainCloudRTTCallback.hh in Headers */,
 				D84597E91C6D23B3003DA016 /* BrainCloudPlaybackStream.hh in Headers */,
 				57F573D529071324006061F2 /* BrainCloudBlockchain.hh in Headers */,
+				02830F642FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */,
 				D84597A11C6D23B3003DA016 /* BrainCloudEntity.hh in Headers */,
 				85EA944F23341F9300E7938F /* BrainCloudUserItems.hh in Headers */,
 				D845983D1C6D23B4003DA016 /* TypeHelpers.hh in Headers */,
@@ -1549,6 +1572,7 @@
 				24F29CE91CB2D2EE0075CB26 /* AuthenticationTypeObjc.hh in Headers */,
 				D84597DD1C6D23B3003DA016 /* BrainCloudMatchMaking.hh in Headers */,
 				D84597BF1C6D23B3003DA016 /* BrainCloudGlobalApp.hh in Headers */,
+				02830F6A2FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */,
 				D84597D71C6D23B3003DA016 /* BrainCloudLeaderboard.hh in Headers */,
 				8512AF562193592400D04938 /* BrainCloudLobby.hh in Headers */,
 				DB83B15827A81D5C006BD318 /* AuthenticationIdsObjc.hh in Headers */,
@@ -1575,6 +1599,7 @@
 				D84597CF1C6D23B3003DA016 /* BrainCloudIdentity.hh in Headers */,
 				DF1D3FB81C8DF1F700225572 /* StatusCodes.hh in Headers */,
 				D84597AB1C6D23B3003DA016 /* BrainCloudFile.hh in Headers */,
+				02830F622FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */,
 				240895FE1CE3FCB70099720D /* BrainCloudGroup.hh in Headers */,
 				D84597991C6D23B3003DA016 /* BrainCloudDataStream.hh in Headers */,
 				5212F5492EE213A70069B6EF /* BCServiceName.hh in Headers */,
@@ -1615,6 +1640,7 @@
 				D84597F91C6D23B4003DA016 /* BrainCloudPlayerStatisticsEvent.hh in Headers */,
 				DBB9054824EAEA76000067CE /* BrainCloudRelay.hh in Headers */,
 				D84597961C6D23B3003DA016 /* BrainCloudCompletionBlocks.hh in Headers */,
+				02830F682FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */,
 				24A524CD1CA9B931009A97D3 /* FriendPlatformObjc.hh in Headers */,
 				D84597931C6D23B3003DA016 /* brainCloudClientObjc.hh in Headers */,
 				D84597DB1C6D23B3003DA016 /* BrainCloudMatchMaking.hh in Headers */,
@@ -1653,6 +1679,7 @@
 				852C388123E373520023C347 /* BrainCloudRTTCallback.hh in Headers */,
 				D84597E81C6D23B3003DA016 /* BrainCloudPlaybackStream.hh in Headers */,
 				57F573D429071324006061F2 /* BrainCloudBlockchain.hh in Headers */,
+				02830F652FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */,
 				D84597A01C6D23B3003DA016 /* BrainCloudEntity.hh in Headers */,
 				85EA944E23341F9300E7938F /* BrainCloudUserItems.hh in Headers */,
 				D845983C1C6D23B4003DA016 /* TypeHelpers.hh in Headers */,
@@ -1691,6 +1718,7 @@
 				24F29CE81CB2D2EE0075CB26 /* AuthenticationTypeObjc.hh in Headers */,
 				D84597DC1C6D23B3003DA016 /* BrainCloudMatchMaking.hh in Headers */,
 				D84597BE1C6D23B3003DA016 /* BrainCloudGlobalApp.hh in Headers */,
+				02830F692FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */,
 				D84597D61C6D23B3003DA016 /* BrainCloudLeaderboard.hh in Headers */,
 				8512AF552193592300D04938 /* BrainCloudLobby.hh in Headers */,
 				DB83B15727A81D5C006BD318 /* AuthenticationIdsObjc.hh in Headers */,
@@ -1717,6 +1745,7 @@
 				DF2231001CE39E09003A7D8D /* BrainCloudCallback.hh in Headers */,
 				DF2231011CE39E09003A7D8D /* BrainCloudIdentity.hh in Headers */,
 				DF2231021CE39E09003A7D8D /* StatusCodes.hh in Headers */,
+				02830F632FC8D3D2006F573A /* BrainCloudCampaign.hh in Headers */,
 				DF2231031CE39E09003A7D8D /* BrainCloudFile.hh in Headers */,
 				85756E5F2188FFF700EFEE09 /* BrainCloudMessaging.hh in Headers */,
 				5212F5432EE213A70069B6EF /* BCServiceName.hh in Headers */,
@@ -1757,6 +1786,7 @@
 				DF22311F1CE39E09003A7D8D /* FriendPlatformObjc.hh in Headers */,
 				DBB9054B24EAEA76000067CE /* BrainCloudRelay.hh in Headers */,
 				8512AF572193592400D04938 /* BrainCloudLobby.hh in Headers */,
+				02830F672FC8DBFA006F573A /* BrainCloudCampaign.mm in Headers */,
 				85EA945A2335513700E7938F /* BrainCloudItemCatalog.hh in Headers */,
 				DF2231201CE39E09003A7D8D /* brainCloudClientObjc.hh in Headers */,
 				DF2231221CE39E09003A7D8D /* BrainCloudMatchMaking.hh in Headers */,
@@ -2423,6 +2453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F6E2FC8E518006F573A /* BrainCloudCampaign.mm in Sources */,
 				DBB9054E24EAEA76000067CE /* BrainCloudRelay.mm in Sources */,
 				858DDCDC216284950068B016 /* BrainCloudVirtualCurrency.mm in Sources */,
 				858DDCDB216284900068B016 /* BrainCloudPresence.mm in Sources */,
@@ -2486,6 +2517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F722FC8E536006F573A /* TestCampaign.m in Sources */,
 				851D8CFD24A5520E00DCF6D3 /* TestCustomEntity.m in Sources */,
 				85C05C812162AA770003E92B /* TestPresence.m in Sources */,
 				DFF5CC9A1C9356BD002E62F8 /* TestEntity.m in Sources */,
@@ -2540,6 +2572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F6C2FC8E4FF006F573A /* BrainCloudCampaign.mm in Sources */,
 				DBB9054C24EAEA76000067CE /* BrainCloudRelay.mm in Sources */,
 				24AC16D41E202915007D00EE /* BrainCloudTournament.mm in Sources */,
 				D845977B1C6D23B3003DA016 /* ACL.mm in Sources */,
@@ -2603,6 +2636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F702FC8E529006F573A /* TestCampaign.m in Sources */,
 				851D8CFB24A551ED00DCF6D3 /* TestCustomEntity.m in Sources */,
 				85C05C7B2162AA510003E92B /* TestPresence.m in Sources */,
 				DFF5CC981C9356BC002E62F8 /* TestEntity.m in Sources */,
@@ -2658,6 +2692,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F6D2FC8E50E006F573A /* BrainCloudCampaign.mm in Sources */,
 				DBB9054D24EAEA76000067CE /* BrainCloudRelay.mm in Sources */,
 				858DDCD6216283CC0068B016 /* BrainCloudVirtualCurrency.mm in Sources */,
 				858DDCD5216283C40068B016 /* BrainCloudPresence.mm in Sources */,
@@ -2721,6 +2756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F712FC8E52F006F573A /* TestCampaign.m in Sources */,
 				851D8CFC24A551FE00DCF6D3 /* TestCustomEntity.m in Sources */,
 				85C05C7E2162AA6D0003E92B /* TestPresence.m in Sources */,
 				DFF5CC991C9356BC002E62F8 /* TestEntity.m in Sources */,
@@ -2775,6 +2811,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F6F2FC8E520006F573A /* BrainCloudCampaign.mm in Sources */,
 				DBB9054F24EAEA76000067CE /* BrainCloudRelay.mm in Sources */,
 				858DDCE0216284CF0068B016 /* BrainCloudAppStore.mm in Sources */,
 				858DDCE1216284CF0068B016 /* BrainCloudPresence.mm in Sources */,
@@ -2838,6 +2875,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02830F732FC8E53C006F573A /* TestCampaign.m in Sources */,
 				851D8CFE24A5521E00DCF6D3 /* TestCustomEntity.m in Sources */,
 				85C05C842162AA810003E92B /* TestPresence.m in Sources */,
 				DF2231321CE39E15003A7D8D /* TestEntity.m in Sources */,

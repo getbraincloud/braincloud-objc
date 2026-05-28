@@ -30,6 +30,11 @@
                               encoding:NSASCIIStringEncoding];
 }
 
++ (NSString *)Campaign {
+    return [NSString stringWithCString:BrainCloud::ServiceName::Campaign.getValue().c_str()
+                              encoding:NSASCIIStringEncoding];
+}
+
 + (NSString *)Chat {
     return [NSString stringWithCString:BrainCloud::ServiceName::Chat.getValue().c_str()
                               encoding:NSASCIIStringEncoding];

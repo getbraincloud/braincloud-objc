@@ -780,6 +780,11 @@
                               encoding:NSASCIIStringEncoding];
 }
 
++ (NSString *)GetMyCampaigns {
+    return [NSString stringWithCString:BrainCloud::ServiceOperation::GetMyCampaigns.getValue().c_str()
+                              encoding:NSASCIIStringEncoding];
+}
+
 + (NSString *)GetMyDivisions {
     return [NSString stringWithCString:BrainCloud::ServiceOperation::GetMyDivisions.getValue().c_str()
                               encoding:NSASCIIStringEncoding];

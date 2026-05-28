@@ -160,6 +160,7 @@
 + (NSString *)GetMessagesPage;
 + (NSString *)GetMessagesPageOffset;
 + (NSString *)GetMultiSocialLeaderboard;
++ (NSString *)GetMyCampaigns;
 + (NSString *)GetMyDivisions;
 + (NSString *)GetMyGroups;
 + (NSString *)GetPage;
