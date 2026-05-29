@@ -467,7 +467,15 @@
                                             cbObject:nil];
     [self waitForResult];
     
-    // C++ has a JoinLobbyWithPingData that seems to be missing...
+    [[m_client lobbyService] joinLobbyWithPingData:@"wrongLobbyId"
+                                           isReady:true
+                                         extraJson:_extraJson
+                                          teamCode:@"red"
+                                    otherUserCxIds:_otherUserCxIds
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
+    [self waitForFailedResult];
 }
 
 - (void)testGetLobbyInstances
