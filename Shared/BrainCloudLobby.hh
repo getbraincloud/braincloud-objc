@@ -25,7 +25,7 @@
 - (instancetype) init: (BrainCloudClient*) client;
 
 /**
- * Creates a new lobby
+ * Creates a new lobby.
  *
  * Service Name - Lobby
  * Service Operation - CREATE_LOBBY
@@ -45,12 +45,42 @@
               rating:(int)rating
       otherUserCxIds:(NSArray *)otherUserCxIds
              isReady:(bool)isReady
-           extraJson:(NSString *) extraJson
+           extraJson:(NSString *)extraJson
             teamCode:(NSString *)teamCode
             settings:(NSString *)settings
      completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Creates a new lobby with server config overrides.
+ *
+ * Service Name - Lobby
+ * Service Operation - CREATE_LOBBY_WITH_CONFIG
+ *
+ * @param lobbyType type of lobby to lok for. these types are defined in the portal
+ * @param rating the skill rating to use for finiding the lobby. Provided as a separate parameter because it may not exactly match the users rating especially in cases where parties are involved.
+ * @param otherUserCxIds
+ * @param isReady initial ready status of this user
+ * @param extraJson initial extra data about this user
+ * @param teamCode preferred team for this user, if applicable, send "" or null for automatic assignment
+ * @param settings configuration data for the room
+ * @param configOverrides Server config overrides for the lobby
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+-(void)createLobbyWithConfig:(NSString *)lobbyType
+                      rating:(int)rating
+              otherUserCxIds:(NSArray *)otherUserCxIds
+                     isReady:(bool)isReady
+                   extraJson:(NSString *)extraJson
+                    teamCode:(NSString *)teamCode
+                    settings:(NSString *)settings
+             configOverrides:(NSString *)configOverrides
+             completionBlock:(BCCompletionBlock)cb
+        errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                    cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Creates a new lobby. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
@@ -73,12 +103,42 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
               rating:(int)rating
       otherUserCxIds:(NSArray *)otherUserCxIds
              isReady:(bool)isReady
-           extraJson:(NSString *) extraJson
+           extraJson:(NSString *)extraJson
             teamCode:(NSString *)teamCode
             settings:(NSString *)settings
      completionBlock:(BCCompletionBlock)cb
 errorCompletionBlock:(BCErrorCompletionBlock)ecb
             cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Creates a new lobby with server config overrides. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
+ *
+ * Service Name - Lobby
+ * Service Operation - CREATE_LOBBY_WITH_CONFIG_AND_PING_DATA
+ *
+ * @param lobbyType type of lobby to lok for. these types are defined in the portal
+ * @param rating the skill rating to use for finiding the lobby. Provided as a separate parameter because it may not exactly match the users rating especially in cases where parties are involved.
+ * @param otherUserCxIds
+ * @param isReady initial ready status of this user
+ * @param extraJson initial extra data about this user
+ * @param teamCode preferred team for this user, if applicable, send "" or null for automatic assignment
+ * @param settings configuration data for the room
+ * @param configOverrides Server config overrides for the lobby
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+-(void)createLobbyWithConfigAndPingData:(NSString *)lobbyType
+                                 rating:(int)rating
+                         otherUserCxIds:(NSArray *)otherUserCxIds
+                                isReady:(bool)isReady
+                              extraJson:(NSString *)extraJson
+                               teamCode:(NSString *)teamCode
+                               settings:(NSString *)settings
+                        configOverrides:(NSString *)configOverrides
+                        completionBlock:(BCCompletionBlock)cb
+                   errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                               cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Finds a lobby matching the specified parameters. Asynchronous - returns 200 to indicate matchmaking has started.
@@ -398,27 +458,36 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
                         cbObject:(BCCallbackObject)cbObject;
 
 
-/* Retrieves the region settings for each of the given lobby types. Upon success or afterwards, call pingRegions to start retrieving appropriate data.
-*
-* Service Name - Lobby
-* Service Operation - GetRegionsForLobbies
-*
-* @param roomTypes Ids of the lobby types.
-*/
+/** Retrieves the region settings for each of the given lobby types. Upon success or afterwards, call pingRegions to start retrieving appropriate data.
+ *
+ * Service Name - Lobby
+ * Service Operation - GetRegionsForLobbies
+ *
+ * @param roomTypes Ids of the lobby types.
+ */
 - (void)getRegionsForLobbies:(NSArray *)roomTypes
              completionBlock:(BCCompletionBlock)cb
         errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     cbObject:(BCCallbackObject)cbObject;
 
-/* Retrieves associated Ping Data averages to be used with all associated <>WithPingData APIs.
-* Call anytime after GetRegionsForLobbies before proceeding.
-* Once that completes, the associated region Ping Data is retrievable via getPingData and all associated <>WithPingData APIs are useable
-*/
+/** Retrieves associated Ping Data averages to be used with all associated <>WithPingData APIs.
+ * Call anytime after GetRegionsForLobbies before proceeding.
+ * Once that completes, the associated region Ping Data is retrievable via getPingData and all associated <>WithPingData APIs are useable
+ */
 - (void)pingRegions:(BCCompletionBlock)cb
         errorCompletionBlock:(BCErrorCompletionBlock)ecb
                     cbObject:(BCCallbackObject)cbObject;
 
-//Cancels this members find, join and search for lobbies
+/** Returns the ping data collected after (or during) a pingRegions call.
+ * Thread-safe: acquires an internal mutex so it is safe to call while
+ * pingRegions is still in progress — partial results are returned as
+ * regions complete. Regions not yet done are absent from the returned map.
+ * Returns a copy so the caller holds a stable snapshot.
+ */
+- (NSDictionary *)getPingData;
+
+/** Cancels this members find, join and search for lobbies
+ */
 - (void)cancelFindRequest:(NSString *)lobbyId
                   entryId:(NSString *)entryId
           completionBlock:(BCCompletionBlock)cb

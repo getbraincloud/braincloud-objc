@@ -55,7 +55,9 @@
 + (NSString *)CreateGroup;
 + (NSString *)CreateGroupEntity;
 + (NSString *)CreateLobby;
++ (NSString *)CreateLobbyWithConfig;
 + (NSString *)CreateLobbyWithPingData;
++ (NSString *)CreateLobbyWithConfigAndPingData;
 + (NSString *)CreateWithIndexedId;
 + (NSString *)CustomPageEvent;
 + (NSString *)CustomScreenEvent;

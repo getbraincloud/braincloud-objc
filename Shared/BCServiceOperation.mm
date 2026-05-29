@@ -255,8 +255,18 @@
                               encoding:NSASCIIStringEncoding];
 }
 
++ (NSString *)CreateLobbyWithConfig {
+    return [NSString stringWithCString:BrainCloud::ServiceOperation::CreateLobbyWithConfig.getValue().c_str()
+                              encoding:NSASCIIStringEncoding];
+}
+
 + (NSString *)CreateLobbyWithPingData {
     return [NSString stringWithCString:BrainCloud::ServiceOperation::CreateLobbyWithPingData.getValue().c_str()
+                              encoding:NSASCIIStringEncoding];
+}
+
++ (NSString *)CreateLobbyWithConfigAndPingData {
+    return [NSString stringWithCString:BrainCloud::ServiceOperation::CreateLobbyWithConfigAndPingData.getValue().c_str()
                               encoding:NSASCIIStringEncoding];
 }
 

@@ -50,6 +50,38 @@
     [self waitForResult];
 }
 
+- (void)testCreateLobbyWithConfig
+{
+    [[m_client authenticationService]
+     authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+     password:[TestFixtureBase getUser:@"UserA"].m_password
+     forceCreate:true
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    [self waitForResult];
+    
+    NSString* _lobbyType = @"MATCH_UNRANKED";
+    NSArray* _otherUserCxIds = @[];
+    NSString* _extraJson = @"{}";
+    NSString* _settings = @"{}";
+    NSString* _teamCode = @"all";
+    NSString* _configOverrides = @"{\"teams\":[{\"code\":\"reserved\",\"minUsers\":0,\"maxUsers\":1,\"autoAssign\":false},{\"code\":\"all\",\"minUsers\":6,\"maxUsers\":6,\"autoAssign\":true}]}";
+    
+    [[m_client lobbyService] createLobbyWithConfig:_lobbyType
+                                            rating:0
+                                    otherUserCxIds:_otherUserCxIds
+                                           isReady:false
+                                         extraJson:_extraJson
+                                          teamCode:_teamCode
+                                          settings:_settings
+                                   configOverrides:_configOverrides
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
+    [self waitForResult];
+}
+
 - (void)testFindLobby
 {
     [[m_client authenticationService]
@@ -310,6 +342,132 @@
                       errorCompletionBlock:failureBlock
                                   cbObject:nil];
     [self waitForFailedResult];
+}
+
+// We include all tests regarding pings in here
+- (void)testPingRegions
+{
+    [[m_client authenticationService] authenticateUniversal:[TestFixtureBase getUser:@"UserA"].m_id
+                                                   password:[TestFixtureBase getUser:@"UserA"].m_password
+                                                forceCreate:true
+                                            completionBlock:successBlock
+                                       errorCompletionBlock:failureBlock
+                                                   cbObject:nil];
+    [self waitForResult];
+        
+    NSString* _lobbyType = @"MATCH_UNRANKED";
+    NSArray*  _otherUserCxIds = @[];
+    NSString* _extraJson = @"{}";
+    NSString* _teamCode = @"all";
+    NSString* _algo = @"{\"strategy\":\"ranged-absolute\",\"alignment\":\"center\",\"ranges\":[1000]}";
+    NSString* _filterJson = @"{}";
+    NSString* _settings = @"{}";
+    NSString* _configOverrides = @"{\"teams\":[{\"code\":\"reserved\",\"minUsers\":0,\"maxUsers\":1,\"autoAssign\":false},{\"code\":\"all\",\"minUsers\":6,\"maxUsers\":6,\"autoAssign\":true}]}";
+    
+    // Test trying to call a function <>withPingData without having fetched pings
+    [[m_client lobbyService] findOrCreateLobbyWithPingData:_lobbyType
+                                                    rating:0
+                                                  maxSteps:1
+                                                      algo:_algo
+                                                filterJson:_filterJson
+                                            otherUserCxIds:_otherUserCxIds
+                                                   isReady:true
+                                                 extraJson:_extraJson
+                                                  teamCode:_teamCode
+                                                  settings:_settings
+                                           completionBlock:successBlock
+                                      errorCompletionBlock:failureBlock
+                                                  cbObject:nil];
+    [self waitForFailedResult];
+    
+    // Fetch pings
+    [[m_client lobbyService] getRegionsForLobbies:@[_lobbyType]
+                                  completionBlock:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] pingRegions:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+    
+    // Ping regions 2 times to make sure we see in the log there's no caching happening and that they don't all end up at 0 on the second or third time
+    [[m_client lobbyService] pingRegions:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+    [[m_client lobbyService] pingRegions:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+    NSDictionary* pingData = [m_client.lobbyService getPingData];
+    int total = 0;
+    for (NSString *key in pingData)
+    {
+        total += [pingData[key] intValue];
+    }
+    if (total == 0)
+    {
+        _XCTPrimitiveFail(self, @"Ping data total was 0");
+    }
+    
+    // Call all the <>WithPingData functions and make sure they go through braincloud
+    [[m_client lobbyService] findOrCreateLobbyWithPingData:_lobbyType
+                                                    rating:0
+                                                  maxSteps:1
+                                                      algo:_algo
+                                                filterJson:_filterJson
+                                            otherUserCxIds:_otherUserCxIds
+                                                   isReady:true
+                                                 extraJson:_extraJson
+                                                  teamCode:_teamCode
+                                                  settings:_settings
+                                           completionBlock:successBlock
+                                      errorCompletionBlock:failureBlock
+                                                  cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] findLobbyWithPingData:_lobbyType
+                                            rating:0
+                                          maxSteps:1
+                                              algo:_algo
+                                        filterJson:_filterJson
+                                    otherUserCxIds:_otherUserCxIds
+                                           isReady:true
+                                         extraJson:_extraJson
+                                          teamCode:_teamCode
+                                   completionBlock:successBlock
+                              errorCompletionBlock:failureBlock
+                                          cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] createLobbyWithPingData:_lobbyType
+                                              rating:0
+                                      otherUserCxIds:_otherUserCxIds
+                                             isReady:true
+                                           extraJson:_extraJson
+                                            teamCode:_teamCode
+                                            settings:_settings
+                                     completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
+    [self waitForResult];
+    
+    [[m_client lobbyService] createLobbyWithConfigAndPingData:_lobbyType
+                                              rating:0
+                                      otherUserCxIds:_otherUserCxIds
+                                             isReady:true
+                                           extraJson:_extraJson
+                                            teamCode:_teamCode
+                                            settings:_settings
+                                     configOverrides:_configOverrides
+                                     completionBlock:successBlock
+                                errorCompletionBlock:failureBlock
+                                            cbObject:nil];
+    [self waitForResult];
+    
+    // C++ has a JoinLobbyWithPingData that seems to be missing...
 }
 
 - (void)testGetLobbyInstances
