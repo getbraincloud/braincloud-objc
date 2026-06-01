@@ -387,11 +387,6 @@
                                          cbObject:nil];
     [self waitForResult];
     
-    [[m_client lobbyService] pingRegions:successBlock
-                    errorCompletionBlock:failureBlock
-                                cbObject:nil];
-    [self waitForResult];
-    
     // Ping regions 2 times to make sure we see in the log there's no caching happening and that they don't all end up at 0 on the second or third time
     [[m_client lobbyService] pingRegions:successBlock
                     errorCompletionBlock:failureBlock
@@ -409,7 +404,7 @@
     }
     if (total == 0)
     {
-        _XCTPrimitiveFail(self, @"Ping data total was 0");
+        XCTFail(@"Ping data total was 0");
     }
     
     // Call all the <>WithPingData functions and make sure they go through braincloud

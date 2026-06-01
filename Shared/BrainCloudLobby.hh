@@ -41,16 +41,16 @@
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)createLobby:(NSString *)lobbyType
-              rating:(int)rating
-      otherUserCxIds:(NSArray *)otherUserCxIds
-             isReady:(bool)isReady
-           extraJson:(NSString *)extraJson
-            teamCode:(NSString *)teamCode
-            settings:(NSString *)settings
-     completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject;
+- (void)createLobby:(NSString *)lobbyType
+                  rating:(int)rating
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *)extraJson
+                teamCode:(NSString *)teamCode
+                settings:(NSString *)settings
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Creates a new lobby with server config overrides.
@@ -70,17 +70,17 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)createLobbyWithConfig:(NSString *)lobbyType
-                      rating:(int)rating
-              otherUserCxIds:(NSArray *)otherUserCxIds
-                     isReady:(bool)isReady
-                   extraJson:(NSString *)extraJson
-                    teamCode:(NSString *)teamCode
-                    settings:(NSString *)settings
-             configOverrides:(NSString *)configOverrides
-             completionBlock:(BCCompletionBlock)cb
-        errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                    cbObject:(BCCallbackObject)cbObject;
+- (void)createLobbyWithConfig:(NSString *)lobbyType
+                  rating:(int)rating
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *)extraJson
+                teamCode:(NSString *)teamCode
+                settings:(NSString *)settings
+         configOverrides:(NSString *)configOverrides
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Creates a new lobby. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
@@ -99,16 +99,16 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)createLobbyWithPingData:(NSString *)lobbyType
-              rating:(int)rating
-      otherUserCxIds:(NSArray *)otherUserCxIds
-             isReady:(bool)isReady
-           extraJson:(NSString *)extraJson
-            teamCode:(NSString *)teamCode
-            settings:(NSString *)settings
-     completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject;
+- (void)createLobbyWithPingData:(NSString *)lobbyType
+                  rating:(int)rating
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *)extraJson
+                teamCode:(NSString *)teamCode
+                settings:(NSString *)settings
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Creates a new lobby with server config overrides. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
@@ -128,17 +128,17 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)createLobbyWithConfigAndPingData:(NSString *)lobbyType
-                                 rating:(int)rating
-                         otherUserCxIds:(NSArray *)otherUserCxIds
-                                isReady:(bool)isReady
-                              extraJson:(NSString *)extraJson
-                               teamCode:(NSString *)teamCode
-                               settings:(NSString *)settings
-                        configOverrides:(NSString *)configOverrides
-                        completionBlock:(BCCompletionBlock)cb
-                   errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                               cbObject:(BCCallbackObject)cbObject;
+- (void)createLobbyWithConfigAndPingData:(NSString *)lobbyType
+                  rating:(int)rating
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *)extraJson
+                teamCode:(NSString *)teamCode
+                settings:(NSString *)settings
+         configOverrides:(NSString *)configOverrides
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Finds a lobby matching the specified parameters. Asynchronous - returns 200 to indicate matchmaking has started.
@@ -159,18 +159,18 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)findLobby:(NSString *)lobbyType
-               rating:(int)rating
-             maxSteps:(int)maxSteps
-                 algo:(NSString *)algo
-           filterJson:(NSString *)filterJson
-       otherUserCxIds:(NSArray *)otherUserCxIds
-              isReady:(bool)isReady
-            extraJson:(NSString *) extraJson
-             teamCode:(NSString *)teamCode
-      completionBlock:(BCCompletionBlock)cb
- errorCompletionBlock:(BCErrorCompletionBlock)ecb
-             cbObject:(BCCallbackObject)cbObject;
+- (void)findLobby:(NSString *)lobbyType
+                  rating:(int)rating
+                maxSteps:(int)maxSteps
+                    algo:(NSString *)algo
+              filterJson:(NSString *)filterJson
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *) extraJson
+                teamCode:(NSString *)teamCode
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Finds a lobby matching the specified parameters. Asynchronous - returns 200 to indicate matchmaking has started. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
@@ -191,18 +191,18 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)findLobbyWithPingData:(NSString *)lobbyType
-               rating:(int)rating
-             maxSteps:(int)maxSteps
-                 algo:(NSString *)algo
-           filterJson:(NSString *)filterJson
-       otherUserCxIds:(NSArray *)otherUserCxIds
-              isReady:(bool)isReady
-            extraJson:(NSString *) extraJson
-             teamCode:(NSString *)teamCode
-      completionBlock:(BCCompletionBlock)cb
- errorCompletionBlock:(BCErrorCompletionBlock)ecb
-             cbObject:(BCCallbackObject)cbObject;
+- (void)findLobbyWithPingData:(NSString *)lobbyType
+                  rating:(int)rating
+                maxSteps:(int)maxSteps
+                    algo:(NSString *)algo
+              filterJson:(NSString *)filterJson
+          otherUserCxIds:(NSArray *)otherUserCxIds
+                 isReady:(bool)isReady
+               extraJson:(NSString *) extraJson
+                teamCode:(NSString *)teamCode
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Adds a user to the lobby entry queue and will create a lobby if none are found
@@ -223,7 +223,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)findOrCreateLobby:(NSString *)lobbyType
+- (void)findOrCreateLobby:(NSString *)lobbyType
                   rating:(int)rating
                 maxSteps:(int)maxSteps
                     algo:(NSString *)algo
@@ -256,7 +256,7 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  */
--(void)findOrCreateLobbyWithPingData:(NSString *)lobbyType
+- (void)findOrCreateLobbyWithPingData:(NSString *)lobbyType
                   rating:(int)rating
                 maxSteps:(int)maxSteps
                     algo:(NSString *)algo
@@ -282,9 +282,9 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)getLobbyData:(NSString *)lobbyId
-          completionBlock:(BCCompletionBlock)cb
-     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                 cbObject:(BCCallbackObject)cbObject;
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Causes caller to leave the specified lobby. If the user was the owner a new owner will be chosen. If the user was the last member the lobby will be deleted
@@ -298,9 +298,9 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)leaveLobby:(NSString *)lobbyId
-          completionBlock:(BCCompletionBlock)cb
-     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                 cbObject:(BCCallbackObject)cbObject;
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Join specified lobby. Uses attached ping data to resolve best location. GetRegionsForLobbies and PingRegions must be successfully responded to.
@@ -318,13 +318,13 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)joinLobbyWithPingData:(NSString *)lobbyId
-                      isReady:(bool)isReady
-                    extraJson:(NSString *)extraJson
-                     teamCode:(NSString *)teamCode
-               otherUserCxIds:(NSArray *)otherUserCxIds
-              completionBlock:(BCCompletionBlock)cb
-         errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                     cbObject:(BCCallbackObject)cbObject;
+                 isReady:(bool)isReady
+               extraJson:(NSString *)extraJson
+                teamCode:(NSString *)teamCode
+          otherUserCxIds:(NSArray *)otherUserCxIds
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Causes caller to join the specified lobby.
@@ -342,13 +342,13 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)joinLobby:(NSString *)lobbyId
-isReady:(bool)isReady
-extraJson:(NSString *)extraJson
-teamCode:(NSString *)teamCode
-otherUserCxIds:(NSArray *)otherUserCxIds
-completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-cbObject:(BCCallbackObject)cbObject;
+                 isReady:(bool)isReady
+               extraJson:(NSString *)extraJson
+                teamCode:(NSString *)teamCode
+          otherUserCxIds:(NSArray *)otherUserCxIds
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Gets the channel Id for the given <channelType> and <channelSubId> Channel type must be one of "gl" or "gr"
@@ -363,10 +363,10 @@ cbObject:(BCCallbackObject)cbObject;
  * @param cbObject User object sent to the completion blocks
  */
 - (void)removeMember:(NSString *)lobbyId
-                cxId:(NSString *)cxId
-     completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject;
+                    cxId:(NSString *)cxId
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Gets description info and activity stats for channel <channelId>
@@ -383,10 +383,10 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)sendSignal:(NSString *)lobbyId
-            signalData:(NSString *)signalData
-       completionBlock:(BCCompletionBlock)cb
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject;
+              signalData:(NSString *)signalData
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * switches to the specified team(if allowed)
@@ -401,10 +401,10 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)switchTeam:(NSString *)lobbyId
-              teamCode:(NSString *)toTeamCode
-       completionBlock:(BCCompletionBlock)cb
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject;
+                teamCode:(NSString *)toTeamCode
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Updates the ready status and extraJson for the given lobby member
@@ -420,11 +420,11 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)updateReady:(NSString *)lobbyId
-             isReady:(bool)isReady
-           extraJson:(NSString *)extraJson
-     completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject;
+                 isReady:(bool)isReady
+               extraJson:(NSString *)extraJson
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Updates the ready status and extra Json for the given lobby member
@@ -439,10 +439,10 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)updateSettings:(NSString *)lobbyId
-              settings:(NSString *)settings
-       completionBlock:(BCCompletionBlock)cb
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject;
+                settings:(NSString *)settings
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Gets a map keyed by rating of the visible lobby instances matching the given type and rating range.
@@ -457,10 +457,10 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)getLobbyInstances:(NSString *)lobbyType
-                    criteriaJson:(NSString *)criteriaJson
-                 completionBlock:(BCCompletionBlock)cb
-            errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                        cbObject:(BCCallbackObject)cbObject;
+            criteriaJson:(NSString *)criteriaJson
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Gets a map keyed by rating of the visible lobby instances matching the given type and rating range.
@@ -476,10 +476,10 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param cbObject User object sent to the completion blocks
  */
 - (void)getLobbyInstancesWithPingData:(NSString *)lobbyType
-                    criteriaJson:(NSString *)criteriaJson
-                 completionBlock:(BCCompletionBlock)cb
-            errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                        cbObject:(BCCallbackObject)cbObject;
+            criteriaJson:(NSString *)criteriaJson
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 
 /** Retrieves the region settings for each of the given lobby types. Upon success or afterwards, call pingRegions to start retrieving appropriate data.
@@ -490,17 +490,17 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
  * @param roomTypes Ids of the lobby types.
  */
 - (void)getRegionsForLobbies:(NSArray *)roomTypes
-             completionBlock:(BCCompletionBlock)cb
-        errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                    cbObject:(BCCallbackObject)cbObject;
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /** Retrieves associated Ping Data averages to be used with all associated <>WithPingData APIs.
  * Call anytime after GetRegionsForLobbies before proceeding.
  * Once that completes, the associated region Ping Data is retrievable via getPingData and all associated <>WithPingData APIs are useable
  */
 - (void)pingRegions:(BCCompletionBlock)cb
-        errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                    cbObject:(BCCallbackObject)cbObject;
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /** Returns the ping data collected after (or during) a pingRegions call.
  * Thread-safe: acquires an internal mutex so it is safe to call while
@@ -513,10 +513,10 @@ errorCompletionBlock:(BCErrorCompletionBlock)ecb
 /** Cancels this members find, join and search for lobbies
  */
 - (void)cancelFindRequest:(NSString *)lobbyId
-                  entryId:(NSString *)entryId
-          completionBlock:(BCCompletionBlock)cb
-     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                 cbObject:(BCCallbackObject)cbObject;
+                 entryId:(NSString *)entryId
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 @end
 

@@ -33,9 +33,9 @@
 }
 
 - (void)getMyCampaigns:(NSString *)optionsJson
-       completionBlock:(BCCompletionBlock)cb
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *braincloudCallback = new BrainCloudCallback(cb, ecb, cbObject);
     

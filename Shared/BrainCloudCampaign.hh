@@ -34,9 +34,9 @@
  * @param optionsJson Optional parameters as a JSON string (reserved for future use).
  */
 - (void)getMyCampaigns:(NSString *)optionsJson
-       completionBlock:(BCCompletionBlock)cb
-  errorCompletionBlock:(BCErrorCompletionBlock)ecb
-              cbObject:(BCCallbackObject)cbObject;
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 @end
 
