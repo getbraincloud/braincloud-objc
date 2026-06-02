@@ -160,14 +160,14 @@
  *
  */
 - (void)mergeGameCenterIdentity:(NSString *)gameCenterId
-           timestamp:(uint64_t)timestamp
-        publicKeyUrl:(NSURL *)publicKeyUrl
-           signature:(NSData *)signature
-                salt:(NSData *)salt
-        teamPlayerId:(NSString *)teamPlayerId
-     completionBlock:(BCCompletionBlock)cb
-errorCompletionBlock:(BCErrorCompletionBlock)ecb
-            cbObject:(BCCallbackObject)cbObject;
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Detach the Game Center identity from the current profile.

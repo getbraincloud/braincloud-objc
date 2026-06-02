@@ -425,7 +425,7 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
     
     [[_bcClient authenticationService] authenticateGameCenter:gameCenterId
                                                   forceCreate:forceCreate
-                                                    timestamp:0
+                                                    timestamp:timestamp
                                                  publicKeyUrl:publicKeyUrl
                                                     signature:signature
                                                          salt:salt
