@@ -33,132 +33,155 @@ extern NSString *const AUTH_FACEBOOK;
 
 // NOT an Objective-C designated initializer
 /**
-* Initialize - initializes the identity service with the saved
-* anonymous installation id and most recently used profile id
-*
-* @param anonymousId  The anonymous installation id that was generated for this device
-* @param profileId The id of the profile id that was most recently used by the app (on this device)
-*/
+ * Initialize - initializes the identity service with the saved
+ * anonymous installation id and most recently used profile id
+ *
+ * @param anonymousId  The anonymous installation id that was generated for this device
+ * @param profileId The id of the profile id that was most recently used by the app (on this device)
+ */
 - (void)initialize:(NSString *)profileID anonymousID:(NSString *)anonymousID;
 
 /**
  * Used to create the anonymous installation id for the brainCloud profile.
+ *
  * @returns A unique Anonymous ID
+ *
  */
 - (NSString *)generateAnonymousId;
 
 /**
-* Used to clear the saved profile id - to use in cases when the user is
-* attempting to switch to a different app profile.
-*/
+ * Used to clear the saved profile id - to use in cases when the user is
+ * attempting to switch to a different app profile.
+ *
+ */
 - (void)clearSavedProfile;
 
 /**
-* Authenticate a user anonymously with brainCloud - used for apps that don't want to bother
-* the user to login, or for users who are sensitive to their privacy
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param forceCreate  Should a new profile be created if it does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-*/
+ * Authenticate a user anonymously with brainCloud - used for apps that don't want to bother
+ * the user to login, or for users who are sensitive to their privacy
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param forceCreate  Should a new profile be created if it does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateAnonymous:(BOOL)forceCreate
-              completionBlock:(BCCompletionBlock)completionBlock
-         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                     cbObject:(BCCallbackObject)cbObject;
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Authenticate the user with brainCloud using their Facebook Credentials
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param externalId The facebook id of the user
-* @param authenticationToken The validated token from the Facebook SDK
-*   (that will be further validated when sent to the bC service)
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-*/
+ * Authenticate the user with brainCloud using their Facebook Credentials
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param externalId The facebook id of the user
+ * @param authenticationToken The validated token from the Facebook SDK
+ *                            (that will be further validated when sent to the bC service)
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateFacebook:(NSString *)externalID
-         authenticationToken:(NSString *)authToken
-                 forceCreate:(BOOL)forceCreate
-             completionBlock:(BCCompletionBlock)completionBlock
-        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                    cbObject:(BCCallbackObject)cbObject;
+     authenticationToken:(NSString *)authToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Authenticate the user using their Game Center id
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param gameCenterId The player's game center id  (use the playerID property from the local GKPlayer object)
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param success The method to call in event of successful login
-* @param failure The method to call in the event of an error during authentication
-*/
-- (void)authenticateGameCenter:(NSString *)gameCenterID
-                   forceCreate:(BOOL)forceCreate
-               completionBlock:(BCCompletionBlock)completionBlock
-          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                      cbObject:(BCCallbackObject)cbObject;
+ * Authenticate the user using their Game Center Id and identity verification signature.
+ *
+ * Note: If the Game Center legacy authentication compatibility flag is enabled,
+ * only gameCenterId is required and all verification signature parameters are ignored.
+ *
+ * Service Name - authenticationV2
+ * Service Operation - AUTHENTICATE
+ *
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param timestamp The timestamp value returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param publicKeyUrl The publicKeyUrl value returned as part of the identity verification signature fetch from Game Center.
+ *                     Required for modern Game Center verification.
+ * @param signature The raw signature bytes returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param salt The raw salt bytes returned as part of the identity verification signature fetch from Game Center.
+ *             Required for modern Game Center verification.
+ * @param teamPlayerId Optional for Game Center verification; only required when gameCenterId is set to a value other than
+ *                     teamPlayerId (e.g. playerId), so that brainCloud can still associate the user with their team-scoped identity.
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
+ *
+ */
+- (void)authenticateGameCenter:(NSString *)gameCenterId
+             forceCreate:(BOOL)forceCreate
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Authenticate the user with a custom Email and Password.  Note that the client app
-* is responsible for collecting (and storing) the e-mail and potentially password
-* (for convenience) in the client data.  For the greatest security,
-* force the user to re-enter their * password at each login.
-* (Or at least give them that option).
-*
-* Note that the password sent from the client to the server is protected via SSL.
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param email  The e-mail address of the user
-* @param password  The password of the user
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-*/
+ * Authenticate the user with a custom Email and Password.  Note that the client app
+ * is responsible for collecting (and storing) the e-mail and potentially password
+ * (for convenience) in the client data.  For the greatest security,
+ * force the user to re-enter their * password at each login.
+ * (Or at least give them that option).
+ *
+ * Note that the password sent from the client to the server is protected via SSL.
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param email  The e-mail address of the user
+ * @param password  The password of the user
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateEmailPassword:(NSString *)email
-                         password:(NSString *)password
-                      forceCreate:(BOOL)forceCreate
-                  completionBlock:(BCCompletionBlock)completionBlock
-             errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                         cbObject:(BCCallbackObject)cbObject;
+                password:(NSString *)password
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Authenticate the user using a userid and password (without any validation on the userid).
-* Similar to AuthenticateEmailPassword - except that that method has additional features to
-* allow for e-mail validation, password resets, etc.
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param email  The e-mail address of the user
-* @param password  The password of the user
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-*/
+ * Authenticate the user using a userid and password (without any validation on the userid).
+ * Similar to AuthenticateEmailPassword - except that that method has additional features to
+ * allow for e-mail validation, password resets, etc.
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param email  The e-mail address of the user
+ * @param password  The password of the user
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateUniversal:(NSString *)userid
-                     password:(NSString *)password
-                  forceCreate:(BOOL)forceCreate
-              completionBlock:(BCCompletionBlock)completionBlock
-         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                     cbObject:(BCCallbackObject)cbObject;
+                password:(NSString *)password
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Get server version.
@@ -167,8 +190,9 @@ extern NSString *const AUTH_FACEBOOK;
  * Service Operation - GET_SERVER_VERSION
  * 
  * @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
  */
 - (void)getServerVersion:(BCCompletionBlock)completionBlock
     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
@@ -176,27 +200,28 @@ extern NSString *const AUTH_FACEBOOK;
 
 
 /**
-* A generic Authenticate method that translates to the same as calling a specific one, except it takes an extraJson
-* that will be passed along to pre- or post- hooks.
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param authenticationType Universal, Email, Facebook, etc
-* @param ids Auth IDs structure
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks. Leave empty string for no extraJson.
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * A generic Authenticate method that translates to the same as calling a specific one, except it takes an extraJson
+ * that will be passed along to pre- or post- hooks.
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param authenticationType Universal, Email, Facebook, etc
+ * @param ids Auth IDs structure
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks. Leave empty string for no extraJson.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateAdvanced:(AuthenticationTypeObjc *)authenticationType
-           authenticationIds:(AuthenticationIdsObjc *)authenticationIds
-                 forceCreate:(BOOL)forceCreate
-                   extraJson:(NSString *)extraJson
-             completionBlock:(BCCompletionBlock)completionBlock
-        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                    cbObject:(BCCallbackObject)cbObject;
+       authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+             forceCreate:(BOOL)forceCreate
+               extraJson:(NSString *)extraJson
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Authenticate the user for Ultra.
@@ -210,33 +235,35 @@ extern NSString *const AUTH_FACEBOOK;
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
+ *
  */
 - (void)authenticateUltra:(NSString *)ultraUsername
-             ultraIdToken:(NSString *)ultraIdToken
-              forceCreate:(BOOL)forceCreate
-          completionBlock:(BCCompletionBlock)completionBlock
-     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                 cbObject:(BCCallbackObject)cbObject;
+            ultraIdToken:(NSString *)ultraIdToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Authenticate the user using a steam userid and session ticket (without any validation on the userid).
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param userid  String representation of 64 bit steam id
-* @param sessionticket  The session ticket of the user (hex encoded)
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * Authenticate the user using a steam userid and session ticket (without any validation on the userid).
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param userid  String representation of 64 bit steam id
+ * @param sessionticket  The session ticket of the user (hex encoded)
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateSteam:(NSString *)userID
-            sessionTicket:(NSString *)sessionticket
-              forceCreate:(BOOL)forceCreate
-          completionBlock:(BCCompletionBlock)completionBlock
-     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                 cbObject:(BCCallbackObject)cbObject;
+           sessionTicket:(NSString *)sessionticket
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Authenticate the user using a google userid(email address) and google authentication token.
@@ -250,33 +277,35 @@ extern NSString *const AUTH_FACEBOOK;
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
+ *
  */
 - (void)authenticateApple:(NSString *)appleUserId
-            identityToken:(NSString *)identityToken
-               forceCreate:(BOOL)forceCreate
-           completionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject;
+          identityToken:(NSString *)identityToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Authenticate the user using a google userid(email address) and google authentication token.
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param googleUserId  String representation of google userId. Gotten with calls like requestUserId
-* @param serverAuthCode  The server suth code derived via the google apis. Calls like RequestServerAuthCode
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * Authenticate the user using a google userid(email address) and google authentication token.
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param googleUserId  String representation of google userId. Gotten with calls like requestUserId
+ * @param serverAuthCode  The server suth code derived via the google apis. Calls like RequestServerAuthCode
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateGoogle:(NSString *)googleUserId
-            serverAuthCode:(NSString *)serverAuthCode
-               forceCreate:(BOOL)forceCreate
-           completionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject;
+          serverAuthCode:(NSString *)serverAuthCode
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Authenticate the user using a google openId
@@ -290,38 +319,40 @@ extern NSString *const AUTH_FACEBOOK;
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
+ *
  */
 - (void)authenticateGoogleOpenId:(NSString *)googleUserAccountEmail
-                         idToken:(NSString *)idToken
-                     forceCreate:(BOOL)forceCreate
-                 completionBlock:(BCCompletionBlock)completionBlock
-            errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                        cbObject:(BCCallbackObject)cbObject;
+                 idToken:(NSString *)idToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 
 /**
-* Authenticate the user using a Twitter userid, authentication token, and secret from Twitter.
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param userid  String representation of Twitter userid
-* @param token  The authentication token derived via the Twitter apis.
-* @param secret  The secret given when attempting to link with Twitter
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * Authenticate the user using a Twitter userid, authentication token, and secret from Twitter.
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param userid  String representation of Twitter userid
+ * @param token  The authentication token derived via the Twitter apis.
+ * @param secret  The secret given when attempting to link with Twitter
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateTwitter:(NSString *)userID
-                      token:(NSString *)token
-                     secret:(NSString *)secret
-                forceCreate:(BOOL)forceCreate
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject;
+                   token:(NSString *)token
+                  secret:(NSString *)secret
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Authenticate the user using a Pase userid and authentication token
  *
  * Service Name - Authenticate
@@ -333,15 +364,16 @@ extern NSString *const AUTH_FACEBOOK;
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
+ *
  */
 - (void)authenticateParse:(NSString *)userID
-                    token:(NSString *)token
-              forceCreate:(BOOL)forceCreate
-          completionBlock:(BCCompletionBlock)cb
-     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                 cbObject:(BCCallbackObject)cbObject;
+                   token:(NSString *)token
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Authenticate the user using a handoffId and authentication token
  *
  * Service Name - Authenticate
@@ -352,14 +384,15 @@ extern NSString *const AUTH_FACEBOOK;
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
+ *
  */
 - (void)authenticateHandoff:(NSString *)handoffId
-              securityToken:(NSString *)securityToken
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject;
+           securityToken:(NSString *)securityToken
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Authenticate the user with a handoffCode
  *
  * Service Name - Authenticate
@@ -369,30 +402,32 @@ extern NSString *const AUTH_FACEBOOK;
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
+ *
  */
 - (void)authenticateSettopHandoff:(NSString *)handoffCode
-                  completionBlock:(BCCompletionBlock)cb
-             errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                         cbObject:(BCCallbackObject)cbObject;
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Reset Email password - Sends a password reset email to the specified address
-*
-* Service Name - Authenticate
-* Operation - ResetEmailPassword
-*
-* @param externalId The email address to send the reset email to.
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-* Note the follow error reason codes:
-* SECURITY_ERROR (40209) - If the email address cannot be found.
-*/
+ * Reset Email password - Sends a password reset email to the specified address
+ *
+ * Service Name - Authenticate
+ * Operation - ResetEmailPassword
+ *
+ * @param externalId The email address to send the reset email to.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ * Note the follow error reason codes:
+ * SECURITY_ERROR (40209) - If the email address cannot be found.
+ *
+ */
 - (void)resetEmailPassword:(NSString *)email
-       withCompletionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject;
+      withCompletionBlock:(BCCompletionBlock)completionBlock
+     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                 cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Reset Email password with service parameters - Sends a password reset email to the specified address
@@ -403,40 +438,42 @@ extern NSString *const AUTH_FACEBOOK;
  * @param appId the application Id
  * @param externalId The email address to send the reset email to.
  * @param serviceParams parameters to send to the email service. See the doc for
- * a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
+ *                      a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  *
  * Note the follow error reason codes:
  * SECURITY_ERROR (40209) - If the email address cannot be found.
+ *
  */
 - (void)resetEmailPasswordAdvanced:(NSString *)email
-                     serviceParams:(NSString *)serviceParams
-               withCompletionBlock:(BCCompletionBlock)completionBlock
-              errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                          cbObject:(BCCallbackObject)cbObject;
+           serviceParams:(NSString *)serviceParams
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Reset Email password with Expiry - Sends a password reset email to the specified address
-*
-* Service Name - Authenticate
-* Operation - ResetEmailPasswordWithExpiry
-*
-* @param externalId The email address to send the reset email to.
-* @param tokenTtlInMinutes the tokery value
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-* Note the follow error reason codes:
-* SECURITY_ERROR (40209) - If the email address cannot be found.
-*/
+ * Reset Email password with Expiry - Sends a password reset email to the specified address
+ *
+ * Service Name - Authenticate
+ * Operation - ResetEmailPasswordWithExpiry
+ *
+ * @param externalId The email address to send the reset email to.
+ * @param tokenTtlInMinutes the tokery value
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ * Note the follow error reason codes:
+ * SECURITY_ERROR (40209) - If the email address cannot be found.
+ *
+ */
 - (void)resetEmailPasswordWithExpiry:(NSString *)email
-         tokenTtlInMinutes:(int)tokenTtlInMinutes
-       withCompletionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject;
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Reset Email password with service parameters - Sends a password reset email to the specified address
@@ -447,7 +484,7 @@ extern NSString *const AUTH_FACEBOOK;
  * @param appId the application Id
  * @param externalId The email address to send the reset email to.
  * @param serviceParams parameters to send to the email service. See the doc for
- * a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
+ *                      a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
  * @param tokenTtlInMinutes the tokery value
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -455,13 +492,14 @@ extern NSString *const AUTH_FACEBOOK;
  *
  * Note the follow error reason codes:
  * SECURITY_ERROR (40209) - If the email address cannot be found.
+ *
  */
 - (void)resetEmailPasswordAdvancedWithExpiry:(NSString *)email
-                     serviceParams:(NSString *)serviceParams
-                 tokenTtlInMinutes:(int)tokenTtlInMinutes
-               withCompletionBlock:(BCCompletionBlock)completionBlock
-              errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                          cbObject:(BCCallbackObject)cbObject;
+           serviceParams:(NSString *)serviceParams
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Reset UniversalId password
@@ -476,9 +514,9 @@ extern NSString *const AUTH_FACEBOOK;
  *
  */
 - (void)resetUniversalIdPassword:(NSString *)universalId
-             withCompletionBlock:(BCCompletionBlock)completionBlock
-            errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                        cbObject:(BCCallbackObject)cbObject;
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Reset UniversalId password with template options
@@ -489,19 +527,21 @@ extern NSString *const AUTH_FACEBOOK;
  * @param appId the application Id
  * @param universalId The universalId who's password you want to change.
  * @param serviceParams parameters to send to the email service. See the doc for
- * a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
+ *                      a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
  *
  * Note the follow error reason codes:
  * SECURITY_ERROR (40209) - If the email address cannot be found.
+ *
  */
 - (void)resetUniversalIdPasswordAdvanced:(NSString *)universalId
-                           serviceParams:(NSString *)serviceParams
-                     withCompletionBlock:(BCCompletionBlock)completionBlock
-                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                                cbObject:(BCCallbackObject)cbObject;
+           serviceParams:(NSString *)serviceParams
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
+
 /**
  * Reset UniversalId password
  *
@@ -516,10 +556,10 @@ extern NSString *const AUTH_FACEBOOK;
  *
  */
 - (void)resetUniversalIdPasswordWithExpiry:(NSString *)universalId
-               tokenTtlInMinutes:(int)tokenTtlInMinutes
-             withCompletionBlock:(BCCompletionBlock)completionBlock
-            errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                        cbObject:(BCCallbackObject)cbObject;
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Reset UniversalId password with template options
@@ -530,7 +570,7 @@ extern NSString *const AUTH_FACEBOOK;
  * @param appId the application Id
  * @param universalId The universalId who's password you want to change.
  * @param serviceParams parameters to send to the email service. See the doc for
- * a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
+ *                      a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
  * @param tokenTtlInMinutes the tokery value
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -538,34 +578,36 @@ extern NSString *const AUTH_FACEBOOK;
  *
  * Note the follow error reason codes:
  * SECURITY_ERROR (40209) - If the email address cannot be found.
+ *
  */
 - (void)resetUniversalIdPasswordAdvancedWithExpiry:(NSString *)universalId
-                           serviceParams:(NSString *)serviceParams
-                       tokenTtlInMinutes:(int)tokenTtlInMinutes
-                     withCompletionBlock:(BCCompletionBlock)completionBlock
-                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                                cbObject:(BCCallbackObject)cbObject;
+           serviceParams:(NSString *)serviceParams
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 
 /**
-* Authenticate the user via cloud code (which in turn validates the supplied credentials against an external system).
-* This allows the developer to extend brainCloud authentication to support other backend authentication systems.
-*
-* Service Name - Authenticate
-* Server Operation - Authenticate
-*
-* @param userid The user id
-* @param token The user token (password etc)
-* @param externalAuthName The name of the cloud script to call for external authentication
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-*/
+ * Authenticate the user via cloud code (which in turn validates the supplied credentials against an external system).
+ * This allows the developer to extend brainCloud authentication to support other backend authentication systems.
+ *
+ * Service Name - Authenticate
+ * Server Operation - Authenticate
+ *
+ * @param userid The user id
+ * @param token The user token (password etc)
+ * @param externalAuthName The name of the cloud script to call for external authentication
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ *
+ */
 - (void)authenticateExternal:(NSString *)userID
-         authenticationToken:(NSString *)authToken
-  externalAuthenticationName:(NSString *)externalAuthName
-                 forceCreate:(BOOL)forceCreate
-             completionBlock:(BCCompletionBlock)completionBlock
-        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                    cbObject:(BCCallbackObject)cbObject;
+           authenticationToken:(NSString *)authToken
+    externalAuthenticationName:(NSString *)externalAuthName
+                   forceCreate:(BOOL)forceCreate
+               completionBlock:(BCCompletionBlock)completionBlock
+          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                      cbObject:(BCCallbackObject)cbObject;
 
 @end
 

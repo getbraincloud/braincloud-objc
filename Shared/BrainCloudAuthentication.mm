@@ -66,20 +66,20 @@
 }
 
 - (void)authenticateAnonymous:(BOOL)forceCreate
-              completionBlock:(BCCompletionBlock)completionBlock
-         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                     cbObject:(BCCallbackObject)cbObject
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getAuthenticationService()->authenticateAnonymous(
         forceCreate, new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject));
 }
 
 - (void)authenticateFacebook:(NSString *)externalID
-         authenticationToken:(NSString *)authToken
-                 forceCreate:(BOOL)forceCreate
-             completionBlock:(BCCompletionBlock)completionBlock
-        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                    cbObject:(BCCallbackObject)cbObject
+     authenticationToken:(NSString *)authToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -88,24 +88,36 @@
         [authToken cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
 }
 
-- (void)authenticateGameCenter:(NSString *)gameCenterID
-                   forceCreate:(BOOL)forceCreate
-               completionBlock:(BCCompletionBlock)completionBlock
-          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                      cbObject:(BCCallbackObject)cbObject
+- (void)authenticateGameCenter:(NSString *)gameCenterId
+             forceCreate:(BOOL)forceCreate
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
-    BrainCloudCallback *brainCloudCallback =
-        new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
     _client->getAuthenticationService()->authenticateGameCenter(
-        [gameCenterID cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
+        [gameCenterId cStringUsingEncoding:NSUTF8StringEncoding],
+        forceCreate,
+        timestamp,
+        publicKeyUrl.absoluteString.length > 0 ? publicKeyUrl.absoluteString.UTF8String : "",
+        signature != nil ? (const uint8_t *)[signature bytes] : NULL,
+        signature != nil ? [signature length] : 0,
+        salt != nil ? (const uint8_t *)[salt bytes] : NULL,
+        salt != nil ? [salt length] : 0,
+        teamPlayerId.length > 0 ? [teamPlayerId cStringUsingEncoding:NSUTF8StringEncoding] : "",
+        new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject));
 }
 
 - (void)authenticateEmailPassword:(NSString *)email
-                         password:(NSString *)password
-                      forceCreate:(BOOL)forceCreate
-                  completionBlock:(BCCompletionBlock)completionBlock
-             errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                         cbObject:(BCCallbackObject)cbObject
+                password:(NSString *)password
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -117,11 +129,11 @@
 }
 
 - (void)authenticateUniversal:(NSString *)userid
-                     password:(NSString *)password
-                  forceCreate:(BOOL)forceCreate
-              completionBlock:(BCCompletionBlock)completionBlock
-         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                     cbObject:(BCCallbackObject)cbObject
+                password:(NSString *)password
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -138,12 +150,12 @@
 }
 
 - (void)authenticateAdvanced:(AuthenticationTypeObjc *)authenticationType
-           authenticationIds:(AuthenticationIdsObjc *)authenticationIds
-                 forceCreate:(BOOL)forceCreate
-                   extraJson:(NSString *)extraJson
-             completionBlock:(BCCompletionBlock)completionBlock
-        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                    cbObject:(BCCallbackObject)cbObject
+       authenticationIds:(AuthenticationIdsObjc *)authenticationIds
+             forceCreate:(BOOL)forceCreate
+               extraJson:(NSString *)extraJson
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -172,11 +184,11 @@
 }
 
 - (void)authenticateUltra:(NSString *)ultraUsername
-             ultraIdToken:(NSString *)ultraIdToken
-              forceCreate:(BOOL)forceCreate
-          completionBlock:(BCCompletionBlock)completionBlock
-     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                 cbObject:(BCCallbackObject)cbObject
+            ultraIdToken:(NSString *)ultraIdToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -186,11 +198,11 @@
 }
 
 - (void)authenticateSteam:(NSString *)userID
-            sessionTicket:(NSString *)sessionticket
-              forceCreate:(BOOL)forceCreate
-          completionBlock:(BCCompletionBlock)completionBlock
-     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                 cbObject:(BCCallbackObject)cbObject
+           sessionTicket:(NSString *)sessionticket
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -200,11 +212,11 @@
 }
 
 - (void)authenticateApple:(NSString *)appleUserId
-            identityToken:(NSString *)identityToken
-               forceCreate:(BOOL)forceCreate
-           completionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject
+          identityToken:(NSString *)identityToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
     new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -214,11 +226,11 @@
 }
 
 - (void)authenticateGoogle:(NSString *)googleUserId
-            serverAuthCode:(NSString *)serverAuthCode
-               forceCreate:(BOOL)forceCreate
-           completionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject
+          serverAuthCode:(NSString *)serverAuthCode
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -228,11 +240,11 @@
 }
 
 - (void)authenticateGoogleOpenId:(NSString *)googleUserAccountEmail
-                         idToken:(NSString *)idToken
-                     forceCreate:(BOOL)forceCreate
-                 completionBlock:(BCCompletionBlock)completionBlock
-            errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                        cbObject:(BCCallbackObject)cbObject
+                 idToken:(NSString *)idToken
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
     new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -240,12 +252,12 @@
 }
 
 - (void)authenticateTwitter:(NSString *)userID
-                      token:(NSString *)token
-                     secret:(NSString *)secret
-                forceCreate:(BOOL)forceCreate
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject
+                   token:(NSString *)token
+                  secret:(NSString *)secret
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getAuthenticationService()->authenticateTwitter(
         [userID UTF8String], [token UTF8String], [secret UTF8String], forceCreate,
@@ -253,11 +265,11 @@
 }
 
 - (void)authenticateParse:(NSString *)userID
-                    token:(NSString *)token
-              forceCreate:(BOOL)forceCreate
-          completionBlock:(BCCompletionBlock)cb
-     errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                 cbObject:(BCCallbackObject)cbObject
+                   token:(NSString *)token
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getAuthenticationService()->authenticateParse(
         [userID UTF8String], [token UTF8String], forceCreate,
@@ -265,28 +277,28 @@
 }
 
 - (void)authenticateHandoff:(NSString *)handoffId
-              securityToken:(NSString *)securityToken
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject
+           securityToken:(NSString *)securityToken
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getAuthenticationService()->authenticateHandoff(
         [handoffId UTF8String], [securityToken UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)authenticateSettopHandoff:(NSString *)handoffCode
-                  completionBlock:(BCCompletionBlock)cb
-             errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                         cbObject:(BCCallbackObject)cbObject
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getAuthenticationService()->authenticateSettopHandoff(
                 [handoffCode UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)resetEmailPassword:(NSString *)email
-       withCompletionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -295,10 +307,10 @@
 }
 
 - (void)resetEmailPasswordAdvanced:(NSString *)email
-                     serviceParams:(NSString *)serviceParams
-               withCompletionBlock:(BCCompletionBlock)completionBlock
-              errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                          cbObject:(BCCallbackObject)cbObject
+           serviceParams:(NSString *)serviceParams
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
     new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -307,10 +319,10 @@
 }
 
 - (void)resetEmailPasswordWithExpiry:(NSString *)email
-         tokenTtlInMinutes:(int)tokenTtlInMinutes
-       withCompletionBlock:(BCCompletionBlock)completionBlock
-      errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                  cbObject:(BCCallbackObject)cbObject
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -319,11 +331,11 @@
 }
 
 - (void)resetEmailPasswordAdvancedWithExpiry:(NSString *)email
-                     serviceParams:(NSString *)serviceParams
-                 tokenTtlInMinutes:(int)tokenTtlInMinutes
-               withCompletionBlock:(BCCompletionBlock)completionBlock
-              errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                          cbObject:(BCCallbackObject)cbObject
+           serviceParams:(NSString *)serviceParams
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
     new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
@@ -333,52 +345,52 @@
 
 
 - (void)resetUniversalIdPassword:(NSString *)universalId
-             withCompletionBlock:(BCCompletionBlock)completionBlock
-            errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                        cbObject:(BCCallbackObject)cbObject
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback = new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
     _client->getAuthenticationService()->resetUniversalIdPassword([universalId cStringUsingEncoding:NSUTF8StringEncoding], brainCloudCallback);
 }
 
 - (void)resetUniversalIdPasswordAdvanced:(NSString *)universalId
-                           serviceParams:(NSString *)serviceParams
-                     withCompletionBlock:(BCCompletionBlock)completionBlock
-                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                                cbObject:(BCCallbackObject)cbObject
+           serviceParams:(NSString *)serviceParams
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback = new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
     _client->getAuthenticationService()->resetUniversalIdPasswordAdvanced([universalId cStringUsingEncoding:NSUTF8StringEncoding],[serviceParams UTF8String], brainCloudCallback);
 }
 
 - (void)resetUniversalIdPasswordWithExpiry:(NSString *)universalId
-               tokenTtlInMinutes:(int)tokenTtlInMinutes
-             withCompletionBlock:(BCCompletionBlock)completionBlock
-            errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                        cbObject:(BCCallbackObject)cbObject
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
         BrainCloudCallback *brainCloudCallback = new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
         _client->getAuthenticationService()->resetUniversalIdPasswordWithExpiry([universalId cStringUsingEncoding:NSUTF8StringEncoding], tokenTtlInMinutes, brainCloudCallback);
 }
 
 - (void)resetUniversalIdPasswordAdvancedWithExpiry:(NSString *)universalId
-                           serviceParams:(NSString *)serviceParams
-                       tokenTtlInMinutes:(int)tokenTtlInMinutes
-                     withCompletionBlock:(BCCompletionBlock)completionBlock
-                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                                cbObject:(BCCallbackObject)cbObject
+           serviceParams:(NSString *)serviceParams
+       tokenTtlInMinutes:(int)tokenTtlInMinutes
+     withCompletionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback = new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
     _client->getAuthenticationService()->resetUniversalIdPasswordAdvancedWithExpiry([universalId cStringUsingEncoding:NSUTF8StringEncoding], [serviceParams UTF8String], tokenTtlInMinutes, brainCloudCallback);
 }
 
 - (void)authenticateExternal:(NSString *)userID
-         authenticationToken:(NSString *)authToken
-  externalAuthenticationName:(NSString *)externalAuthName
-                 forceCreate:(BOOL)forceCreate
-             completionBlock:(BCCompletionBlock)completionBlock
-        errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                    cbObject:(BCCallbackObject)cbObject
+           authenticationToken:(NSString *)authToken
+    externalAuthenticationName:(NSString *)externalAuthName
+                   forceCreate:(BOOL)forceCreate
+               completionBlock:(BCCompletionBlock)completionBlock
+          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                      cbObject:(BCCallbackObject)cbObject
 {
     BrainCloudCallback *brainCloudCallback =
         new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
