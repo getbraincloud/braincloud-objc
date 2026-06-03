@@ -48,6 +48,16 @@ target 'BrainCloud-tvOSTests' do
   shared_pods
 end
 
+target 'BrainCloud-visionOS' do
+  platform :visionos, '1.0'
+  shared_pods
+end
+
+target 'BrainCloud-visionOSTests' do
+  platform :visionos, '1.0'
+  shared_pods
+end
+
 target 'BrainCloud-watchOS' do
   platform :watchos, '4.0'
   shared_pods

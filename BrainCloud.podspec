@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.name     = "BrainCloud"
 
-  s.version  = "5.9.5"
+  s.version  = "6.0.0"
 
   s.summary  = "The Objective-C/Swift client library for brainCloud"
   s.homepage = "http://getbraincloud.com/"
@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target  = "10.13"
   s.tvos.deployment_target = "12.0"
   s.watchos.deployment_target = "4.0"
+  s.visionos.deployment_target = "1.0"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
