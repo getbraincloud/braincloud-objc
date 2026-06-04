@@ -13,6 +13,15 @@
 		0204EEAA2FD1C846009B4DC7 /* BrainCloud_watchOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0204EEA72FD1C846009B4DC7 /* BrainCloud_watchOSTests.m */; };
 		0204EEAB2FD1CA08009B4DC7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 025704B32FD0764A006D8CB3 /* libz.tbd */; };
 		0204EEAD2FD1CA2D009B4DC7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0204EEAC2FD1CA2D009B4DC7 /* libz.tbd */; };
+		0204EEAE2FD1D4C2009B4DC7 /* SAMKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 02743CE62FD0D4F5003E8817 /* SAMKeychain.h */; };
+		0204EEAF2FD1D4DB009B4DC7 /* SAMKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 02743CE62FD0D4F5003E8817 /* SAMKeychain.h */; };
+		0204EEB02FD1D4E4009B4DC7 /* BrainCloudWrapper.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF99CBF21C93681C000B2418 /* BrainCloudWrapper.hh */; };
+		0204EEB12FD1D4EA009B4DC7 /* StatusCodes.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF1D3FB71C8DF1F700225572 /* StatusCodes.hh */; };
+		0204EEB22FD1D4FB009B4DC7 /* BrainCloudWrapper.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF99CBF21C93681C000B2418 /* BrainCloudWrapper.hh */; };
+		0204EEB32FD1D503009B4DC7 /* StatusCodes.hh in Headers */ = {isa = PBXBuildFile; fileRef = DF1D3FB71C8DF1F700225572 /* StatusCodes.hh */; };
+		0204EEB42FD1D60B009B4DC7 /* TestBlockchain.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F573DB290713F8006061F2 /* TestBlockchain.m */; };
+		0204EEB52FD1D619009B4DC7 /* TestBlockchain.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F573DB290713F8006061F2 /* TestBlockchain.m */; };
+		0204EEB62FD1D624009B4DC7 /* TestBlockchain.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F573DB290713F8006061F2 /* TestBlockchain.m */; };
 		02490DC62FD06FDC00ACAC52 /* BrainCloudCampaign.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */; };
 		02490DC72FD06FDC00ACAC52 /* BrainCloudRelay.mm in Sources */ = {isa = PBXBuildFile; fileRef = DBB9054724EAEA76000067CE /* BrainCloudRelay.mm */; };
 		02490DC82FD06FDC00ACAC52 /* BrainCloudTournament.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24AC16D31E202914007D00EE /* BrainCloudTournament.mm */; };
@@ -153,7 +162,6 @@
 		025704772FD07409006D8CB3 /* TestDataStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC511C9356A1002E62F8 /* TestDataStream.m */; };
 		025704782FD07409006D8CB3 /* TestCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E647572FCA16EA009304AB /* TestCampaign.m */; };
 		025704792FD07409006D8CB3 /* TestAsyncMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */; };
-		0257047A2FD07409006D8CB3 /* BrainCloud_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D845970E1C6D06E3003DA016 /* BrainCloud_iOSTests.m */; };
 		0257047B2FD07409006D8CB3 /* TestMail.m in Sources */ = {isa = PBXBuildFile; fileRef = 245F9D511DAED48100478BC2 /* TestMail.m */; };
 		0257047C2FD07409006D8CB3 /* TestIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC5C1C9356A1002E62F8 /* TestIdentity.m */; };
 		0257047D2FD07409006D8CB3 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC501C9356A1002E62F8 /* TestClient.m */; };
@@ -1930,6 +1938,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				24A524D11CA9C42E009A97D3 /* FriendPlatformObjc.hh in Headers */,
+				0204EEB32FD1D503009B4DC7 /* StatusCodes.hh in Headers */,
+				0204EEB22FD1D4FB009B4DC7 /* BrainCloudWrapper.hh in Headers */,
 				852C387D23E3693C0023C347 /* BrainCloudRTT.hh in Headers */,
 				858DDCDF216284B90068B016 /* BrainCloudVirtualCurrency.hh in Headers */,
 				8512AF5A2193592C00D04938 /* BrainCloudChat.hh in Headers */,
@@ -2003,6 +2013,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				025704B22FD075D2006D8CB3 /* BrainCloud.h in Headers */,
+				0204EEAE2FD1D4C2009B4DC7 /* SAMKeychain.h in Headers */,
 				852C388023E373520023C347 /* BrainCloudRTTCallback.hh in Headers */,
 				24AC16CF1E2028FE007D00EE /* BrainCloudTournament.hh in Headers */,
 				DB83B15627A81D5C006BD318 /* AuthenticationIdsObjc.hh in Headers */,
@@ -2077,6 +2088,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				24A524CF1CA9C42E009A97D3 /* FriendPlatformObjc.hh in Headers */,
+				0204EEB12FD1D4EA009B4DC7 /* StatusCodes.hh in Headers */,
+				0204EEB02FD1D4E4009B4DC7 /* BrainCloudWrapper.hh in Headers */,
+				0204EEAF2FD1D4DB009B4DC7 /* SAMKeychain.h in Headers */,
 				852C387C23E368F50023C347 /* BrainCloudRTT.hh in Headers */,
 				858DDCD9216284000068B016 /* BrainCloudVirtualCurrency.hh in Headers */,
 				8512AF592193592B00D04938 /* BrainCloudChat.hh in Headers */,
@@ -2882,7 +2896,6 @@
 				025704772FD07409006D8CB3 /* TestDataStream.m in Sources */,
 				025704782FD07409006D8CB3 /* TestCampaign.m in Sources */,
 				025704792FD07409006D8CB3 /* TestAsyncMatch.m in Sources */,
-				0257047A2FD07409006D8CB3 /* BrainCloud_iOSTests.m in Sources */,
 				0257047B2FD07409006D8CB3 /* TestMail.m in Sources */,
 				0257047C2FD07409006D8CB3 /* TestIdentity.m in Sources */,
 				0257047D2FD07409006D8CB3 /* TestClient.m in Sources */,
@@ -2986,6 +2999,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0204EEB52FD1D619009B4DC7 /* TestBlockchain.m in Sources */,
 				851D8CFD24A5520E00DCF6D3 /* TestCustomEntity.m in Sources */,
 				85C05C812162AA770003E92B /* TestPresence.m in Sources */,
 				DFF5CC9A1C9356BD002E62F8 /* TestEntity.m in Sources */,
@@ -3229,6 +3243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0204EEB42FD1D60B009B4DC7 /* TestBlockchain.m in Sources */,
 				851D8CFC24A551FE00DCF6D3 /* TestCustomEntity.m in Sources */,
 				85C05C7E2162AA6D0003E92B /* TestPresence.m in Sources */,
 				DFF5CC991C9356BC002E62F8 /* TestEntity.m in Sources */,
@@ -3350,6 +3365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0204EEB62FD1D624009B4DC7 /* TestBlockchain.m in Sources */,
 				851D8CFE24A5521E00DCF6D3 /* TestCustomEntity.m in Sources */,
 				85C05C842162AA810003E92B /* TestPresence.m in Sources */,
 				DF2231321CE39E15003A7D8D /* TestEntity.m in Sources */,
