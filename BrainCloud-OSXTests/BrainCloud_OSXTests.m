@@ -2,8 +2,7 @@
 //  BrainCloud_OSXTests.m
 //  BrainCloud-OSXTests
 //
-//  Created by Benoit Sarrazin on 2016-02-11.
-//  Copyright © 2016 BitHeads Inc. All rights reserved.
+//  Copyright © 2026 BitHeads Inc. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for BrainClould-watchOS.
+//! Project version number for BrainCloud-watchOS.
 FOUNDATION_EXPORT double BrainCloud_watchOSVersionNumber;
 
 //! Project version string for BrainCloud-watchOS.

@@ -1,18 +1,17 @@
 //
-//  BrainCloud_iOSTests.m
-//  BrainCloud-iOSTests
+//  BrainCloud_visionOSTests.m
+//  BrainCloud_visionOSTests
 //
-//  Created by Benoit Sarrazin on 2016-02-11.
-//  Copyright © 2016 BitHeads Inc. All rights reserved.
+//  Copyright © 2026 BitHeads Inc. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface BrainCloud_iOSTests : XCTestCase
+@interface BrainCloud_visionOSTests : XCTestCase
 
 @end
 
-@implementation BrainCloud_iOSTests
+@implementation BrainCloud_visionOSTests
 
 - (void)setUp {
     [super setUp];
