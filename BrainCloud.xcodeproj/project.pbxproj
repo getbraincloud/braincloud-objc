@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0204EE9D2FD1C807009B4DC7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0204EE9C2FD1C807009B4DC7 /* Info.plist */; };
 		0204EE9E2FD1C807009B4DC7 /* BrainCloud.h in Headers */ = {isa = PBXBuildFile; fileRef = 0204EE9B2FD1C807009B4DC7 /* BrainCloud.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0204EEA12FD1C81E009B4DC7 /* BrainCloud_visionOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0204EE9F2FD1C81E009B4DC7 /* BrainCloud_visionOSTests.m */; };
-		0204EEA22FD1C81E009B4DC7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0204EEA02FD1C81E009B4DC7 /* Info.plist */; };
 		0204EEA52FD1C838009B4DC7 /* BrainCloud.h in Headers */ = {isa = PBXBuildFile; fileRef = 0204EEA32FD1C838009B4DC7 /* BrainCloud.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0204EEA62FD1C838009B4DC7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0204EEA42FD1C838009B4DC7 /* Info.plist */; };
-		0204EEA92FD1C846009B4DC7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0204EEA82FD1C846009B4DC7 /* Info.plist */; };
 		0204EEAA2FD1C846009B4DC7 /* BrainCloud_watchOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0204EEA72FD1C846009B4DC7 /* BrainCloud_watchOSTests.m */; };
 		0204EEAB2FD1CA08009B4DC7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 025704B32FD0764A006D8CB3 /* libz.tbd */; };
 		0204EEAD2FD1CA2D009B4DC7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0204EEAC2FD1CA2D009B4DC7 /* libz.tbd */; };
@@ -2291,7 +2287,6 @@
 				D84596E91C6D06D0003DA016 /* Sources */,
 				D84596EA1C6D06D0003DA016 /* Frameworks */,
 				D84596EB1C6D06D0003DA016 /* Resources */,
-				4029697A34AB5458888B1FA0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2312,7 +2307,6 @@
 				D84596FC1C6D06E2003DA016 /* Frameworks */,
 				D84596FD1C6D06E2003DA016 /* Headers */,
 				D84596FE1C6D06E2003DA016 /* Resources */,
-				740DFD25BA6F2AD2366B189F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2502,7 +2496,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0204EE9D2FD1C807009B4DC7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2510,7 +2503,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0204EEA22FD1C81E009B4DC7 /* Info.plist in Resources */,
 				0257049D2FD07409006D8CB3 /* ids.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2564,7 +2556,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0204EEA62FD1C838009B4DC7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2572,7 +2563,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0204EEA92FD1C846009B4DC7 /* Info.plist in Resources */,
 				DF2231541CE39E15003A7D8D /* ids.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2622,44 +2612,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4029697A34AB5458888B1FA0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BrainCloud-tvOSTests/Pods-BrainCloud-tvOSTests-resources.sh",
-				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BrainCloud-iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrainCloud-tvOSTests/Pods-BrainCloud-tvOSTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		740DFD25BA6F2AD2366B189F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BrainCloud-iOS/Pods-BrainCloud-iOS-resources.sh",
-				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BrainCloud-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrainCloud-iOS/Pods-BrainCloud-iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		849B7302DAE80F0556EB1A09 /* [CP] Check Pods Manifest.lock */ = {
@@ -3555,6 +3507,7 @@
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
 			name = Debug;
 		};
@@ -3579,6 +3532,7 @@
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
 			name = Release;
 		};
