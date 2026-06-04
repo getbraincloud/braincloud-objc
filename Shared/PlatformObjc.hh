@@ -14,6 +14,8 @@
 
 @interface PlatformObjc : NSObject
 
++ (PlatformObjc *)Unknown;
++ (PlatformObjc *)Amazon;
 + (PlatformObjc *)AppleTVOS;
 + (PlatformObjc *)BlackBerry;
 + (PlatformObjc *)Facebook;
@@ -21,19 +23,21 @@
 + (PlatformObjc *)iOS;
 + (PlatformObjc *)Linux;
 + (PlatformObjc *)Mac;
++ (PlatformObjc *)Nintendo;
++ (PlatformObjc *)Oculus;
++ (PlatformObjc *)PS3;
++ (PlatformObjc *)PS4;
++ (PlatformObjc *)PSVita;
++ (PlatformObjc *)Roku;
++ (PlatformObjc *)Tizen;
++ (PlatformObjc *)VisionOS;
++ (PlatformObjc *)WatchOS;
 + (PlatformObjc *)Web;
++ (PlatformObjc *)Wii;
 + (PlatformObjc *)Windows;
 + (PlatformObjc *)WindowsPhone;
 + (PlatformObjc *)Xbox360;
-+ (PlatformObjc *)PS3;
 + (PlatformObjc *)XboxOne;
-+ (PlatformObjc *)PS4;
-+ (PlatformObjc *)WatchOS;
-+ (PlatformObjc *)Wii;
-+ (PlatformObjc *)PSVita;
-+ (PlatformObjc *)Tizen;
-+ (PlatformObjc *)Roku;
-+ (PlatformObjc *)Unknown;
 
 - (NSString *)toString;
 + (PlatformObjc *)fromString:(NSString *)platform;

@@ -18,26 +18,30 @@
 
 @implementation PlatformObjc
 
-static PlatformObjc *_AppleTVOS = [[PlatformObjc alloc] initWithValue:@"APPLE_TV_OS"];
-static PlatformObjc *_BlackBerry = [[PlatformObjc alloc] initWithValue:@"BB"];
-static PlatformObjc *_Facebook = [[PlatformObjc alloc] initWithValue:@"FB"];
+static PlatformObjc *_Unknown           = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
+static PlatformObjc *_Amazon            = [[PlatformObjc alloc] initWithValue:@"AMAZON"];
+static PlatformObjc *_AppleTVOS         = [[PlatformObjc alloc] initWithValue:@"APPLE_TV_OS"];
+static PlatformObjc *_BlackBerry        = [[PlatformObjc alloc] initWithValue:@"BB"];
+static PlatformObjc *_Facebook          = [[PlatformObjc alloc] initWithValue:@"FB"];
 static PlatformObjc *_GooglePlayAndroid = [[PlatformObjc alloc] initWithValue:@"ANG"];
-static PlatformObjc *_iOS = [[PlatformObjc alloc] initWithValue:@"IOS"];
-static PlatformObjc *_Linux = [[PlatformObjc alloc] initWithValue:@"LINUX"];
-static PlatformObjc *_Mac = [[PlatformObjc alloc] initWithValue:@"MAC"];
-static PlatformObjc *_Web = [[PlatformObjc alloc] initWithValue:@"WEB"];
-static PlatformObjc *_Windows = [[PlatformObjc alloc] initWithValue:@"WINDOWS"];
-static PlatformObjc *_WindowsPhone = [[PlatformObjc alloc] initWithValue:@"WINP"];
-static PlatformObjc *_Xbox360 = [[PlatformObjc alloc] initWithValue:@"XBOX_360"];
-static PlatformObjc *_PS3 = [[PlatformObjc alloc] initWithValue:@"PS3"];
-static PlatformObjc *_XboxOne = [[PlatformObjc alloc] initWithValue:@"XBOX_ONE"];
-static PlatformObjc *_PS4 = [[PlatformObjc alloc] initWithValue:@"PS4"];
-static PlatformObjc *_WatchOS = [[PlatformObjc alloc] initWithValue:@"WATCH_OS"];
-static PlatformObjc *_Wii = [[PlatformObjc alloc] initWithValue:@"WII"];
-static PlatformObjc *_PSVita = [[PlatformObjc alloc] initWithValue:@"PS_VITA"];
-static PlatformObjc *_Tizen = [[PlatformObjc alloc] initWithValue:@"TIZEN"];
-static PlatformObjc *_Roku = [[PlatformObjc alloc] initWithValue:@"ROKU"];
-static PlatformObjc *_Unknown = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
+static PlatformObjc *_iOS               = [[PlatformObjc alloc] initWithValue:@"IOS"];
+static PlatformObjc *_Linux             = [[PlatformObjc alloc] initWithValue:@"LINUX"];
+static PlatformObjc *_Mac               = [[PlatformObjc alloc] initWithValue:@"MAC"];
+static PlatformObjc *_Nintendo          = [[PlatformObjc alloc] initWithValue:@"NINTENDO"];
+static PlatformObjc *_Oculus            = [[PlatformObjc alloc] initWithValue:@"OCULUS"];
+static PlatformObjc *_PS3               = [[PlatformObjc alloc] initWithValue:@"PS3"];
+static PlatformObjc *_PS4               = [[PlatformObjc alloc] initWithValue:@"PS4"];
+static PlatformObjc *_PSVita            = [[PlatformObjc alloc] initWithValue:@"PS_VITA"];
+static PlatformObjc *_Roku              = [[PlatformObjc alloc] initWithValue:@"ROKU"];
+static PlatformObjc *_Tizen             = [[PlatformObjc alloc] initWithValue:@"TIZEN"];
+static PlatformObjc *_VisionOS          = [[PlatformObjc alloc] initWithValue:@"VISION_OS"];
+static PlatformObjc *_WatchOS           = [[PlatformObjc alloc] initWithValue:@"WATCH_OS"];
+static PlatformObjc *_Web               = [[PlatformObjc alloc] initWithValue:@"WEB"];
+static PlatformObjc *_Wii               = [[PlatformObjc alloc] initWithValue:@"WII"];
+static PlatformObjc *_Windows           = [[PlatformObjc alloc] initWithValue:@"WINDOWS"];
+static PlatformObjc *_WindowsPhone      = [[PlatformObjc alloc] initWithValue:@"WINP"];
+static PlatformObjc *_Xbox360           = [[PlatformObjc alloc] initWithValue:@"XBOX_360"];
+static PlatformObjc *_XboxOne           = [[PlatformObjc alloc] initWithValue:@"XBOX_ONE"];
 
 - (id)initWithValue:(NSString *)value;
 {
@@ -50,6 +54,9 @@ static PlatformObjc *_Unknown = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
   return _value;
 }
 
++ (PlatformObjc *)Amazon {
+  return _Amazon;
+}
 + (PlatformObjc *)AppleTVOS {
   return _AppleTVOS;
 }
@@ -70,6 +77,12 @@ static PlatformObjc *_Unknown = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
 }
 + (PlatformObjc *)Mac {
   return _Mac;
+}
++ (PlatformObjc *)Nintendo {
+  return _Nintendo;
+}
++ (PlatformObjc *)Oculus {
+  return _Oculus;
 }
 + (PlatformObjc *)Web {
   return _Web;
@@ -92,6 +105,9 @@ static PlatformObjc *_Unknown = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
 + (PlatformObjc *)PS4 {
   return _PS4;
 }
++ (PlatformObjc *)VisionOS {
+  return _VisionOS;
+}
 + (PlatformObjc *)WatchOS {
   return _WatchOS;
 }
@@ -112,6 +128,9 @@ static PlatformObjc *_Unknown = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
 }
 
 + (PlatformObjc *)fromString:(NSString *)platform {
+  if ([platform compare:@"AMAZON"] == NSOrderedSame) {
+    return _Amazon;
+  }
   if ([platform compare:@"APPLE_TV_OS"] == NSOrderedSame) {
     return _AppleTVOS;
   }
@@ -133,6 +152,12 @@ static PlatformObjc *_Unknown = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
   if ([platform compare:@"MAC"] == NSOrderedSame) {
     return _Mac;
   }
+  if ([platform compare:@"NINTENDO"] == NSOrderedSame) {
+    return _Nintendo;
+  }
+  if ([platform compare:@"OCULUS"] == NSOrderedSame) {
+    return _Oculus;
+  }
   if ([platform compare:@"WEB"] == NSOrderedSame) {
     return _Web;
   }
@@ -153,6 +178,9 @@ static PlatformObjc *_Unknown = [[PlatformObjc alloc] initWithValue:@"UNKNOWN"];
   }
   if ([platform compare:@"PS4"] == NSOrderedSame) {
     return _PS4;
+  }
+  if ([platform compare:@"VISION_OS"] == NSOrderedSame) {
+    return _VisionOS;
   }
   if ([platform compare:@"WATCH_OS"] == NSOrderedSame) {
     return _WatchOS;
