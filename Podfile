@@ -2,7 +2,7 @@
 #  Podfile
 #  BrainCloud
 #
-#  Copyright (c) 2020 BitHeads Inc. All rights reserved.
+#  Copyright (c) 2026 BitHeads Inc. All rights reserved.
 #
 
 inhibit_all_warnings!
@@ -21,71 +21,59 @@ end
 target 'BrainCloud-iOS' do
   platform :ios, '15.0'
   shared_pods
-end
-
-target 'BrainCloud-iOSTests' do
-  platform :ios, '15.0'
-  shared_pods
+  target 'BrainCloud-iOSTests' do
+    inherit! :search_paths
+  end
 end
 
 target 'BrainCloud-OSX' do
-  platform :osx, '26.1.99'
+  platform :osx, '13.0'
   shared_pods
-end
-
-target 'BrainCloud-OSXTests' do
-  platform :osx, '26.1.99'
-  shared_pods
+  target 'BrainCloud-OSXTests' do
+    inherit! :search_paths
+  end
 end
 
 target 'BrainCloud-tvOS' do
   platform :tvos, '15.0'
   shared_pods
-end
-
-target 'BrainCloud-tvOSTests' do
-  platform :tvos, '15.0'
-  shared_pods
+  target 'BrainCloud-tvOSTests' do
+    inherit! :search_paths
+  end
 end
 
 target 'BrainCloud-visionOS' do
   platform :visionos, '1.0'
   shared_pods
-end
-
-target 'BrainCloud-visionOSTests' do
-  platform :visionos, '1.0'
-  shared_pods
+  target 'BrainCloud-visionOSTests' do
+    inherit! :search_paths
+  end
 end
 
 target 'BrainCloud-watchOS' do
-  platform :watchos, '4.0'
+  platform :watchos, '8.0'
   shared_pods
-end
-
-target 'BrainCloud-watchOSTests' do
-  platform :watchos, '4.0'
-  shared_pods
+  target 'BrainCloud-watchOSTests' do
+    inherit! :search_paths
+  end
 end
 
 post_install do |installer|
+  minimums = {
+    'IPHONEOS_DEPLOYMENT_TARGET' => '15.0',
+    'MACOSX_DEPLOYMENT_TARGET'   => '13.0',
+    'TVOS_DEPLOYMENT_TARGET'     => '15.0',
+    'XROS_DEPLOYMENT_TARGET'     => '1.0',
+    'WATCHOS_DEPLOYMENT_TARGET'  => '8.0',
+  }
   installer.generated_projects.each do |project|
     project.targets.each do |target|
       target.build_configurations.each do |config|
-        if Gem::Version.new('12.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_s)
-          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
-        end
-        if Gem::Version.new('10.13') > Gem::Version.new(config.build_settings['MACOSX_DEPLOYMENT_TARGET'].to_s)
-          config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '26.1.99'
-        end
-        if Gem::Version.new('12.0') > Gem::Version.new(config.build_settings['TVOS_DEPLOYMENT_TARGET'].to_s)
-          config.build_settings['TVOS_DEPLOYMENT_TARGET'] = '15.0'
-        end
-        if Gem::Version.new('1.0') > Gem::Version.new(config.build_settings['XROS_DEPLOYMENT_TARGET'].to_s)
-          config.build_settings['XROS_DEPLOYMENT_TARGET'] = '1.0'
-        end
-        if Gem::Version.new('4.0') > Gem::Version.new(config.build_settings['WATCHOS_DEPLOYMENT_TARGET'].to_s)
-          config.build_settings['WATCHOS_DEPLOYMENT_TARGET'] = '4.0'
+        minimums.each do |key, min_version|
+          current = config.build_settings[key].to_s
+          if current.empty? || !Gem::Version.correct?(current) || Gem::Version.new(min_version) > Gem::Version.new(current)
+            config.build_settings[key] = min_version
+          end
         end
       end
     end
