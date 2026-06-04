@@ -51,7 +51,7 @@ Pod::Spec.new do |s|
   
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.libraries                = 'c++', 'z'
+  #s.libraries                = 'c++', 'z' # BrainCloudCpp.podspec already link these libraries
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.dependency 'BrainCloudCpp', '6.0.0'
