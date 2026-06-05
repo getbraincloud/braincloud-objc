@@ -1,17 +1,17 @@
 //
-//  BrainCloud_OSXTests.m
-//  BrainCloud-OSXTests
+//  BrainCloud_visionOSTests.m
+//  BrainCloud_visionOSTests
 //
 //  Copyright © 2026 BitHeads Inc. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface BrainCloud_OSXTests : XCTestCase
+@interface BrainCloud_visionOSTests : XCTestCase
 
 @end
 
-@implementation BrainCloud_OSXTests
+@implementation BrainCloud_visionOSTests
 
 - (void)setUp {
     [super setUp];

@@ -11,15 +11,16 @@ Pod::Spec.new do |s|
 
   s.name     = "BrainCloud"
 
-  s.version  = "5.9.5"
+  s.version  = "6.0.0"
 
-  s.summary  = "The Objective-C/Swift client library for brainCloud"
+  s.summary  = "The Objective-C/Swift client library for brainCloud."
   s.homepage = "http://getbraincloud.com/"
 
-  s.ios.deployment_target  = "12.0"
-  s.osx.deployment_target  = "10.13"
-  s.tvos.deployment_target = "12.0"
-  s.watchos.deployment_target = "4.0"
+  s.ios.deployment_target      = "15.0"
+  s.osx.deployment_target      = "13.0"
+  s.tvos.deployment_target     = "15.0"
+  s.visionos.deployment_target = "1.0"
+  s.watchos.deployment_target  = "8.0"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
@@ -38,7 +39,7 @@ Pod::Spec.new do |s|
   s.header_mappings_dir    = 'Shared'
   s.public_header_files    = 'Shared/**/*.{h,hh}'
   s.private_header_files   = 'Shared/**/{BrainCloudCallback,TypeHelpers,BrainCloudRTTCallback,BrainCloudRTTConnectCallback,BrainCloudRelayCallback,BrainCloudRelaySystemCallback,BrainCloudRelayConnectCallback}.hh'
-  s.source_files           = 'Shared/**/*.{h,hh,m,mm}'
+  s.source_files           = 'Shared/**/*.{h,hh,m,mm}', 'SAMKeychain/*.{h,m}'
 
   # for use_frameworks!
   # to use development pod: change below to your full source code path
@@ -50,9 +51,9 @@ Pod::Spec.new do |s|
   
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.libraries                = 'c++', 'z'
+  #s.libraries                = 'c++', 'z' # BrainCloudCpp.podspec already link these libraries
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.dependency 'BrainCloudCpp', '5.9.5'
+  s.dependency 'BrainCloudCpp', '6.0.0'
 
 end

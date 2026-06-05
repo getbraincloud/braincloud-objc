@@ -380,10 +380,10 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
 }
 
 - (void)authenticateGameCenter:(NSString *)gameCenterId
-                   forceCreate:(BOOL)forceCreate
-               completionBlock:(BCCompletionBlock)completionBlock
-          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                      cbObject:(BCCallbackObject)cbObject
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     [self _initializeIdentity:FALSE];
     
@@ -394,10 +394,45 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
     
     [[_bcClient authenticationService] authenticateGameCenter:gameCenterId
                                                   forceCreate:forceCreate
+                                                    timestamp:0
+                                                 publicKeyUrl:nil
+                                                    signature:nil
+                                                         salt:nil
+                                                 teamPlayerId:nil
                                               completionBlock:self.authSuccessCompletionBlock
                                          errorCompletionBlock:self.authErrorCompletionBlock
                                                      cbObject:aco];
     
+}
+
+- (void)authenticateGameCenter:(NSString *)gameCenterId
+             forceCreate:(BOOL)forceCreate
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+    
+    AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+    aco.completionBlock = completionBlock;
+    aco.errorCompletionBlock = errorCompletionBlock;
+    aco.cbObject = cbObject;
+    
+    [[_bcClient authenticationService] authenticateGameCenter:gameCenterId
+                                                  forceCreate:forceCreate
+                                                    timestamp:timestamp
+                                                 publicKeyUrl:publicKeyUrl
+                                                    signature:signature
+                                                         salt:salt
+                                                 teamPlayerId:teamPlayerId
+                                              completionBlock:self.authSuccessCompletionBlock
+                                         errorCompletionBlock:self.authErrorCompletionBlock
+                                                     cbObject:aco];
 }
 
 - (void)authenticateGoogle:(NSString *)googleUserId
@@ -670,10 +705,10 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
 }
 
 - (void)smartSwitchAuthenticateGameCenter:(NSString *)gameCenterId
-                   forceCreate:(BOOL)forceCreate
-               completionBlock:(BCCompletionBlock)completionBlock
-          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                      cbObject:(BCCallbackObject)cbObject
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
 {
     [self _initializeIdentity:FALSE];
 
@@ -686,9 +721,49 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
 
 		[[self->_bcClient authenticationService] authenticateGameCenter:gameCenterId
                                                   forceCreate:forceCreate
+                                                    timestamp:0
+                                                 publicKeyUrl:nil
+                                                    signature:nil
+                                                         salt:nil
+                                                 teamPlayerId:nil
                                               completionBlock:self.authSuccessCompletionBlock
                                          errorCompletionBlock:self.authErrorCompletionBlock
                                                      cbObject:aco];
+    };
+    
+    [self smartSwitchAuthentication:authCallback];
+}
+
+- (void)smartSwitchAuthenticateGameCenter:(NSString *)gameCenterId
+             forceCreate:(BOOL)forceCreate
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+    
+    BCSmartSwitchCompletionBlock authCallback = ^() {
+        
+        AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+        aco.completionBlock = completionBlock;
+        aco.errorCompletionBlock = errorCompletionBlock;
+        aco.cbObject = cbObject;
+        
+        [[self->_bcClient authenticationService] authenticateGameCenter:gameCenterId
+                                                            forceCreate:forceCreate
+                                                              timestamp:timestamp
+                                                           publicKeyUrl:publicKeyUrl
+                                                              signature:signature
+                                                                   salt:salt
+                                                           teamPlayerId:teamPlayerId
+                                                        completionBlock:self.authSuccessCompletionBlock
+                                                   errorCompletionBlock:self.authErrorCompletionBlock
+                                                               cbObject:aco];
     };
     
     [self smartSwitchAuthentication:authCallback];

@@ -325,6 +325,11 @@
                               encoding:NSASCIIStringEncoding];
 }
 
++ (NSString *)ConfigOverrides {
+    return [NSString stringWithCString:BrainCloud::OperationParam::ConfigOverrides.getValue().c_str()
+                              encoding:NSASCIIStringEncoding];
+}
+
 + (NSString *)Content {
     return [NSString stringWithCString:BrainCloud::OperationParam::Content.getValue().c_str()
                               encoding:NSASCIIStringEncoding];
