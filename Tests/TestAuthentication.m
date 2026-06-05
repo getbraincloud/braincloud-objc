@@ -216,8 +216,7 @@
      completionBlock:successBlock
      errorCompletionBlock:failureBlock
      cbObject:nil];
-    [self waitForResult];
-    //[self waitForFailedResult]; // Compatibility flag is turned on, we will need to disable it eventually
+    [self waitForFailedResult]; // Compatibility flag is turned on, we will need to disable it eventually
 }
 
 - (void)testAuthenticateEmailPassword
