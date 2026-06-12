@@ -1431,6 +1431,8 @@
 		D84597341C6D23A4003DA016 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				02830F612FC8D3C4006F573A /* BrainCloudCampaign.hh */,
+				02830F662FC8DBF0006F573A /* BrainCloudCampaign.mm */,
 				5212F52E2EE213A70069B6EF /* BCOperationParam.hh */,
 				5212F52F2EE213A70069B6EF /* BCOperationParam.mm */,
 				5212F5302EE213A70069B6EF /* BCServiceName.hh */,
@@ -1727,6 +1729,7 @@
 				DF99CBF01C936749000B2418 /* TestWrapper.m */,
 				DFF5CCE31C935A00002E62F8 /* ids.txt */,
 				57F573DB290713F8006061F2 /* TestBlockchain.m */,
+				02E647572FCA16EA009304AB /* TestCampaign.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
