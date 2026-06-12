@@ -69,6 +69,7 @@
 + (NSString *)ChannelId;
 + (NSString *)ChannelSubId;
 + (NSString *)ChannelType;
++ (NSString *)ConfigOverrides;
 + (NSString *)Content;
 + (NSString *)CustomData;
 + (NSString *)CustomEntityFieldsJson;

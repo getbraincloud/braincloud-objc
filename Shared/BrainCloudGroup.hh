@@ -589,7 +589,6 @@ typedef NS_ENUM(NSUInteger, AutoJoinStrategy) { JoinFirstGroup, JoinRandomGroup 
                       cbObject:(BCCallbackObject)cbObject;
 
 /**
-/**
  * Delete an outstanding request to join the group.
  *
  * Service Name - group

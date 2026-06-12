@@ -10,6 +10,7 @@
 + (NSString *)Authenticate;
 + (NSString *)AuthenticateV2;
 + (NSString *)Blockchain;
++ (NSString *)Campaign;
 + (NSString *)Chat;
 + (NSString *)Currency;
 + (NSString *)CustomEntity;

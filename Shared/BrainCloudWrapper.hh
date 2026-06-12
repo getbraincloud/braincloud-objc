@@ -186,25 +186,66 @@
                     cbObject:(BCCallbackObject)cbObject;
 
 /**
- * Authenticate the user using their Game Center id
+ * Authenticate the user using their Game Center Id (legacy support only, not recommended).
  *
- * Service Name - Authenticate
- * Service Operation - Authenticate
+ * Service Name - authenticationV2
+ * Service Operation - AUTHENTICATE
  *
- * @param gameCenterId The player's game center id  (use the playerID property from the local
- *GKPlayer object)
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
  * @param forceCreate Should a new profile be created for this user if the account does not exist?
- * @param success The method to call in event of successful login
- * @param failure The method to call in the event of an error during authentication
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
  *
- * @returns   performs the success callback on success, failure callback on failure
+ * @returns Performs the success callback on success, failure callback on failure.
+ *
+ * @deprecated This version of the method requires a compatibility flag on brainCloud to be enabled and is only included for legacy support.
+ *             Use the overloaded method which includes proper Game Center account verification.
+ *             We will be removing this method in a future client release of our brainCloud libraries.
  *
  */
 - (void)authenticateGameCenter:(NSString *)gameCenterId
-                   forceCreate:(BOOL)forceCreate
-               completionBlock:(BCCompletionBlock)completionBlock
-          errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                      cbObject:(BCCallbackObject)cbObject;
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
+__attribute__((deprecated));
+
+/**
+ * Authenticate the user using their Game Center Id and identity verification signature.
+ *
+ * Service Name - authenticationV2
+ * Service Operation - AUTHENTICATE
+ *
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param timestamp The timestamp value returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param publicKeyUrl The publicKeyUrl value returned as part of the identity verification signature fetch from Game Center.
+ *                     Required for modern Game Center verification.
+ * @param signature The raw signature bytes returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param salt The raw salt bytes returned as part of the identity verification signature fetch from Game Center.
+ *             Required for modern Game Center verification.
+ * @param teamPlayerId Optional for Game Center verification; only required when gameCenterId is set to a value other than
+ *                     teamPlayerId (e.g. playerId), so that brainCloud can still associate the user with their team-scoped identity.
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
+ *
+ * @returns Performs the success callback on success, failure callback on failure.
+ *
+ */
+- (void)authenticateGameCenter:(NSString *)gameCenterId
+             forceCreate:(BOOL)forceCreate
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Authenticate the user using a google userid(email address) and google authentication token.
@@ -462,29 +503,79 @@
                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                                cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
  *
- * Authenticate the user using their Game Center id
+ * Authenticate the user using their Game Center Id (legacy support only, not recommended).
  *
- * Service Name - Authenticate
- * Service Operation - Authenticate
+ * Service Name - authenticationV2
+ * Service Operation - AUTHENTICATE
  *
- * @param in_gameCenterId The player's game center id  (use the playerID property from the local GKPlayer object)
- * @param in_forceCreate Should a new profile be created for this user if the account does not exist?
- * @param in_success The method to call in event of successful login
- * @param in_failure The method to call in the event of an error during authentication
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
  *
- * @returns   performs the in_success callback on success, in_failure callback on failure
+ * @returns Performs the success callback on success, failure callback on failure.
+ *
+ * @deprecated This version of the method requires a compatibility flag on brainCloud to be enabled and is only included for legacy support.
+ *             Use the overloaded method which includes proper Game Center account verification.
+ *             We will be removing this method in a future client release of our brainCloud libraries.
  *
  */
 - (void)smartSwitchAuthenticateGameCenter:(NSString *)gameCenterId
-                              forceCreate:(BOOL)forceCreate
-                          completionBlock:(BCCompletionBlock)completionBlock
-                     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                                 cbObject:(BCCallbackObject)cbObject;
+             forceCreate:(BOOL)forceCreate
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject
+__attribute__((deprecated));
+
+/**
+ * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
+ * In event the current session was previously an anonymous account, the smart switch will delete that profile.
+ * Use this function to keep a clean designflow from anonymous to signed profiles
+ *
+ * Authenticate the user using their Game Center Id and identity verification signature.
+ *
+ * Service Name - authenticationV2
+ * Service Operation - AUTHENTICATE
+ *
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param timestamp The timestamp value returned as part of the identity verification signature fetch from Game Center.
+ *                     Required for modern Game Center verification.
+ * @param publicKeyUrl The publicKeyUrl value returned as part of the identity verification signature fetch from Game Center.
+ *                     Required for modern Game Center verification.
+ * @param signature The raw signature bytes returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param signatureLength The length of the returned identity verification signature.
+ *                        Required for modern Game Center verification.
+ * @param salt The raw salt bytes returned as part of the identity verification signature fetch from Game Center.
+ *             Required for modern Game Center verification.
+ * @param saltLength The length of the returned identity verification salt.
+ *                   Required for modern Game Center verification.
+ * @param teamPlayerId Optional for Game Center verification; only required when gameCenterId is set to a value other than teamPlayerId
+ *                     (e.g. playerId), so that brainCloud can still associate the user with their team-scoped identity.
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
+ *
+ * @returns Performs the success callback on success, failure callback on failure.
+ *
+ */
+- (void)smartSwitchAuthenticateGameCenter:(NSString *)gameCenterId
+             forceCreate:(BOOL)forceCreate
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)completionBlock
+    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                cbObject:(BCCallbackObject)cbObject;
 
 /*
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.

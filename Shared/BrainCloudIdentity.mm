@@ -65,21 +65,47 @@
 }
 
 - (void)attachGameCenterIdentity:(NSString *)gameCenterId
-                 completionBlock:(BCCompletionBlock)cb
-            errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                        cbObject:(BCCallbackObject)cbObject
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getIdentityService()->attachGameCenterIdentity(
-        [gameCenterId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+        [gameCenterId cStringUsingEncoding:NSUTF8StringEncoding],
+        timestamp,
+        publicKeyUrl.absoluteString.length > 0 ? publicKeyUrl.absoluteString.UTF8String : "",
+        signature != nil ? (const uint8_t *)[signature bytes] : NULL,
+        signature != nil ? [signature length] : 0,
+        salt != nil ? (const uint8_t *)[salt bytes] : NULL,
+        salt != nil ? [salt length] : 0,
+        teamPlayerId.length > 0 ? [teamPlayerId cStringUsingEncoding:NSUTF8StringEncoding] : "",
+        new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)mergeGameCenterIdentity:(NSString *)gameCenterId
-                completionBlock:(BCCompletionBlock)cb
-           errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                       cbObject:(BCCallbackObject)cbObject
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject
 {
     _client->getIdentityService()->mergeGameCenterIdentity(
-        [gameCenterId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+        [gameCenterId cStringUsingEncoding:NSUTF8StringEncoding],
+        timestamp,
+        publicKeyUrl.absoluteString.length > 0 ? publicKeyUrl.absoluteString.UTF8String : "",
+        signature != nil ? (const uint8_t *)[signature bytes] : NULL,
+        signature != nil ? [signature length] : 0,
+        salt != nil ? (const uint8_t *)[salt bytes] : NULL,
+        salt != nil ? [salt length] : 0,
+        teamPlayerId.length > 0 ? [teamPlayerId cStringUsingEncoding:NSUTF8StringEncoding] : "",
+        new BrainCloudCallback(cb, ecb, cbObject));
 }
 
 - (void)detachGameCenterIdentity:(NSString *)gameCenterId
