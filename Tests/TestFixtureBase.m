@@ -317,7 +317,7 @@ long createFile(const char * in_path, int64_t in_size)
 
 - (void)tearDown
 {
-	if ([self authenticateOnSetup])
+	if ([self shouldLogoutOnTearDown])
 	{
 		[m_bcWrapper logout:true withCompletionBlock:successBlock errorCompletionBlock:failureBlock cbObject:nil];
 	}
@@ -504,6 +504,8 @@ long createFile(const char * in_path, int64_t in_size)
 }
 
 - (bool)authenticateOnSetup { return true; }
+
+- (bool)shouldLogoutOnTearDown { return [self authenticateOnSetup]; }
 
 - (bool)goToChildProfile
 {

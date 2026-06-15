@@ -39,14 +39,14 @@ Pod::Spec.new do |s|
   s.header_mappings_dir    = 'Shared'
   s.public_header_files    = 'Shared/**/*.{h,hh}'
   s.private_header_files   = 'Shared/**/{BrainCloudCallback,TypeHelpers,BrainCloudRTTCallback,BrainCloudRTTConnectCallback,BrainCloudRelayCallback,BrainCloudRelaySystemCallback,BrainCloudRelayConnectCallback}.hh'
-  s.source_files           = 'Shared/**/*.{h,hh,m,mm}', 'SAMKeychain/*.{h,m}'
+  s.source_files           = 'Shared/**/*.{h,hh,m,mm}'
 
   # for use_frameworks!
   # to use development pod: change below to your full source code path
   # to use cocoapod release: change to be relative to ${PODS_ROOT}
   s.xcconfig = {
     # eg. '"${PODS_ROOT}/BrainCloudCpp/include"', '"/local/path/to/braincloud-cpp/include"'
-    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include"'
+    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include" "${PODS_ROOT}/BrainCloudCpp/include/braincloud/internal/apple"'
   }
   
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
