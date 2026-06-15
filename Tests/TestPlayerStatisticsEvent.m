@@ -18,6 +18,8 @@
 
 - (void)tearDown { [super tearDown]; }
 
+- (bool)shouldLogoutOnTearDown { return NO; }
+
 - (void)testTriggerPlayerStatisticsEvent
 {
     [[m_client playerStatisticsEventService] triggerStatsEvent:@"testEvent01"
@@ -43,12 +45,6 @@
 {
     [m_client registerRewardCallback:rewardBlock];
 
-    [[m_client playerStateService] resetUserState:successBlock
-                             errorCompletionBlock:failureBlock
-                                         cbObject:nil];
-    [self waitForResult];
-    [self reset];
-
     [[m_client playerStatisticsEventService]
             triggerStatsEvents:
                     @"[ {  \"eventName\": \"incQuest1Stat\", \"eventMultiplier\": 1 }, {  \"eventName\": \"incQuest2Stat\", \"eventMultiplier\": 1 } ]"
@@ -57,19 +53,18 @@
                       cbObject:nil];
     [self waitForResult];
     [m_client deregisterRewardCallback];
-    
-    XCTAssertEqual(_rewardCallbacksReceived, 1);
-}
 
-- (void)testRewardHandlerMultipleApiCallsInBundle
-{
-    [m_client registerRewardCallback:rewardBlock];
+    XCTAssertEqual(_rewardCallbacksReceived, 1);
 
     [[m_client playerStateService] resetUserState:successBlock
                              errorCompletionBlock:failureBlock
                                          cbObject:nil];
     [self waitForResult];
-    [self reset];
+}
+
+- (void)testRewardHandlerMultipleApiCallsInBundle
+{
+    [m_client registerRewardCallback:rewardBlock];
 
     [[m_client playerStatisticsEventService]
             triggerStatsEvents:
@@ -84,12 +79,17 @@
                completionBlock:successBlock
           errorCompletionBlock:failureBlock
                       cbObject:nil];
-    
+
     [self waitForResultExpectedCount:2];
     [m_client deregisterRewardCallback];
-    
+
     XCTAssertEqual(_rewardCallbacksReceived, 1);
     XCTAssertEqual(_apiRewardsReceived, 2);
+
+    [[m_client playerStateService] resetUserState:successBlock
+                             errorCompletionBlock:failureBlock
+                                         cbObject:nil];
+    [self waitForResult];
 }
 
 @end
