@@ -178,6 +178,7 @@
      cbObject:nil];
     [self waitForFailedResult];
 }
+
 - (void)testAuthenticateGoogle
 {
     [[m_client authenticationService]
@@ -189,6 +190,7 @@
      cbObject:nil];
     [self waitForFailedResult];
 }
+
 - (void)testAuthenticateApple
 {
     [[m_client authenticationService]
@@ -199,6 +201,22 @@
      errorCompletionBlock:failureBlock
      cbObject:nil];
     [self waitForFailedResult];
+}
+
+- (void)testAuthenticateGameCenter
+{
+    [[m_client authenticationService]
+     authenticateGameCenter:@"A:_0123456789abcdeffedcba9876543210"
+     forceCreate:true
+     timestamp:1778600000000
+     publicKeyUrl:[NSURL URLWithString:@"https://static.gc.apple.com/public-key/gc-prod-12.cer"]
+     signature:[[NSData alloc] initWithBase64EncodedString:@"dqCtj0Caf/i1/N3An80OhKTBceHkr04kQLIEOQ868wseO7xs5ObInhktnWfclrp9BpEbUYP4FaPYY8M0JqKik9pK+iMfrMiJNcELuQAxkLKB6ytjvoESJHFqxdbBd0rCssUlOEk6SnndoCWy6H/QHE/ohC9kY2y7fk4Zpvh9nJUEOWxetOBdYE/PpVK/KCI6ADQWR0WgL3PapocsjCctaTgDV6EnPmyqznAmEzFK3LTTpKqiOlbDcgKdv/ONOgLKQ6JFgNqH+1JR59kQ2yUDCzdP8MDyoHrPxWZ1AOFFNNHzPb8iWTSLgOfd1Khtvi5ZrY8yDNuum6V5hcMGT4qz1whRwFkMsVOSo1/AQ+O1XW6JZil3aytnI3O/XanIL/aWey8Nng/sL/uMMgtBiB98MBjWlJg8ftK7WdsRH2/bqXVGUTxGCqdxVseRM4hj/SNrN+u8plpGSaeTgbwMmPoqVVOhmVqE28kUypBQu5zzihndDgnw89Ym3+ppR5fdjNhP4mAQA+k5pgY8v4aWpiHMVkgvm83bmavFTqDWXqvl1t4+ZKjozrBaiiefW5LG2dhMswPXg8W5KLtgQ0uDh8UsGoPmuuhXWRVh3A4D5FDtvBLXN4EzY1CESWyPPvqMgXKGdf5Xp7xgPcWON6vxUm35hcVPy5eMFoGt3McrgubbKGT=" options:0]
+     salt:[[NSData alloc] initWithBase64EncodedString:@"Ing+69==" options:0]
+     teamPlayerId:@"T:_fedcba98765432100123456789abcdef"
+     completionBlock:successBlock
+     errorCompletionBlock:failureBlock
+     cbObject:nil];
+    [self waitForFailedResult]; // Compatibility flag is turned on, we will need to disable it eventually
 }
 
 - (void)testAuthenticateEmailPassword

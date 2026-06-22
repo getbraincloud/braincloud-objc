@@ -10,7 +10,7 @@
 
 #import "BrainCloudSaveDataHelper.h"
 
-#import "SAMKeychain.h"
+#import "braincloud/internal/apple/SAMKeychain.h"
 
 @interface BrainCloudSaveDataHelper ()
 

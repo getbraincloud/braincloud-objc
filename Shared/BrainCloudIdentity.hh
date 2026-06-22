@@ -94,62 +94,97 @@
                       cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Attach a Game Center identity to the current profile.
-*
-* Service Name - Identity
-* Service Operation - Attach
-*
-* @param gameCenterId The player's game center id  (use the playerID property from the local
-*GKPlayer object)
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-* Errors to watch for:  SWITCHING_PROFILES - this means that the Game Center identity you provided
-* already points to a different profile.  You will likely want to offer the player the
-* choice to *SWITCH* to that profile, or *MERGE* the profiles.
-*
-* To switch profiles, call ClearSavedProfileID() and call this method again.
-*
-*/
+ * Attach a Game Center identity to the current profile.
+ *
+ * Note: If the Game Center legacy authentication compatibility flag is enabled,
+ * only gameCenterId is required and all verification signature parameters are ignored.
+ *
+ * Service Name - identity
+ * Service Operation - ATTACH
+ *
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param timestamp The timestamp value returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param publicKeyUrl The publicKeyUrl value returned as part of the identity verification signature fetch from Game Center.
+ *                     Required for modern Game Center verification.
+ * @param signature The raw signature bytes returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param salt The raw salt bytes returned as part of the identity verification signature fetch from Game Center.
+ *             Required for modern Game Center verification.
+ * @param teamPlayerId Optional for Game Center verification; only required when gameCenterId is set to a value other than
+ *                     teamPlayerId (e.g. playerId), so that brainCloud can still associate the user with their team-scoped identity.
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
+ *
+ * Errors to watch for:  SWITCHING_PROFILES - this means that the Game Center identity you provided
+ * already points to a different profile.  You will likely want to offer the player the
+ * choice to *SWITCH* to that profile, or *MERGE* the profiles.
+ *
+ * To switch profiles, call ClearSavedProfileID() and call this method again.
+ *
+ */
 - (void)attachGameCenterIdentity:(NSString *)gameCenterId
-                 completionBlock:(BCCompletionBlock)cb
-            errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                        cbObject:(BCCallbackObject)cbObject;
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Merge the profile associated with the specified Game Center identity with the current profile.
-*
-* Service Name - Identity
-* Service Operation - Merge
-*
-* @param gameCenterId The player's game center id  (use the playerID property from the local
-*GKPlayer object)
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * Merge the profile associated with the specified Game Center identity with the current profile.
+ *
+ * Note: If the Game Center legacy authentication compatibility flag is enabled,
+ * only gameCenterId is required and all verification signature parameters are ignored.
+ *
+ * Service Name - identity
+ * Service Operation - MERGE
+ *
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param timestamp The timestamp value returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param publicKeyUrl The publicKeyUrl value returned as part of the identity verification signature fetch from Game Center.
+ *                     Required for modern Game Center verification.
+ * @param signature The raw signature bytes returned as part of the identity verification signature fetch from Game Center.
+ *                  Required for modern Game Center verification.
+ * @param salt The raw salt bytes returned as part of the identity verification signature fetch from Game Center.
+ *             Required for modern Game Center verification.
+ * @param teamPlayerId Optional for Game Center verification; only required when gameCenterId is set to a value other than
+ *                     teamPlayerId (e.g. playerId), so that brainCloud can still associate the user with their team-scoped identity.
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
+ *
+ */
 - (void)mergeGameCenterIdentity:(NSString *)gameCenterId
-                completionBlock:(BCCompletionBlock)cb
-           errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                       cbObject:(BCCallbackObject)cbObject;
+               timestamp:(uint64_t)timestamp
+            publicKeyUrl:(NSURL *)publicKeyUrl
+               signature:(NSData *)signature
+                    salt:(NSData *)salt
+            teamPlayerId:(NSString *)teamPlayerId
+         completionBlock:(BCCompletionBlock)cb
+    errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Detach the Game Center identity from the current profile.
-*
-* Service Name - Identity
-* Service Operation - Detach
-*
-* @param gameCenterId The player's game center id  (use the playerID property from the local
-*GKPlayer object)
-* @param continueAnon Proceed even if the profile will revert to anonymous?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-* Watch for DOWNGRADING_TO_ANONYMOUS_ERROR - occurs if you set continueAnon to false, and
-* disconnecting this identity would result in the profile being anonymous (which means that
-* the profile wouldn't be retrievable if the user loses their device)
+ * Detach the Game Center identity from the current profile.
+ *
+ * Service Name - Identity
+ * Service Operation - Detach
+ *
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param continueAnon Proceed even if the profile will revert to anonymous?
+ * @param completionBlock Block to call on return of successful server response.
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response.
+ * @param cbObject User object sent to the completion blocks.
+ *
+ * Watch for DOWNGRADING_TO_ANONYMOUS_ERROR - occurs if you set continueAnon to false, and
+ * disconnecting this identity would result in the profile being anonymous (which means that
+ * the profile wouldn't be retrievable if the user loses their device)
+ *
 */
 - (void)detachGameCenterIdentity:(NSString *)gameCenterId
                     continueAnon:(bool)continueAnon

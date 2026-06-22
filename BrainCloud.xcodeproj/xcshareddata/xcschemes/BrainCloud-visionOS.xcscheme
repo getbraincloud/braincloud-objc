@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D84596FF1C6D06E2003DA016"
+               BlueprintIdentifier = "02490DC32FD06FDC00ACAC52"
                BuildableName = "BrainCloud.framework"
-               BlueprintName = "BrainCloud-iOS"
+               BlueprintName = "BrainCloud-visionOS"
                ReferencedContainer = "container:BrainCloud.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,35 +27,14 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D84596FF1C6D06E2003DA016"
-            BuildableName = "BrainCloud.framework"
-            BlueprintName = "BrainCloud-iOS"
-            ReferencedContainer = "container:BrainCloud.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "MallocGuardEdges"
-            value = ""
-            isEnabled = "YES">
-         </AdditionalOption>
-         <AdditionalOption
-            key = "MallocScribble"
-            value = ""
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D84597081C6D06E2003DA016"
-               BuildableName = "BrainCloud-iOSTests.xctest"
-               BlueprintName = "BrainCloud-iOSTests"
+               BlueprintIdentifier = "025704632FD07409006D8CB3"
+               BuildableName = "BrainCloud-visionOSTests.xctest"
+               BlueprintName = "BrainCloud-visionOSTests"
                ReferencedContainer = "container:BrainCloud.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -70,16 +49,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D84596FF1C6D06E2003DA016"
-            BuildableName = "BrainCloud.framework"
-            BlueprintName = "BrainCloud-iOS"
-            ReferencedContainer = "container:BrainCloud.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      allowLocationSimulation = "YES"
+      queueDebuggingEnableBacktraceRecording = "Yes">
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -90,9 +61,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D84596FF1C6D06E2003DA016"
+            BlueprintIdentifier = "02490DC32FD06FDC00ACAC52"
             BuildableName = "BrainCloud.framework"
-            BlueprintName = "BrainCloud-iOS"
+            BlueprintName = "BrainCloud-visionOS"
             ReferencedContainer = "container:BrainCloud.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

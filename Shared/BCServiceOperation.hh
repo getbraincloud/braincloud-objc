@@ -55,7 +55,9 @@
 + (NSString *)CreateGroup;
 + (NSString *)CreateGroupEntity;
 + (NSString *)CreateLobby;
++ (NSString *)CreateLobbyWithConfig;
 + (NSString *)CreateLobbyWithPingData;
++ (NSString *)CreateLobbyWithConfigAndPingData;
 + (NSString *)CreateWithIndexedId;
 + (NSString *)CustomPageEvent;
 + (NSString *)CustomScreenEvent;
@@ -160,6 +162,7 @@
 + (NSString *)GetMessagesPage;
 + (NSString *)GetMessagesPageOffset;
 + (NSString *)GetMultiSocialLeaderboard;
++ (NSString *)GetMyCampaigns;
 + (NSString *)GetMyDivisions;
 + (NSString *)GetMyGroups;
 + (NSString *)GetPage;
