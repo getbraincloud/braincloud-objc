@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.name     = "BrainCloud"
 
-  s.version  = "6.0.0"
+  s.version  = "6.0.1"
 
   s.summary  = "The Objective-C/Swift client library for brainCloud."
   s.homepage = "http://getbraincloud.com/"
@@ -41,19 +41,21 @@ Pod::Spec.new do |s|
   s.private_header_files   = 'Shared/**/{BrainCloudCallback,TypeHelpers,BrainCloudRTTCallback,BrainCloudRTTConnectCallback,BrainCloudRelayCallback,BrainCloudRelaySystemCallback,BrainCloudRelayConnectCallback}.hh'
   s.source_files           = 'Shared/**/*.{h,hh,m,mm}'
 
-  # for use_frameworks!
-  # to use development pod: change below to your full source code path
-  # to use cocoapod release: change to be relative to ${PODS_ROOT}
-  s.xcconfig = {
-    # eg. '"${PODS_ROOT}/BrainCloudCpp/include"', '"/local/path/to/braincloud-cpp/include"'
-    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BrainCloudCpp/include" "${PODS_ROOT}/BrainCloudCpp/include/braincloud/internal/apple"'
-  }
+  # Shared/*.mm #include "braincloud/*.h" from the BrainCloudCpp pod. Published pods live
+  # under ${PODS_ROOT}; a local :path dev pod stays in its working tree, so also add
+  # CPPSOURCE when set (bccm syncsdk exports it for -e internal only; unset for prod).
+  cpp_header_search = '"${PODS_ROOT}/BrainCloudCpp/include" "${PODS_ROOT}/BrainCloudCpp/include/braincloud/internal/apple"'
+  cpp_dev_source = ENV['CPPSOURCE'].to_s
+  unless cpp_dev_source.empty?
+    cpp_header_search += " \"#{cpp_dev_source}/include\" \"#{cpp_dev_source}/include/braincloud/internal/apple\""
+  end
+  s.xcconfig = { 'USER_HEADER_SEARCH_PATHS' => cpp_header_search }
   
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   #s.libraries                = 'c++', 'z' # BrainCloudCpp.podspec already link these libraries
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.dependency 'BrainCloudCpp', '6.0.0'
+  s.dependency 'BrainCloudCpp', '6.0.1'
 
 end
