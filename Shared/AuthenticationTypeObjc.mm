@@ -21,9 +21,12 @@ static AuthenticationTypeObjc * _Anonymous = [[AuthenticationTypeObjc alloc] ini
 static AuthenticationTypeObjc * _Universal = [[AuthenticationTypeObjc alloc] initWithValue:@"Universal"];
 static AuthenticationTypeObjc * _Email = [[AuthenticationTypeObjc alloc] initWithValue:@"Email"];
 static AuthenticationTypeObjc * _Facebook = [[AuthenticationTypeObjc alloc] initWithValue:@"Facebook"];
+static AuthenticationTypeObjc * _FacebookLimited = [[AuthenticationTypeObjc alloc] initWithValue:@"FacebookLimited"];
+static AuthenticationTypeObjc * _Oculus = [[AuthenticationTypeObjc alloc] initWithValue:@"Oculus"];
 static AuthenticationTypeObjc * _GameCenter = [[AuthenticationTypeObjc alloc] initWithValue:@"GameCenter"];
 static AuthenticationTypeObjc * _Steam = [[AuthenticationTypeObjc alloc] initWithValue:@"Steam"];
 static AuthenticationTypeObjc * _Apple = [[AuthenticationTypeObjc alloc] initWithValue:@"Apple"];
+static AuthenticationTypeObjc * _EpicGames = [[AuthenticationTypeObjc alloc] initWithValue:@"EpicGames"];
 static AuthenticationTypeObjc * _Google = [[AuthenticationTypeObjc alloc] initWithValue:@"Google"];
 static AuthenticationTypeObjc * _GoogleOpenId = [[AuthenticationTypeObjc alloc] initWithValue:@"GoogleOpenId"];
 static AuthenticationTypeObjc * _Twitter = [[AuthenticationTypeObjc alloc] initWithValue:@"Twitter"];
@@ -62,6 +65,14 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
 {
     return _Facebook;
 }
++ (AuthenticationTypeObjc*) FacebookLimited
+{
+    return _FacebookLimited;
+}
++ (AuthenticationTypeObjc*) Oculus
+{
+    return _Oculus;
+}
 + (AuthenticationTypeObjc*) GameCenter
 {
     return _GameCenter;
@@ -70,9 +81,21 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
 {
     return _Steam;
 }
++ (AuthenticationTypeObjc*) Apple
+{
+    return _Apple;
+}
++ (AuthenticationTypeObjc*) EpicGames
+{
+    return _EpicGames;
+}
 + (AuthenticationTypeObjc*) Google
 {
     return _Google;
+}
++ (AuthenticationTypeObjc*) GoogleOpenId
+{
+    return _GoogleOpenId;
 }
 + (AuthenticationTypeObjc*) Twitter
 {
@@ -121,6 +144,14 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
     {
         return _Facebook;
     }
+    if ([platform compare:_FacebookLimited.toString] == NSOrderedSame)
+    {
+        return _FacebookLimited;
+    }
+    if ([platform compare:_Oculus.toString] == NSOrderedSame)
+    {
+        return _Oculus;
+    }
     if ([platform compare:_GameCenter.toString] == NSOrderedSame)
     {
         return _GameCenter;
@@ -129,9 +160,21 @@ static AuthenticationTypeObjc * _Unknown = [[AuthenticationTypeObjc alloc] initW
     {
         return _Steam;
     }
+    if ([platform compare:_Apple.toString] == NSOrderedSame)
+    {
+        return _Apple;
+    }
+    if ([platform compare:_EpicGames.toString] == NSOrderedSame)
+    {
+        return _EpicGames;
+    }
     if ([platform compare:_Google.toString] == NSOrderedSame)
     {
         return _Google;
+    }
+    if ([platform compare:_GoogleOpenId.toString] == NSOrderedSame)
+    {
+        return _GoogleOpenId;
     }
     if ([platform compare:_Twitter.toString] == NSOrderedSame)
     {

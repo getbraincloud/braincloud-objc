@@ -328,6 +328,35 @@
         [appleUserId UTF8String], continueAnon, new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)attachEpicGamesIdentity:(NSString *)epicAccountId
+                    authIdToken:(NSString *)authIdToken
+                completionBlock:(BCCompletionBlock)cb
+           errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                       cbObject:(BCCallbackObject)cbObject
+{
+    _client->getIdentityService()->attachEpicGamesIdentity(
+        [epicAccountId UTF8String], [authIdToken UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)mergeEpicGamesIdentity:(NSString *)epicAccountId
+                   authIdToken:(NSString *)authIdToken
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject
+{
+    _client->getIdentityService()->mergeEpicGamesIdentity(
+        [epicAccountId UTF8String], [authIdToken UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)detachEpicGamesIdentity:(NSString *)epicAccountId
+               continueAnon:(bool)continueAnon
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject
+{
+    _client->getIdentityService()->detachEpicGamesIdentity(
+        [epicAccountId UTF8String], continueAnon, new BrainCloudCallback(cb, ecb, cbObject));
+}
 
 - (void)attachTwitterIdentity:(NSString *)twitterId
           authenticationToken:(NSString *)token
