@@ -43,12 +43,15 @@
  * Initializes the brainCloud Wrapper
  *
  * @param wrapperName value used to differentiate saved wrapper data
+ *
  */
 - (instancetype) init: (NSString*) wrapperName;
 
 /**
  * Method returns an instance of the BrainCloudClient.
+ *
  * @return An instance of the BrainCloudClient.
+ *
  */
 - (BrainCloudClient *) getBCClient;
 
@@ -60,9 +63,10 @@
  * @param appId The app id
  * @param appVersion The version
  * @param companyName The company name used in the keychain for storing anonymous and profile ids.
- * You are free to pick anything you want.
+ *                    You are free to pick anything you want.
  * @param appName The app name used in teh keychain for storing anonymous and profile ids.
- * You are free to pick anything you want.
+ *                You are free to pick anything you want.
+ *
  */
 - (void)initialize:(NSString *)serverUrl
          secretKey:(NSString *)secretKey
@@ -79,9 +83,10 @@
  * @param secretMap All app ids to secret keys used by this application
  * @param appVersion The version
  * @param companyName The company name used in the keychain for storing anonymous and profile ids.
- * You are free to pick anything you want.
+ *                    You are free to pick anything you want.
  * @param appName The app name used in teh keychain for storing anonymous and profile ids.
- * You are free to pick anything you want.
+ *                You are free to pick anything you want.
+ *
  */
 - (void)initializeWithApps:(NSString *)serverURL
               defaultAppId:(NSString *)defaultAppId
@@ -141,9 +146,9 @@
 
 /**
  * Authenticate the user via cloud code (which in turn validates the supplied credentials against an
- *external system).
+ * external system).
  * This allows the developer to extend brainCloud authentication to support other backend
- *authentication systems.
+ * authentication systems.
  *
  * Service Name - Authenticate
  * Server Operation - Authenticate
@@ -153,7 +158,7 @@
  * @param externalAuthName The name of the cloud script to call for external authentication
  * @param forceCreate Should a new profile be created for this user if the account does not exist?
  *
- * @returns   runs the completion block on success, errorCompletion block on failure
+ * @returns Runs the completion block on success, errorCompletion block on failure
  */
 - (void)authenticateExternal:(NSString *)userId
          authenticationToken:(NSString *)authToken
@@ -171,7 +176,7 @@
  *
  * @param externalId The facebook id of the user
  * @param authenticationToken The validated token from the Facebook SDK
- *   (that will be further validated when sent to the bC service)
+ *                            (that will be further validated when sent to the bC service)
  * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -191,7 +196,8 @@
  * Service Name - authenticationV2
  * Service Operation - AUTHENTICATE
  *
- * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId, or teamPlayerId from the localPlayer object.
+ * @param gameCenterId The user's Game Center Id which can be the playerId, gamePlayerId,
+ *                     or teamPlayerId from the localPlayer object.
  * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response.
  * @param errorCompletionBlock Block to call on return of unsuccessful server response.
@@ -199,7 +205,8 @@
  *
  * @returns Performs the success callback on success, failure callback on failure.
  *
- * @deprecated This version of the method requires a compatibility flag on brainCloud to be enabled and is only included for legacy support.
+ * @deprecated This version of the method requires a compatibility flag on brainCloud to be enabled and is
+ *             only included for legacy support.
  *             Use the overloaded method which includes proper Game Center account verification.
  *             We will be removing this method in a future client release of our brainCloud libraries.
  *
@@ -270,18 +277,19 @@ __attribute__((deprecated));
       errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                   cbObject:(BCCallbackObject)cbObject;
 /**
-*Authenticate the user using a google openId
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param googleUserAccountEmail  The email associated with the google user
-* @param idToken  The account idToken. Gotten with calls like requestIdToken
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * Authenticate the user using a google openId
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param googleUserAccountEmail  The email associated with the google user
+ * @param idToken  The account idToken. Gotten with calls like requestIdToken
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
 - (void)authenticateGoogleOpenId:(NSString *)googleUserAccountEmail
                          idToken:(NSString *)idToken
                      forceCreate:(BOOL)forceCreate
@@ -296,7 +304,7 @@ __attribute__((deprecated));
  * Service Operation - Authenticate
  *
  * @param appleUserId String of the apple accounts user Id OR email
- * @param identityToken The authentication token confirming users identity
+ * @param identityToken The identityToken confirming users identity
  * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -330,8 +338,8 @@ __attribute__((deprecated));
                      cbObject:(BCCallbackObject)cbObject;
 
 /**
- * Authenticate the user using a steam userid and session ticket (without any validation on the
- *userid).
+ * Authenticate the user using a steam userid and session ticket
+ * (without any validation on the userid).
  *
  * Service Name - Authenticate
  * Service Operation - Authenticate
@@ -422,20 +430,21 @@ __attribute__((deprecated));
                      cbObject:(BCCallbackObject)cbObject;
 
 /**
-* A generic Authenticate method that translates to the same as calling a specific one, except it takes an extraJson
-* that will be passed along to pre- or post- hooks.
-*
-* Service Name - Authenticate
-* Service Operation - Authenticate
-*
-* @param authenticationType Universal, Email, Facebook, etc
-* @param ids Auth IDs structure
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
-* @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks. Leave empty string for no extraJson.
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * A generic Authenticate method that translates to the same as calling a specific one, except it takes an extraJson
+ * that will be passed along to pre- or post- hooks.
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param authenticationType Universal, Email, Facebook, etc
+ * @param ids Auth IDs structure
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks.
+ *                  Leave empty string for no  extraJson.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
 - (void)authenticateAdvanced:(AuthenticationTypeObjc *)authenticationType
            authenticationIds:(AuthenticationIdsObjc *)authenticationIds
                  forceCreate:(BOOL)forceCreate
@@ -444,7 +453,7 @@ __attribute__((deprecated));
         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                     cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -499,7 +508,7 @@ __attribute__((deprecated));
                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                                cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -511,7 +520,7 @@ __attribute__((deprecated));
  *
  * @param in_fbUserId The facebook id of the user
  * @param in_fbAuthToken The validated token from the Facebook SDK
- *   (that will be further validated when sent to the bC service)
+ *                       (that will be further validated when sent to the bC service)
  * @param in_forceCreate Should a new profile be created for this user if the account does not exist?
  * @param in_callback The method to be invoked when the server response is received
  *
@@ -597,7 +606,7 @@ __attribute__((deprecated));
     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                 cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -622,7 +631,7 @@ __attribute__((deprecated));
                  errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                              cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -649,7 +658,7 @@ __attribute__((deprecated));
                  errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                              cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -676,7 +685,7 @@ __attribute__((deprecated));
                 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                             cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -703,7 +712,7 @@ __attribute__((deprecated));
                     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                                 cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -728,7 +737,7 @@ __attribute__((deprecated));
                 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                             cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -752,7 +761,7 @@ __attribute__((deprecated));
                 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                             cbObject:(BCCallbackObject)cbObject;
 
-/*
+/**
  * Smart Switch Authenticate will logout of the current profile, and switch to the new authentication type.
  * In event the current session was previously an anonymous account, the smart switch will delete that profile.
  * Use this function to keep a clean designflow from anonymous to signed profiles
@@ -793,7 +802,8 @@ __attribute__((deprecated));
  * @param authenticationType Universal, Email, Facebook, etc
  * @param ids Auth IDs structure
  * @param forceCreate Should a new profile be created for this user if the account does not exist?
- * @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks. Leave empty string for no extraJson.
+ * @param extraJson Additional to piggyback along with the call, to be picked up by pre- or post- hooks.
+ *                  Leave empty string for no extraJson.
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
@@ -832,20 +842,20 @@ __attribute__((deprecated));
                                 cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Logs user out of server. optional: forget user profile Id
-*
-* Service Name - PlayerState
-* Service Operation - Logout
-*
-* @param forgetUser true to reset profile Id
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*/
+ * Logs user out of server. optional: forget user profile Id
+ *
+ * Service Name - PlayerState
+ * Service Operation - Logout
+ *
+ * @param forgetUser true to reset profile Id
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
 - (void)logout:(BOOL)forgetUser
-withCompletionBlock:(BCCompletionBlock)completionBlock
+ withCompletionBlock:(BCCompletionBlock)completionBlock
 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-cbObject:(BCCallbackObject)cbObject;
+            cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Reset Email password - Sends a password reset email to the specified address
@@ -890,20 +900,20 @@ cbObject:(BCCallbackObject)cbObject;
                           cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Reset Email password with Expiry - Sends a password reset email to the specified address
-*
-* Service Name - Authenticate
-* Operation - ResetEmailPasswordWithExpiry
-*
-* @param externalId The email address to send the reset email to.
-* @param tokenTtlInMinutes the tokery value
-* @param completionBlock Block to call on return of successful server response
-* @param errorCompletionBlock Block to call on return of unsuccessful server response
-* @param cbObject User object sent to the completion blocks
-*
-* Note the follow error reason codes:
-* SECURITY_ERROR (40209) - If the email address cannot be found.
-*/
+ * Reset Email password with Expiry - Sends a password reset email to the specified address
+ *
+ * Service Name - Authenticate
+ * Operation - ResetEmailPasswordWithExpiry
+ *
+ * @param externalId The email address to send the reset email to.
+ * @param tokenTtlInMinutes the tokery value
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ * Note the follow error reason codes:
+ * SECURITY_ERROR (40209) - If the email address cannot be found.
+ */
 - (void)resetEmailPasswordWithExpiry:(NSString *)email
          tokenTtlInMinutes:(int)tokenTtlInMinutes
        withCompletionBlock:(BCCompletionBlock)completionBlock
@@ -919,7 +929,7 @@ cbObject:(BCCallbackObject)cbObject;
  * @param appId the application Id
  * @param externalId The email address to send the reset email to.
  * @param serviceParams parameters to send to the email service. See the doc for
- * a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
+ *                      a full list http:/getbraincloud.com/apidocs/apiref/#capi-mail
  * @param tokenTtlInMinutes the tokery value
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -1010,6 +1020,7 @@ cbObject:(BCCallbackObject)cbObject;
  *
  * Note the follow error reason codes:
  * SECURITY_ERROR (40209) - If the email address cannot be found.
+ * 
  */
 - (void)resetUniversalIdPasswordAdvancedWithExpiry:(NSString *)universalId
                            serviceParams:(NSString *)serviceParams
@@ -1019,14 +1030,14 @@ cbObject:(BCCallbackObject)cbObject;
                                 cbObject:(BCCallbackObject)cbObject;
 
 /**
- Returns true if reconnect is possible
- 
+ * Returns true if reconnect is possible
  */
 -(Boolean)canReconnect;
 
 /**
  * Clears Profile Id and Anonymous Id and deletes data entry on device
  * Use Logout
+ *
  * NOTE: If this is called when AnonymousAuthentication is used, the portal user cannot be reconnected or recovered!
  */
 -(void)clearIds;

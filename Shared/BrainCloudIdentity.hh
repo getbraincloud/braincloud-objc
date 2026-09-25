@@ -622,17 +622,16 @@
 *
 * @param appleUserId String of the apple accounts user Id OR email
 * @param identityToken The identityToken confirming users identity
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
 * @param completionBlock Block to call on return of successful server response
 * @param errorCompletionBlock Block to call on return of unsuccessful server response
 * @param cbObject User object sent to the completion blocks
 *
 */
 - (void)mergeAppleIdentity:(NSString *)appleUserId
-                    identityToken:(NSString *)identityToken
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject;
+             identityToken:(NSString *)identityToken
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Detach the Apple identity from this profile.
@@ -641,7 +640,7 @@
 * Service Operation - Detach
 *
 * @param appleUserId String of the apple accounts user Id OR email
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
+* @param continueAnon Proceed even if the profile will revert to anonymous?
 * @param completionBlock Block to call on return of successful server response
 * @param errorCompletionBlock Block to call on return of unsuccessful server response
 * @param cbObject User object sent to the completion blocks
@@ -651,10 +650,10 @@
 * the profile wouldn't be retrievable if the user loses their device)
 */
 - (void)detachAppleIdentity:(NSString *)appleUserId
-                continueAnon:(bool)continueAnon
-             completionBlock:(BCCompletionBlock)cb
-        errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                    cbObject:(BCCallbackObject)cbObject;
+               continueAnon:(bool)continueAnon
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Attach the user's EpicGames credentials to the current profile.
@@ -664,7 +663,6 @@
  *
  * @param epicAccountId LocalUserId retrieved from the EOS AuthInterface's Login method.
  * @param authIdToken IdToken string from the EOS AuthInterface's CopyIdToken method.
- * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
@@ -690,7 +688,6 @@
  *
  * @param epicAccountId LocalUserId retrieved from the EOS AuthInterface's Login method.
  * @param authIdToken IdToken string from the EOS AuthInterface's CopyIdToken method.
- * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
@@ -709,7 +706,7 @@
  * Service Operation - Detach
  *
  * @param epicAccountId LocalUserId retrieved from the EOS AuthInterface's Login method.
- * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param continueAnon Proceed even if the profile will revert to anonymous?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
  * @param cbObject User object sent to the completion blocks
