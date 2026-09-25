@@ -594,18 +594,18 @@
 * Service Name - Identity
 * Service Operation - Attach
 *
-* @param appleUserId  this can be the userId or the email for the user of this account.
-* @param identityToken  the token confirming the users identity
+* @param appleUserId String of the apple accounts user Id OR email
+* @param identityToken The identityToken confirming users identity
 * @param forceCreate Should a new profile be created for this user if the account does not exist?
 * @param completionBlock Block to call on return of successful server response
 * @param errorCompletionBlock Block to call on return of unsuccessful server response
 * @param cbObject User object sent to the completion blocks
 *
-* Errors to watch for:  SWITCHING_PROFILES - this means that the Google identity you provided
+* Errors to watch for:  SWITCHING_PROFILES - this means that the Apple identity you provided
 * already points to a different profile.  You will likely want to offer the user the
 * choice to *SWITCH* to that profile, or *MERGE* the profiles.
 *
-* To switch profiles, call ClearSavedProfileID() and call AuthenticateGoogle().
+* To switch profiles, call ClearSavedProfileID() and call AuthenticateApple().
 */
 - (void)attachAppleIdentity:(NSString *)appleUserId
                      identityToken:(NSString *)identityToken
@@ -620,29 +620,27 @@
 * Service Name - Identity
 * Service Operation - Merge
 *
-* @param appleUserId  this can be the userId or the email for the user of this account.
-* @param identityToken  the token confirming the users identity
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
+* @param appleUserId String of the apple accounts user Id OR email
+* @param identityToken The identityToken confirming users identity
 * @param completionBlock Block to call on return of successful server response
 * @param errorCompletionBlock Block to call on return of unsuccessful server response
 * @param cbObject User object sent to the completion blocks
 *
 */
 - (void)mergeAppleIdentity:(NSString *)appleUserId
-                    identityToken:(NSString *)identityToken
-            completionBlock:(BCCompletionBlock)cb
-       errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                   cbObject:(BCCallbackObject)cbObject;
+             identityToken:(NSString *)identityToken
+           completionBlock:(BCCompletionBlock)cb
+      errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                  cbObject:(BCCallbackObject)cbObject;
 
 /**
-* Detach the GoogleOpenId identity from this profile.
+* Detach the Apple identity from this profile.
 *
 * Service Name - Identity
 * Service Operation - Detach
 *
-* @param appleUserId  this can be the userId or the email for the user of this account.
-* @param identityToken  the token confirming the users identity
-* @param forceCreate Should a new profile be created for this user if the account does not exist?
+* @param appleUserId String of the apple accounts user Id OR email
+* @param continueAnon Proceed even if the profile will revert to anonymous?
 * @param completionBlock Block to call on return of successful server response
 * @param errorCompletionBlock Block to call on return of unsuccessful server response
 * @param cbObject User object sent to the completion blocks
@@ -652,10 +650,76 @@
 * the profile wouldn't be retrievable if the user loses their device)
 */
 - (void)detachAppleIdentity:(NSString *)appleUserId
-                continueAnon:(bool)continueAnon
-             completionBlock:(BCCompletionBlock)cb
-        errorCompletionBlock:(BCErrorCompletionBlock)ecb
-                    cbObject:(BCCallbackObject)cbObject;
+               continueAnon:(bool)continueAnon
+            completionBlock:(BCCompletionBlock)cb
+       errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                   cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Attach the user's EpicGames credentials to the current profile.
+ *
+ * Service Name - Identity
+ * Service Operation - Attach
+ *
+ * @param epicAccountId LocalUserId retrieved from the EOS AuthInterface's Login method.
+ * @param authIdToken IdToken string from the EOS AuthInterface's CopyIdToken method.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ * Errors to watch for:  SWITCHING_PROFILES - this means that the EpicGames identity you provided
+ * already points to a different profile.  You will likely want to offer the user the
+ * choice to *SWITCH* to that profile, or *MERGE* the profiles.
+ *
+ * To switch profiles, call ClearSavedProfileID() and call AuthenticateEpicGames().
+ */
+- (void)attachEpicGamesIdentity:(NSString *)epicAccountId
+                    authIdToken:(NSString *)authIdToken
+                completionBlock:(BCCompletionBlock)cb
+           errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                       cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Merge the profile associated with the provided EpicGames credentials with the
+ * current profile.
+ *
+ * Service Name - Identity
+ * Service Operation - Merge
+ *
+ * @param epicAccountId LocalUserId retrieved from the EOS AuthInterface's Login method.
+ * @param authIdToken IdToken string from the EOS AuthInterface's CopyIdToken method.
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
+- (void)mergeEpicGamesIdentity:(NSString *)epicAccountId
+                   authIdToken:(NSString *)authIdToken
+               completionBlock:(BCCompletionBlock)cb
+          errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                      cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Detach the EpicGames identity from this profile.
+ *
+ * Service Name - Identity
+ * Service Operation - Detach
+ *
+ * @param epicAccountId LocalUserId retrieved from the EOS AuthInterface's Login method.
+ * @param continueAnon Proceed even if the profile will revert to anonymous?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ * Watch for DOWNGRADING_TO_ANONYMOUS_ERROR - occurs if you set continueAnon to false, and
+ * disconnecting this identity would result in the profile being anonymous (which means that
+ * the profile wouldn't be retrievable if the user loses their device)
+ */
+- (void)detachEpicGamesIdentity:(NSString *)epicAccountId
+                   continueAnon:(bool)continueAnon
+                completionBlock:(BCCompletionBlock)cb
+           errorCompletionBlock:(BCErrorCompletionBlock)ecb
+                       cbObject:(BCCallbackObject)cbObject;
 
 /**
 * Attach the user's Twitter credentials to the current profile.

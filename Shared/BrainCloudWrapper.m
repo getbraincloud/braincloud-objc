@@ -494,13 +494,34 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
     aco.cbObject = cbObject;
     
     [[_bcClient authenticationService] authenticateApple:appleUserId
-                                                  identityToken:identityToken
-                                                    forceCreate:forceCreate
-                                                completionBlock:self.authSuccessCompletionBlock
-                                           errorCompletionBlock:self.authErrorCompletionBlock
-                                                       cbObject:aco];
+                                           identityToken:identityToken
+                                             forceCreate:forceCreate
+                                         completionBlock:self.authSuccessCompletionBlock
+                                    errorCompletionBlock:self.authErrorCompletionBlock
+                                                cbObject:aco];
 }
 
+- (void)authenticateEpicGames:(NSString *)epicAccountId
+                  authIdToken:(NSString *)authIdToken
+                  forceCreate:(BOOL)forceCreate
+              completionBlock:(BCCompletionBlock)completionBlock
+         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                     cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+    
+    AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+    aco.completionBlock = completionBlock;
+    aco.errorCompletionBlock = errorCompletionBlock;
+    aco.cbObject = cbObject;
+    
+    [[_bcClient authenticationService] authenticateEpicGames:epicAccountId
+                                                 authIdToken:authIdToken
+                                                 forceCreate:forceCreate
+                                             completionBlock:self.authSuccessCompletionBlock
+                                        errorCompletionBlock:self.authErrorCompletionBlock
+                                                    cbObject:aco];
+}
 
 - (void)authenticateSteam:(NSString *)userId
             sessionTicket:(NSString *)sessionticket
@@ -824,32 +845,56 @@ NSString * const kPersistenceKeyProfileId          = @"profileId";
 }
 
 - (void)smartSwitchAuthenticateApple:(NSString *)appleUserId
-                                token:(NSString *)identityToken
-                          forceCreate:(BOOL)forceCreate
-                      completionBlock:(BCCompletionBlock)completionBlock
-                 errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
-                             cbObject:(BCCallbackObject)cbObject
+                       identityToken:(NSString *)identityToken
+                         forceCreate:(BOOL)forceCreate
+                     completionBlock:(BCCompletionBlock)completionBlock
+                errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                            cbObject:(BCCallbackObject)cbObject
 {
     [self _initializeIdentity:FALSE];
 
     BCSmartSwitchCompletionBlock authCallback = ^() {
-    
-    AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
-    aco.completionBlock = completionBlock;
-    aco.errorCompletionBlock = errorCompletionBlock;
-    aco.cbObject = cbObject;
-
-		[[self->_bcClient authenticationService] authenticateApple:appleUserId
-                                           identityToken:identityToken
-                                              forceCreate:forceCreate
-                                          completionBlock:self.authSuccessCompletionBlock
-                                     errorCompletionBlock:self.authErrorCompletionBlock
-                                                 cbObject:aco];
+        AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+        aco.completionBlock = completionBlock;
+        aco.errorCompletionBlock = errorCompletionBlock;
+        aco.cbObject = cbObject;
+        
+        [[self->_bcClient authenticationService] authenticateApple:appleUserId
+                                                     identityToken:identityToken
+                                                       forceCreate:forceCreate
+                                                   completionBlock:self.authSuccessCompletionBlock
+                                              errorCompletionBlock:self.authErrorCompletionBlock
+                                                          cbObject:aco];
     };
     
     [self smartSwitchAuthentication:authCallback];
 }
 
+- (void)smartSwitchAuthenticateEpicGames:(NSString *)epicAccountId
+                             authIdToken:(NSString *)authIdToken
+                             forceCreate:(BOOL)forceCreate
+                         completionBlock:(BCCompletionBlock)completionBlock
+                    errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                                cbObject:(BCCallbackObject)cbObject
+{
+    [self _initializeIdentity:FALSE];
+    
+    BCSmartSwitchCompletionBlock authCallback = ^() {
+        AuthenticationCallbackObject *aco = [[AuthenticationCallbackObject alloc] init];
+        aco.completionBlock = completionBlock;
+        aco.errorCompletionBlock = errorCompletionBlock;
+        aco.cbObject = cbObject;
+        
+        [[self->_bcClient authenticationService] authenticateEpicGames:epicAccountId
+                                                           authIdToken:authIdToken
+                                                           forceCreate:forceCreate
+                                                       completionBlock:self.authSuccessCompletionBlock
+                                                  errorCompletionBlock:self.authErrorCompletionBlock
+                                                              cbObject:aco];
+    };
+    
+    [self smartSwitchAuthentication:authCallback];
+}
 
 - (void)smartSwitchAuthenticateSteam:(NSString *)userId
             sessionTicket:(NSString *)sessionticket
