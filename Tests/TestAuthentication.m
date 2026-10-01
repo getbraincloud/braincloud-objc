@@ -376,7 +376,15 @@
     NSDictionary *JWT = [(NSDictionary *)[(NSDictionary *)[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"response"] objectForKey:@"data"] objectForKey:@"json"];
     
     NSString *id_token = [JWT objectForKey:@"id_token"];
-    
+
+    if (id_token == nil)
+    {
+        NSDictionary *scriptData = (NSDictionary *)[(NSDictionary *)[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"response"] objectForKey:@"data"];
+        XCTFail(@"getUltraToken returned no id_token (statusCode: %@) - Ultra's identity service is not responding",
+                [scriptData objectForKey:@"statusCode"] ?: @"unknown");
+        return;
+    }
+
     // Log out
     [[m_client playerStateService] logout:successBlock errorCompletionBlock:failureBlock cbObject:nil];
     [self waitForResult];
