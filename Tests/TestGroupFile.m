@@ -13,7 +13,7 @@
 
 @implementation TestGroupFile
 static NSString *groupFileId = @"d2dd646a-f1af-4a96-90a7-a0310246f5a2";
-static NSString *groupID = @"a7ff751c-3251-407a-b2fd-2bd1e9bca64a";
+static NSString *groupID = nil;
 static int version = -1;
 static NSString *filename = @"testingGroupFile.dat";
 static NSString *newFileName = @"testCopiedFile.dat";
@@ -93,10 +93,25 @@ static FileUploadProgress *fileProgress;
 
     [fileProgress clearProgress];
 
-    // join group
-    [[bc groupService] joinGroup:groupID completionBlock:resultSuccess errorCompletionBlock:resultFail cbObject:nil];
+    // create the group this suite operates on
+    callbackResult = false;
+    [[bc groupService] createGroup:@"GroupFileTestGroup"
+                         groupType:@"test"
+                       isOpenGroup:true
+                               acl:nil
+                          jsonData:nil
+               jsonOwnerAttributes:nil
+       jsonDefaultMemberAttributes:nil
+                   completionBlock:resultSuccess
+              errorCompletionBlock:resultFail
+                          cbObject:nil];
 
+    [TestFixtureBase waitForResponse:bc watchResult:&callbackResult];
     XCTAssertTrue(callbackResult);
+
+    groupID = [[TestFixtureBase getDataFromResponse:callbackJson] objectForKey:@"groupId"];
+    XCTAssertNotNil(groupID);
+
     callbackResult = false;
     
     // move user to group file
