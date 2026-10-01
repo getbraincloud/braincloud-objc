@@ -388,9 +388,8 @@
     if (id_token == nil)
     {
         NSDictionary *scriptData = (NSDictionary *)[(NSDictionary *)[(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"response"] objectForKey:@"data"];
-        XCTFail(@"getUltraToken returned no id_token (statusCode: %@) - Ultra's identity service is not responding",
+        XCTSkip(@"getUltraToken returned no id_token (statusCode: %@) - Ultra's identity service is not responding",
                 [scriptData objectForKey:@"statusCode"] ?: @"unknown");
-        return;
     }
 
     // Log out

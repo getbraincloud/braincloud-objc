@@ -98,10 +98,10 @@ static FileUploadProgress *fileProgress;
     [[bc groupService] createGroup:@"GroupFileTestGroup"
                          groupType:@"test"
                        isOpenGroup:true
-                               acl:nil
-                          jsonData:nil
-               jsonOwnerAttributes:nil
-       jsonDefaultMemberAttributes:nil
+                               acl:@"{ \"other\": 2, \"member\": 2 }"
+                          jsonData:@"{}"
+               jsonOwnerAttributes:@"{}"
+       jsonDefaultMemberAttributes:@"{}"
                    completionBlock:resultSuccess
               errorCompletionBlock:resultFail
                           cbObject:nil];
