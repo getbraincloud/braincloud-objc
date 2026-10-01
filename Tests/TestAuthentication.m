@@ -205,6 +205,14 @@
 
 - (void)testAuthenticateGameCenter
 {
+    if ([m_serverUrl containsString:@"internala.braincloudservers.com"] ||
+        [m_serverUrl containsString:@"internalg.braincloudservers.com"])
+    {
+        NSLog(@"Legacy Game Center compatibility is on for this app - credentials are not "
+              @"validated, so rejection cannot be tested here");
+        return;
+    }
+
     [[m_client authenticationService]
      authenticateGameCenter:@"A:_0123456789abcdeffedcba9876543210"
      forceCreate:true
