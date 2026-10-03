@@ -11,6 +11,8 @@
 #pragma once
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdocumentation"
+// This legacy header is only partially annotated for nullability.
+#pragma clang diagnostic ignored "-Wnullability-completeness"
 
 #import <Foundation/Foundation.h>
 #import "BrainCloudCompletionBlocks.hh"
@@ -18,6 +20,9 @@
 #import "AuthenticationTypeObjc.hh"
 
 @class BrainCloudClient;
+
+typedef void (^BCAppCheckTokenCompletion)(NSString * _Nullable token, NSError * _Nullable error);
+typedef void (^BCAppCheckTokenProvider)(BCAppCheckTokenCompletion _Nonnull completion);
 
 extern NSString *const AUTH_FACEBOOK;
 
@@ -30,6 +35,27 @@ extern NSString *const AUTH_FACEBOOK;
 
 @property(strong, nonatomic) NSString *anonymousID;
 @property(strong, nonatomic) NSString *profileID;
+
+/**
+ * Sets the host-provided Firebase App Check token for subsequent authenticate requests.
+ * The token is copied and kept in memory until replaced or cleared with nil or an empty string.
+ * The host app owns fetching and refreshing the token, including before reconnects.
+ * Call on the same thread as authentication; already queued requests are not updated.
+ * This SDK does not validate tokens or depend on Firebase.
+ *
+ * @param token Opaque App Check token, or nil/empty to omit it from requests.
+ */
+- (void)setAppCheckToken:(NSString * _Nullable)token;
+
+/**
+ * Resolves a token before every authentication, including automatic reconnect.
+ * Pass nil to restore setAppCheckToken behavior. The block is copied and retained.
+ * Invoke completion once, on any queue. Error/empty token fails authentication.
+ * Results and the 30-second timeout are delivered through REST/ALL runCallbacks.
+ * Configure on the SDK thread. Reset/destruction discards pending results.
+ * Avoid capturing the client strongly. No Firebase dependency is required.
+ */
+- (void)setAppCheckTokenProvider:(BCAppCheckTokenProvider _Nullable)provider;
 
 // NOT an Objective-C designated initializer
 /**
