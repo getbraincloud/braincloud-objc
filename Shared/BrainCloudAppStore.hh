@@ -34,7 +34,7 @@
  * Service Operation - CACHE_PURCHASE_PAYLOAD_CONTEXT
  *
  * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
- *                steam, windows, windowsPhone, googlePlay, epicGames, xsolla
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param iapId The IAP product Id as configured for the product on brainCloud
  * @param payload The payload retrieved for the IAP product after the GetSalesInventory method
  * @param completionBlock Block to call on return of successful server response
@@ -55,7 +55,7 @@
  * Service Operation - VERIFY_PURCHASE
  *
  * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
- *                steam, windows, windowsPhone, googlePlay, epicGames, xsolla
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param receiptData the specific store data required
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -88,7 +88,7 @@
  * Service Operation - GET_INVENTORY
  *
  * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
- *                steam, windows, windowsPhone, googlePlay, epicGames, xsolla
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param userCurrency the currency type to retrieve the inventory for
  * @param category product category
  * @param completionBlock Block to call on return of successful server response
@@ -108,7 +108,7 @@
  * Service Operation - Get_Inventory
  *
  * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
- *                steam, windows, windowsPhone, googlePlay, epicGames, xsolla
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param userCurrency the currency type to retrieve the inventory for
  * @param category product category
  * @param completionBlock Block to call on return of successful server response
