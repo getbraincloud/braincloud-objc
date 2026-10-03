@@ -37,6 +37,19 @@ If you're a newcomer to the `CocoaPods` world, you can find documentation on how
 
 https://guides.cocoapods.org/
 
+## Firebase App Check
+
+The host app fetches an App Check token using Firebase's iOS SDK and supplies it before authenticating:
+
+```objc
+[[client authenticationService] setAppCheckToken:appCheckToken];
+// Authenticate using your usual authentication method.
+```
+
+The token is copied into memory and included as `appCheckToken` in subsequent authenticate request data. Refresh it from the host app before it expires and before reconnecting. Call the setter on the same thread as authentication; requests already queued retain their original token. Pass `nil` or `@""` to clear it. When unset, the authenticate request is unchanged. No Firebase dependency is added to this SDK.
+
+This API requires the matching BrainCloudCpp implementation with `setAppCheckToken`; use the updated C++ SDK when building locally and release the matching C++ pod before publishing this wrapper.
+
 ## Troubleshooting
 
 Here are a few common errors that you may see on your first attempt to connect to brainCloud.
@@ -136,3 +149,30 @@ Attaching email authenticate would look like this.
 ```
 There are many authentication types. You can also merge profiles and detach idenities. See the brainCloud documentation for more information:
 http://getbraincloud.com/apidocs/apiref/?java#capi-auth
+
+### Asynchronous App Check token provider
+
+Register `setAppCheckTokenProvider` on the authentication service to obtain a current
+opaque token for every authentication, including retries and automatic reconnects.
+The provider takes precedence over `setAppCheckToken`; removing it restores the
+stored-token behavior. Neither SDK depends on Firebase.
+
+The provider is invoked on the authentication thread and may complete on any thread.
+Keep calling `runCallbacks` (REST or ALL): it processes results and a 30-second timeout.
+An error or empty token fails authentication locally with status 400 and reason 90300
+(`CLIENT_APP_CHECK_TOKEN_ERROR`), without sending the request or using the stored token.
+Only the first completion is accepted. Resetting communication or destroying the client
+silently discards pending requests; late completions are ignored. Configure providers
+on the SDK thread and avoid strong ownership cycles. Provider replacement affects new
+requests; requests already waiting retain their original provider.
+
+```objc
+[client.authenticationService setAppCheckTokenProvider:^(BCAppCheckTokenCompletion completion) {
+    // Fetch through your app's token service, then call completion(token, error).
+    [myTokenService fetchTokenWithCompletion:completion];
+}];
+// Restore the manually supplied token:
+[client.authenticationService setAppCheckTokenProvider:nil];
+```
+
+Use a matching C++ SDK version that includes this provider API.

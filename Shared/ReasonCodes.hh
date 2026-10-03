@@ -731,3 +731,6 @@ extern const NSInteger EMAIL_CC_MAX_SIZE_EXCEEDED;
 extern const NSInteger EMAIL_BCC_MAX_SIZE_EXCEEDED;
 extern const NSInteger TEAM_USAGE_REPORT_ERROR;
 extern const NSInteger GLOBAL_PROPERTY_MAX_SIZE_EXCEEDED;
+
+// Local failure obtaining an App Check token (including timeout).
+extern const NSInteger CLIENT_APP_CHECK_TOKEN_ERROR;
