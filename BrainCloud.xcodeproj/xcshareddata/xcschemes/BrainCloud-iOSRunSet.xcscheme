@@ -87,9 +87,6 @@
                   Identifier = "TestAuthentication/testAuthenticateGoogleOpenId">
                </Test>
                <Test
-                  Identifier = "TestAuthentication/testAuthenticateUltra">
-               </Test>
-               <Test
                   Identifier = "TestAuthentication/testAuthenticateUniversal">
                </Test>
                <Test
