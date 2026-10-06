@@ -35,6 +35,28 @@
     return self;
 }
 
+- (void)setAppCheckToken:(NSString * _Nullable)token
+{
+    _client->getAuthenticationService()->setAppCheckToken(token.length > 0 ? [token UTF8String] : "");
+}
+
+- (void)setAppCheckTokenProvider:(BCAppCheckTokenProvider _Nullable)provider
+{
+    if (!provider)
+    {
+        _client->getAuthenticationService()->setAppCheckTokenProvider(nullptr);
+        return;
+    }
+    BCAppCheckTokenProvider copiedProvider = [provider copy];
+    _client->getAuthenticationService()->setAppCheckTokenProvider(
+        [copiedProvider](BrainCloud::BrainCloudAuthentication::AppCheckTokenCompletion completion) {
+            copiedProvider(^(NSString *token, NSError *error) {
+                completion(token.length ? token.UTF8String : "",
+                    error ? (error.localizedDescription.UTF8String ?: "App Check token provider failed") : "");
+            });
+        });
+}
+
 - (NSString *)profileID
 {
     const char* str = _client->getAuthenticationService()->getProfileId().c_str();

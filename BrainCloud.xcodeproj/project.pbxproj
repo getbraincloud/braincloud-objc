@@ -170,6 +170,7 @@
 		025704842FD07409006D8CB3 /* TestTournament.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC16D81E203012007D00EE /* TestTournament.m */; };
 		025704852FD07409006D8CB3 /* TestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 240896001CE3FCD90099720D /* TestGroup.m */; };
 		025704862FD07409006D8CB3 /* TestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */; };
+		ACCE55000000000000000002 /* TestAppCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACCE55000000000000000001 /* TestAppCheck.mm */; };
 		025704872FD07409006D8CB3 /* TestS3Handling.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC681C9356A1002E62F8 /* TestS3Handling.m */; };
 		025704882FD07409006D8CB3 /* TestLobby.m in Sources */ = {isa = PBXBuildFile; fileRef = DB43F14823C5065D0011DBE6 /* TestLobby.m */; };
 		0257048A2FD07409006D8CB3 /* TestPlayerStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC621C9356A1002E62F8 /* TestPlayerStatistics.m */; };
@@ -764,6 +765,7 @@
 		DF2231431CE39E15003A7D8D /* TestScript.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC691C9356A1002E62F8 /* TestScript.m */; };
 		DF2231441CE39E15003A7D8D /* TestGlobalApp.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC591C9356A1002E62F8 /* TestGlobalApp.m */; };
 		DF2231451CE39E15003A7D8D /* TestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */; };
+		ACCE55000000000000000003 /* TestAppCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACCE55000000000000000001 /* TestAppCheck.mm */; };
 		DF2231461CE39E15003A7D8D /* TestS3Handling.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC681C9356A1002E62F8 /* TestS3Handling.m */; };
 		DF2231471CE39E15003A7D8D /* TestPlayerStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC621C9356A1002E62F8 /* TestPlayerStatistics.m */; };
 		DF2231481CE39E15003A7D8D /* TestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF99CBF01C936749000B2418 /* TestWrapper.m */; };
@@ -792,8 +794,11 @@
 		DFF5CC8D1C9356A7002E62F8 /* TestAsyncMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */; };
 		DFF5CC8E1C9356A8002E62F8 /* TestAsyncMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */; };
 		DFF5CC8F1C9356AE002E62F8 /* TestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */; };
+		ACCE55000000000000000004 /* TestAppCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACCE55000000000000000001 /* TestAppCheck.mm */; };
 		DFF5CC901C9356AF002E62F8 /* TestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */; };
+		ACCE55000000000000000005 /* TestAppCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACCE55000000000000000001 /* TestAppCheck.mm */; };
 		DFF5CC911C9356AF002E62F8 /* TestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */; };
+		ACCE55000000000000000006 /* TestAppCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACCE55000000000000000001 /* TestAppCheck.mm */; };
 		DFF5CC921C9356B2002E62F8 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC501C9356A1002E62F8 /* TestClient.m */; };
 		DFF5CC931C9356B3002E62F8 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC501C9356A1002E62F8 /* TestClient.m */; };
 		DFF5CC941C9356B4002E62F8 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC501C9356A1002E62F8 /* TestClient.m */; };
@@ -1090,6 +1095,7 @@
 		DFD59AB41C8E2CBA00A69FEF /* StatusCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusCodes.m; sourceTree = "<group>"; };
 		DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAsyncMatch.m; path = Tests/TestAsyncMatch.m; sourceTree = "<group>"; };
 		DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAuthentication.m; path = Tests/TestAuthentication.m; sourceTree = "<group>"; };
+		ACCE55000000000000000001 /* TestAppCheck.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Tests/TestAppCheck.mm; sourceTree = "<group>"; };
 		DFF5CC501C9356A1002E62F8 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestClient.m; path = Tests/TestClient.m; sourceTree = "<group>"; };
 		DFF5CC511C9356A1002E62F8 /* TestDataStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestDataStream.m; path = Tests/TestDataStream.m; sourceTree = "<group>"; };
 		DFF5CC521C9356A1002E62F8 /* TestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestEntity.m; path = Tests/TestEntity.m; sourceTree = "<group>"; };
@@ -1680,6 +1686,7 @@
 				85C05CBF2162BEAA0003E92B /* TestAppStore.m */,
 				DFF5CC4E1C9356A1002E62F8 /* TestAsyncMatch.m */,
 				DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */,
+				ACCE55000000000000000001 /* TestAppCheck.mm */,
 				8512AF4821932F2300D04938 /* TestChat.m */,
 				DFF5CC501C9356A1002E62F8 /* TestClient.m */,
 				851D8CF624A5501700DCF6D3 /* TestCustomEntity.m */,
@@ -2546,6 +2553,7 @@
 				025704842FD07409006D8CB3 /* TestTournament.m in Sources */,
 				025704852FD07409006D8CB3 /* TestGroup.m in Sources */,
 				025704862FD07409006D8CB3 /* TestAuthentication.m in Sources */,
+				ACCE55000000000000000002 /* TestAppCheck.mm in Sources */,
 				025704872FD07409006D8CB3 /* TestS3Handling.m in Sources */,
 				025704882FD07409006D8CB3 /* TestLobby.m in Sources */,
 				0257048A2FD07409006D8CB3 /* TestPlayerStatistics.m in Sources */,
@@ -2663,6 +2671,7 @@
 				24AC16DB1E203012007D00EE /* TestTournament.m in Sources */,
 				242292771CE3FDED000EF5BF /* TestGroup.m in Sources */,
 				DFF5CC911C9356AF002E62F8 /* TestAuthentication.m in Sources */,
+				ACCE55000000000000000006 /* TestAppCheck.mm in Sources */,
 				DFF5CCD91C935721002E62F8 /* TestS3Handling.m in Sources */,
 				DB43F14B23C5065D0011DBE6 /* TestLobby.m in Sources */,
 				DFF5CCC71C935707002E62F8 /* TestPlayerStatistics.m in Sources */,
@@ -2784,6 +2793,7 @@
 				24AC16D91E203012007D00EE /* TestTournament.m in Sources */,
 				242292751CE3FDEB000EF5BF /* TestGroup.m in Sources */,
 				DFF5CC8F1C9356AE002E62F8 /* TestAuthentication.m in Sources */,
+				ACCE55000000000000000004 /* TestAppCheck.mm in Sources */,
 				DFF5CCD71C93571F002E62F8 /* TestS3Handling.m in Sources */,
 				DB43F14923C5065D0011DBE6 /* TestLobby.m in Sources */,
 				DFF5CCC51C935706002E62F8 /* TestPlayerStatistics.m in Sources */,
@@ -2901,6 +2911,7 @@
 				24AC16DA1E203012007D00EE /* TestTournament.m in Sources */,
 				242292761CE3FDEC000EF5BF /* TestGroup.m in Sources */,
 				DFF5CC901C9356AF002E62F8 /* TestAuthentication.m in Sources */,
+				ACCE55000000000000000005 /* TestAppCheck.mm in Sources */,
 				DFF5CCD81C935720002E62F8 /* TestS3Handling.m in Sources */,
 				DB43F14A23C5065D0011DBE6 /* TestLobby.m in Sources */,
 				DFF5CCC61C935706002E62F8 /* TestPlayerStatistics.m in Sources */,
@@ -3020,6 +3031,7 @@
 				DB43F14C23C5065D0011DBE6 /* TestLobby.m in Sources */,
 				02E6475A2FCA16EA009304AB /* TestCampaign.m in Sources */,
 				DF2231451CE39E15003A7D8D /* TestAuthentication.m in Sources */,
+				ACCE55000000000000000003 /* TestAppCheck.mm in Sources */,
 				DF2231461CE39E15003A7D8D /* TestS3Handling.m in Sources */,
 				DF2231471CE39E15003A7D8D /* TestPlayerStatistics.m in Sources */,
 				85EA9472233950E400E7938F /* TestItemCatalog.m in Sources */,
