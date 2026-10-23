@@ -174,6 +174,44 @@
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject;
 
+/**
+ * Returns the store's client-side configuration for the given store.
+ * Other supported stores currently return an empty storeInfo.
+ * An unknown storeId returns HTTP 400 with reason code INVALID_STORE_ID.
+ *
+ * Service Name - AppStore
+ * Service Operation - GET_STORE_INFO
+ *
+ * @param storeId The store to query, e.g. "xsolla".
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getStoreInfo:(NSString *)storeId
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Returns a store user token (JWT) for the current user, generated server-side.
+ * Currently only Xsolla is supported. The userToken is null if the required
+ * Xsolla server client ID, server client secret or login ID is missing,
+ * or if the Xsolla call fails.
+ * An unknown storeId returns HTTP 400 with reason code INVALID_STORE_ID.
+ *
+ * Service Name - AppStore
+ * Service Operation - GET_USER_TOKEN
+ *
+ * @param storeId The store to get the token for, e.g. "xsolla".
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getUserToken:(NSString *)storeId
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
+
 @end
 
 #pragma clang diagnostic pop
