@@ -111,5 +111,21 @@
          [storeId UTF8String], [transactionId UTF8String], [transactionData UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
 }
 
+- (void)getStoreInfo:(NSString *)storeId
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject
+{
+    _client->getAppStoreService()->getStoreInfo([storeId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
+- (void)getUserToken:(NSString *)storeId
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject
+{
+    _client->getAppStoreService()->getUserToken([storeId UTF8String], new BrainCloudCallback(cb, ecb, cbObject));
+}
+
 @end
 #pragma clang diagnostic pop
