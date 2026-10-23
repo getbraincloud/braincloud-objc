@@ -221,8 +221,22 @@
     BrainCloudCallback *brainCloudCallback =
     new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
     _client->getAuthenticationService()->authenticateApple(
-                                                            [appleUserId cStringUsingEncoding:NSUTF8StringEncoding],
-                                                            [identityToken cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
+        [appleUserId cStringUsingEncoding:NSUTF8StringEncoding],
+        [identityToken cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
+}
+
+- (void)authenticateEpicGames:(NSString *)epicAccountId
+                  authIdToken:(NSString *)authIdToken
+                  forceCreate:(BOOL)forceCreate
+              completionBlock:(BCCompletionBlock)completionBlock
+         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                     cbObject:(BCCallbackObject)cbObject
+{
+    BrainCloudCallback *brainCloudCallback =
+    new BrainCloudCallback(completionBlock, errorCompletionBlock, cbObject);
+    _client->getAuthenticationService()->authenticateEpicGames(
+        [epicAccountId cStringUsingEncoding:NSUTF8StringEncoding],
+        [authIdToken cStringUsingEncoding:NSUTF8StringEncoding], forceCreate, brainCloudCallback);
 }
 
 - (void)authenticateGoogle:(NSString *)googleUserId
@@ -342,7 +356,6 @@
     _client->getAuthenticationService()->resetEmailPasswordAdvancedWithExpiry(
     [email cStringUsingEncoding:NSUTF8StringEncoding],[serviceParams UTF8String],tokenTtlInMinutes, brainCloudCallback);
 }
-
 
 - (void)resetUniversalIdPassword:(NSString *)universalId
      withCompletionBlock:(BCCompletionBlock)completionBlock

@@ -103,4 +103,39 @@
     [self waitForResult];
 }
 
+- (void)testGetStoreInfo
+{
+    [[m_client appStoreService] getStoreInfo:@"xsolla"
+                              completionBlock:successBlock
+                         errorCompletionBlock:failureBlock
+                                     cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetStoreInfoFail
+{
+    [[m_client appStoreService] getStoreInfo:@"invalid_storeId"
+                              completionBlock:successBlock
+                         errorCompletionBlock:failureBlock
+                                     cbObject:nil];
+    [self waitForFailedResult];
+}
+
+- (void)testGetUserToken
+{
+    [[m_client appStoreService] getUserToken:@"xsolla"
+                              completionBlock:successBlock
+                         errorCompletionBlock:failureBlock
+                                     cbObject:nil];
+    [self waitForResult];
+}
+
+- (void)testGetUserTokenFail
+{
+    [[m_client appStoreService] getUserToken:@"invalid_storeId"
+                              completionBlock:successBlock
+                         errorCompletionBlock:failureBlock
+                                     cbObject:nil];
+    [self waitForFailedResult];
+}
 @end
