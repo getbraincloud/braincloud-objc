@@ -172,7 +172,6 @@
 		025704862FD07409006D8CB3 /* TestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC4F1C9356A1002E62F8 /* TestAuthentication.m */; };
 		025704872FD07409006D8CB3 /* TestS3Handling.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC681C9356A1002E62F8 /* TestS3Handling.m */; };
 		025704882FD07409006D8CB3 /* TestLobby.m in Sources */ = {isa = PBXBuildFile; fileRef = DB43F14823C5065D0011DBE6 /* TestLobby.m */; };
-		025704892FD07409006D8CB3 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
 		0257048A2FD07409006D8CB3 /* TestPlayerStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF5CC621C9356A1002E62F8 /* TestPlayerStatistics.m */; };
 		0257048B2FD07409006D8CB3 /* TestItemCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA946A23394E6300E7938F /* TestItemCatalog.m */; };
 		0257048C2FD07409006D8CB3 /* TestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF99CBF01C936749000B2418 /* TestWrapper.m */; };
@@ -647,13 +646,9 @@
 		DB83B15827A81D5C006BD318 /* AuthenticationIdsObjc.hh in Headers */ = {isa = PBXBuildFile; fileRef = DB83B15427A81D5B006BD318 /* AuthenticationIdsObjc.hh */; };
 		DB83B15927A81D5C006BD318 /* AuthenticationIdsObjc.hh in Headers */ = {isa = PBXBuildFile; fileRef = DB83B15427A81D5B006BD318 /* AuthenticationIdsObjc.hh */; };
 		DB83B15A27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
-		DB83B15B27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
 		DB83B15C27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
-		DB83B15D27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
 		DB83B15E27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
-		DB83B15F27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
 		DB83B16027A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
-		DB83B16127A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB83B15527A81D5C006BD318 /* AuthenticationIdsObjc.mm */; };
 		DBB9053D24EAE678000067CE /* TestRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB9053C24EAE678000067CE /* TestRelay.m */; };
 		DBB9053E24EAE678000067CE /* TestRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB9053C24EAE678000067CE /* TestRelay.m */; };
 		DBB9053F24EAE678000067CE /* TestRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB9053C24EAE678000067CE /* TestRelay.m */; };
@@ -2553,7 +2548,6 @@
 				025704862FD07409006D8CB3 /* TestAuthentication.m in Sources */,
 				025704872FD07409006D8CB3 /* TestS3Handling.m in Sources */,
 				025704882FD07409006D8CB3 /* TestLobby.m in Sources */,
-				025704892FD07409006D8CB3 /* AuthenticationIdsObjc.mm in Sources */,
 				0257048A2FD07409006D8CB3 /* TestPlayerStatistics.m in Sources */,
 				0257048B2FD07409006D8CB3 /* TestItemCatalog.m in Sources */,
 				0257048C2FD07409006D8CB3 /* TestWrapper.m in Sources */,
@@ -2671,7 +2665,6 @@
 				DFF5CC911C9356AF002E62F8 /* TestAuthentication.m in Sources */,
 				DFF5CCD91C935721002E62F8 /* TestS3Handling.m in Sources */,
 				DB43F14B23C5065D0011DBE6 /* TestLobby.m in Sources */,
-				DB83B15F27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */,
 				DFF5CCC71C935707002E62F8 /* TestPlayerStatistics.m in Sources */,
 				85EA9471233950E300E7938F /* TestItemCatalog.m in Sources */,
 				DF99CBF61C936E13000B2418 /* TestWrapper.m in Sources */,
@@ -2793,7 +2786,6 @@
 				DFF5CC8F1C9356AE002E62F8 /* TestAuthentication.m in Sources */,
 				DFF5CCD71C93571F002E62F8 /* TestS3Handling.m in Sources */,
 				DB43F14923C5065D0011DBE6 /* TestLobby.m in Sources */,
-				DB83B15B27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */,
 				DFF5CCC51C935706002E62F8 /* TestPlayerStatistics.m in Sources */,
 				85EA946F233950DB00E7938F /* TestItemCatalog.m in Sources */,
 				DF99CBF41C936E11000B2418 /* TestWrapper.m in Sources */,
@@ -2911,7 +2903,6 @@
 				DFF5CC901C9356AF002E62F8 /* TestAuthentication.m in Sources */,
 				DFF5CCD81C935720002E62F8 /* TestS3Handling.m in Sources */,
 				DB43F14A23C5065D0011DBE6 /* TestLobby.m in Sources */,
-				DB83B15D27A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */,
 				DFF5CCC61C935706002E62F8 /* TestPlayerStatistics.m in Sources */,
 				85EA9470233950DC00E7938F /* TestItemCatalog.m in Sources */,
 				DF99CBF51C936E12000B2418 /* TestWrapper.m in Sources */,
@@ -3031,7 +3022,6 @@
 				DF2231451CE39E15003A7D8D /* TestAuthentication.m in Sources */,
 				DF2231461CE39E15003A7D8D /* TestS3Handling.m in Sources */,
 				DF2231471CE39E15003A7D8D /* TestPlayerStatistics.m in Sources */,
-				DB83B16127A81D5C006BD318 /* AuthenticationIdsObjc.mm in Sources */,
 				85EA9472233950E400E7938F /* TestItemCatalog.m in Sources */,
 				DF2231481CE39E15003A7D8D /* TestWrapper.m in Sources */,
 				DF2231491CE39E15003A7D8D /* TestUser.m in Sources */,

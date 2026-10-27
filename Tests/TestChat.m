@@ -20,6 +20,17 @@
 
 - (void)tearDown { [super tearDown]; }
 
+- (NSString *)validChannelId
+{
+    [[m_client chatService] getChannelId:@"gl"
+                            channelSubId:@"valid"
+                         completionBlock:successBlock
+                    errorCompletionBlock:failureBlock
+                                cbObject:nil];
+    [self waitForResult];
+    return [[TestFixtureBase getDataFromResponse:self.jsonResponse] objectForKey:@"channelId"];
+}
+
 
 - (void)testChannelConnect
 {
@@ -32,7 +43,7 @@
      cbObject:nil];
     [self waitForResult];
     
-    NSString* _channelId =@"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     
     [[m_client chatService] channelConnect:_channelId
                                  maxReturn:10
@@ -53,7 +64,7 @@
      cbObject:nil];
     [self waitForResult];
     
-    NSString* _channelId =@"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     
     [[m_client chatService] channelConnect:_channelId
                                  maxReturn:10
@@ -74,7 +85,7 @@
      cbObject:nil];
     [self waitForResult];
     
-    NSString* _channelId = @"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     NSString* _msgId = @"123456";
     
     [[m_client chatService] deleteChatMessage:_channelId
@@ -119,7 +130,7 @@
      cbObject:nil];
     [self waitForResult];
     
-    NSString* _channelId = @"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     
     [[m_client chatService] getChannelInfo:_channelId
                            completionBlock:successBlock
@@ -141,7 +152,7 @@
     [self waitForResult];
     
     // Send msg
-    NSString* _channelId = @"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     NSString* _jsonRich = @"{\"content\":\"test\"}";
     [[m_client chatService] postChatMessage:_channelId
                                     content:_jsonRich
@@ -177,7 +188,7 @@
      cbObject:nil];
     [self waitForResult];
     
-    NSString* _channelId = @"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
 
     [[m_client chatService] getRecentChatMessages:_channelId
                                         maxReturn:10
@@ -218,7 +229,7 @@
      cbObject:nil];
     [self waitForResult];
     
-    NSString* _channelId = @"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     NSString* _text =@"testPost";
     
     [[m_client chatService] postChatMessageSimple:_channelId
@@ -241,7 +252,7 @@
      cbObject:nil];
     [self waitForResult];
     
-    NSString* _channelId = @"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     NSString* _jsonRich = @"{\"content\":\"test\"}";
     
     [[m_client chatService] postChatMessage:_channelId
@@ -266,7 +277,7 @@
     [self waitForResult];
     
     // Send msg
-    NSString* _channelId = @"20001:gl:valid";
+    NSString* _channelId = [self validChannelId];
     NSString* _jsonRich = @"{\"content\":\"test update\"}";
     [[m_client chatService] postChatMessage:_channelId
                                     content:_jsonRich
@@ -284,7 +295,7 @@
 
     NSString* _msgId = [(NSDictionary *)[jsonObj objectForKey:@"data"] objectForKey:@"msgId"];
     
-    [[m_client chatService] updateChatMessage:@"20001:gl:valid"
+    [[m_client chatService] updateChatMessage:_channelId
                                         msgId:_msgId
                                       version:1
                                   jsonContent:@"{\"text\":\"edited message\"}"

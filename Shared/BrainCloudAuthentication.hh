@@ -266,13 +266,13 @@ extern NSString *const AUTH_FACEBOOK;
                 cbObject:(BCCallbackObject)cbObject;
 
 /**
- * Authenticate the user using a google userid(email address) and google authentication token.
+ * Authenticate the user using their Apple account and identityToken.
  *
  * Service Name - Authenticate
  * Service Operation - Authenticate
  *
- * @param appleUserId  this can be the userId or the email for the user of this account.
- * @param identityToken  the token confirming the users identity
+ * @param appleUserId String of the apple accounts user Id OR email
+ * @param identityToken The identityToken confirming users identity
  * @param forceCreate Should a new profile be created for this user if the account does not exist?
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -285,6 +285,27 @@ extern NSString *const AUTH_FACEBOOK;
          completionBlock:(BCCompletionBlock)completionBlock
     errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
                 cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Authenticate the user using an epicAccountId and their authIdToken.
+ *
+ * Service Name - Authenticate
+ * Service Operation - Authenticate
+ *
+ * @param epicAccountId LocalUserId retrieved from the EOS AuthInterface's Login method.
+ * @param authIdToken IdToken string from the EOS AuthInterface's CopyIdToken method.
+ * @param forceCreate Should a new profile be created for this user if the account does not exist?
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ *
+ */
+- (void)authenticateEpicGames:(NSString *)epicAccountId
+                  authIdToken:(NSString *)authIdToken
+                  forceCreate:(BOOL)forceCreate
+              completionBlock:(BCCompletionBlock)completionBlock
+         errorCompletionBlock:(BCErrorCompletionBlock)errorCompletionBlock
+                     cbObject:(BCCallbackObject)cbObject;
 
 /**
  * Authenticate the user using a google userid(email address) and google authentication token.

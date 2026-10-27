@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.name     = "BrainCloud"
 
-  s.version  = "6.0.1"
+  s.version  = "6.1.0"
 
   s.summary  = "The Objective-C/Swift client library for brainCloud."
   s.homepage = "http://getbraincloud.com/"
@@ -56,6 +56,6 @@ Pod::Spec.new do |s|
   #s.libraries                = 'c++', 'z' # BrainCloudCpp.podspec already link these libraries
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.dependency 'BrainCloudCpp', '6.0.1'
+  s.dependency 'BrainCloudCpp', '6.1.0'
 
 end

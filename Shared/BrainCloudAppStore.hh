@@ -33,7 +33,8 @@
  * Service Name - AppStore
  * Service Operation - CACHE_PURCHASE_PAYLOAD_CONTEXT
  *
- * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld, steam, windows, windowsPhone, googlePlay
+ * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param iapId The IAP product Id as configured for the product on brainCloud
  * @param payload The payload retrieved for the IAP product after the GetSalesInventory method
  * @param completionBlock Block to call on return of successful server response
@@ -53,7 +54,8 @@
  * Service Name - AppStore
  * Service Operation - VERIFY_PURCHASE
  *
- * @param storeId the store platform. Valid: itunes, facebook, appworld, steam, windows, windowsPhone, googlePlay
+ * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param receiptData the specific store data required
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -85,7 +87,8 @@
  * Service Name - AppStore
  * Service Operation - GET_INVENTORY
  *
- * @param storeId the store platform. Valid: itunes, facebook, appworld, steam, windows, windowsPhone, googlePlay
+ * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param userCurrency the currency type to retrieve the inventory for
  * @param category product category
  * @param completionBlock Block to call on return of successful server response
@@ -104,7 +107,8 @@
  * Service Name - AppStore
  * Service Operation - Get_Inventory
  *
- * @param storeId the store platform. Valid: itunes, facebook, appworld, steam, windows, windowsPhone, googlePlay
+ * @param storeId The store storeId. Valid stores are: itunes, facebook, appworld,
+ *                steam, windows, windowsPhone, googlePlay, metaHorizon, epicGames, xsolla
  * @param userCurrency the currency type to retrieve the inventory for
  * @param category product category
  * @param completionBlock Block to call on return of successful server response
@@ -124,7 +128,7 @@
  * Service Name - AppStore
  * Service Operation - START_PURCHASE
  *
- * @param storeId the store platform. Valid: itunes, facebook, appworld, steam, windows, windowsPhone, googlePlay
+ * @param storeId The store id. Currently only accepts "steam".
  * @param purchaseData the currency type to retrieve the inventory for
  * @param completionBlock Block to call on return of successful server response
  * @param errorCompletionBlock Block to call on return of unsuccessful server response
@@ -142,7 +146,7 @@
  * Service Name - AppStore
  * Service Operation - FINALIZE_PURCHASE
  *
- * @param storeId the store platform. Valid: itunes, facebook, appworld, steam, windows, windowsPhone, googlePlay
+ * @param storeId The store id. Currently only accepts "steam".
  * @param transactionId returned from start purchase
  * @param transactionData specific datat for purchasing 2 staged purchase
  * @param completionBlock Block to call on return of successful server response
@@ -169,6 +173,44 @@
 - (void)refreshPromotions:(BCCompletionBlock)cb
      errorCompletionBlock:(BCErrorCompletionBlock)ecb
                  cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Returns the store's client-side configuration for the given store.
+ * Other supported stores currently return an empty storeInfo.
+ * An unknown storeId returns HTTP 400 with reason code INVALID_STORE_ID.
+ *
+ * Service Name - AppStore
+ * Service Operation - GET_STORE_INFO
+ *
+ * @param storeId The store to query, e.g. "xsolla".
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getStoreInfo:(NSString *)storeId
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
+
+/**
+ * Returns a store user token (JWT) for the current user, generated server-side.
+ * Currently only Xsolla is supported. The userToken is null if the required
+ * Xsolla server client ID, server client secret or login ID is missing,
+ * or if the Xsolla call fails.
+ * An unknown storeId returns HTTP 400 with reason code INVALID_STORE_ID.
+ *
+ * Service Name - AppStore
+ * Service Operation - GET_USER_TOKEN
+ *
+ * @param storeId The store to get the token for, e.g. "xsolla".
+ * @param completionBlock Block to call on return of successful server response
+ * @param errorCompletionBlock Block to call on return of unsuccessful server response
+ * @param cbObject User object sent to the completion blocks
+ */
+- (void)getUserToken:(NSString *)storeId
+     completionBlock:(BCCompletionBlock)cb
+errorCompletionBlock:(BCErrorCompletionBlock)ecb
+            cbObject:(BCCallbackObject)cbObject;
 
 @end
 
