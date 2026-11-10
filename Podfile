@@ -51,7 +51,7 @@ target 'BrainCloud-visionOS' do
 end
 
 target 'BrainCloud-watchOS' do
-  platform :watchos, '8.0'
+  platform :watchos, '9.0'
   shared_pods
   target 'BrainCloud-watchOSTests' do
     inherit! :search_paths
@@ -64,7 +64,7 @@ post_install do |installer|
     'MACOSX_DEPLOYMENT_TARGET'   => '13.0',
     'TVOS_DEPLOYMENT_TARGET'     => '15.0',
     'XROS_DEPLOYMENT_TARGET'     => '1.0',
-    'WATCHOS_DEPLOYMENT_TARGET'  => '8.0',
+    'WATCHOS_DEPLOYMENT_TARGET'  => '9.0',
   }
   installer.generated_projects.each do |project|
     project.targets.each do |target|
